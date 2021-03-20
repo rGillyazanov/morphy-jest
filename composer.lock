@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a16c3c541bd99241cab1c21ce8e83ac",
+    "content-hash": "788ffca16a57f2f807259d10ae66f516",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2351,6 +2351,122 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "seoservice2020/laravel-phpmorphy",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SEOService2020/laravel-phpmorphy.git",
+                "reference": "6f83f1e712d760bd04822cec8c8e338add4b4ac0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SEOService2020/laravel-phpmorphy/zipball/6f83f1e712d760bd04822cec8c8e338add4b4ac0",
+                "reference": "6f83f1e712d760bd04822cec8c8e338add4b4ac0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0",
+                "php": "^7.2",
+                "seoservice2020/phpmorphy": "^2.2.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SEOService2020\\Morphy\\MorphyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Morphy": "SEOService2020\\Morphy\\Facade\\Morphy"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SEOService2020\\Morphy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Pronin",
+                    "email": "sergotail@mail.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "laravel-phpmorphy - Laravel wrapper for phpMorphy.",
+            "homepage": "https://github.com/SEOService2020/laravel-phpmorphy",
+            "keywords": [
+                "laravel",
+                "nlp",
+                "phpmorphy"
+            ],
+            "support": {
+                "issues": "https://github.com/SEOService2020/laravel-phpmorphy/issues",
+                "source": "https://github.com/SEOService2020/laravel-phpmorphy/tree/2.2.1"
+            },
+            "time": "2021-01-31T05:18:23+00:00"
+        },
+        {
+            "name": "seoservice2020/phpmorphy",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SEOService2020/phpmorphy.git",
+                "reference": "52029e2da541b5e732e2f7a92257126e6b6f10b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SEOService2020/phpmorphy/zipball/52029e2da541b5e732e2f7a92257126e6b6f10b9",
+                "reference": "52029e2da541b5e732e2f7a92257126e6b6f10b9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.2 <8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Max Grigorian",
+                    "email": "maxakawizard@gmail.com",
+                    "homepage": "http://wizardcat.com"
+                },
+                {
+                    "name": "Kamaev Vladimir",
+                    "email": "heromantor@users.sourceforge.net"
+                },
+                {
+                    "name": "Sergey Pronin",
+                    "email": "sergotail@mail.ru"
+                }
+            ],
+            "description": "phpMorphy - morphological analyzer library for Russian, Ukrainian, English and German languages.",
+            "homepage": "https://github.com/SEOService2020/phpmorphy",
+            "keywords": [
+                "nlp",
+                "phpmorphy"
+            ],
+            "support": {
+                "source": "https://github.com/SEOService2020/phpmorphy/tree/2.2.2"
+            },
+            "time": "2021-01-31T05:13:58+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

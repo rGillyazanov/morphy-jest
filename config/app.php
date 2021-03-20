@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        SEOService2020\Morphy\MorphyServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,6 +228,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Package aliases
+         */
+        'Morphy' => SEOService2020\Morphy\Facade\Morphy::class,
     ],
 
 ];

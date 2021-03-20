@@ -107,10 +107,8 @@ class MorphyAnalyzer
             $typesOfWord['Существительные'] = $noun->getNouns();
         }
 
-        if (count($this->_paradigms->getByPartOfSpeech('П')) > 0) {
-            $adjective = new Adjective($this->_word, $this->_paradigms);
-            $typesOfWord['Прилагательные'] = $adjective->getAdjectives();
-        }
+        $adjective = new Adjective($this->_word, $this->_paradigms);
+        $typesOfWord['Прилагательные'] = $adjective->getAdjectives();
 
         return $typesOfWord;
     }

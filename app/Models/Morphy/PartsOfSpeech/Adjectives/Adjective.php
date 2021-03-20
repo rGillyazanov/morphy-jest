@@ -34,11 +34,12 @@ class Adjective extends BasePartOfSpeech
     /**
      * Устанавливает падеж.
      * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
-     * @param string $case - падеж
+     * @param array $case - падеж
      * @return CaseWord
      */
-    private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, string $case): CaseWord
+    private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, array $case): CaseWord
     {
+        $case = implode(",", $case);
         $masculineNormal = "-";
         $feminineNormal = "-";
         $neuterNormal = "-";
@@ -92,17 +93,66 @@ class Adjective extends BasePartOfSpeech
         return new CaseWord($singular, $plural);
     }
 
+    /**
+     * Устанавливает сравнительную степень прилагательных в массив.
+     * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
+     * @param array $case
+     * @return array
+     */
+    private function setComparative(phpMorphy_Paradigm_ParadigmInterface $paradigm, array $case): array
+    {
+        $comparativeWords = [];
+
+        foreach ($paradigm->getWordFormsByGrammems($case) as $form) {
+            array_push($comparativeWords, $form->getWord());
+        }
+
+        return $comparativeWords;
+    }
+
     private function setAdjective(): void {
         foreach ($this->_paradigms->getByPartOfSpeech('П') as $paradigm) {
             $this->_adjectives[$paradigm->getBaseForm()] = [
-                'Именительный' => $this->setCase($paradigm, "ИМ"),
-                'Родительный' => $this->setCase($paradigm, "РД"),
-                'Дательный' => $this->setCase($paradigm, "ДТ"),
-                'Винительный' => $this->setCase($paradigm, "ВН"),
-                'Творительный' => $this->setCase($paradigm, "ТВ"),
-                'Предложный' => $this->setCase($paradigm, "ПР"),
-                'Звательный' => $this->setCase($paradigm, "ЗВ")
+                'Именительный' => $this->setCase($paradigm, ["ИМ"]),
+                'Родительный' => $this->setCase($paradigm, ["РД"]),
+                'Дательный' => $this->setCase($paradigm, ["ДТ"]),
+                'Винительный (Одушевленный)' => $this->setCase($paradigm, ["ВН", "ОД"]),
+                'Винительный (Неодушевленный)' => $this->setCase($paradigm, ["ВН", "НО"]),
+                'Творительный' => $this->setCase($paradigm, ["ТВ"]),
+                'Предложный' => $this->setCase($paradigm, ["ПР"]),
+                'Звательный' => $this->setCase($paradigm, ["ЗВ"]),
+                'Сравнительная степень' => $this->setComparative($paradigm, ["СРАВН"]),
             ];
+        }
+
+        foreach ($this->_paradigms->getByPartOfSpeech('КР_ПРИЛ') as $paradigm) {
+            if (count($paradigm->getWordFormsByPartOfSpeech('КР_ПРИЛ')) > 0) {
+
+                $masculineNormal = "-";
+                $feminineNormal = "-";
+                $neuterNormal = "-";
+                $pluralNormal = "-";
+
+                foreach ($paradigm->getWordFormsByPartOfSpeech('КР_ПРИЛ') as $form) {
+                    if ($form->hasGrammems(['ЕД', 'МР', 'КАЧ'])) {
+                        $masculineNormal = $form->getWord();
+                    }
+                    if ($form->hasGrammems(['ЕД', 'ЖР', 'КАЧ'])) {
+                        $feminineNormal = $form->getWord();
+                    }
+                    if ($form->hasGrammems(['ЕД', 'СР', 'КАЧ'])) {
+                        $neuterNormal = $form->getWord();
+                    }
+                    if ($form->hasGrammems(['МН', 'КАЧ'])) {
+                        $pluralNormal = $form->getWord();
+                    }
+                }
+
+                $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
+                $plural = new Plural($pluralNormal);
+
+                $this->_adjectives[$paradigm->getBaseForm()]['Краткое прилагательное'] = new CaseWord($singular, $plural);
+            }
         }
     }
 }

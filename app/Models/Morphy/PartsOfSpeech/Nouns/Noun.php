@@ -48,9 +48,7 @@ class Noun extends BasePartOfSpeech
 
         return new PluralSingular(
             $singular,
-            $plural,
-            $this->EqualWithWord($plural),
-            $this->EqualWithWord($singular)
+            $plural
         );
     }
 

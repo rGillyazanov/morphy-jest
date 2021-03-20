@@ -2,7 +2,6 @@
 
 namespace App\Models\Morphy\PartsOfSpeech;
 
-use Illuminate\Support\Str;
 use phpMorphy_Paradigm_Collection;
 
 class BasePartOfSpeech
@@ -14,10 +13,5 @@ class BasePartOfSpeech
     {
         $this->_word = $word;
         $this->_paradigms = $paradigms;
-    }
-
-    protected function EqualWithWord(string $formOfParadigm): bool
-    {
-        return Str::lower($formOfParadigm) === Str::lower($this->_word);
     }
 }

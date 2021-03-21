@@ -39,7 +39,6 @@ class Adjective extends BasePartOfSpeech
      */
     private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, array $case): CaseWord
     {
-        $case = implode(",", $case);
         $masculineNormal = "-";
         $feminineNormal = "-";
         $neuterNormal = "-";
@@ -51,33 +50,33 @@ class Adjective extends BasePartOfSpeech
         $pluralNormal = "-";
         $pluralDegree = "-";
 
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД', 'МР'])) > 0) {
-            $masculineNormal = $paradigm->getWordFormsByGrammems([$case, 'ЕД', 'МР'])[0]->getWord();
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))) > 0) {
+            $masculineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getWord();
         }
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД', 'МР', 'ПРЕВ'])) > 0) {
-            $masculineDegree = $paradigm->getWordFormsByGrammems([$case, 'ЕД', 'МР', 'ПРЕВ'])[0]->getWord();
-        }
-
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД', 'ЖР'])) > 0) {
-            $feminineNormal = $paradigm->getWordFormsByGrammems([$case, 'ЕД', 'ЖР'])[0]->getWord();
-        }
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД', 'ЖР', 'ПРЕВ'])) > 0) {
-            $feminineDegree = $paradigm->getWordFormsByGrammems([$case, 'ЕД', 'ЖР', 'ПРЕВ'])[0]->getWord();
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР', 'ПРЕВ']))) > 0) {
+            $masculineDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР', 'ПРЕВ']))[0]->getWord();
         }
 
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД', 'СР'])) > 0) {
-            $neuterNormal = $paradigm->getWordFormsByGrammems([$case, 'ЕД', 'СР'])[0]->getWord();
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))) > 0) {
+            $feminineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getWord();
         }
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД', 'СР', 'ПРЕВ'])) > 0) {
-            $neuterDegree = $paradigm->getWordFormsByGrammems([$case, 'ЕД', 'СР', 'ПРЕВ'])[0]->getWord();
-        }
-
-        if (count($paradigm->getWordFormsByGrammems([$case, 'МН'])) > 0) {
-            $pluralNormal = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getWord();
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР', 'ПРЕВ']))) > 0) {
+            $feminineDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР', 'ПРЕВ']))[0]->getWord();
         }
 
-        if (count($paradigm->getWordFormsByGrammems([$case, 'МН', 'ПРЕВ'])) > 0) {
-            $pluralDegree = $paradigm->getWordFormsByGrammems([$case, 'МН', 'ПРЕВ'])[0]->getWord();
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))) > 0) {
+            $neuterNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getWord();
+        }
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР', 'ПРЕВ']))) > 0) {
+            $neuterDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР', 'ПРЕВ']))[0]->getWord();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))) > 0) {
+            $pluralNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getWord();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['МН', 'ПРЕВ']))) > 0) {
+            $pluralDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН', 'ПРЕВ']))[0]->getWord();
         }
 
         $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);

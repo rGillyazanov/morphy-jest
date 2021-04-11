@@ -3,6 +3,7 @@ namespace App\Models\Morphy;
 
 use App\Models\Morphy\PartsOfSpeech\Adjectives\Adjective;
 use App\Models\Morphy\PartsOfSpeech\Nouns\Noun;
+use App\Models\Morphy\PartsOfSpeech\Verbs\Verb;
 use phpMorphy_Exception;
 use SEOService2020\Morphy\Morphy;
 use phpMorphy_Paradigm_Collection;
@@ -35,6 +36,11 @@ class MorphyAnalyzer
      */
     private array $_typesOfWord;
 
+    /**
+     * MorphyAnalyzer constructor.
+     * @param string $word
+     * @throws phpMorphy_Exception
+     */
     public function __construct(string $word)
     {
         $this->morphy = new Morphy(Morphy::russianLang);
@@ -107,8 +113,15 @@ class MorphyAnalyzer
             $typesOfWord['Существительные'] = $noun->getNouns();
         }
 
-        $adjective = new Adjective($this->_word, $this->_paradigms);
-        $typesOfWord['Прилагательные'] = $adjective->getAdjectives();
+        if (count($this->_paradigms->getByPartOfSpeech('П')) > 0) {
+            $adjective = new Adjective($this->_word, $this->_paradigms);
+            $typesOfWord['Прилагательные'] = $adjective->getAdjectives();
+        }
+
+        if (count($this->_paradigms->getByPartOfSpeech('ИНФИНИТИВ')) > 0) {
+            $verb = new Verb($this->_word, $this->_paradigms);
+            $typesOfWord['Глагол'] = $verb->getVerbs();
+        }
 
         return $typesOfWord;
     }

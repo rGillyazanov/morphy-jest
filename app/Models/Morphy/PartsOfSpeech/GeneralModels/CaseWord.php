@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Models\Morphy\PartsOfSpeech\GeneralModels;
+namespace App\Models\Morphy\PartsOfSpeech\GeneralModels;
 
 class CaseWord
 {

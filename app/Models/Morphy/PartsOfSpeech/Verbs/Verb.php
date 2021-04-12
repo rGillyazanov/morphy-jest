@@ -45,52 +45,31 @@ class Verb extends BasePartOfSpeech
         $masculineNormal = "-";
         $feminineNormal = "-";
         $neuterNormal = "-";
-
-        $masculineDegree = "-";
-        $feminineDegree = "-";
-        $neuterDegree = "-";
-
         $pluralNormal = "-";
-        $pluralDegree = "-";
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))) > 0) {
             $masculineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getWord();
-        }
-        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР', 'ПРЕВ']))) > 0) {
-            $masculineDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР', 'ПРЕВ']))[0]->getWord();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))) > 0) {
             $feminineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getWord();
         }
-        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР', 'ПРЕВ']))) > 0) {
-            $feminineDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР', 'ПРЕВ']))[0]->getWord();
-        }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))) > 0) {
             $neuterNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getWord();
-        }
-        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР', 'ПРЕВ']))) > 0) {
-            $neuterDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР', 'ПРЕВ']))[0]->getWord();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))) > 0) {
             $pluralNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getWord();
         }
 
-        if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['МН', 'ПРЕВ']))) > 0) {
-            $pluralDegree = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН', 'ПРЕВ']))[0]->getWord();
-        }
-
         $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
 
-        $singular->getMasculine()->setDegree($masculineDegree);
-        $singular->getFeminine()->setDegree($feminineDegree);
-        $singular->getNeuter()->setDegree($neuterDegree);
+        $singular->getMasculine();
+        $singular->getFeminine();
+        $singular->getNeuter();
 
         $plural = new Plural($pluralNormal);
-
-        $plural->getKind()->setDegree($pluralDegree);
 
         return new CaseWord($singular, $plural);
     }
@@ -144,28 +123,52 @@ class Verb extends BasePartOfSpeech
      */
     private function setImperativeMood(phpMorphy_Paradigm_ParadigmInterface $paradigm): PluralSingular
     {
-        return new PluralSingular();
+        return new PluralSingular(
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['ПВЛ', 'ЕД']),
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['ПВЛ', 'МН'])
+        );
     }
 
     /**
      * Устанавливает таблицу с падежами определенной грамматики
      * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
-     * @param $grammer
+     * @param array $grammems
      * @return array
      */
-    private function setTableWithCases(phpMorphy_Paradigm_ParadigmInterface $paradigm, $grammer)
+    private function setTableWithCases(phpMorphy_Paradigm_ParadigmInterface $paradigm, $grammems = [])
     {
-        $grammer = '';
+        $im = ['ИМ'];
+        $rd = ['РД'];
+        $dt = ['ДТ'];
+        $vnOd = ['ВН', 'ОД'];
+        $vnNo = ['ВН', 'НО'];
+        $tv = ['ТВ'];
+        $pr = ['ПР'];
+
+        $masculineNormal = $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'МР']));
+        $feminineNormal = $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'ЖР']));
+        $neuterNormal = $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'СР']));
+        $pluralNormal = $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['МН']));
+
+        $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
+
+        $singular->getMasculine();
+        $singular->getFeminine();
+        $singular->getNeuter();
+
+        $plural = new Plural($pluralNormal);
+
+        $caseWord = new CaseWord($singular, $plural);
 
         return [
-            'Именительный' => $this->setCase($paradigm, ["ИМ"]),
-            'Родительный' => $this->setCase($paradigm, ["РД"]),
-            'Дательный' => $this->setCase($paradigm, ["ДТ"]),
-            'Винительный (Одушевленный)' => $this->setCase($paradigm, ["ВН", "ОД"]),
-            'Винительный (Неодушевленный)' => $this->setCase($paradigm, ["ВН", "НО"]),
-            'Творительный' => $this->setCase($paradigm, ["ТВ"]),
-            'Предложный' => $this->setCase($paradigm, ["ПР"]),
-            'Краткое причастие' => '',
+            'Именительный' => $this->setCase($paradigm, array_merge($grammems, $im)),
+            'Родительный' => $this->setCase($paradigm, array_merge($grammems, $rd)),
+            'Дательный' => $this->setCase($paradigm, array_merge($grammems, $dt)),
+            'Винительный (Одушевленный)' => $this->setCase($paradigm, array_merge($grammems, $vnOd)),
+            'Винительный (Неодушевленный)' => $this->setCase($paradigm, array_merge($grammems, $vnNo)),
+            'Творительный' => $this->setCase($paradigm, array_merge($grammems, $tv)),
+            'Предложный' => $this->setCase($paradigm, array_merge($grammems, $pr)),
+            'Краткое причастие' => $caseWord
         ];
     }
 
@@ -177,21 +180,30 @@ class Verb extends BasePartOfSpeech
                     'Настоящее' => $this->setPresentTime($paradigm),
                     'Прошедшее' => $this->setPastTime($paradigm)
                 ],
-                'Повелительное наклонение' => [],
-                'Деепричастие' => [],
+                'Повелительное наклонение' => $this->setImperativeMood($paradigm),
+                'Деепричастие' => [
+                    'Настоящее' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                        $this->_paradigms,
+                        'ДЕЕПРИЧАСТИЕ',
+                        ['НСТ']
+                    ),
+                    'Прошедшее' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                        $this->_paradigms,
+                        'ДЕЕПРИЧАСТИЕ',
+                        ['ПРШ']
+                    )
+                ],
                 'Причастие' => [
                     'Настоящее время' => [
-                        'Действительный залог' => '',
-                        'Страдательный залог' => ''
+                        'Действительный залог' => $this->setTableWithCases($paradigm, ['ДСТ', 'НСТ']),
+                        'Страдательный залог' => $this->setTableWithCases($paradigm, ['СТР', 'НСТ'])
                     ],
                     'Прошедшее время' => [
-                        'Действительный залог' => '',
-                        'Страдательный залог' => ''
+                        'Действительный залог' => $this->setTableWithCases($paradigm, ['ДСТ', 'ПРШ']),
+                        'Страдательный залог' => $this->setTableWithCases($paradigm, ['СТР', 'ПРШ'])
                     ]
                 ]
             ];
         }
-
-        dd($this->_verbs);
     }
 }

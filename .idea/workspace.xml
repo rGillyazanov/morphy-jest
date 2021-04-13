@@ -25,10 +25,48 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Добавил поддержку инфинитивов.">
+    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Добавил причастия дст и стр в инфинитивы.">
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/CaseModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Enthusiasm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Face.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Gender.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Number.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Other.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/PartOfSpeech.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Pledge.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/SemanticFeature.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Time.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Transitivity.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/View.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083140_create_words_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083141_create_morphy_parts_of_speech_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083405_create_morphy_grammema_gender_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083540_create_morphy_grammema_number_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083550_create_morphy_grammema_case_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083559_create_morphy_grammema_time_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083638_create_morphy_grammema_face_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083828_create_morphy_grammema_enthusiasm_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083841_create_morphy_grammema_view_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084258_create_morphy_grammema_transitivity_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084352_create_morphy_grammema_pledge_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084616_create_morphy_grammema_other_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084640_create_morphy_grammema_semantic_features_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084753_create_word_grammems_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/CaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/EnthusiasmSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/FaceSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/GenderSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/NumberSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/OtherSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/PartOfSpeechSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/PledgeSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/SemanticFeaturesSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/TimeSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/TransitivitySeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/ViewSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +223,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\database\seeders\morphy" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\GeneralModels" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\Nouns" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\Adjectives" />
@@ -221,7 +260,9 @@
       <workItem from="1616399953487" duration="7000" />
       <workItem from="1616479621807" duration="596000" />
       <workItem from="1618140407163" duration="15990000" />
-      <workItem from="1618213105450" duration="3865000" />
+      <workItem from="1618213105450" duration="4091000" />
+      <workItem from="1618217620614" duration="602000" />
+      <workItem from="1618302166517" duration="7868000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -244,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618159621027</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Добавил причастия дст и стр в инфинитивы.">
+      <created>1618217278582</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618217278582</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +327,8 @@
     <MESSAGE value="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных." />
     <MESSAGE value="Исправил винительный одушевленный и винительный неодушевленный падеж у прилагательных" />
     <MESSAGE value="Добавил поддержку инфинитивов." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил поддержку инфинитивов." />
+    <MESSAGE value="Добавил причастия дст и стр в инфинитивы." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил причастия дст и стр в инфинитивы." />
   </component>
   <component name="WindowStateProjectService">
     <state x="679" y="129" key="#PHP" timestamp="1615747941945">
@@ -298,10 +347,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="672" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616259808658" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618143380259">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618311157635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618143380259" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618311157635" />
     <state x="675" y="355" width="573" height="533" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1615747822413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -366,18 +415,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="342" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618168732716" />
-    <state x="284" y="398" key="NewPhpClassDialog" timestamp="1618153902910">
+    <state x="900" y="398" key="NewPhpClassDialog" timestamp="1618307904261">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="284" y="398" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618153902910" />
+    <state x="900" y="398" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618307904261" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1615747828825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615747828825" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1618159627654">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1618217284700">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618159627654" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618217284700" />
     <state x="1160" y="289" key="refactoring.ChangeSignatureDialog" timestamp="1615664707503">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

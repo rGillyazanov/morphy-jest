@@ -25,48 +25,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Добавил причастия дст и стр в инфинитивы.">
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/CaseModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Enthusiasm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Face.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Gender.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Number.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Other.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/PartOfSpeech.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Pledge.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/SemanticFeature.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Time.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Transitivity.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/View.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083140_create_words_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083141_create_morphy_parts_of_speech_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083405_create_morphy_grammema_gender_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083540_create_morphy_grammema_number_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083550_create_morphy_grammema_case_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083559_create_morphy_grammema_time_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083638_create_morphy_grammema_face_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083828_create_morphy_grammema_enthusiasm_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_083841_create_morphy_grammema_view_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084258_create_morphy_grammema_transitivity_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084352_create_morphy_grammema_pledge_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084616_create_morphy_grammema_other_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084640_create_morphy_grammema_semantic_features_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084753_create_word_grammems_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/CaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/EnthusiasmSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/FaceSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/GenderSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/NumberSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/OtherSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/PartOfSpeechSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/PledgeSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/SemanticFeaturesSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/TimeSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/TransitivitySeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/ViewSeeder.php" afterDir="false" />
+    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Добавил таблицы в базу данных и модели к ним.">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_114111_update_foreign_key_word_grammems_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_13_084753_create_word_grammems_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_084753_create_word_grammems_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +224,7 @@
       <workItem from="1618140407163" duration="15990000" />
       <workItem from="1618213105450" duration="4091000" />
       <workItem from="1618217620614" duration="602000" />
-      <workItem from="1618302166517" duration="7868000" />
+      <workItem from="1618302166517" duration="10074000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -292,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618217278582</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Добавил таблицы в базу данных и модели к ним.">
+      <created>1618311478523</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618311478523</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +297,8 @@
     <MESSAGE value="Исправил винительный одушевленный и винительный неодушевленный падеж у прилагательных" />
     <MESSAGE value="Добавил поддержку инфинитивов." />
     <MESSAGE value="Добавил причастия дст и стр в инфинитивы." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил причастия дст и стр в инфинитивы." />
+    <MESSAGE value="Добавил таблицы в базу данных и модели к ним." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил таблицы в базу данных и модели к ним." />
   </component>
   <component name="WindowStateProjectService">
     <state x="679" y="129" key="#PHP" timestamp="1615747941945">
@@ -423,10 +393,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615747828825" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1618217284700">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1618311482004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618217284700" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618311482004" />
+    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618311452128">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618311452128" />
     <state x="1160" y="289" key="refactoring.ChangeSignatureDialog" timestamp="1615664707503">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -28,8 +28,6 @@ class CreateWordGrammemsTable extends Migration
             $table->unsignedBigInteger('pledge_id')->default(null)->comment('Залог');
             $table->unsignedBigInteger('other_id')->default(null)->comment('Другое');
             $table->unsignedBigInteger('semantic_feature_id')->default(null)->comment('Семантический признак');
-
-
         });
     }
 

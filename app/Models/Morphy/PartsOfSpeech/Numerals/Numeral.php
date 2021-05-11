@@ -1,31 +1,32 @@
 <?php
-namespace App\Models\Morphy\PartsOfSpeech\Nouns;
+
+namespace app\Models\Morphy\PartsOfSpeech\Numerals;
 
 use phpMorphy_Paradigm_ParadigmInterface;
 use App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\PluralSingular;
 
-class Noun extends BasePartOfSpeech
+class Numeral extends BasePartOfSpeech
 {
     /**
-     * Существительные
+     * Числительные
      * @var array
      */
-    private array $_nouns;
+    private array $_numerals;
 
     public function __construct($word, $paradigms)
     {
         parent::__construct($word, $paradigms);
 
-        $this->setNouns();
+        $this->setNumerals();
     }
 
     /**
      * @return array
      */
-    public function getNouns(): array
+    public function getNumerals(): array
     {
-        return $this->_nouns;
+        return $this->_numerals;
     }
 
     /**
@@ -39,12 +40,8 @@ class Noun extends BasePartOfSpeech
         $singular = "-";
         $plural = "-";
 
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД'])) > 0) {
-            $singular = $paradigm->getWordFormsByGrammems([$case, 'ЕД'])[0]->getWord();
-        }
-
-        if (count($paradigm->getWordFormsByGrammems([$case, 'МН'])) > 0) {
-            $plural = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getWord();
+        if (count($paradigm->getWordFormsByGrammems([$case])) > 0) {
+            $singular = $paradigm->getWordFormsByGrammems([$case])[0]->getWord();
         }
 
         return new PluralSingular(
@@ -53,16 +50,15 @@ class Noun extends BasePartOfSpeech
         );
     }
 
-    private function setNouns(): void {
-        foreach ($this->_paradigms->getByPartOfSpeech('С') as $paradigm) {
-            $this->_nouns[$paradigm->getBaseForm()] = [
+    private function setNumerals(): void {
+        foreach ($this->_paradigms->getByPartOfSpeech('ЧИСЛ') as $paradigm) {
+            $this->_numerals[$paradigm->getBaseForm()] = [
                 'Именительный' => $this->setCase($paradigm, "ИМ"),
                 'Родительный' => $this->setCase($paradigm, "РД"),
                 'Дательный' => $this->setCase($paradigm, "ДТ"),
                 'Винительный' => $this->setCase($paradigm, "ВН"),
                 'Творительный' => $this->setCase($paradigm, "ТВ"),
-                'Предложный' => $this->setCase($paradigm, "ПР"),
-                'Звательный' => $this->setCase($paradigm, "ЗВ")
+                'Предложный' => $this->setCase($paradigm, "ПР")
             ];
         }
     }

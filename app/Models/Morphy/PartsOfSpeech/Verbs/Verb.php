@@ -8,8 +8,8 @@ use App\Models\Morphy\PartsOfSpeech\GeneralModels\CaseWord;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\Plural;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\Singular;
 
-use App\Models\Morphy\PartsOfSpeech\Nouns\PluralSingular;
 use phpMorphy_Paradigm_ParadigmInterface;
+use App\Models\Morphy\PartsOfSpeech\GeneralModels\PluralSingular;
 
 class Verb extends BasePartOfSpeech
 {

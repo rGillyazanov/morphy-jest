@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Morphy\PartsOfSpeech\Nouns;
+namespace App\Models\Morphy\PartsOfSpeech\GeneralModels;
 
 class PluralSingular
 {

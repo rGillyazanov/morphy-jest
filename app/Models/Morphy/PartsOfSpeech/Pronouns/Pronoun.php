@@ -1,31 +1,34 @@
 <?php
-namespace App\Models\Morphy\PartsOfSpeech\Nouns;
+
+namespace App\Models\Morphy\PartsOfSpeech\Pronouns;
 
 use phpMorphy_Paradigm_ParadigmInterface;
-use App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\PluralSingular;
 
-class Noun extends BasePartOfSpeech
+class Pronoun extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 {
     /**
-     * Существительные
+     * Местоимение-существительное
      * @var array
      */
-    private array $_nouns;
+    private array $_pronouns;
 
-    public function __construct($word, $paradigms)
+    private string $_type;
+
+    public function __construct($word, $paradigms, $type)
     {
         parent::__construct($word, $paradigms);
 
-        $this->setNouns();
+        $this->_type = $type;
+        $this->setPronouns();
     }
 
     /**
      * @return array
      */
-    public function getNouns(): array
+    public function getPronouns(): array
     {
-        return $this->_nouns;
+        return $this->_pronouns;
     }
 
     /**
@@ -53,16 +56,15 @@ class Noun extends BasePartOfSpeech
         );
     }
 
-    private function setNouns(): void {
-        foreach ($this->_paradigms->getByPartOfSpeech('С') as $paradigm) {
-            $this->_nouns[$paradigm->getBaseForm()] = [
+    private function setPronouns(): void {
+        foreach ($this->_paradigms->getByPartOfSpeech($this->_type) as $paradigm) {
+            $this->_pronouns[$paradigm->getBaseForm()] = [
                 'Именительный' => $this->setCase($paradigm, "ИМ"),
                 'Родительный' => $this->setCase($paradigm, "РД"),
                 'Дательный' => $this->setCase($paradigm, "ДТ"),
                 'Винительный' => $this->setCase($paradigm, "ВН"),
                 'Творительный' => $this->setCase($paradigm, "ТВ"),
-                'Предложный' => $this->setCase($paradigm, "ПР"),
-                'Звательный' => $this->setCase($paradigm, "ЗВ")
+                'Предложный' => $this->setCase($paradigm, "ПР")
             ];
         }
     }

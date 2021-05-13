@@ -125,7 +125,7 @@ class Verb extends BasePartOfSpeech
     {
         return new PluralSingular(
             $this->helpMorphyService->getWordByGrammars($paradigm, ['ПВЛ', 'ЕД']),
-            $this->helpMorphyService->getWordByGrammars($paradigm, ['ПВЛ', 'МН'])
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['ПВЛ', 'МН', '2Л'])
         );
     }
 

@@ -3,8 +3,9 @@
 namespace App\Models\Morphy\PartsOfSpeech\GeneralModels;
 
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\Kinds\KindWord;
+use JsonSerializable;
 
-class Singular
+class Singular implements JsonSerializable
 {
     private KindWord $_masculine;
     private KindWord $_feminine;
@@ -39,5 +40,14 @@ class Singular
     public function getNeuter(): KindWord
     {
         return $this->_neuter;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'МР' => $this->getMasculine(),
+            'ЖР' => $this->getFeminine(),
+            'СР' => $this->getNeuter(),
+        ];
     }
 }

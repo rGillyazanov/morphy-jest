@@ -2,7 +2,9 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\GeneralModels\Kinds;
 
-class KindWord
+use JsonSerializable;
+
+class KindWord implements JsonSerializable
 {
     private string $_normal;
     private string $_degree;
@@ -10,6 +12,7 @@ class KindWord
     public function __construct(string $normal)
     {
         $this->_normal = $normal;
+        $this->_degree = '';
     }
 
     /**
@@ -31,5 +34,22 @@ class KindWord
     public function setDegree($value)
     {
         $this->_degree = $value;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function jsonSerialize(): array
+    {
+        if (!empty($this->getDegree())) {
+            return [
+                'НОРМ' => $this->getNormal(),
+                'ПРЕВ' => $this->getDegree(),
+            ];
+        }
+
+        return [
+            'НОРМ' => $this->getNormal()
+        ];
     }
 }

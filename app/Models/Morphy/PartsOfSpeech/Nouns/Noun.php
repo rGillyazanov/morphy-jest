@@ -32,7 +32,7 @@ class Noun extends BasePartOfSpeech
      * Устанавливает падеж.
      * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
      * @param string $case - падеж
-     * @return PluralSingular
+     * @return false|string
      */
     private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, string $case)
     {

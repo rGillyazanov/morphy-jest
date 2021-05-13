@@ -2,7 +2,9 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\GeneralModels;
 
-class PluralSingular
+use JsonSerializable;
+
+class PluralSingular implements JsonSerializable
 {
     private string $_plural;
     private string $_singular;
@@ -27,5 +29,16 @@ class PluralSingular
     public function getPlural(): string
     {
         return $this->_plural;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'ЕД' => $this->_singular,
+            'МН' => $this->_plural
+        ];
     }
 }

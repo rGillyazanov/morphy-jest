@@ -2,7 +2,9 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\GeneralModels;
 
-class CaseWord
+use JsonSerializable;
+
+class CaseWord implements JsonSerializable
 {
     private Singular $_singular;
     private Plural $_plural;
@@ -27,5 +29,16 @@ class CaseWord
     public function getPlural(): Plural
     {
         return $this->_plural;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'ЕД' => $this->getSingular(),
+            'МН' => $this->getPlural(),
+        ];
     }
 }

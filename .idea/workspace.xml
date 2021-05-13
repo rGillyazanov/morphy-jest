@@ -25,24 +25,48 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Добавил внешнии ключи к таблице word_grammems">
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Adverbs/Adverb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Conjunction/Conjunction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Interjection/Interjection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Numerals/Numeral.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Ordinals/Ordinal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Parenthesis/Parenthesis.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Particle/Particle.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Predicatives/Predicative.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pretext/Pretext.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/PronominalAdjectives/PronominalAdjective.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pronouns/Pronoun.php" afterDir="false" />
+    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/MorphyAnalyzer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/MorphyAnalyzer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/CaseWord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/CaseWord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Kinds/KindWord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Kinds/KindWord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Plural.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Plural.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/PluralSingular.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/PluralSingular.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Singular.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Singular.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Nouns/Noun.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Nouns/Noun.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Nouns/PluralSingular.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/PluralSingular.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +76,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="DONT_SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -176,6 +207,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1phKRbw5z1eBgLCXt8VH395wjKA" />
@@ -189,16 +221,19 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
+    <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
+    <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\partOfSpeechWord" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\GeneralModels" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\database\seeders\morphy" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\Nouns" />
@@ -244,7 +279,9 @@
       <workItem from="1618690602681" duration="560000" />
       <workItem from="1618835921071" duration="123000" />
       <workItem from="1620675411958" duration="3261000" />
-      <workItem from="1620721399907" duration="9354000" />
+      <workItem from="1620721399907" duration="11297000" />
+      <workItem from="1620839928118" duration="3834000" />
+      <workItem from="1620901305500" duration="10071000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -288,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618314667904</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Добавил части речи.">
+      <created>1620744287462</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620744287463</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +372,8 @@
     <MESSAGE value="Добавил причастия дст и стр в инфинитивы." />
     <MESSAGE value="Добавил таблицы в базу данных и модели к ним." />
     <MESSAGE value="Добавил внешнии ключи к таблице word_grammems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил внешнии ключи к таблице word_grammems" />
+    <MESSAGE value="Добавил части речи." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил части речи." />
   </component>
   <component name="WindowStateProjectService">
     <state x="679" y="129" key="#PHP" timestamp="1615747941945">
@@ -339,10 +384,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="194" key="#Servers/0.0.1920.1040@0.0.1920.1040" timestamp="1615748004136" />
-    <state x="414" y="174" width="1092" height="866" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615748006403">
+    <state x="719" y="129" width="1092" height="866" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620746918911">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="174" width="1092" height="866" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615748006403" />
+    <state x="719" y="129" width="1092" height="866" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620746918911" />
+    <state x="764" y="188" key="#com.intellij.ide.util.MemberChooser" timestamp="1620842150807">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="764" y="188" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1620842150807" />
     <state x="672" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1620735161300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -351,14 +400,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620741070428" />
-    <state x="675" y="355" width="573" height="533" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1615747822413">
+    <state x="675" y="355" width="573" height="533" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1620911560050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="675" y="355" width="573" height="533" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1615747822413" />
+    <state x="675" y="355" width="573" height="533" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1620911560050" />
     <state x="852" y="191" key="#xdebugger.XInspectDialog" timestamp="1616269892886">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="852" y="191" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616269892886" />
+    <state x="583" y="124" key="CommitChangelistDialog2" timestamp="1620744286552">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="583" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1620744286552" />
     <state width="558" height="618" key="DebuggerActiveHint" timestamp="1620678522368">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -415,22 +468,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="342" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620680653795" />
-    <state x="900" y="398" key="NewPhpClassDialog" timestamp="1620743897149">
+    <state x="900" y="398" key="NewPhpClassDialog" timestamp="1620744142367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="900" y="398" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620743897149" />
+    <state x="900" y="398" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620744142367" />
     <state x="794" y="444" key="NewPhpFileDialog" timestamp="1618341542386">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="444" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618341542386" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1615747828825">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1620912139957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615747828825" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1618314680920">
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1620912139957" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1620744293310">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618314680920" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1620744293310" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618311452128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -443,9 +496,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1160" y="289" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615664707503" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1618145491363">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1620909236800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618145491363" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620909236800" />
   </component>
 </project>

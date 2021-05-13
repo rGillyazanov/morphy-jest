@@ -3,8 +3,9 @@
 namespace App\Models\Morphy\PartsOfSpeech\GeneralModels;
 
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\Kinds\KindWord;
+use JsonSerializable;
 
-class Plural
+class Plural implements JsonSerializable
 {
     private KindWord $_kind;
 
@@ -19,5 +20,13 @@ class Plural
     public function getKind(): KindWord
     {
         return $this->_kind;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function jsonSerialize(): array
+    {
+        return $this->getKind()->jsonSerialize();
     }
 }

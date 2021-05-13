@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-if="nouns" v-for="(noun, index) in Object.keys(this.nouns)">
-            <span>{{ index + 1 }}. Базовая форма: {{ noun }}</span>
+        <div v-if="nouns" v-for="(noun, index) in Object.keys(nouns)">
+            <div class="py-3">{{ index + 1 }}. <b>Базовая форма</b>: {{ noun }} - Существительное ({{ listOfGrammems(nouns[noun]['Граммемы']) }})</div>
             <table class="table">
                 <thead>
                     <tr>
@@ -11,10 +11,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="casePart in Object.keys(nouns[noun])">
+                    <tr v-for="casePart in Object.keys(nouns[noun]['Падежи'])">
                         <th scope="row">{{ casePart }}</th>
-                        <td>{{ nouns[noun][casePart]['ЕД'] }}</td>
-                        <td>{{ nouns[noun][casePart]['МН'] }}</td>
+                        <td :class="{ equals: equalsWithWord(nouns[noun]['Падежи'][casePart]['ЕД']) }">{{ nouns[noun]['Падежи'][casePart]['ЕД'] }}</td>
+                        <td :class="{ equals: equalsWithWord(nouns[noun]['Падежи'][casePart]['МН']) }">{{ nouns[noun]['Падежи'][casePart]['МН'] }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -23,14 +23,39 @@
 </template>
 
 <script>
+import {globalGrammems} from "../../../mixins/grammems";
+
 export default {
     name: "NounWordComponent",
     props: {
-        nouns: Object
+        nouns: {
+            type: Object,
+            required: true
+        },
+        word: {
+            type: String,
+            required: true
+        }
+    },
+    methods: {
+        equalsWithWord(word) {
+            return this.word.toLowerCase() === word.toLowerCase();
+        },
+        listOfGrammems(grammems) {
+            const grammemsDescription = [];
+
+            for (let grammem of grammems) {
+                grammemsDescription.push(globalGrammems[grammem.toLowerCase()])
+            }
+
+            return grammemsDescription.join(', ');
+        }
     }
 }
 </script>
 
 <style scoped>
-
+    .equals {
+        color: red;
+    }
 </style>

@@ -1,14 +1,21 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <input type="text" v-model="word" @change="loadWord" placeholder="Введите слово">
+      <input
+        type="text"
+        v-model="word"
+        @change="loadWord"
+        placeholder="Введите слово">
 
       <div v-if="!response.loading">
         <div v-if="response.error.value">
           {{ response.error.message }}
         </div>
-        <div v-else>
-          <part-of-speech-table :parts-of-speech-word="response.data"></part-of-speech-table>
+        <div v-else-if="response.data">
+          <part-of-speech-table
+            :word="word"
+            :parts-of-speech-word="response.data">
+          </part-of-speech-table>
         </div>
       </div>
       <div v-else>Loading...</div>

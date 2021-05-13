@@ -1,5 +1,9 @@
 <template>
-    <NounWordComponent v-if="nouns" :nouns="nouns"></NounWordComponent>
+    <NounWordComponent
+        v-if="nouns"
+        :word="word"
+        :nouns="nouns">
+    </NounWordComponent>
 </template>
 
 <script>
@@ -8,7 +12,14 @@ export default {
     name: "PartOfSpeechTable",
     components: {NounWordComponent},
     props: {
-        partsOfSpeechWord: Object
+        word: {
+            type: String,
+            required: true
+        },
+        partsOfSpeechWord: {
+            type: Object,
+            required: true
+        }
     },
     data() {
         return {

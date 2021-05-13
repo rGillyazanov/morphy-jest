@@ -55,7 +55,7 @@ class Noun extends BasePartOfSpeech
 
     private function setNouns(): void {
         foreach ($this->_paradigms->getByPartOfSpeech('С') as $paradigm) {
-            $this->_nouns[$paradigm->getBaseForm()] = [
+            $this->_nouns[$paradigm->getBaseForm()]['Падежи'] = [
                 'Именительный' => $this->setCase($paradigm, "ИМ"),
                 'Родительный' => $this->setCase($paradigm, "РД"),
                 'Дательный' => $this->setCase($paradigm, "ДТ"),
@@ -64,6 +64,8 @@ class Noun extends BasePartOfSpeech
                 'Предложный' => $this->setCase($paradigm, "ПР"),
                 'Звательный' => $this->setCase($paradigm, "ЗВ")
             ];
+
+            $this->_nouns[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
         }
     }
 }

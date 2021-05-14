@@ -1,7 +1,10 @@
 <template>
   <div class="card">
     <div class="card-body">
+      <label for="word">Слово</label>
       <input
+        id="word"
+        class="form-control"
         type="text"
         v-model="word"
         @change="loadWord"

@@ -1,34 +1,48 @@
 <template>
-    <NounWordComponent
-        v-if="nouns"
-        :word="word"
-        :nouns="nouns">
-    </NounWordComponent>
+  <div>
+    <!--Существительные-->
+    <BaseCasesTableComponent
+      v-if="nouns"
+      :word="word"
+      :part-of-speech="nouns">
+    </BaseCasesTableComponent>
+    <!--Глаголы-->
+    <VerbWordComponent
+      v-if="verbs"
+      :word="word"
+      :verbs="verbs">
+    </VerbWordComponent>
+  </div>
 </template>
 
 <script>
-import NounWordComponent from "./partsOfSpeech/NounWordComponent";
+import BaseCasesTableComponent from "./partsOfSpeech/BaseCasesTableComponent";
+import VerbWordComponent from "./partsOfSpeech/VerbWordComponent";
+
 export default {
-    name: "PartOfSpeechTable",
-    components: {NounWordComponent},
-    props: {
-        word: {
-            type: String,
-            required: true
-        },
-        partsOfSpeechWord: {
-            type: Object,
-            required: true
-        }
+  name: "PartOfSpeechTable",
+  components: {VerbWordComponent, BaseCasesTableComponent},
+  props: {
+    word: {
+      type: String,
+      required: true
     },
-    data() {
-        return {
-            nouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Существительные'] ? this.partsOfSpeechWord['Существительные'] : null
-        }
+    partsOfSpeechWord: {
+      type: Object,
+      required: true
     }
+  },
+  data() {
+    return {
+      nouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Существительные'] ? this.partsOfSpeechWord['Существительные'] : null,
+      verbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Глаголы'] ? this.partsOfSpeechWord['Глаголы'] : null,
+    }
+  }
 }
 </script>
 
-<style scoped>
-
+<style>
+  .equals {
+    color: red;
+  }
 </style>

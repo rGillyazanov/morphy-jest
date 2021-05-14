@@ -1871,6 +1871,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1923,7 +1926,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _partsOfSpeech_NounWordComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partsOfSpeech/NounWordComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue");
+/* harmony import */ var _partsOfSpeech_BaseCasesTableComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partsOfSpeech/BaseCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue");
+/* harmony import */ var _partsOfSpeech_VerbWordComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partsOfSpeech/VerbWordComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1933,10 +1946,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PartOfSpeechTable",
   components: {
-    NounWordComponent: _partsOfSpeech_NounWordComponent__WEBPACK_IMPORTED_MODULE_0__.default
+    VerbWordComponent: _partsOfSpeech_VerbWordComponent__WEBPACK_IMPORTED_MODULE_1__.default,
+    BaseCasesTableComponent: _partsOfSpeech_BaseCasesTableComponent__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
     word: {
@@ -1950,17 +1965,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      nouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Существительные'] ? this.partsOfSpeechWord['Существительные'] : null
+      nouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Существительные'] ? this.partsOfSpeechWord['Существительные'] : null,
+      verbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Глаголы'] ? this.partsOfSpeechWord['Глаголы'] : null
     };
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1969,12 +1985,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "AdverbParticipleTableComponent",
+  props: {
+    adverbParticiple: {
+      type: Object,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2001,9 +2069,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "NounWordComponent",
+  name: "BaseCasesTableComponent",
   props: {
-    nouns: {
+    partOfSpeech: {
       type: Object,
       required: true
     },
@@ -2012,28 +2080,342 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       required: true
     }
   },
-  methods: {
-    equalsWithWord: function equalsWithWord(word) {
-      return this.word.toLowerCase() === word.toLowerCase();
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "ImperativeMoodTableComponent",
+  props: {
+    imperativeMood: {
+      type: Object,
+      required: true
     },
-    listOfGrammems: function listOfGrammems(grammems) {
-      var grammemsDescription = [];
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
 
-      var _iterator = _createForOfIteratorHelper(grammems),
-          _step;
+/***/ }),
 
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var grammem = _step.value;
-          grammemsDescription.push(_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.globalGrammems[grammem.toLowerCase()]);
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-      return grammemsDescription.join(', ');
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "ParticipleTableComponent",
+  props: {
+    participle: {
+      type: Object,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "PastTimeTableComponent",
+  props: {
+    pastTime: {
+      type: Object,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "PresentTimeTableComponent",
+  props: {
+    presentTime: {
+      type: Object,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PresentTimeTableComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PresentTimeTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue");
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _PastTimeTableComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PastTimeTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue");
+/* harmony import */ var _ImperativeMoodTableComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ImperativeMoodTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue");
+/* harmony import */ var _AdverbParticipleTableComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdverbParticipleTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue");
+/* harmony import */ var _ParticipleTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ParticipleTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "VerbWordComponent",
+  components: {
+    ParticipleTableComponent: _ParticipleTableComponent__WEBPACK_IMPORTED_MODULE_5__.default,
+    AdverbParticipleTableComponent: _AdverbParticipleTableComponent__WEBPACK_IMPORTED_MODULE_4__.default,
+    ImperativeMoodTableComponent: _ImperativeMoodTableComponent__WEBPACK_IMPORTED_MODULE_3__.default,
+    PastTimeTableComponent: _PastTimeTableComponent__WEBPACK_IMPORTED_MODULE_2__.default,
+    PresentTimeTableComponent: _PresentTimeTableComponent__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    verbs: {
+      type: Object,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_1__.GrammemsService],
+  methods: {
+    presentTime: function presentTime(word) {
+      return this.verbs[word]['Время']['Настоящее'];
+    },
+    pastTime: function pastTime(word) {
+      return this.verbs[word]['Время']['Прошедшее'];
+    },
+    imperativeMood: function imperativeMood(word) {
+      return this.verbs[word]['Повелительное наклонение'];
+    },
+    adverbParticiple: function adverbParticiple(word) {
+      return this.verbs[word]['Деепричастие'];
+    },
+    participle: function participle(word) {
+      return this.verbs[word]['Причастие'];
     }
   }
 });
@@ -2130,9 +2512,37 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "globalGrammems": () => (/* binding */ globalGrammems)
+/* harmony export */   "globalGrammems": () => (/* binding */ globalGrammems),
+/* harmony export */   "GrammemsService": () => (/* binding */ GrammemsService)
 /* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var globalGrammems = {
+  'с': 'существительное',
+  'п': 'прилагательное',
+  'кр_прил': 'краткое прилагательное',
+  'инфинитив': 'инфинитив',
+  'г': 'глагол в личной форме',
+  'деепричастие': 'деепричастие',
+  'причастие': 'причастие',
+  'кр_причастие': 'краткое причастие',
+  'числ': 'числительное (количественное)',
+  'числ-п': 'порядковое числительное',
+  'мс': 'местоимение-существительное',
+  'мс-предк': 'местоимение-предикатив',
+  'мс-п': 'местоименное прилагательное',
+  'н': 'наречие',
+  'предк': 'предикатив',
+  'предл': 'предлог',
+  'союз': 'союз',
+  'межд': 'междометие',
+  'част': 'частица',
+  'вводн': 'вводное слово',
+  'фраз': 'фразеологизм',
   'мр': 'мужской род',
   'жр': 'женский род',
   'ср': 'средний род',
@@ -2182,6 +2592,43 @@ var globalGrammems = {
   'опч': 'опечатка',
   'поэт': 'поэтическое',
   'проф': 'профессионализм'
+};
+var GrammemsService = {
+  methods: {
+    /**
+     * Сравнивает введенное слово со словом в части речи.
+     * @param word
+     * @returns {boolean}
+     */
+    equalsWithWord: function equalsWithWord(word) {
+      return this.word.toLowerCase() === word.toLowerCase();
+    },
+
+    /**
+     * Принимает массив из кода граммем и возвращает их полное название.
+     * @param {array} grammems
+     * @returns {string}
+     */
+    listOfGrammems: function listOfGrammems(grammems) {
+      var grammemsDescription = [];
+
+      var _iterator = _createForOfIteratorHelper(grammems),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var grammem = _step.value;
+          grammemsDescription.push(globalGrammems[grammem.toLowerCase()]);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      return grammemsDescription.join(', ');
+    }
+  }
 };
 
 /***/ }),
@@ -6627,10 +7074,10 @@ var globalGrammems = {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6638,13 +7085,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.equals[data-v-5de803d6] {\n    color: red;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.equals {\n  color: red;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -37719,23 +38166,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _PartOfSpeechTable_vue_vue_type_template_id_6a991d18_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true& */ "./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true&");
+/* harmony import */ var _PartOfSpeechTable_vue_vue_type_template_id_6a991d18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PartOfSpeechTable.vue?vue&type=template&id=6a991d18& */ "./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&");
 /* harmony import */ var _PartOfSpeechTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PartOfSpeechTable.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _PartOfSpeechTable_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PartOfSpeechTable.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _PartOfSpeechTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _PartOfSpeechTable_vue_vue_type_template_id_6a991d18_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _PartOfSpeechTable_vue_vue_type_template_id_6a991d18_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _PartOfSpeechTable_vue_vue_type_template_id_6a991d18___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PartOfSpeechTable_vue_vue_type_template_id_6a991d18___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "6a991d18",
+  null,
   null
   
 )
@@ -37747,9 +38196,243 @@ component.options.__file = "resources/js/components/partOfSpeechWord/PartOfSpeec
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue":
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true&");
+/* harmony import */ var _AdverbParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdverbParticipleTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _AdverbParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "39319ff2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BaseCasesTableComponent_vue_vue_type_template_id_59c5d85d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true&");
+/* harmony import */ var _BaseCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BaseCasesTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _BaseCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _BaseCasesTableComponent_vue_vue_type_template_id_59c5d85d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _BaseCasesTableComponent_vue_vue_type_template_id_59c5d85d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "59c5d85d",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ImperativeMoodTableComponent_vue_vue_type_template_id_58d30e34_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true&");
+/* harmony import */ var _ImperativeMoodTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImperativeMoodTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _ImperativeMoodTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ImperativeMoodTableComponent_vue_vue_type_template_id_58d30e34_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ImperativeMoodTableComponent_vue_vue_type_template_id_58d30e34_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "58d30e34",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&");
+/* harmony import */ var _ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ParticipleTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "57f6d810",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PastTimeTableComponent_vue_vue_type_template_id_64dd71e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true&");
+/* harmony import */ var _PastTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PastTimeTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _PastTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _PastTimeTableComponent_vue_vue_type_template_id_64dd71e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PastTimeTableComponent_vue_vue_type_template_id_64dd71e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "64dd71e2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true&");
+/* harmony import */ var _PresentTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PresentTimeTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _PresentTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "a41eadda",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue":
 /*!**************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue ***!
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue ***!
   \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -37758,32 +38441,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _NounWordComponent_vue_vue_type_template_id_5de803d6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true&");
-/* harmony import */ var _NounWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NounWordComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _NounWordComponent_vue_vue_type_style_index_0_id_5de803d6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _VerbWordComponent_vue_vue_type_template_id_eca8e8a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true&");
+/* harmony import */ var _VerbWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerbWordComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _NounWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _NounWordComponent_vue_vue_type_template_id_5de803d6_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _NounWordComponent_vue_vue_type_template_id_5de803d6_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _VerbWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _VerbWordComponent_vue_vue_type_template_id_eca8e8a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _VerbWordComponent_vue_vue_type_template_id_eca8e8a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "5de803d6",
+  "eca8e8a0",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue"
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -37820,9 +38501,105 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdverbParticipleTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BaseCasesTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImperativeMoodTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ImperativeMoodTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImperativeMoodTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ParticipleTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PastTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PastTimeTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PastTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PresentTimeTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -37831,8 +38608,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NounWordComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerbWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./VerbWordComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerbWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -37853,52 +38630,154 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true&":
-/*!*******************************************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true& ***!
-  \*******************************************************************************************************************/
+/***/ "./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18& ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_template_id_6a991d18_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_template_id_6a991d18_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_template_id_6a991d18___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_template_id_6a991d18___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_template_id_6a991d18_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_template_id_6a991d18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PartOfSpeechTable.vue?vue&type=template&id=6a991d18& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&");
 
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true&":
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true&":
+/*!**********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true& ***!
+  \**********************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true&":
+/*!***************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true& ***!
+  \***************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesTableComponent_vue_vue_type_template_id_59c5d85d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesTableComponent_vue_vue_type_template_id_59c5d85d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesTableComponent_vue_vue_type_template_id_59c5d85d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true&":
+/*!********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true& ***!
+  \********************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImperativeMoodTableComponent_vue_vue_type_template_id_58d30e34_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImperativeMoodTableComponent_vue_vue_type_template_id_58d30e34_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImperativeMoodTableComponent_vue_vue_type_template_id_58d30e34_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&":
+/*!****************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& ***!
+  \****************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true&":
+/*!**************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true& ***!
+  \**************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PastTimeTableComponent_vue_vue_type_template_id_64dd71e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PastTimeTableComponent_vue_vue_type_template_id_64dd71e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PastTimeTableComponent_vue_vue_type_template_id_64dd71e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true&":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true& ***!
+  \*****************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true&":
 /*!*********************************************************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true& ***!
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true& ***!
   \*********************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_template_id_5de803d6_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_template_id_5de803d6_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerbWordComponent_vue_vue_type_template_id_eca8e8a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerbWordComponent_vue_vue_type_template_id_eca8e8a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_template_id_5de803d6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerbWordComponent_vue_vue_type_template_id_eca8e8a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true&");
 
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css&":
-/*!***********************************************************************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css& ***!
-  \***********************************************************************************************************************************************/
+/***/ "./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_style_index_0_id_5de803d6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-style-loader/index.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_style_index_0_id_5de803d6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_style_index_0_id_5de803d6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-style-loader/index.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PartOfSpeechTable.vue?vue&type=style&index=0&lang=css& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_style_index_0_id_5de803d6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NounWordComponent_vue_vue_type_style_index_0_id_5de803d6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 
 
@@ -37922,6 +38801,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-body" }, [
+      _c("label", { attrs: { for: "word" } }, [_vm._v("Слово")]),
+      _vm._v(" "),
       _c("input", {
         directives: [
           {
@@ -37931,7 +38812,8 @@ var render = function() {
             expression: "word"
           }
         ],
-        attrs: { type: "text", placeholder: "Введите слово" },
+        staticClass: "form-control",
+        attrs: { id: "word", type: "text", placeholder: "Введите слово" },
         domProps: { value: _vm.word },
         on: {
           change: _vm.loadWord,
@@ -37980,10 +38862,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true&":
-/*!**********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&scoped=true& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=template&id=6a991d18& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -37996,9 +38878,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.nouns
-    ? _c("NounWordComponent", { attrs: { word: _vm.word, nouns: _vm.nouns } })
-    : _vm._e()
+  return _c(
+    "div",
+    [
+      _vm.nouns
+        ? _c("BaseCasesTableComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.nouns }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.verbs
+        ? _c("VerbWordComponent", {
+            attrs: { word: _vm.word, verbs: _vm.verbs }
+          })
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38007,9 +38903,670 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.adverbParticiple
+      ? _c("div", [
+          _c("h4", { staticClass: "text-center" }, [_vm._v("Деепричаcтие")]),
+          _vm._v(" "),
+          _c("table", { staticClass: "table table-bordered" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(
+                        _vm.adverbParticiple["Настоящее"]
+                      )
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.adverbParticiple["Настоящее"]))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(
+                        _vm.adverbParticiple["Прошедшее"]
+                      )
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.adverbParticiple["Прошедшее"]))]
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", [_vm._v("Настоящее")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Прошедшее")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(Object.keys(_vm.partOfSpeech), function(wordTemp, index) {
+      return _vm.partOfSpeech
+        ? _c("div", [
+            _c("div", { staticClass: "py-3" }, [
+              _vm._v(_vm._s(index + 1) + ". "),
+              _c("b", [_vm._v("Базовая форма")]),
+              _vm._v(
+                ": " +
+                  _vm._s(wordTemp) +
+                  " -\n      " +
+                  _vm._s(
+                    _vm.listOfGrammems(_vm.partOfSpeech[wordTemp]["Граммемы"])
+                  ) +
+                  "\n    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-bordered" }, [
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(
+                  Object.keys(_vm.partOfSpeech[wordTemp]["Падежи"]),
+                  function(casePart) {
+                    return _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v(_vm._s(casePart))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          class: {
+                            equals: _vm.equalsWithWord(
+                              _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
+                                "ЕД"
+                              ]
+                            )
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n          " +
+                              _vm._s(
+                                _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
+                                  "ЕД"
+                                ]
+                              ) +
+                              "\n        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          class: {
+                            equals: _vm.equalsWithWord(
+                              _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
+                                "МН"
+                              ]
+                            )
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n          " +
+                              _vm._s(
+                                _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
+                                  "МН"
+                                ]
+                              ) +
+                              "\n        "
+                          )
+                        ]
+                      )
+                    ])
+                  }
+                ),
+                0
+              )
+            ])
+          ])
+        : _vm._e()
+    }),
+    0
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Падеж")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Единственное число")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Множественное число")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue?vue&type=template&id=58d30e34&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.imperativeMood
+      ? _c("div", [
+          _c("h4", { staticClass: "text-center" }, [
+            _vm._v("Повелительное наклонение")
+          ]),
+          _vm._v(" "),
+          _c("table", { staticClass: "table table-bordered" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(_vm.imperativeMood["ЕД"])
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.imperativeMood["ЕД"]))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(_vm.imperativeMood["МН"])
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.imperativeMood["МН"]))]
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", [_vm._v("Единственное число")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Множественное число")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(Object.keys(_vm.participle), function(participleTime) {
+      return _vm.participle
+        ? _c(
+            "div",
+            _vm._l(Object.keys(_vm.participle[participleTime]), function(
+              participleVoice
+            ) {
+              return _c("div", [
+                _c("h4", { staticClass: "text-center" }, [
+                  _vm._v(
+                    "Причастие - " +
+                      _vm._s(participleTime.toLowerCase()) +
+                      ", " +
+                      _vm._s(participleVoice.toLowerCase())
+                  )
+                ]),
+                _vm._v(" "),
+                _c("table", { staticClass: "table table-bordered" }, [
+                  _vm._m(0, true),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(
+                      Object.keys(
+                        _vm.participle[participleTime][participleVoice]
+                      ),
+                      function(participleCase) {
+                        return _c("tr", [
+                          _c("th", [_vm._v(_vm._s(participleCase))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              class: {
+                                equals: _vm.equalsWithWord(
+                                  _vm.participle[participleTime][
+                                    participleVoice
+                                  ][participleCase]["ЕД"]["МР"]["НОРМ"]
+                                )
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(
+                                    _vm.participle[participleTime][
+                                      participleVoice
+                                    ][participleCase]["ЕД"]["МР"]["НОРМ"]
+                                  ) +
+                                  "\n          "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              class: {
+                                equals: _vm.equalsWithWord(
+                                  _vm.participle[participleTime][
+                                    participleVoice
+                                  ][participleCase]["ЕД"]["ЖР"]["НОРМ"]
+                                )
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(
+                                    _vm.participle[participleTime][
+                                      participleVoice
+                                    ][participleCase]["ЕД"]["ЖР"]["НОРМ"]
+                                  ) +
+                                  "\n          "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              class: {
+                                equals: _vm.equalsWithWord(
+                                  _vm.participle[participleTime][
+                                    participleVoice
+                                  ][participleCase]["ЕД"]["СР"]["НОРМ"]
+                                )
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(
+                                    _vm.participle[participleTime][
+                                      participleVoice
+                                    ][participleCase]["ЕД"]["СР"]["НОРМ"]
+                                  ) +
+                                  "\n          "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              class: {
+                                equals: _vm.equalsWithWord(
+                                  _vm.participle[participleTime][
+                                    participleVoice
+                                  ][participleCase]["МН"]["НОРМ"]
+                                )
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(
+                                    _vm.participle[participleTime][
+                                      participleVoice
+                                    ][participleCase]["МН"]["НОРМ"]
+                                  ) +
+                                  "\n          "
+                              )
+                            ]
+                          )
+                        ])
+                      }
+                    ),
+                    0
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        : _vm._e()
+    }),
+    0
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", { attrs: { rowspan: "2" } }, [_vm._v(" ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { colspan: "3" } }, [
+          _vm._v("Единственное число")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "align-middle", attrs: { rowspan: "2" } }, [
+          _vm._v("Множественное число")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Мужской род")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Женский род")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Средний род")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue?vue&type=template&id=64dd71e2&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.pastTime
+      ? _c("div", [
+          _c("h4", { staticClass: "text-center" }, [_vm._v("Прошедшее время")]),
+          _vm._v(" "),
+          _c("table", { staticClass: "table table-bordered" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(
+                        _vm.pastTime["ЕД"]["МР"]["НОРМ"]
+                      )
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.pastTime["ЕД"]["МР"]["НОРМ"]))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(
+                        _vm.pastTime["ЕД"]["ЖР"]["НОРМ"]
+                      )
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.pastTime["ЕД"]["ЖР"]["НОРМ"]))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(
+                        _vm.pastTime["ЕД"]["СР"]["НОРМ"]
+                      )
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.pastTime["ЕД"]["СР"]["НОРМ"]))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    class: {
+                      equals: _vm.equalsWithWord(_vm.pastTime["МН"]["НОРМ"])
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.pastTime["МН"]["НОРМ"]))]
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Единственное число")]),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center align-middle", attrs: { rowspan: "2" } },
+          [_vm._v("Множественное число")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("мужской")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("женский")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("средний")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.presentTime
+      ? _c("div", [
+          _c("h4", { staticClass: "text-center" }, [_vm._v("Настоящее время")]),
+          _vm._v(" "),
+          _c("table", { staticClass: "table table-bordered" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(Object.keys(_vm.presentTime), function(face) {
+                return _c("tr", [
+                  _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(face))]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      class: {
+                        equals: _vm.equalsWithWord(_vm.presentTime[face]["ЕД"])
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.presentTime[face]["ЕД"]))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      class: {
+                        equals: _vm.equalsWithWord(_vm.presentTime[face]["МН"])
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.presentTime[face]["МН"]))]
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Лицо")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Единственное число")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Множественное число")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=template&id=5de803d6&scoped=true& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true& ***!
   \************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -38025,92 +39582,55 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(Object.keys(_vm.nouns), function(noun, index) {
-      return _vm.nouns
-        ? _c("div", [
-            _c("div", { staticClass: "py-3" }, [
-              _vm._v(_vm._s(index + 1) + ". "),
-              _c("b", [_vm._v("Базовая форма")]),
-              _vm._v(
-                ": " +
-                  _vm._s(noun) +
-                  " - Существительное (" +
-                  _vm._s(_vm.listOfGrammems(_vm.nouns[noun]["Граммемы"])) +
-                  ")"
-              )
-            ]),
-            _vm._v(" "),
-            _c("table", { staticClass: "table" }, [
-              _vm._m(0, true),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(Object.keys(_vm.nouns[noun]["Падежи"]), function(
-                  casePart
-                ) {
-                  return _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v(_vm._s(casePart))
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      {
-                        class: {
-                          equals: _vm.equalsWithWord(
-                            _vm.nouns[noun]["Падежи"][casePart]["ЕД"]
-                          )
-                        }
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(_vm.nouns[noun]["Падежи"][casePart]["ЕД"])
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      {
-                        class: {
-                          equals: _vm.equalsWithWord(
-                            _vm.nouns[noun]["Падежи"][casePart]["МН"]
-                          )
-                        }
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(_vm.nouns[noun]["Падежи"][casePart]["МН"])
-                        )
-                      ]
-                    )
-                  ])
-                }),
-                0
-              )
-            ])
-          ])
-        : _vm._e()
+    _vm._l(Object.keys(_vm.verbs), function(verb, index) {
+      return _c(
+        "div",
+        [
+          _c("div", { staticClass: "py-3" }, [
+            _vm._v(_vm._s(index + 1) + ". "),
+            _c("b", [_vm._v("Базовая форма")]),
+            _vm._v(
+              ": " +
+                _vm._s(verb) +
+                " - " +
+                _vm._s(_vm.listOfGrammems(_vm.verbs[verb]["Граммемы"])) +
+                "\n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("PresentTimeTableComponent", {
+            attrs: { word: _vm.word, "present-time": _vm.presentTime(verb) }
+          }),
+          _vm._v(" "),
+          _c("PastTimeTableComponent", {
+            attrs: { word: _vm.word, "past-time": _vm.pastTime(verb) }
+          }),
+          _vm._v(" "),
+          _c("ImperativeMoodTableComponent", {
+            attrs: {
+              word: _vm.word,
+              "imperative-mood": _vm.imperativeMood(verb)
+            }
+          }),
+          _vm._v(" "),
+          _c("AdverbParticipleTableComponent", {
+            attrs: {
+              word: _vm.word,
+              "adverb-participle": _vm.adverbParticiple(verb)
+            }
+          }),
+          _vm._v(" "),
+          _c("ParticipleTableComponent", {
+            attrs: { word: _vm.word, participle: _vm.participle(verb) }
+          })
+        ],
+        1
+      )
     }),
     0
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Падеж")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Единственное число")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Множественное число")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38230,22 +39750,22 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/NounWordComponent.vue?vue&type=style&index=0&id=5de803d6&scoped=true&lang=css&");
+var content = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PartOfSpeechTable.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue?vue&type=style&index=0&lang=css&");
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.id, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var add = __webpack_require__(/*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
-var update = add("47fc3bdc", content, false, {});
+var add = __webpack_require__(/*! !../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("2f470d04", content, false, {});
 // Hot Module Replacement
 if(false) {}
 

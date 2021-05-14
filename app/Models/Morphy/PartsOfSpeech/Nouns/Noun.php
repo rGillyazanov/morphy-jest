@@ -1,6 +1,7 @@
 <?php
 namespace App\Models\Morphy\PartsOfSpeech\Nouns;
 
+use App\Models\Morphy\MorphyAnalyzer;
 use phpMorphy_Paradigm_ParadigmInterface;
 use App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\PluralSingular;

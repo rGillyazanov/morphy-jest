@@ -3,6 +3,7 @@
 namespace App\Models\Morphy\PartsOfSpeech\Verbs;
 
 use App\Models\Morphy\HelpMorphyService;
+use App\Models\Morphy\MorphyAnalyzer;
 use App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\CaseWord;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\Plural;
@@ -204,6 +205,8 @@ class Verb extends BasePartOfSpeech
                     ]
                 ]
             ];
+
+            $this->_verbs[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
         }
     }
 }

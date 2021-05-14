@@ -27,7 +27,7 @@ class MorphyAnalyzer
     10001 => 'Can`t find word'
   ];
 
-  private Morphy $morphy;
+  public static Morphy $morphy;
 
   /**
    * Анализируемое слово.
@@ -60,25 +60,17 @@ class MorphyAnalyzer
    */
   public function __construct(string $word)
   {
-    $this->morphy = new Morphy(Morphy::russianLang);
+    self::$morphy = new Morphy(Morphy::russianLang);
 
     $this->_word = $word;
 
-    $this->_paradigms = $this->morphy->findWord($word);
+    $this->_paradigms = self::$morphy->findWord($word);
 
     if (!$this->_paradigms) {
       throw new phpMorphy_Exception(self::ERRORS[10001], 10001);
     }
 
     $this->_typesOfWord = $this->initTypesOfWord();
-  }
-
-  /**
-   * @return Morphy
-   */
-  public function getMorphy(): Morphy
-  {
-    return $this->morphy;
   }
 
   /**

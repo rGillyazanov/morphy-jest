@@ -30,6 +30,15 @@ class Interjection extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
             $this->_interjection[$paradigm->getBaseForm()] = [
                 $paradigm->getBaseForm()
             ];
+
+            $this->_interjection[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    array_unshift($this->_interjection[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
         }
     }
 }

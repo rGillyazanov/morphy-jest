@@ -117,6 +117,8 @@ class MorphyAnalyzer
   {
     $typesOfWord = [];
 
+    $typesOfWord['Части речи'] = MorphyAnalyzer::$morphy->getPartOfSpeech($this->_word);
+
     if (count($this->_paradigms->getByPartOfSpeech('С')) > 0) {
       $noun = new Noun($this->_word, $this->_paradigms);
       $typesOfWord['Существительные'] = $noun->getNouns();

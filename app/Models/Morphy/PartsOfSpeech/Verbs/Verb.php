@@ -35,13 +35,13 @@ class Verb extends BasePartOfSpeech
         return $this->_verbs;
     }
 
-    /**
-     * Устанавливает падеж.
-     * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
-     * @param array $case - падеж
-     * @return CaseWord
-     */
-    private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, array $case): CaseWord
+  /**
+   * Устанавливает падеж.
+   * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
+   * @param array $case - падеж
+   * @return CaseWord|false
+   */
+    private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, array $case)
     {
         $masculineNormal = "-";
         $feminineNormal = "-";
@@ -66,11 +66,11 @@ class Verb extends BasePartOfSpeech
 
         $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
 
-        $singular->getMasculine();
-        $singular->getFeminine();
-        $singular->getNeuter();
-
         $plural = new Plural($pluralNormal);
+
+        if ($masculineNormal === '-' && $feminineNormal === '-' && $neuterNormal === '-' && $pluralNormal === '-') {
+          return false;
+        }
 
         return new CaseWord($singular, $plural);
     }
@@ -78,24 +78,47 @@ class Verb extends BasePartOfSpeech
     /**
      * Устанавливает настоящее время
      * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
-     * @return PluralSingular[]
+     * @return array|null
      */
-    private function setPresentTime(phpMorphy_Paradigm_ParadigmInterface $paradigm): array
+    private function setPresentTime(phpMorphy_Paradigm_ParadigmInterface $paradigm): ?array
     {
-        return [
-            1 => new PluralSingular(
-                $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'ЕД', 'НСТ']),
-                $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'МН', 'НСТ']),
-            ),
-            2 => new PluralSingular(
-                $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'ЕД', 'НСТ']),
-                $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'МН', 'НСТ'])
-            ),
-            3 => new PluralSingular(
-                $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'ЕД', 'НСТ']),
-                $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'МН', 'НСТ'])
-            )
+        $faces = [
+            '1Л' => [
+                'ЕД' => $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'ЕД', 'НСТ']),
+                'МН' => $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'МН', 'НСТ']),
+            ],
+            '2Л' => [
+                'ЕД' => $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'ЕД', 'НСТ']),
+                'МН' => $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'МН', 'НСТ']),
+            ],
+            '3Л' => [
+                'ЕД' => $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'ЕД', 'НСТ']),
+                'МН' => $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'МН', 'НСТ']),
+            ]
         ];
+
+        foreach ($faces as $face) {
+            foreach ($face as $word) {
+                if ($word !== '-') {
+                    return [
+                        1 => new PluralSingular(
+                            $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'ЕД', 'НСТ']),
+                            $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'МН', 'НСТ']),
+                        ),
+                        2 => new PluralSingular(
+                            $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'ЕД', 'НСТ']),
+                            $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'МН', 'НСТ'])
+                        ),
+                        3 => new PluralSingular(
+                            $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'ЕД', 'НСТ']),
+                            $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'МН', 'НСТ'])
+                        )
+                    ];
+                }
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -134,9 +157,9 @@ class Verb extends BasePartOfSpeech
      * Устанавливает таблицу с падежами определенной грамматики
      * @param phpMorphy_Paradigm_ParadigmInterface $paradigm
      * @param array $grammems
-     * @return array
+     * @return array|null
      */
-    private function setTableWithCases(phpMorphy_Paradigm_ParadigmInterface $paradigm, $grammems = [])
+    private function setTableWithCases(phpMorphy_Paradigm_ParadigmInterface $paradigm, $grammems = []): ?array
     {
         $im = ['ИМ'];
         $rd = ['РД'];
@@ -153,24 +176,31 @@ class Verb extends BasePartOfSpeech
 
         $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
 
-        $singular->getMasculine();
-        $singular->getFeminine();
-        $singular->getNeuter();
-
         $plural = new Plural($pluralNormal);
 
         $caseWord = new CaseWord($singular, $plural);
 
-        return [
-            'Именительный' => $this->setCase($paradigm, array_merge($grammems, $im)),
-            'Родительный' => $this->setCase($paradigm, array_merge($grammems, $rd)),
-            'Дательный' => $this->setCase($paradigm, array_merge($grammems, $dt)),
-            'Винительный (Одушевленный)' => $this->setCase($paradigm, array_merge($grammems, $vnOd)),
-            'Винительный (Неодушевленный)' => $this->setCase($paradigm, array_merge($grammems, $vnNo)),
-            'Творительный' => $this->setCase($paradigm, array_merge($grammems, $tv)),
-            'Предложный' => $this->setCase($paradigm, array_merge($grammems, $pr)),
-            'Краткое причастие' => $caseWord
+        $cases = [
+          'Именительный' => $this->setCase($paradigm, array_merge($grammems, $im)),
+          'Родительный' => $this->setCase($paradigm, array_merge($grammems, $rd)),
+          'Дательный' => $this->setCase($paradigm, array_merge($grammems, $dt)),
+          'Винительный (Одушевленный)' => $this->setCase($paradigm, array_merge($grammems, $vnOd)),
+          'Винительный (Неодушевленный)' => $this->setCase($paradigm, array_merge($grammems, $vnNo)),
+          'Творительный' => $this->setCase($paradigm, array_merge($grammems, $tv)),
+          'Предложный' => $this->setCase($paradigm, array_merge($grammems, $pr)),
         ];
+
+        foreach ($cases as $case) {
+          if ($case) {
+            break;
+          }
+
+          return null;
+        }
+
+        $cases['Краткое причастие'] = $caseWord;
+
+        return $cases;
     }
 
     private function setVerb(): void
@@ -207,6 +237,13 @@ class Verb extends BasePartOfSpeech
             ];
 
             $this->_verbs[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+              if ($paradigm->getBaseForm() === $form->getWord()) {
+                array_unshift($this->_verbs[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                break;
+              }
+            }
         }
     }
 }

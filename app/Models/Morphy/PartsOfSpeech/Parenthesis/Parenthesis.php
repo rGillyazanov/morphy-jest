@@ -30,6 +30,15 @@ class Parenthesis extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
             $this->_parenthesis[$paradigm->getBaseForm()] = [
                 $paradigm->getBaseForm()
             ];
+
+            $this->_parenthesis[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    array_unshift($this->_parenthesis[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
         }
     }
 }

@@ -111,7 +111,7 @@ class Adjective extends BasePartOfSpeech
 
     private function setAdjective(): void {
         foreach ($this->_paradigms->getByPartOfSpeech('П') as $paradigm) {
-            $this->_adjectives[$paradigm->getBaseForm()] = [
+            $this->_adjectives[$paradigm->getBaseForm()]['Падежи'] = [
                 'Именительный' => $this->setCase($paradigm, ["ИМ"]),
                 'Родительный' => $this->setCase($paradigm, ["РД"]),
                 'Дательный' => $this->setCase($paradigm, ["ДТ"]),
@@ -119,9 +119,17 @@ class Adjective extends BasePartOfSpeech
                 'Винительный (Неодушевленный)' => $this->setCase($paradigm, ["ВН", "НО"]),
                 'Творительный' => $this->setCase($paradigm, ["ТВ"]),
                 'Предложный' => $this->setCase($paradigm, ["ПР"]),
-                'Звательный' => $this->setCase($paradigm, ["ЗВ"]),
                 'Сравнительная степень' => $this->setComparative($paradigm, ["СРАВН"]),
             ];
+
+            $this->_adjectives[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    array_unshift($this->_adjectives[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
         }
 
         foreach ($this->_paradigms->getByPartOfSpeech('КР_ПРИЛ') as $paradigm) {
@@ -150,7 +158,7 @@ class Adjective extends BasePartOfSpeech
                 $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
                 $plural = new Plural($pluralNormal);
 
-                $this->_adjectives[$paradigm->getBaseForm()]['Краткое прилагательное'] = new CaseWord($singular, $plural);
+                $this->_adjectives[$paradigm->getBaseForm()]['Падежи']['Краткое прилагательное'] = new CaseWord($singular, $plural);
             }
         }
     }

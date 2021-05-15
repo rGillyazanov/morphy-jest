@@ -11,8 +11,8 @@
         </thead>
         <tbody>
         <tr>
-          <td :class="{ equals: equalsWithWord(imperativeMood['ЕД']) }">{{ imperativeMood['ЕД'] }}</td>
-          <td :class="{ equals: equalsWithWord(imperativeMood['МН']) }">{{ imperativeMood['МН'] }}</td>
+          <td :class="{ equals: equalsWithWord(imperativeMood['ЕД']) }">{{ imperativeMood['ЕД'].toLowerCase() }}</td>
+          <td :class="{ equals: equalsWithWord(imperativeMood['МН']) }">{{ imperativeMood['МН'].toLowerCase() }}</td>
         </tr>
         </tbody>
       </table>

@@ -72,7 +72,7 @@ class PronominalAdjective extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpe
 
     private function setPronominalAdjective(): void {
         foreach ($this->_paradigms->getByPartOfSpeech('МС-П') as $paradigm) {
-            $this->_pronominalAdjectives[$paradigm->getBaseForm()] = [
+            $this->_pronominalAdjectives[$paradigm->getBaseForm()]['Падежи']  = [
                 'Именительный' => $this->setCase($paradigm, ["ИМ"]),
                 'Родительный' => $this->setCase($paradigm, ["РД"]),
                 'Дательный' => $this->setCase($paradigm, ["ДТ"]),
@@ -80,6 +80,15 @@ class PronominalAdjective extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpe
                 'Творительный' => $this->setCase($paradigm, ["ТВ"]),
                 'Предложный' => $this->setCase($paradigm, ["ПР"])
             ];
+
+            $this->_pronominalAdjectives[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    array_unshift($this->_pronominalAdjectives[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
         }
     }
 }

@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div v-for="(verb, index) in Object.keys(verbs)">
-      <div class="py-3">{{ index + 1 }}. <b>Базовая форма</b>: {{ verb }} - {{
+    <hr>
+    <div v-for="verb in Object.keys(verbs)">
+      <div class="py-3"><b>Базовая форма</b>: {{ verb }} - {{
           listOfGrammems(verbs[verb]['Граммемы'])
         }}
       </div>
@@ -21,26 +22,27 @@
         :word="word"
         :adverb-participle="adverbParticiple(verb)">
       </AdverbParticipleTableComponent>
-      <ParticipleTableComponent
+      <ParticipleCasesTableComponent
         :word="word"
-        :participle="participle(verb)">
-      </ParticipleTableComponent>
+        :part-of-speech="participle(verb)">
+      </ParticipleCasesTableComponent>
     </div>
   </div>
 </template>
 
 <script>
-import PresentTimeTableComponent from "./PresentTimeTableComponent";
 import {GrammemsService} from "../../../mixins/grammems";
+
+import PresentTimeTableComponent from "./PresentTimeTableComponent";
 import PastTimeTableComponent from "./PastTimeTableComponent";
 import ImperativeMoodTableComponent from "./ImperativeMoodTableComponent";
 import AdverbParticipleTableComponent from "./AdverbParticipleTableComponent";
-import ParticipleTableComponent from "./ParticipleTableComponent";
+import ParticipleCasesTableComponent from "./ParticipleCasesTableComponent";
 
 export default {
   name: "VerbWordComponent",
   components: {
-    ParticipleTableComponent,
+    ParticipleCasesTableComponent,
     AdverbParticipleTableComponent,
     ImperativeMoodTableComponent, PastTimeTableComponent, PresentTimeTableComponent},
   props: {

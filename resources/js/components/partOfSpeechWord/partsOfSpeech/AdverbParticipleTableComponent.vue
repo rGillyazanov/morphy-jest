@@ -1,5 +1,6 @@
 <template>
   <div>
+    <hr>
     <div v-if="adverbParticiple">
       <h4 class="text-center">Деепричаcтие</h4>
       <table class="table table-bordered">
@@ -11,8 +12,8 @@
         </thead>
         <tbody>
         <tr>
-          <td :class="{ equals: equalsWithWord(adverbParticiple['Настоящее']) }">{{ adverbParticiple['Настоящее'] }}</td>
-          <td :class="{ equals: equalsWithWord(adverbParticiple['Прошедшее']) }">{{ adverbParticiple['Прошедшее'] }}</td>
+          <td :class="{ equals: equalsWithWord(adverbParticiple['Настоящее']) }">{{ adverbParticiple['Настоящее'].toLowerCase() }}</td>
+          <td :class="{ equals: equalsWithWord(adverbParticiple['Прошедшее']) }">{{ adverbParticiple['Прошедшее'].toLowerCase() }}</td>
         </tr>
         </tbody>
       </table>

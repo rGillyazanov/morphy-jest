@@ -1928,6 +1928,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _partsOfSpeech_BaseCasesTableComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partsOfSpeech/BaseCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue");
 /* harmony import */ var _partsOfSpeech_VerbWordComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partsOfSpeech/VerbWordComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue");
+/* harmony import */ var _partsOfSpeech_ParticipleCasesTableComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partsOfSpeech/ParticipleCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue");
+/* harmony import */ var _partsOfSpeech_BaseCasesFacesTableComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partsOfSpeech/BaseCasesFacesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue");
+/* harmony import */ var _partsOfSpeech_UnchangeableWordComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partsOfSpeech/UnchangeableWordComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue");
+/* harmony import */ var _partsOfSpeech_AdjectiveCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partsOfSpeech/AdjectiveCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue");
 //
 //
 //
@@ -1945,11 +1949,103 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PartOfSpeechTable",
   components: {
+    AdjectiveCasesTableComponent: _partsOfSpeech_AdjectiveCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__.default,
+    UnchangeableWordComponent: _partsOfSpeech_UnchangeableWordComponent__WEBPACK_IMPORTED_MODULE_4__.default,
+    BaseCasesFacesTableComponent: _partsOfSpeech_BaseCasesFacesTableComponent__WEBPACK_IMPORTED_MODULE_3__.default,
+    FacesCasesTableComponent: _partsOfSpeech_ParticipleCasesTableComponent__WEBPACK_IMPORTED_MODULE_2__.default,
     VerbWordComponent: _partsOfSpeech_VerbWordComponent__WEBPACK_IMPORTED_MODULE_1__.default,
     BaseCasesTableComponent: _partsOfSpeech_BaseCasesTableComponent__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -1966,8 +2062,136 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       nouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Существительные'] ? this.partsOfSpeechWord['Существительные'] : null,
-      verbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Глаголы'] ? this.partsOfSpeechWord['Глаголы'] : null
+      adjectives: this.partsOfSpeechWord && this.partsOfSpeechWord['Прилагательные'] ? this.partsOfSpeechWord['Прилагательные'] : null,
+      verbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Глаголы'] ? this.partsOfSpeechWord['Глаголы'] : null,
+      numerals: this.partsOfSpeechWord && this.partsOfSpeechWord['Числительные'] ? this.partsOfSpeechWord['Числительные'] : null,
+      ordinals: this.partsOfSpeechWord && this.partsOfSpeechWord['Порядковые числительные'] ? this.partsOfSpeechWord['Порядковые числительные'] : null,
+      pronouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоимение-существительное'] ? this.partsOfSpeechWord['Местоимение-существительное'] : null,
+      pronounsPredicative: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоимение-предикатив'] ? this.partsOfSpeechWord['Местоимение-предикатив'] : null,
+      pronominalAdjective: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоименное прилагательное'] ? this.partsOfSpeechWord['Местоименное прилагательное'] : null,
+      adverbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Наречие'] ? this.partsOfSpeechWord['Наречие'] : null,
+      predicative: this.partsOfSpeechWord && this.partsOfSpeechWord['Предикатив'] ? this.partsOfSpeechWord['Предикатив'] : null,
+      pretext: this.partsOfSpeechWord && this.partsOfSpeechWord['Предлог'] ? this.partsOfSpeechWord['Предлог'] : null,
+      conjunction: this.partsOfSpeechWord && this.partsOfSpeechWord['Союз'] ? this.partsOfSpeechWord['Союз'] : null,
+      interjection: this.partsOfSpeechWord && this.partsOfSpeechWord['Междометие'] ? this.partsOfSpeechWord['Междометие'] : null,
+      particle: this.partsOfSpeechWord && this.partsOfSpeechWord['Частица'] ? this.partsOfSpeechWord['Частица'] : null,
+      parenthesis: this.partsOfSpeechWord && this.partsOfSpeechWord['Вводное слово'] ? this.partsOfSpeechWord['Вводное слово'] : null,
+      phrase: this.partsOfSpeechWord && this.partsOfSpeechWord['Фразеологизм'] ? this.partsOfSpeechWord['Фразеологизм'] : null
     };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "AdjectiveCasesTableComponent",
+  props: {
+    adjectives: {
+      type: Object,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService],
+  methods: {
+    adjectiveCases: function adjectiveCases(adjective) {
+      return Object.keys(this.adjectives[adjective]['Падежи']).filter(function (key) {
+        return key !== 'Сравнительная степень';
+      });
+    },
+    isShortAdjective: function isShortAdjective(adjectiveCase) {
+      return adjectiveCase === 'Краткое прилагательное';
+    }
   }
 });
 
@@ -2007,11 +2231,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdverbParticipleTableComponent",
   props: {
     adverbParticiple: {
+      type: Object,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "BaseCasesFacesTableComponent",
+  props: {
+    partOfSpeech: {
       type: Object,
       required: true
     },
@@ -2067,12 +2375,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BaseCasesTableComponent",
   props: {
     partOfSpeech: {
-      type: Object,
+      type: Object | null,
       required: true
     },
     word: {
@@ -2137,10 +2446,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2198,9 +2507,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "ParticipleTableComponent",
+  name: "ParticipleCasesTableComponent",
   props: {
-    participle: {
+    partOfSpeech: {
       type: Object,
       required: true
     },
@@ -2309,11 +2618,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PresentTimeTableComponent",
   props: {
     presentTime: {
+      type: Object | null,
+      required: true
+    },
+    word: {
+      type: String,
+      required: true
+    }
+  },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "UnchangeableWordComponent",
+  props: {
+    partOfSpeech: {
       type: Object,
       required: true
     },
@@ -2338,12 +2695,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _PresentTimeTableComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PresentTimeTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue");
-/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _PresentTimeTableComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PresentTimeTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue");
 /* harmony import */ var _PastTimeTableComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PastTimeTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue");
 /* harmony import */ var _ImperativeMoodTableComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ImperativeMoodTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue");
 /* harmony import */ var _AdverbParticipleTableComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdverbParticipleTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue");
-/* harmony import */ var _ParticipleTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ParticipleTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue");
+/* harmony import */ var _ParticipleCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ParticipleCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue");
+//
 //
 //
 //
@@ -2384,11 +2742,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "VerbWordComponent",
   components: {
-    ParticipleTableComponent: _ParticipleTableComponent__WEBPACK_IMPORTED_MODULE_5__.default,
+    ParticipleCasesTableComponent: _ParticipleCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__.default,
     AdverbParticipleTableComponent: _AdverbParticipleTableComponent__WEBPACK_IMPORTED_MODULE_4__.default,
     ImperativeMoodTableComponent: _ImperativeMoodTableComponent__WEBPACK_IMPORTED_MODULE_3__.default,
     PastTimeTableComponent: _PastTimeTableComponent__WEBPACK_IMPORTED_MODULE_2__.default,
-    PresentTimeTableComponent: _PresentTimeTableComponent__WEBPACK_IMPORTED_MODULE_0__.default
+    PresentTimeTableComponent: _PresentTimeTableComponent__WEBPACK_IMPORTED_MODULE_1__.default
   },
   props: {
     verbs: {
@@ -2400,7 +2758,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_1__.GrammemsService],
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService],
   methods: {
     presentTime: function presentTime(word) {
       return this.verbs[word]['Время']['Настоящее'];
@@ -38196,6 +38554,45 @@ component.options.__file = "resources/js/components/partOfSpeechWord/PartOfSpeec
 
 /***/ }),
 
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AdjectiveCasesTableComponent_vue_vue_type_template_id_90eb0406_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true&");
+/* harmony import */ var _AdjectiveCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdjectiveCasesTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _AdjectiveCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AdjectiveCasesTableComponent_vue_vue_type_template_id_90eb0406_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AdjectiveCasesTableComponent_vue_vue_type_template_id_90eb0406_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "90eb0406",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue":
 /*!***************************************************************************************************!*\
   !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue ***!
@@ -38231,6 +38628,45 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BaseCasesFacesTableComponent_vue_vue_type_template_id_575eacf2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true&");
+/* harmony import */ var _BaseCasesFacesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BaseCasesFacesTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _BaseCasesFacesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _BaseCasesFacesTableComponent_vue_vue_type_template_id_575eacf2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _BaseCasesFacesTableComponent_vue_vue_type_template_id_575eacf2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "575eacf2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -38313,10 +38749,10 @@ component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpee
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -38324,8 +38760,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&");
-/* harmony import */ var _ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ParticipleTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ParticipleCasesTableComponent_vue_vue_type_template_id_74550e01_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true&");
+/* harmony import */ var _ParticipleCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ParticipleCasesTableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -38335,19 +38771,19 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _ParticipleCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ParticipleCasesTableComponent_vue_vue_type_template_id_74550e01_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ParticipleCasesTableComponent_vue_vue_type_template_id_74550e01_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "57f6d810",
+  "74550e01",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue"
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -38430,6 +38866,45 @@ component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpee
 
 /***/ }),
 
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UnchangeableWordComponent_vue_vue_type_template_id_2787d0ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true&");
+/* harmony import */ var _UnchangeableWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UnchangeableWordComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _UnchangeableWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _UnchangeableWordComponent_vue_vue_type_template_id_2787d0ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UnchangeableWordComponent_vue_vue_type_template_id_2787d0ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "2787d0ec",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue":
 /*!**************************************************************************************!*\
   !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue ***!
@@ -38501,6 +38976,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdjectiveCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdjectiveCasesTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdjectiveCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************!*\
   !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js& ***!
@@ -38514,6 +39005,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdverbParticipleTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesFacesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BaseCasesFacesTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesFacesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -38549,10 +39056,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************/
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -38560,8 +39067,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ParticipleTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ParticipleCasesTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleCasesTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -38594,6 +39101,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PresentTimeTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UnchangeableWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UnchangeableWordComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UnchangeableWordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -38647,6 +39170,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true&":
+/*!********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true& ***!
+  \********************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdjectiveCasesTableComponent_vue_vue_type_template_id_90eb0406_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdjectiveCasesTableComponent_vue_vue_type_template_id_90eb0406_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdjectiveCasesTableComponent_vue_vue_type_template_id_90eb0406_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true&":
 /*!**********************************************************************************************************************************************!*\
   !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true& ***!
@@ -38660,6 +39200,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdverbParticipleTableComponent_vue_vue_type_template_id_39319ff2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue?vue&type=template&id=39319ff2&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true&":
+/*!********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true& ***!
+  \********************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesFacesTableComponent_vue_vue_type_template_id_575eacf2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesFacesTableComponent_vue_vue_type_template_id_575eacf2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BaseCasesFacesTableComponent_vue_vue_type_template_id_575eacf2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true&");
 
 
 /***/ }),
@@ -38698,19 +39255,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&":
-/*!****************************************************************************************************************************************!*\
-  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& ***!
-  \****************************************************************************************************************************************/
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true&":
+/*!*********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true& ***!
+  \*********************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleCasesTableComponent_vue_vue_type_template_id_74550e01_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleCasesTableComponent_vue_vue_type_template_id_74550e01_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleTableComponent_vue_vue_type_template_id_57f6d810_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParticipleCasesTableComponent_vue_vue_type_template_id_74550e01_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true&");
 
 
 /***/ }),
@@ -38745,6 +39302,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PresentTimeTableComponent_vue_vue_type_template_id_a41eadda_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue?vue&type=template&id=a41eadda&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true&":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true& ***!
+  \*****************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UnchangeableWordComponent_vue_vue_type_template_id_2787d0ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UnchangeableWordComponent_vue_vue_type_template_id_2787d0ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UnchangeableWordComponent_vue_vue_type_template_id_2787d0ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true&");
 
 
 /***/ }),
@@ -38887,9 +39461,93 @@ var render = function() {
           })
         : _vm._e(),
       _vm._v(" "),
+      _vm.adjectives
+        ? _c("AdjectiveCasesTableComponent", {
+            attrs: { word: _vm.word, adjectives: _vm.adjectives }
+          })
+        : _vm._e(),
+      _vm._v(" "),
       _vm.verbs
         ? _c("VerbWordComponent", {
             attrs: { word: _vm.word, verbs: _vm.verbs }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.numerals
+        ? _c("BaseCasesTableComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.numerals }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.ordinals
+        ? _c("BaseCasesFacesTableComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.ordinals }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.pronouns
+        ? _c("BaseCasesTableComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.pronouns }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.pronounsPredicative
+        ? _c("BaseCasesTableComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.pronounsPredicative }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.pronominalAdjective
+        ? _c("BaseCasesFacesTableComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.pronominalAdjective }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.adverbs
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.adverbs }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.predicative
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.predicative }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.pretext
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.pretext }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.conjunction
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.conjunction }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.interjection
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.interjection }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.particle
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.particle }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.parenthesis
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.parenthesis }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.phrase
+        ? _c("UnchangeableWordComponent", {
+            attrs: { word: _vm.word, "part-of-speech": _vm.phrase }
           })
         : _vm._e()
     ],
@@ -38897,6 +39555,335 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue?vue&type=template&id=90eb0406&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(Object.keys(_vm.adjectives), function(adjective) {
+      return _c("div", [
+        _c("div", { staticClass: "py-3" }, [
+          _c("b", [_vm._v("Базовая форма")]),
+          _vm._v(": "),
+          _c("span", { staticClass: "equals" }, [_vm._v(_vm._s(adjective))]),
+          _vm._v(
+            " - " +
+              _vm._s(
+                _vm.listOfGrammems(_vm.adjectives[adjective]["Граммемы"])
+              ) +
+              "\n    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-bordered" }, [
+          _vm._m(0, true),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            [
+              _vm._l(_vm.adjectiveCases(adjective), function(adjectiveCase) {
+                return [
+                  _c("tr", [
+                    _c(
+                      "th",
+                      {
+                        staticClass: "align-middle",
+                        attrs: {
+                          rowspan: !_vm.isShortAdjective(adjectiveCase) ? 2 : 1,
+                          colspan: !_vm.isShortAdjective(adjectiveCase) ? 1 : 2
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(adjectiveCase) +
+                            "\n          "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    !_vm.isShortAdjective(adjectiveCase)
+                      ? _c("th", { staticClass: "small" }, [
+                          _vm._v("\n            норм.\n          ")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.adjectives[adjective]["Падежи"][adjectiveCase][
+                              "ЕД"
+                            ]["МР"]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(
+                              _vm.adjectives[adjective]["Падежи"][
+                                adjectiveCase
+                              ]["ЕД"]["МР"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n          "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.adjectives[adjective]["Падежи"][adjectiveCase][
+                              "ЕД"
+                            ]["ЖР"]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(
+                              _vm.adjectives[adjective]["Падежи"][
+                                adjectiveCase
+                              ]["ЕД"]["ЖР"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n          "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.adjectives[adjective]["Падежи"][adjectiveCase][
+                              "ЕД"
+                            ]["СР"]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(
+                              _vm.adjectives[adjective]["Падежи"][
+                                adjectiveCase
+                              ]["ЕД"]["СР"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n          "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.adjectives[adjective]["Падежи"][adjectiveCase][
+                              "МН"
+                            ]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(
+                              _vm.adjectives[adjective]["Падежи"][
+                                adjectiveCase
+                              ]["МН"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n          "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  !_vm.isShortAdjective(adjectiveCase)
+                    ? _c("tr", [
+                        _c("th", { staticClass: "small" }, [_vm._v("прев.")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            class: {
+                              equals: _vm.equalsWithWord(
+                                _vm.adjectives[adjective]["Падежи"][
+                                  adjectiveCase
+                                ]["ЕД"]["МР"]["ПРЕВ"]
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["ЕД"]["МР"]["ПРЕВ"].toLowerCase()
+                                ) +
+                                "\n          "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            class: {
+                              equals: _vm.equalsWithWord(
+                                _vm.adjectives[adjective]["Падежи"][
+                                  adjectiveCase
+                                ]["ЕД"]["ЖР"]["ПРЕВ"]
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["ЕД"]["ЖР"]["ПРЕВ"].toLowerCase()
+                                ) +
+                                "\n          "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            class: {
+                              equals: _vm.equalsWithWord(
+                                _vm.adjectives[adjective]["Падежи"][
+                                  adjectiveCase
+                                ]["ЕД"]["СР"]["ПРЕВ"]
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["ЕД"]["СР"]["ПРЕВ"].toLowerCase()
+                                ) +
+                                "\n          "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            class: {
+                              equals: _vm.equalsWithWord(
+                                _vm.adjectives[adjective]["Падежи"][
+                                  adjectiveCase
+                                ]["МН"]["ПРЕВ"]
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["МН"]["ПРЕВ"].toLowerCase()
+                                ) +
+                                "\n          "
+                            )
+                          ]
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { colspan: "2" } }, [
+                  _vm._v("Сравнительная степень")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "4" } }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.adjectives[adjective]["Падежи"][
+                        "Сравнительная степень"
+                      ]
+                        .join(", ")
+                        .toLowerCase()
+                    )
+                  )
+                ])
+              ])
+            ],
+            2
+          )
+        ])
+      ])
+    }),
+    0
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", { attrs: { colspan: "2", rowspan: "2" } }, [_vm._v(" ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { colspan: "3" } }, [
+          _vm._v("Единственное число")
+        ]),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center align-middle", attrs: { rowspan: "2" } },
+          [_vm._v("Множественное число")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", { staticClass: "mr" }, [_vm._v("Мужской род")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "jr" }, [_vm._v("Женский род")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "sr" }, [_vm._v("Средний род")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38920,6 +39907,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("hr"),
+    _vm._v(" "),
     _vm.adverbParticiple
       ? _c("div", [
           _c("h4", { staticClass: "text-center" }, [_vm._v("Деепричаcтие")]),
@@ -38938,7 +39927,11 @@ var render = function() {
                       )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.adverbParticiple["Настоящее"]))]
+                  [
+                    _vm._v(
+                      _vm._s(_vm.adverbParticiple["Настоящее"].toLowerCase())
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -38950,7 +39943,11 @@ var render = function() {
                       )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.adverbParticiple["Прошедшее"]))]
+                  [
+                    _vm._v(
+                      _vm._s(_vm.adverbParticiple["Прошедшее"].toLowerCase())
+                    )
+                  ]
                 )
               ])
             ])
@@ -38979,6 +39976,194 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue?vue&type=template&id=575eacf2&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(Object.keys(_vm.partOfSpeech), function(baseWord) {
+        return _c("div", [
+          _c("div", { staticClass: "py-3" }, [
+            _c("b", [_vm._v("Базовая форма")]),
+            _vm._v(
+              ": " +
+                _vm._s(baseWord) +
+                " - " +
+                _vm._s(
+                  _vm.listOfGrammems(_vm.partOfSpeech[baseWord]["Граммемы"])
+                ) +
+                "\n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("table", { staticClass: "table table-bordered" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(
+                Object.keys(_vm.partOfSpeech[baseWord]["Падежи"]),
+                function(partOfSpeechCase) {
+                  return _c("tr", [
+                    _c("th", [_vm._v(_vm._s(partOfSpeechCase))]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.partOfSpeech[baseWord]["Падежи"][
+                              partOfSpeechCase
+                            ]["ЕД"]["МР"]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(
+                              _vm.partOfSpeech[baseWord]["Падежи"][
+                                partOfSpeechCase
+                              ]["ЕД"]["МР"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.partOfSpeech[baseWord]["Падежи"][
+                              partOfSpeechCase
+                            ]["ЕД"]["ЖР"]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(
+                              _vm.partOfSpeech[baseWord]["Падежи"][
+                                partOfSpeechCase
+                              ]["ЕД"]["ЖР"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.partOfSpeech[baseWord]["Падежи"][
+                              partOfSpeechCase
+                            ]["ЕД"]["СР"]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(
+                              _vm.partOfSpeech[baseWord]["Падежи"][
+                                partOfSpeechCase
+                              ]["ЕД"]["СР"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: {
+                          equals: _vm.equalsWithWord(
+                            _vm.partOfSpeech[baseWord]["Падежи"][
+                              partOfSpeechCase
+                            ]["МН"]["НОРМ"]
+                          )
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(
+                              _vm.partOfSpeech[baseWord]["Падежи"][
+                                partOfSpeechCase
+                              ]["МН"]["НОРМ"].toLowerCase()
+                            ) +
+                            "\n        "
+                        )
+                      ]
+                    )
+                  ])
+                }
+              ),
+              0
+            )
+          ])
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", { attrs: { rowspan: "2" } }, [_vm._v(" ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { colspan: "3" } }, [
+          _vm._v("Единственное число")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "align-middle", attrs: { rowspan: "2" } }, [
+          _vm._v("Множественное число")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Мужской род")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Женский род")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Средний род")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue?vue&type=template&id=59c5d85d&scoped=true& ***!
@@ -38997,93 +40182,96 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(Object.keys(_vm.partOfSpeech), function(wordTemp, index) {
-      return _vm.partOfSpeech
-        ? _c("div", [
-            _c("div", { staticClass: "py-3" }, [
-              _vm._v(_vm._s(index + 1) + ". "),
-              _c("b", [_vm._v("Базовая форма")]),
-              _vm._v(
-                ": " +
-                  _vm._s(wordTemp) +
-                  " -\n      " +
-                  _vm._s(
-                    _vm.listOfGrammems(_vm.partOfSpeech[wordTemp]["Граммемы"])
-                  ) +
-                  "\n    "
-              )
-            ]),
-            _vm._v(" "),
-            _c("table", { staticClass: "table table-bordered" }, [
-              _vm._m(0, true),
+    [
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(Object.keys(_vm.partOfSpeech), function(wordTemp) {
+        return _vm.partOfSpeech
+          ? _c("div", [
+              _c("div", { staticClass: "py-3" }, [
+                _c("b", [_vm._v("Базовая форма")]),
+                _vm._v(
+                  ": " +
+                    _vm._s(wordTemp) +
+                    " -\n      " +
+                    _vm._s(
+                      _vm.listOfGrammems(_vm.partOfSpeech[wordTemp]["Граммемы"])
+                    ) +
+                    "\n    "
+                )
+              ]),
               _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(
-                  Object.keys(_vm.partOfSpeech[wordTemp]["Падежи"]),
-                  function(casePart) {
-                    return _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(_vm._s(casePart))
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          class: {
-                            equals: _vm.equalsWithWord(
-                              _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
-                                "ЕД"
-                              ]
-                            )
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n          " +
-                              _vm._s(
+              _c("table", { staticClass: "table table-bordered" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(
+                    Object.keys(_vm.partOfSpeech[wordTemp]["Падежи"]),
+                    function(casePart) {
+                      return _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(casePart))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            class: {
+                              equals: _vm.equalsWithWord(
                                 _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
                                   "ЕД"
                                 ]
-                              ) +
-                              "\n        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          class: {
-                            equals: _vm.equalsWithWord(
-                              _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
-                                "МН"
-                              ]
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n          " +
+                                _vm._s(
+                                  _vm.partOfSpeech[wordTemp]["Падежи"][
+                                    casePart
+                                  ]["ЕД"].toLowerCase()
+                                ) +
+                                "\n        "
                             )
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n          " +
-                              _vm._s(
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            class: {
+                              equals: _vm.equalsWithWord(
                                 _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
                                   "МН"
                                 ]
-                              ) +
-                              "\n        "
-                          )
-                        ]
-                      )
-                    ])
-                  }
-                ),
-                0
-              )
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n          " +
+                                _vm._s(
+                                  _vm.partOfSpeech[wordTemp]["Падежи"][
+                                    casePart
+                                  ]["МН"].toLowerCase()
+                                ) +
+                                "\n        "
+                            )
+                          ]
+                        )
+                      ])
+                    }
+                  ),
+                  0
+                )
+              ])
             ])
-          ])
-        : _vm._e()
-    }),
-    0
+          : _vm._e()
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = [
@@ -39143,7 +40331,7 @@ var render = function() {
                       equals: _vm.equalsWithWord(_vm.imperativeMood["ЕД"])
                     }
                   },
-                  [_vm._v(_vm._s(_vm.imperativeMood["ЕД"]))]
+                  [_vm._v(_vm._s(_vm.imperativeMood["ЕД"].toLowerCase()))]
                 ),
                 _vm._v(" "),
                 _c(
@@ -39153,7 +40341,7 @@ var render = function() {
                       equals: _vm.equalsWithWord(_vm.imperativeMood["МН"])
                     }
                   },
-                  [_vm._v(_vm._s(_vm.imperativeMood["МН"]))]
+                  [_vm._v(_vm._s(_vm.imperativeMood["МН"].toLowerCase()))]
                 )
               ])
             ])
@@ -39182,10 +40370,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleTableComponent.vue?vue&type=template&id=57f6d810&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue?vue&type=template&id=74550e01&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -39200,138 +40388,150 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(Object.keys(_vm.participle), function(participleTime) {
-      return _vm.participle
+    _vm._l(Object.keys(_vm.partOfSpeech), function(partOfSpeechTime) {
+      return _vm.partOfSpeech
         ? _c(
             "div",
-            _vm._l(Object.keys(_vm.participle[participleTime]), function(
-              participleVoice
+            _vm._l(Object.keys(_vm.partOfSpeech[partOfSpeechTime]), function(
+              partOfSpeechVoice
             ) {
-              return _c("div", [
-                _c("h4", { staticClass: "text-center" }, [
-                  _vm._v(
-                    "Причастие - " +
-                      _vm._s(participleTime.toLowerCase()) +
-                      ", " +
-                      _vm._s(participleVoice.toLowerCase())
-                  )
-                ]),
-                _vm._v(" "),
-                _c("table", { staticClass: "table table-bordered" }, [
-                  _vm._m(0, true),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    _vm._l(
-                      Object.keys(
-                        _vm.participle[participleTime][participleVoice]
-                      ),
-                      function(participleCase) {
-                        return _c("tr", [
-                          _c("th", [_vm._v(_vm._s(participleCase))]),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              class: {
-                                equals: _vm.equalsWithWord(
-                                  _vm.participle[participleTime][
-                                    participleVoice
-                                  ][participleCase]["ЕД"]["МР"]["НОРМ"]
-                                )
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n            " +
-                                  _vm._s(
-                                    _vm.participle[participleTime][
-                                      participleVoice
-                                    ][participleCase]["ЕД"]["МР"]["НОРМ"]
-                                  ) +
-                                  "\n          "
-                              )
+              return _vm.partOfSpeech[partOfSpeechTime][partOfSpeechVoice]
+                ? _c("div", [
+                    _c("h4", { staticClass: "text-center" }, [
+                      _vm._v(
+                        "Причастие - " +
+                          _vm._s(partOfSpeechTime.toLowerCase()) +
+                          ", " +
+                          _vm._s(partOfSpeechVoice.toLowerCase())
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("table", { staticClass: "table table-bordered" }, [
+                      _vm._m(0, true),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(
+                          Object.keys(
+                            _vm.partOfSpeech[partOfSpeechTime][
+                              partOfSpeechVoice
                             ]
                           ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              class: {
-                                equals: _vm.equalsWithWord(
-                                  _vm.participle[participleTime][
-                                    participleVoice
-                                  ][participleCase]["ЕД"]["ЖР"]["НОРМ"]
-                                )
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n            " +
-                                  _vm._s(
-                                    _vm.participle[participleTime][
-                                      participleVoice
-                                    ][participleCase]["ЕД"]["ЖР"]["НОРМ"]
-                                  ) +
-                                  "\n          "
+                          function(partOfSpeechCase) {
+                            return _c("tr", [
+                              _c("th", [_vm._v(_vm._s(partOfSpeechCase))]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  class: {
+                                    equals: _vm.equalsWithWord(
+                                      _vm.partOfSpeech[partOfSpeechTime][
+                                        partOfSpeechVoice
+                                      ][partOfSpeechCase]["ЕД"]["МР"]["НОРМ"]
+                                    )
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n            " +
+                                      _vm._s(
+                                        _vm.partOfSpeech[partOfSpeechTime][
+                                          partOfSpeechVoice
+                                        ][partOfSpeechCase]["ЕД"]["МР"][
+                                          "НОРМ"
+                                        ].toLowerCase()
+                                      ) +
+                                      "\n          "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  class: {
+                                    equals: _vm.equalsWithWord(
+                                      _vm.partOfSpeech[partOfSpeechTime][
+                                        partOfSpeechVoice
+                                      ][partOfSpeechCase]["ЕД"]["ЖР"]["НОРМ"]
+                                    )
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n            " +
+                                      _vm._s(
+                                        _vm.partOfSpeech[partOfSpeechTime][
+                                          partOfSpeechVoice
+                                        ][partOfSpeechCase]["ЕД"]["ЖР"][
+                                          "НОРМ"
+                                        ].toLowerCase()
+                                      ) +
+                                      "\n          "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  class: {
+                                    equals: _vm.equalsWithWord(
+                                      _vm.partOfSpeech[partOfSpeechTime][
+                                        partOfSpeechVoice
+                                      ][partOfSpeechCase]["ЕД"]["СР"]["НОРМ"]
+                                    )
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n            " +
+                                      _vm._s(
+                                        _vm.partOfSpeech[partOfSpeechTime][
+                                          partOfSpeechVoice
+                                        ][partOfSpeechCase]["ЕД"]["СР"][
+                                          "НОРМ"
+                                        ].toLowerCase()
+                                      ) +
+                                      "\n          "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  class: {
+                                    equals: _vm.equalsWithWord(
+                                      _vm.partOfSpeech[partOfSpeechTime][
+                                        partOfSpeechVoice
+                                      ][partOfSpeechCase]["МН"]["НОРМ"]
+                                    )
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n            " +
+                                      _vm._s(
+                                        _vm.partOfSpeech[partOfSpeechTime][
+                                          partOfSpeechVoice
+                                        ][partOfSpeechCase]["МН"][
+                                          "НОРМ"
+                                        ].toLowerCase()
+                                      ) +
+                                      "\n          "
+                                  )
+                                ]
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              class: {
-                                equals: _vm.equalsWithWord(
-                                  _vm.participle[participleTime][
-                                    participleVoice
-                                  ][participleCase]["ЕД"]["СР"]["НОРМ"]
-                                )
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n            " +
-                                  _vm._s(
-                                    _vm.participle[participleTime][
-                                      participleVoice
-                                    ][participleCase]["ЕД"]["СР"]["НОРМ"]
-                                  ) +
-                                  "\n          "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              class: {
-                                equals: _vm.equalsWithWord(
-                                  _vm.participle[participleTime][
-                                    participleVoice
-                                  ][participleCase]["МН"]["НОРМ"]
-                                )
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n            " +
-                                  _vm._s(
-                                    _vm.participle[participleTime][
-                                      participleVoice
-                                    ][participleCase]["МН"]["НОРМ"]
-                                  ) +
-                                  "\n          "
-                              )
-                            ]
-                          )
-                        ])
-                      }
-                    ),
-                    0
-                  )
-                ])
-              ])
+                            ])
+                          }
+                        ),
+                        0
+                      )
+                    ])
+                  ])
+                : _vm._e()
             }),
             0
           )
@@ -39409,7 +40609,11 @@ var render = function() {
                       )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.pastTime["ЕД"]["МР"]["НОРМ"]))]
+                  [
+                    _vm._v(
+                      _vm._s(_vm.pastTime["ЕД"]["МР"]["НОРМ"].toLowerCase())
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -39421,7 +40625,11 @@ var render = function() {
                       )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.pastTime["ЕД"]["ЖР"]["НОРМ"]))]
+                  [
+                    _vm._v(
+                      _vm._s(_vm.pastTime["ЕД"]["ЖР"]["НОРМ"].toLowerCase())
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -39433,7 +40641,11 @@ var render = function() {
                       )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.pastTime["ЕД"]["СР"]["НОРМ"]))]
+                  [
+                    _vm._v(
+                      _vm._s(_vm.pastTime["ЕД"]["СР"]["НОРМ"].toLowerCase())
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -39443,7 +40655,7 @@ var render = function() {
                       equals: _vm.equalsWithWord(_vm.pastTime["МН"]["НОРМ"])
                     }
                   },
-                  [_vm._v(_vm._s(_vm.pastTime["МН"]["НОРМ"]))]
+                  [_vm._v(_vm._s(_vm.pastTime["МН"]["НОРМ"].toLowerCase()))]
                 )
               ])
             ])
@@ -39521,7 +40733,12 @@ var render = function() {
                         equals: _vm.equalsWithWord(_vm.presentTime[face]["ЕД"])
                       }
                     },
-                    [_vm._v(_vm._s(_vm.presentTime[face]["ЕД"]))]
+                    [
+                      _vm._v(
+                        _vm._s(_vm.presentTime[face]["ЕД"].toLowerCase()) +
+                          "\n        "
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
@@ -39531,7 +40748,12 @@ var render = function() {
                         equals: _vm.equalsWithWord(_vm.presentTime[face]["МН"])
                       }
                     },
-                    [_vm._v(_vm._s(_vm.presentTime[face]["МН"]))]
+                    [
+                      _vm._v(
+                        _vm._s(_vm.presentTime[face]["МН"].toLowerCase()) +
+                          "\n        "
+                      )
+                    ]
                   )
                 ])
               }),
@@ -39564,6 +40786,54 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue?vue&type=template&id=2787d0ec&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(Object.keys(_vm.partOfSpeech), function(baseWord) {
+        return _c("div", [
+          _c("div", { staticClass: "py-3" }, [
+            _c("b", [_vm._v("Базовая форма")]),
+            _vm._v(": "),
+            _c("span", { staticClass: "equals" }, [_vm._v(_vm._s(baseWord))]),
+            _vm._v(
+              " - " +
+                _vm._s(
+                  _vm.listOfGrammems(_vm.partOfSpeech[baseWord]["Граммемы"])
+                ) +
+                ", неизменяемое слово.\n    "
+            )
+          ])
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue?vue&type=template&id=eca8e8a0&scoped=true& ***!
@@ -39582,52 +40852,55 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(Object.keys(_vm.verbs), function(verb, index) {
-      return _c(
-        "div",
-        [
-          _c("div", { staticClass: "py-3" }, [
-            _vm._v(_vm._s(index + 1) + ". "),
-            _c("b", [_vm._v("Базовая форма")]),
-            _vm._v(
-              ": " +
-                _vm._s(verb) +
-                " - " +
-                _vm._s(_vm.listOfGrammems(_vm.verbs[verb]["Граммемы"])) +
-                "\n    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("PresentTimeTableComponent", {
-            attrs: { word: _vm.word, "present-time": _vm.presentTime(verb) }
-          }),
-          _vm._v(" "),
-          _c("PastTimeTableComponent", {
-            attrs: { word: _vm.word, "past-time": _vm.pastTime(verb) }
-          }),
-          _vm._v(" "),
-          _c("ImperativeMoodTableComponent", {
-            attrs: {
-              word: _vm.word,
-              "imperative-mood": _vm.imperativeMood(verb)
-            }
-          }),
-          _vm._v(" "),
-          _c("AdverbParticipleTableComponent", {
-            attrs: {
-              word: _vm.word,
-              "adverb-participle": _vm.adverbParticiple(verb)
-            }
-          }),
-          _vm._v(" "),
-          _c("ParticipleTableComponent", {
-            attrs: { word: _vm.word, participle: _vm.participle(verb) }
-          })
-        ],
-        1
-      )
-    }),
-    0
+    [
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(Object.keys(_vm.verbs), function(verb) {
+        return _c(
+          "div",
+          [
+            _c("div", { staticClass: "py-3" }, [
+              _c("b", [_vm._v("Базовая форма")]),
+              _vm._v(
+                ": " +
+                  _vm._s(verb) +
+                  " - " +
+                  _vm._s(_vm.listOfGrammems(_vm.verbs[verb]["Граммемы"])) +
+                  "\n    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("PresentTimeTableComponent", {
+              attrs: { word: _vm.word, "present-time": _vm.presentTime(verb) }
+            }),
+            _vm._v(" "),
+            _c("PastTimeTableComponent", {
+              attrs: { word: _vm.word, "past-time": _vm.pastTime(verb) }
+            }),
+            _vm._v(" "),
+            _c("ImperativeMoodTableComponent", {
+              attrs: {
+                word: _vm.word,
+                "imperative-mood": _vm.imperativeMood(verb)
+              }
+            }),
+            _vm._v(" "),
+            _c("AdverbParticipleTableComponent", {
+              attrs: {
+                word: _vm.word,
+                "adverb-participle": _vm.adverbParticiple(verb)
+              }
+            }),
+            _vm._v(" "),
+            _c("ParticipleCasesTableComponent", {
+              attrs: { word: _vm.word, "part-of-speech": _vm.participle(verb) }
+            })
+          ],
+          1
+        )
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []

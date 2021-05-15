@@ -72,7 +72,7 @@ class Ordinal extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 
     private function setOrdinals(): void {
         foreach ($this->_paradigms->getByPartOfSpeech('ЧИСЛ-П') as $paradigm) {
-            $this->_ordinals[$paradigm->getBaseForm()] = [
+            $this->_ordinals[$paradigm->getBaseForm()]['Падежи'] = [
                 'Именительный' => $this->setCase($paradigm, ["ИМ"]),
                 'Родительный' => $this->setCase($paradigm, ["РД"]),
                 'Дательный' => $this->setCase($paradigm, ["ДТ"]),
@@ -80,6 +80,15 @@ class Ordinal extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
                 'Творительный' => $this->setCase($paradigm, ["ТВ"]),
                 'Предложный' => $this->setCase($paradigm, ["ПР"])
             ];
+
+            $this->_ordinals[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    array_unshift($this->_ordinals[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
         }
     }
 }

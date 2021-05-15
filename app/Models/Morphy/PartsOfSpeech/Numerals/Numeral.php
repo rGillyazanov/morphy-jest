@@ -52,7 +52,7 @@ class Numeral extends BasePartOfSpeech
 
     private function setNumerals(): void {
         foreach ($this->_paradigms->getByPartOfSpeech('ЧИСЛ') as $paradigm) {
-            $this->_numerals[$paradigm->getBaseForm()] = [
+            $this->_numerals[$paradigm->getBaseForm()]['Падежи'] = [
                 'Именительный' => $this->setCase($paradigm, "ИМ"),
                 'Родительный' => $this->setCase($paradigm, "РД"),
                 'Дательный' => $this->setCase($paradigm, "ДТ"),
@@ -60,6 +60,15 @@ class Numeral extends BasePartOfSpeech
                 'Творительный' => $this->setCase($paradigm, "ТВ"),
                 'Предложный' => $this->setCase($paradigm, "ПР")
             ];
+
+            $this->_numerals[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    array_unshift($this->_numerals[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
         }
     }
 }

@@ -13,8 +13,14 @@
         <tbody>
         <tr v-for="face in Object.keys(presentTime)">
           <th scope="row">{{ face }}</th>
-          <td :class="{ equals: equalsWithWord(presentTime[face]['ЕД']) }">{{ presentTime[face]['ЕД'] }}</td>
-          <td :class="{ equals: equalsWithWord(presentTime[face]['МН']) }">{{ presentTime[face]['МН'] }}</td>
+          <td :class="{ equals: equalsWithWord(presentTime[face]['ЕД']) }">{{
+              presentTime[face]['ЕД'].toLowerCase()
+            }}
+          </td>
+          <td :class="{ equals: equalsWithWord(presentTime[face]['МН']) }">{{
+              presentTime[face]['МН'].toLowerCase()
+            }}
+          </td>
         </tr>
         </tbody>
       </table>
@@ -29,7 +35,7 @@ export default {
   name: "PresentTimeTableComponent",
   props: {
     presentTime: {
-      type: Object,
+      type: Object | null,
       required: true
     },
     word: {

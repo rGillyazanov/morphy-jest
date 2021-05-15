@@ -16,10 +16,10 @@
         </thead>
         <tbody>
         <tr>
-          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['МР']['НОРМ']) }">{{ pastTime['ЕД']['МР']['НОРМ'] }}</td>
-          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['ЖР']['НОРМ']) }">{{ pastTime['ЕД']['ЖР']['НОРМ'] }}</td>
-          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['СР']['НОРМ']) }">{{ pastTime['ЕД']['СР']['НОРМ'] }}</td>
-          <td :class="{ equals: equalsWithWord(pastTime['МН']['НОРМ']) }">{{ pastTime['МН']['НОРМ'] }}</td>
+          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['МР']['НОРМ']) }">{{ pastTime['ЕД']['МР']['НОРМ'].toLowerCase() }}</td>
+          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['ЖР']['НОРМ']) }">{{ pastTime['ЕД']['ЖР']['НОРМ'].toLowerCase() }}</td>
+          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['СР']['НОРМ']) }">{{ pastTime['ЕД']['СР']['НОРМ'].toLowerCase() }}</td>
+          <td :class="{ equals: equalsWithWord(pastTime['МН']['НОРМ']) }">{{ pastTime['МН']['НОРМ'].toLowerCase() }}</td>
         </tr>
         </tbody>
       </table>

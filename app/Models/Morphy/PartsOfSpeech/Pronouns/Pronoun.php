@@ -58,7 +58,7 @@ class Pronoun extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 
     private function setPronouns(): void {
         foreach ($this->_paradigms->getByPartOfSpeech($this->_type) as $paradigm) {
-            $this->_pronouns[$paradigm->getBaseForm()] = [
+            $this->_pronouns[$paradigm->getBaseForm()]['Падежи'] = [
                 'Именительный' => $this->setCase($paradigm, "ИМ"),
                 'Родительный' => $this->setCase($paradigm, "РД"),
                 'Дательный' => $this->setCase($paradigm, "ДТ"),
@@ -66,6 +66,15 @@ class Pronoun extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
                 'Творительный' => $this->setCase($paradigm, "ТВ"),
                 'Предложный' => $this->setCase($paradigm, "ПР")
             ];
+
+            $this->_pronouns[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    array_unshift($this->_pronouns[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
         }
     }
 }

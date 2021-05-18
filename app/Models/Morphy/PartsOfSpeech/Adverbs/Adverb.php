@@ -27,18 +27,23 @@ class Adverb extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 
     private function setPronouns(): void {
         foreach ($this->_paradigms->getByPartOfSpeech("Н") as $paradigm) {
-            $this->_adverb[$paradigm->getBaseForm()] = [
-                $paradigm->getBaseForm()
-            ];
-
             $this->_adverb[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            $partOfSpeech = '';
 
             foreach ($paradigm as $form) {
                 if ($paradigm->getBaseForm() === $form->getWord()) {
+                    $partOfSpeech = $form->getPartOfSpeech();
                     array_unshift($this->_adverb[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
                     break;
                 }
             }
+
+            $this->_adverb[$paradigm->getBaseForm()] = [
+                'Слово' => $paradigm->getBaseForm(),
+                'Граммемы' => $paradigm[0]->getGrammems(),
+                'Часть речи' => $partOfSpeech
+            ];
         }
     }
 }

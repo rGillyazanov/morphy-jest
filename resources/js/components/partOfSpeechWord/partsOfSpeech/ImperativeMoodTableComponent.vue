@@ -11,8 +11,34 @@
         </thead>
         <tbody>
         <tr>
-          <td :class="{ equals: equalsWithWord(imperativeMood['ЕД']) }">{{ imperativeMood['ЕД'].toLowerCase() }}</td>
-          <td :class="{ equals: equalsWithWord(imperativeMood['МН']) }">{{ imperativeMood['МН'].toLowerCase() }}</td>
+          <td :class="{ equals: equalsWithWord(imperativeMood['ЕД']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ imperativeMood['ЕД']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(imperativeMood['ЕД']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(imperativeMood['ЕД'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
+          </td>
+          <td :class="{ equals: equalsWithWord(imperativeMood['МН']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ imperativeMood['МН']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(imperativeMood['МН']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(imperativeMood['МН'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -21,7 +47,8 @@
 </template>
 
 <script>
-import {GrammemsService} from "../../../mixins/grammems";
+import {GrammemsMixin} from "../../../mixins/grammems";
+import {SelectedWordsMixin} from "../../../mixins/selectedWords";
 
 export default {
   name: "ImperativeMoodTableComponent",
@@ -35,7 +62,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsService]
+  mixins: [GrammemsMixin, SelectedWordsMixin]
 }
 </script>
 

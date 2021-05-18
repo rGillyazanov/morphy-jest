@@ -23,26 +23,62 @@
         <tr v-for="partOfSpeechCase in Object.keys(partOfSpeech[baseWord]['Падежи'])">
           <th>{{ partOfSpeechCase }}</th>
           <td
-            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']) }">
-            {{
-              partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ'].toLowerCase()
-            }}
+            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{
+                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()
+              }}
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
+                   class="form-check form-check-inline pl-2">
+                <input class="form-check-input"
+                       type="checkbox"
+                       :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ'])"
+                       v-model="selectedWords">
+              </div>
+            </div>
           </td>
           <td
-            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']) }">
-            {{
-              partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ'].toLowerCase()
-            }}
+            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{
+                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()
+              }}
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
+                   class="form-check form-check-inline pl-2">
+                <input class="form-check-input"
+                       type="checkbox"
+                       :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ'])"
+                       v-model="selectedWords">
+              </div>
+            </div>
           </td>
           <td
-            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']) }">
-            {{
-              partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ'].toLowerCase()
-            }}
+            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{
+                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()
+              }}
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
+                   class="form-check form-check-inline pl-2">
+                <input class="form-check-input"
+                       type="checkbox"
+                       :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ'])"
+                       v-model="selectedWords">
+              </div>
+            </div>
           </td>
           <td
-            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']) }">
-            {{ partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ'].toLowerCase() }}
+            :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase())"
+                   class="form-check form-check-inline pl-2">
+                <input class="form-check-input"
+                       type="checkbox"
+                       :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ'])"
+                       v-model="selectedWords">
+              </div>
+            </div>
           </td>
         </tr>
         </tbody>
@@ -52,7 +88,8 @@
 </template>
 
 <script>
-import {GrammemsService} from "../../../mixins/grammems";
+import {GrammemsMixin} from "../../../mixins/grammems";
+import {SelectedWordsMixin} from "../../../mixins/selectedWords";
 
 export default {
   name: "BaseCasesFacesTableComponent",
@@ -66,7 +103,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsService]
+  mixins: [GrammemsMixin, SelectedWordsMixin],
 }
 </script>
 

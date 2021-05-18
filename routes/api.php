@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', [\App\Http\Controllers\TestController::class, 'index']);
 Route::get('/testAnal/{word}', [\App\Http\Controllers\TestController::class, 'test']);
+Route::post('/words', [\App\Http\Controllers\TestController::class, 'saveWords']);

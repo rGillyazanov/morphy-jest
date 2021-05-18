@@ -16,11 +16,33 @@
         <tbody>
         <tr v-for="casePart in Object.keys(partOfSpeech[wordTemp]['Падежи'])">
           <th scope="row">{{ casePart }}</th>
-          <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']) }">
-            {{ partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД'].toLowerCase() }}
+          <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase())"
+                    class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
           </td>
-          <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['МН']) }">
-            {{ partOfSpeech[wordTemp]['Падежи'][casePart]['МН'].toLowerCase() }}
+          <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово'].toLowerCase())"
+                    class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(partOfSpeech[wordTemp]['Падежи'][casePart]['МН'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         </tbody>
@@ -30,7 +52,8 @@
 </template>
 
 <script>
-import {GrammemsService} from "../../../mixins/grammems";
+import {GrammemsMixin} from "../../../mixins/grammems";
+import {SelectedWordsMixin} from "../../../mixins/selectedWords";
 
 export default {
   name: "BaseCasesTableComponent",
@@ -44,7 +67,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsService]
+  mixins: [GrammemsMixin, SelectedWordsMixin],
 }
 </script>
 

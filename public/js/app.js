@@ -1874,6 +1874,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1932,6 +1942,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partsOfSpeech_BaseCasesFacesTableComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partsOfSpeech/BaseCasesFacesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue");
 /* harmony import */ var _partsOfSpeech_UnchangeableWordComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partsOfSpeech/UnchangeableWordComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue");
 /* harmony import */ var _partsOfSpeech_AdjectiveCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partsOfSpeech/AdjectiveCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
 //
 //
 //
@@ -2033,6 +2044,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2061,23 +2090,59 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      nouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Существительные'] ? this.partsOfSpeechWord['Существительные'] : null,
-      adjectives: this.partsOfSpeechWord && this.partsOfSpeechWord['Прилагательные'] ? this.partsOfSpeechWord['Прилагательные'] : null,
-      verbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Глаголы'] ? this.partsOfSpeechWord['Глаголы'] : null,
-      numerals: this.partsOfSpeechWord && this.partsOfSpeechWord['Числительные'] ? this.partsOfSpeechWord['Числительные'] : null,
-      ordinals: this.partsOfSpeechWord && this.partsOfSpeechWord['Порядковые числительные'] ? this.partsOfSpeechWord['Порядковые числительные'] : null,
-      pronouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоимение-существительное'] ? this.partsOfSpeechWord['Местоимение-существительное'] : null,
-      pronounsPredicative: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоимение-предикатив'] ? this.partsOfSpeechWord['Местоимение-предикатив'] : null,
-      pronominalAdjective: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоименное прилагательное'] ? this.partsOfSpeechWord['Местоименное прилагательное'] : null,
-      adverbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Наречие'] ? this.partsOfSpeechWord['Наречие'] : null,
-      predicative: this.partsOfSpeechWord && this.partsOfSpeechWord['Предикатив'] ? this.partsOfSpeechWord['Предикатив'] : null,
-      pretext: this.partsOfSpeechWord && this.partsOfSpeechWord['Предлог'] ? this.partsOfSpeechWord['Предлог'] : null,
-      conjunction: this.partsOfSpeechWord && this.partsOfSpeechWord['Союз'] ? this.partsOfSpeechWord['Союз'] : null,
-      interjection: this.partsOfSpeechWord && this.partsOfSpeechWord['Междометие'] ? this.partsOfSpeechWord['Междометие'] : null,
-      particle: this.partsOfSpeechWord && this.partsOfSpeechWord['Частица'] ? this.partsOfSpeechWord['Частица'] : null,
-      parenthesis: this.partsOfSpeechWord && this.partsOfSpeechWord['Вводное слово'] ? this.partsOfSpeechWord['Вводное слово'] : null,
-      phrase: this.partsOfSpeechWord && this.partsOfSpeechWord['Фразеологизм'] ? this.partsOfSpeechWord['Фразеологизм'] : null
+      partsOfSpeech: {
+        nouns: this.getPartOfSpeechData('Существительные'),
+        adjectives: this.getPartOfSpeechData('Прилагательные'),
+        verbs: this.getPartOfSpeechData('Глаголы'),
+        numerals: this.getPartOfSpeechData('Числительные'),
+        ordinals: this.getPartOfSpeechData('Порядковые числительные'),
+        pronouns: this.getPartOfSpeechData('Местоимение-существительное'),
+        pronounsPredicative: this.getPartOfSpeechData('Местоимение-предикатив'),
+        pronominalAdjective: this.getPartOfSpeechData('Местоименное прилагательное'),
+        adverbs: this.getPartOfSpeechData('Наречие'),
+        predicative: this.getPartOfSpeechData('Предикатив'),
+        pretext: this.getPartOfSpeechData('Предлог'),
+        conjunction: this.getPartOfSpeechData('Союз'),
+        interjection: this.getPartOfSpeechData('Междометие'),
+        particle: this.getPartOfSpeechData('Частица'),
+        parenthesis: this.getPartOfSpeechData('Вводное слово'),
+        phrase: this.getPartOfSpeechData('Фразеологизм')
+      },
+      selectedWords: {
+        nouns: [],
+        adjectives: [],
+        verbs: [],
+        numerals: [],
+        ordinals: [],
+        pronouns: [],
+        pronounsPredicative: [],
+        pronominalAdjective: [],
+        adverbs: [],
+        predicative: [],
+        pretext: [],
+        conjunction: [],
+        interjection: [],
+        particle: [],
+        parenthesis: [],
+        phrase: [],
+        all: []
+      }
     };
+  },
+  methods: {
+    getPartOfSpeechData: function getPartOfSpeechData(key) {
+      return this.partsOfSpeechWord && this.partsOfSpeechWord[key] ? this.partsOfSpeechWord[key] : null;
+    },
+    show: function show() {
+      this.selectedWords.all = this.uniqueWords();
+      console.log(this.selectedWords.all);
+      axios.post('/api/words', {
+        words: JSON.stringify(this.selectedWords.all)
+      });
+    },
+    uniqueWords: function uniqueWords() {
+      return _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_6__.uniqueWords.call(this);
+    }
   }
 });
 
@@ -2095,6 +2160,79 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2170,6 +2308,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdjectiveCasesTableComponent",
   props: {
@@ -2182,7 +2321,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService],
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin],
   methods: {
     adjectiveCases: function adjectiveCases(adjective) {
       return Object.keys(this.adjectives[adjective]['Падежи']).filter(function (key) {
@@ -2209,6 +2348,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2233,6 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdverbParticipleTableComponent",
   props: {
@@ -2245,7 +2412,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2262,6 +2429,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2316,6 +2520,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BaseCasesFacesTableComponent",
   props: {
@@ -2328,7 +2533,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2345,6 +2550,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2377,6 +2605,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BaseCasesTableComponent",
   props: {
@@ -2389,7 +2618,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2406,6 +2635,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2429,6 +2685,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ImperativeMoodTableComponent",
   props: {
@@ -2441,7 +2698,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2458,6 +2715,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2506,6 +2821,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ParticipleCasesTableComponent",
   props: {
@@ -2518,7 +2834,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2535,6 +2851,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2565,6 +2936,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PastTimeTableComponent",
   props: {
@@ -2577,7 +2949,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2594,6 +2966,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2625,6 +3022,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PresentTimeTableComponent",
   props: {
@@ -2637,7 +3035,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2654,6 +3052,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2667,6 +3077,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "UnchangeableWordComponent",
   props: {
@@ -2679,7 +3090,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService]
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin, _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__.SelectedWordsMixin]
 });
 
 /***/ }),
@@ -2701,6 +3112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ImperativeMoodTableComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ImperativeMoodTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue");
 /* harmony import */ var _AdverbParticipleTableComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdverbParticipleTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue");
 /* harmony import */ var _ParticipleCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ParticipleCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue");
+/* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
 //
 //
 //
@@ -2733,6 +3145,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -2758,7 +3176,26 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsService],
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin],
+  data: function data() {
+    return {
+      selectedWords: {
+        presentTime: [],
+        pastTime: [],
+        imperativeMood: [],
+        adverbParticiple: [],
+        participle: []
+      }
+    };
+  },
+  watch: {
+    selectedWords: {
+      deep: true,
+      handler: function handler() {
+        this.$emit('selected-words', this.uniqueWords());
+      }
+    }
+  },
   methods: {
     presentTime: function presentTime(word) {
       return this.verbs[word]['Время']['Настоящее'];
@@ -2774,6 +3211,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     participle: function participle(word) {
       return this.verbs[word]['Причастие'];
+    },
+    uniqueWords: function uniqueWords() {
+      return _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_6__.uniqueWords.call(this);
     }
   }
 });
@@ -2871,7 +3311,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "globalGrammems": () => (/* binding */ globalGrammems),
-/* harmony export */   "GrammemsService": () => (/* binding */ GrammemsService)
+/* harmony export */   "GrammemsMixin": () => (/* binding */ GrammemsMixin)
 /* harmony export */ });
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -2951,7 +3391,7 @@ var globalGrammems = {
   'поэт': 'поэтическое',
   'проф': 'профессионализм'
 };
-var GrammemsService = {
+var GrammemsMixin = {
   methods: {
     /**
      * Сравнивает введенное слово со словом в части речи.
@@ -2985,9 +3425,94 @@ var GrammemsService = {
       }
 
       return grammemsDescription.join(', ');
+    },
+
+    /**
+     * Возвращает часть речи по дескриптору
+     * @param descriptor
+     * @returns {*}
+     */
+    descriptorToPartOfSpeech: function descriptorToPartOfSpeech(descriptor) {
+      return globalGrammems[descriptor.toLowerCase()];
+    },
+
+    /**
+     * Проверяет есть ли слово для граммемы.
+     * @param word
+     * @returns {boolean}
+     */
+    isEmptyWord: function isEmptyWord(word) {
+      return word === '-';
     }
   }
 };
+
+/***/ }),
+
+/***/ "./resources/js/mixins/selectedWords.js":
+/*!**********************************************!*\
+  !*** ./resources/js/mixins/selectedWords.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SelectedWordsMixin": () => (/* binding */ SelectedWordsMixin),
+/* harmony export */   "uniqueWords": () => (/* binding */ uniqueWords)
+/* harmony export */ });
+/* harmony import */ var _services_heplService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/heplService */ "./resources/js/services/heplService.js");
+
+var SelectedWordsMixin = {
+  data: function data() {
+    return {
+      selectedWords: []
+    };
+  },
+  watch: {
+    selectedWords: {
+      deep: true,
+      handler: function handler() {
+        this.$emit('selected-words', this.selectedWords);
+      }
+    }
+  }
+};
+function uniqueWords() {
+  var _this = this;
+
+  var allWords = [];
+  Object.keys(this.selectedWords).forEach(function (key) {
+    if (key !== 'all') {
+      allWords = allWords.concat(_this.selectedWords[key]);
+    }
+  });
+  return allWords.filter(_services_heplService__WEBPACK_IMPORTED_MODULE_0__.onlyUnique);
+}
+
+/***/ }),
+
+/***/ "./resources/js/services/heplService.js":
+/*!**********************************************!*\
+  !*** ./resources/js/services/heplService.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "onlyUnique": () => (/* binding */ onlyUnique)
+/* harmony export */ });
+/**
+ * Сравнивает присутствует ли элемент в массиве.
+ * @param value
+ * @param index
+ * @param self
+ * @returns {boolean}
+ */
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
 
 /***/ }),
 
@@ -39425,11 +39950,28 @@ var render = function() {
                 )
               : _vm._e()
           ])
-        : _c("div", [_vm._v("Loading...")])
+        : _c("div", [_vm._m(0)])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 mt-4" }, [
+        _c("div", { staticClass: "d-flex justify-content-center" }, [
+          _c(
+            "div",
+            { staticClass: "spinner-border", attrs: { role: "status" } },
+            [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -39455,101 +39997,227 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.nouns
+      _vm.partsOfSpeech.nouns
         ? _c("BaseCasesTableComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.nouns }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.nouns
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.nouns = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.adjectives
+      _vm.partsOfSpeech.adjectives
         ? _c("AdjectiveCasesTableComponent", {
-            attrs: { word: _vm.word, adjectives: _vm.adjectives }
+            attrs: { word: _vm.word, adjectives: _vm.partsOfSpeech.adjectives },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.adjectives = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.verbs
+      _vm.partsOfSpeech.verbs
         ? _c("VerbWordComponent", {
-            attrs: { word: _vm.word, verbs: _vm.verbs }
+            attrs: { word: _vm.word, verbs: _vm.partsOfSpeech.verbs },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.verbs = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.numerals
+      _vm.partsOfSpeech.numerals
         ? _c("BaseCasesTableComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.numerals }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.numerals
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.numerals = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.ordinals
+      _vm.partsOfSpeech.ordinals
         ? _c("BaseCasesFacesTableComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.ordinals }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.ordinals
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.ordinals = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.pronouns
+      _vm.partsOfSpeech.pronouns
         ? _c("BaseCasesTableComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.pronouns }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.pronouns
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.pronouns = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.pronounsPredicative
+      _vm.partsOfSpeech.pronounsPredicative
         ? _c("BaseCasesTableComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.pronounsPredicative }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.pronounsPredicative
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.pronounsPredicative = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.pronominalAdjective
+      _vm.partsOfSpeech.pronominalAdjective
         ? _c("BaseCasesFacesTableComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.pronominalAdjective }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.pronominalAdjective
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.pronominalAdjective = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.adverbs
+      _vm.partsOfSpeech.adverbs
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.adverbs }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.adverbs
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.adverbs = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.predicative
+      _vm.partsOfSpeech.predicative
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.predicative }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.predicative
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.predicative = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.pretext
+      _vm.partsOfSpeech.pretext
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.pretext }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.pretext
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.pretext = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.conjunction
+      _vm.partsOfSpeech.conjunction
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.conjunction }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.conjunction
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.conjunction = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.interjection
+      _vm.partsOfSpeech.interjection
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.interjection }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.interjection
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.interjection = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.particle
+      _vm.partsOfSpeech.particle
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.particle }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.particle
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.particle = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.parenthesis
+      _vm.partsOfSpeech.parenthesis
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.parenthesis }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.parenthesis
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.parenthesis = $event
+              }
+            }
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.phrase
+      _vm.partsOfSpeech.phrase
         ? _c("UnchangeableWordComponent", {
-            attrs: { word: _vm.word, "part-of-speech": _vm.phrase }
+            attrs: {
+              word: _vm.word,
+              "part-of-speech": _vm.partsOfSpeech.phrase
+            },
+            on: {
+              "selected-words": function($event) {
+                _vm.selectedWords.phrase = $event
+              }
+            }
           })
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _c("button", { attrs: { type: "button" }, on: { click: _vm.show } }, [
+        _vm._v("Words")
+      ])
     ],
     1
   )
@@ -39634,19 +40302,103 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.adjectives[adjective]["Падежи"][adjectiveCase][
                               "ЕД"
-                            ]["МР"]["НОРМ"]
+                            ]["МР"]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["ЕД"]["МР"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n              "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.adjectives[adjective]["Падежи"][
                                 adjectiveCase
-                              ]["ЕД"]["МР"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n          "
+                              ]["ЕД"]["МР"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.adjectives[adjective]["Падежи"][
+                                            adjectiveCase
+                                          ]["ЕД"]["МР"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["ЕД"]["МР"][
+                                                  "НОРМ"
+                                                ]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["ЕД"]["МР"][
+                                                  "НОРМ"
+                                                ]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     ),
@@ -39658,19 +40410,103 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.adjectives[adjective]["Падежи"][adjectiveCase][
                               "ЕД"
-                            ]["ЖР"]["НОРМ"]
+                            ]["ЖР"]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["ЕД"]["ЖР"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n              "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.adjectives[adjective]["Падежи"][
                                 adjectiveCase
-                              ]["ЕД"]["ЖР"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n          "
+                              ]["ЕД"]["ЖР"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.adjectives[adjective]["Падежи"][
+                                            adjectiveCase
+                                          ]["ЕД"]["ЖР"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["ЕД"]["ЖР"][
+                                                  "НОРМ"
+                                                ]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["ЕД"]["ЖР"][
+                                                  "НОРМ"
+                                                ]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     ),
@@ -39682,19 +40518,103 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.adjectives[adjective]["Падежи"][adjectiveCase][
                               "ЕД"
-                            ]["СР"]["НОРМ"]
+                            ]["СР"]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["ЕД"]["СР"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n              "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.adjectives[adjective]["Падежи"][
                                 adjectiveCase
-                              ]["ЕД"]["СР"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n          "
+                              ]["ЕД"]["СР"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.adjectives[adjective]["Падежи"][
+                                            adjectiveCase
+                                          ]["ЕД"]["СР"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["ЕД"]["СР"][
+                                                  "НОРМ"
+                                                ]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["ЕД"]["СР"][
+                                                  "НОРМ"
+                                                ]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     ),
@@ -39706,19 +40626,99 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.adjectives[adjective]["Падежи"][adjectiveCase][
                               "МН"
-                            ]["НОРМ"]
+                            ]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(
+                                  _vm.adjectives[adjective]["Падежи"][
+                                    adjectiveCase
+                                  ]["МН"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n              "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.adjectives[adjective]["Падежи"][
                                 adjectiveCase
-                              ]["МН"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n          "
+                              ]["МН"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.adjectives[adjective]["Падежи"][
+                                            adjectiveCase
+                                          ]["МН"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["МН"]["НОРМ"]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.adjectives[adjective][
+                                                  "Падежи"
+                                                ][adjectiveCase]["МН"]["НОРМ"]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     )
@@ -39735,19 +40735,111 @@ var render = function() {
                               equals: _vm.equalsWithWord(
                                 _vm.adjectives[adjective]["Падежи"][
                                   adjectiveCase
-                                ]["ЕД"]["МР"]["ПРЕВ"]
+                                ]["ЕД"]["МР"]["ПРЕВ"]["Слово"]
                               )
                             }
                           },
                           [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(
+                            _c(
+                              "div",
+                              { staticClass: "d-flex align-items-center" },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.adjectives[adjective]["Падежи"][
+                                        adjectiveCase
+                                      ]["ЕД"]["МР"]["ПРЕВ"][
+                                        "Слово"
+                                      ].toLowerCase()
+                                    ) +
+                                    "\n              "
+                                ),
+                                !_vm.isEmptyWord(
                                   _vm.adjectives[adjective]["Падежи"][
                                     adjectiveCase
-                                  ]["ЕД"]["МР"]["ПРЕВ"].toLowerCase()
-                                ) +
-                                "\n          "
+                                  ]["ЕД"]["МР"]["ПРЕВ"]["Слово"].toLowerCase()
+                                )
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "form-check form-check-inline pl-2"
+                                      },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.selectedWords,
+                                              expression: "selectedWords"
+                                            }
+                                          ],
+                                          staticClass: "form-check-input",
+                                          attrs: { type: "checkbox" },
+                                          domProps: {
+                                            value: JSON.stringify(
+                                              _vm.adjectives[adjective][
+                                                "Падежи"
+                                              ][adjectiveCase]["ЕД"]["МР"][
+                                                "ПРЕВ"
+                                              ]
+                                            ),
+                                            checked: Array.isArray(
+                                              _vm.selectedWords
+                                            )
+                                              ? _vm._i(
+                                                  _vm.selectedWords,
+                                                  JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["ЕД"][
+                                                      "МР"
+                                                    ]["ПРЕВ"]
+                                                  )
+                                                ) > -1
+                                              : _vm.selectedWords
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$a = _vm.selectedWords,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["ЕД"][
+                                                      "МР"
+                                                    ]["ПРЕВ"]
+                                                  ),
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    (_vm.selectedWords = $$a.concat(
+                                                      [$$v]
+                                                    ))
+                                                } else {
+                                                  $$i > -1 &&
+                                                    (_vm.selectedWords = $$a
+                                                      .slice(0, $$i)
+                                                      .concat(
+                                                        $$a.slice($$i + 1)
+                                                      ))
+                                                }
+                                              } else {
+                                                _vm.selectedWords = $$c
+                                              }
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
                             )
                           ]
                         ),
@@ -39759,19 +40851,111 @@ var render = function() {
                               equals: _vm.equalsWithWord(
                                 _vm.adjectives[adjective]["Падежи"][
                                   adjectiveCase
-                                ]["ЕД"]["ЖР"]["ПРЕВ"]
+                                ]["ЕД"]["ЖР"]["ПРЕВ"]["Слово"]
                               )
                             }
                           },
                           [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(
+                            _c(
+                              "div",
+                              { staticClass: "d-flex align-items-center" },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.adjectives[adjective]["Падежи"][
+                                        adjectiveCase
+                                      ]["ЕД"]["ЖР"]["ПРЕВ"][
+                                        "Слово"
+                                      ].toLowerCase()
+                                    ) +
+                                    "\n              "
+                                ),
+                                !_vm.isEmptyWord(
                                   _vm.adjectives[adjective]["Падежи"][
                                     adjectiveCase
-                                  ]["ЕД"]["ЖР"]["ПРЕВ"].toLowerCase()
-                                ) +
-                                "\n          "
+                                  ]["ЕД"]["ЖР"]["ПРЕВ"]["Слово"].toLowerCase()
+                                )
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "form-check form-check-inline pl-2"
+                                      },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.selectedWords,
+                                              expression: "selectedWords"
+                                            }
+                                          ],
+                                          staticClass: "form-check-input",
+                                          attrs: { type: "checkbox" },
+                                          domProps: {
+                                            value: JSON.stringify(
+                                              _vm.adjectives[adjective][
+                                                "Падежи"
+                                              ][adjectiveCase]["ЕД"]["ЖР"][
+                                                "ПРЕВ"
+                                              ]
+                                            ),
+                                            checked: Array.isArray(
+                                              _vm.selectedWords
+                                            )
+                                              ? _vm._i(
+                                                  _vm.selectedWords,
+                                                  JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["ЕД"][
+                                                      "ЖР"
+                                                    ]["ПРЕВ"]
+                                                  )
+                                                ) > -1
+                                              : _vm.selectedWords
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$a = _vm.selectedWords,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["ЕД"][
+                                                      "ЖР"
+                                                    ]["ПРЕВ"]
+                                                  ),
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    (_vm.selectedWords = $$a.concat(
+                                                      [$$v]
+                                                    ))
+                                                } else {
+                                                  $$i > -1 &&
+                                                    (_vm.selectedWords = $$a
+                                                      .slice(0, $$i)
+                                                      .concat(
+                                                        $$a.slice($$i + 1)
+                                                      ))
+                                                }
+                                              } else {
+                                                _vm.selectedWords = $$c
+                                              }
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
                             )
                           ]
                         ),
@@ -39783,19 +40967,111 @@ var render = function() {
                               equals: _vm.equalsWithWord(
                                 _vm.adjectives[adjective]["Падежи"][
                                   adjectiveCase
-                                ]["ЕД"]["СР"]["ПРЕВ"]
+                                ]["ЕД"]["СР"]["ПРЕВ"]["Слово"]
                               )
                             }
                           },
                           [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(
+                            _c(
+                              "div",
+                              { staticClass: "d-flex align-items-center" },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.adjectives[adjective]["Падежи"][
+                                        adjectiveCase
+                                      ]["ЕД"]["СР"]["ПРЕВ"][
+                                        "Слово"
+                                      ].toLowerCase()
+                                    ) +
+                                    "\n              "
+                                ),
+                                !_vm.isEmptyWord(
                                   _vm.adjectives[adjective]["Падежи"][
                                     adjectiveCase
-                                  ]["ЕД"]["СР"]["ПРЕВ"].toLowerCase()
-                                ) +
-                                "\n          "
+                                  ]["ЕД"]["СР"]["ПРЕВ"]["Слово"].toLowerCase()
+                                )
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "form-check form-check-inline pl-2"
+                                      },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.selectedWords,
+                                              expression: "selectedWords"
+                                            }
+                                          ],
+                                          staticClass: "form-check-input",
+                                          attrs: { type: "checkbox" },
+                                          domProps: {
+                                            value: JSON.stringify(
+                                              _vm.adjectives[adjective][
+                                                "Падежи"
+                                              ][adjectiveCase]["ЕД"]["СР"][
+                                                "ПРЕВ"
+                                              ]
+                                            ),
+                                            checked: Array.isArray(
+                                              _vm.selectedWords
+                                            )
+                                              ? _vm._i(
+                                                  _vm.selectedWords,
+                                                  JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["ЕД"][
+                                                      "СР"
+                                                    ]["ПРЕВ"]
+                                                  )
+                                                ) > -1
+                                              : _vm.selectedWords
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$a = _vm.selectedWords,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["ЕД"][
+                                                      "СР"
+                                                    ]["ПРЕВ"]
+                                                  ),
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    (_vm.selectedWords = $$a.concat(
+                                                      [$$v]
+                                                    ))
+                                                } else {
+                                                  $$i > -1 &&
+                                                    (_vm.selectedWords = $$a
+                                                      .slice(0, $$i)
+                                                      .concat(
+                                                        $$a.slice($$i + 1)
+                                                      ))
+                                                }
+                                              } else {
+                                                _vm.selectedWords = $$c
+                                              }
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
                             )
                           ]
                         ),
@@ -39807,19 +41083,107 @@ var render = function() {
                               equals: _vm.equalsWithWord(
                                 _vm.adjectives[adjective]["Падежи"][
                                   adjectiveCase
-                                ]["МН"]["ПРЕВ"]
+                                ]["МН"]["ПРЕВ"]["Слово"]
                               )
                             }
                           },
                           [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(
+                            _c(
+                              "div",
+                              { staticClass: "d-flex align-items-center" },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.adjectives[adjective]["Падежи"][
+                                        adjectiveCase
+                                      ]["МН"]["ПРЕВ"]["Слово"].toLowerCase()
+                                    ) +
+                                    "\n              "
+                                ),
+                                !_vm.isEmptyWord(
                                   _vm.adjectives[adjective]["Падежи"][
                                     adjectiveCase
-                                  ]["МН"]["ПРЕВ"].toLowerCase()
-                                ) +
-                                "\n          "
+                                  ]["МН"]["ПРЕВ"]["Слово"].toLowerCase()
+                                )
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "form-check form-check-inline pl-2"
+                                      },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.selectedWords,
+                                              expression: "selectedWords"
+                                            }
+                                          ],
+                                          staticClass: "form-check-input",
+                                          attrs: { type: "checkbox" },
+                                          domProps: {
+                                            value: JSON.stringify(
+                                              _vm.adjectives[adjective][
+                                                "Падежи"
+                                              ][adjectiveCase]["МН"]["ПРЕВ"]
+                                            ),
+                                            checked: Array.isArray(
+                                              _vm.selectedWords
+                                            )
+                                              ? _vm._i(
+                                                  _vm.selectedWords,
+                                                  JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["МН"][
+                                                      "ПРЕВ"
+                                                    ]
+                                                  )
+                                                ) > -1
+                                              : _vm.selectedWords
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$a = _vm.selectedWords,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = JSON.stringify(
+                                                    _vm.adjectives[adjective][
+                                                      "Падежи"
+                                                    ][adjectiveCase]["МН"][
+                                                      "ПРЕВ"
+                                                    ]
+                                                  ),
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    (_vm.selectedWords = $$a.concat(
+                                                      [$$v]
+                                                    ))
+                                                } else {
+                                                  $$i > -1 &&
+                                                    (_vm.selectedWords = $$a
+                                                      .slice(0, $$i)
+                                                      .concat(
+                                                        $$a.slice($$i + 1)
+                                                      ))
+                                                }
+                                              } else {
+                                                _vm.selectedWords = $$c
+                                              }
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
                             )
                           ]
                         )
@@ -39923,14 +41287,85 @@ var render = function() {
                   {
                     class: {
                       equals: _vm.equalsWithWord(
-                        _vm.adverbParticiple["Настоящее"]
+                        _vm.adverbParticiple["Настоящее"]["Слово"]
                       )
                     }
                   },
                   [
-                    _vm._v(
-                      _vm._s(_vm.adverbParticiple["Настоящее"].toLowerCase())
-                    )
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.adverbParticiple["Настоящее"][
+                              "Слово"
+                            ].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.adverbParticiple["Настоящее"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.adverbParticiple["Настоящее"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.adverbParticiple["Настоящее"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.adverbParticiple["Настоящее"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -39939,14 +41374,85 @@ var render = function() {
                   {
                     class: {
                       equals: _vm.equalsWithWord(
-                        _vm.adverbParticiple["Прошедшее"]
+                        _vm.adverbParticiple["Прошедшее"]["Слово"]
                       )
                     }
                   },
                   [
-                    _vm._v(
-                      _vm._s(_vm.adverbParticiple["Прошедшее"].toLowerCase())
-                    )
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.adverbParticiple["Прошедшее"][
+                              "Слово"
+                            ].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.adverbParticiple["Прошедшее"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.adverbParticiple["Прошедшее"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.adverbParticiple["Прошедшее"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.adverbParticiple["Прошедшее"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
                   ]
                 )
               ])
@@ -40030,19 +41536,103 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.partOfSpeech[baseWord]["Падежи"][
                               partOfSpeechCase
-                            ]["ЕД"]["МР"]["НОРМ"]
+                            ]["ЕД"]["МР"]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.partOfSpeech[baseWord]["Падежи"][
+                                    partOfSpeechCase
+                                  ]["ЕД"]["МР"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n            "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.partOfSpeech[baseWord]["Падежи"][
                                 partOfSpeechCase
-                              ]["ЕД"]["МР"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n        "
+                              ]["ЕД"]["МР"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.partOfSpeech[baseWord]["Падежи"][
+                                            partOfSpeechCase
+                                          ]["ЕД"]["МР"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["ЕД"]["МР"][
+                                                  "НОРМ"
+                                                ]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["ЕД"]["МР"][
+                                                  "НОРМ"
+                                                ]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     ),
@@ -40054,19 +41644,103 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.partOfSpeech[baseWord]["Падежи"][
                               partOfSpeechCase
-                            ]["ЕД"]["ЖР"]["НОРМ"]
+                            ]["ЕД"]["ЖР"]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.partOfSpeech[baseWord]["Падежи"][
+                                    partOfSpeechCase
+                                  ]["ЕД"]["ЖР"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n            "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.partOfSpeech[baseWord]["Падежи"][
                                 partOfSpeechCase
-                              ]["ЕД"]["ЖР"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n        "
+                              ]["ЕД"]["ЖР"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.partOfSpeech[baseWord]["Падежи"][
+                                            partOfSpeechCase
+                                          ]["ЕД"]["ЖР"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["ЕД"]["ЖР"][
+                                                  "НОРМ"
+                                                ]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["ЕД"]["ЖР"][
+                                                  "НОРМ"
+                                                ]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     ),
@@ -40078,19 +41752,103 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.partOfSpeech[baseWord]["Падежи"][
                               partOfSpeechCase
-                            ]["ЕД"]["СР"]["НОРМ"]
+                            ]["ЕД"]["СР"]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.partOfSpeech[baseWord]["Падежи"][
+                                    partOfSpeechCase
+                                  ]["ЕД"]["СР"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n            "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.partOfSpeech[baseWord]["Падежи"][
                                 partOfSpeechCase
-                              ]["ЕД"]["СР"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n        "
+                              ]["ЕД"]["СР"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.partOfSpeech[baseWord]["Падежи"][
+                                            partOfSpeechCase
+                                          ]["ЕД"]["СР"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["ЕД"]["СР"][
+                                                  "НОРМ"
+                                                ]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["ЕД"]["СР"][
+                                                  "НОРМ"
+                                                ]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     ),
@@ -40102,19 +41860,103 @@ var render = function() {
                           equals: _vm.equalsWithWord(
                             _vm.partOfSpeech[baseWord]["Падежи"][
                               partOfSpeechCase
-                            ]["МН"]["НОРМ"]
+                            ]["МН"]["НОРМ"]["Слово"]
                           )
                         }
                       },
                       [
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(
+                        _c(
+                          "div",
+                          { staticClass: "d-flex align-items-center" },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(
+                                  _vm.partOfSpeech[baseWord]["Падежи"][
+                                    partOfSpeechCase
+                                  ]["МН"]["НОРМ"]["Слово"].toLowerCase()
+                                ) +
+                                "\n            "
+                            ),
+                            !_vm.isEmptyWord(
                               _vm.partOfSpeech[baseWord]["Падежи"][
                                 partOfSpeechCase
-                              ]["МН"]["НОРМ"].toLowerCase()
-                            ) +
-                            "\n        "
+                              ]["МН"]["НОРМ"]["Слово"].toLowerCase()
+                            )
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-check form-check-inline pl-2"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.selectedWords,
+                                          expression: "selectedWords"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        value: JSON.stringify(
+                                          _vm.partOfSpeech[baseWord]["Падежи"][
+                                            partOfSpeechCase
+                                          ]["МН"]["НОРМ"]
+                                        ),
+                                        checked: Array.isArray(
+                                          _vm.selectedWords
+                                        )
+                                          ? _vm._i(
+                                              _vm.selectedWords,
+                                              JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["МН"][
+                                                  "НОРМ"
+                                                ]
+                                              )
+                                            ) > -1
+                                          : _vm.selectedWords
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.selectedWords,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = JSON.stringify(
+                                                _vm.partOfSpeech[baseWord][
+                                                  "Падежи"
+                                                ][partOfSpeechCase]["МН"][
+                                                  "НОРМ"
+                                                ]
+                                              ),
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.selectedWords = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.selectedWords = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.selectedWords = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
                         )
                       ]
                     )
@@ -40221,19 +42063,113 @@ var render = function() {
                               equals: _vm.equalsWithWord(
                                 _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
                                   "ЕД"
-                                ]
+                                ]["Слово"]
                               )
                             }
                           },
                           [
-                            _vm._v(
-                              "\n          " +
-                                _vm._s(
+                            _c(
+                              "div",
+                              { staticClass: "d-flex align-items-center" },
+                              [
+                                _vm._v(
+                                  "\n            " +
+                                    _vm._s(
+                                      _vm.partOfSpeech[wordTemp]["Падежи"][
+                                        casePart
+                                      ]["ЕД"]["Слово"].toLowerCase()
+                                    ) +
+                                    "\n            "
+                                ),
+                                !_vm.isEmptyWord(
                                   _vm.partOfSpeech[wordTemp]["Падежи"][
                                     casePart
-                                  ]["ЕД"].toLowerCase()
-                                ) +
-                                "\n        "
+                                  ]["ЕД"]["Слово"].toLowerCase()
+                                )
+                                  ? _c(
+                                      "div",
+                                      { staticClass: "d-inline-flex pl-2" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "form-check form-check-inline"
+                                          },
+                                          [
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.selectedWords,
+                                                  expression: "selectedWords"
+                                                }
+                                              ],
+                                              staticClass: "form-check-input",
+                                              attrs: { type: "checkbox" },
+                                              domProps: {
+                                                value: JSON.stringify(
+                                                  _vm.partOfSpeech[wordTemp][
+                                                    "Падежи"
+                                                  ][casePart]["ЕД"]
+                                                ),
+                                                checked: Array.isArray(
+                                                  _vm.selectedWords
+                                                )
+                                                  ? _vm._i(
+                                                      _vm.selectedWords,
+                                                      JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          wordTemp
+                                                        ]["Падежи"][casePart][
+                                                          "ЕД"
+                                                        ]
+                                                      )
+                                                    ) > -1
+                                                  : _vm.selectedWords
+                                              },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$a = _vm.selectedWords,
+                                                    $$el = $event.target,
+                                                    $$c = $$el.checked
+                                                      ? true
+                                                      : false
+                                                  if (Array.isArray($$a)) {
+                                                    var $$v = JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          wordTemp
+                                                        ]["Падежи"][casePart][
+                                                          "ЕД"
+                                                        ]
+                                                      ),
+                                                      $$i = _vm._i($$a, $$v)
+                                                    if ($$el.checked) {
+                                                      $$i < 0 &&
+                                                        (_vm.selectedWords = $$a.concat(
+                                                          [$$v]
+                                                        ))
+                                                    } else {
+                                                      $$i > -1 &&
+                                                        (_vm.selectedWords = $$a
+                                                          .slice(0, $$i)
+                                                          .concat(
+                                                            $$a.slice($$i + 1)
+                                                          ))
+                                                    }
+                                                  } else {
+                                                    _vm.selectedWords = $$c
+                                                  }
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
                             )
                           ]
                         ),
@@ -40245,19 +42181,113 @@ var render = function() {
                               equals: _vm.equalsWithWord(
                                 _vm.partOfSpeech[wordTemp]["Падежи"][casePart][
                                   "МН"
-                                ]
+                                ]["Слово"]
                               )
                             }
                           },
                           [
-                            _vm._v(
-                              "\n          " +
-                                _vm._s(
+                            _c(
+                              "div",
+                              { staticClass: "d-flex align-items-center" },
+                              [
+                                _vm._v(
+                                  "\n            " +
+                                    _vm._s(
+                                      _vm.partOfSpeech[wordTemp]["Падежи"][
+                                        casePart
+                                      ]["МН"]["Слово"].toLowerCase()
+                                    ) +
+                                    "\n            "
+                                ),
+                                !_vm.isEmptyWord(
                                   _vm.partOfSpeech[wordTemp]["Падежи"][
                                     casePart
-                                  ]["МН"].toLowerCase()
-                                ) +
-                                "\n        "
+                                  ]["МН"]["Слово"].toLowerCase()
+                                )
+                                  ? _c(
+                                      "div",
+                                      { staticClass: "d-inline-flex pl-2" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "form-check form-check-inline"
+                                          },
+                                          [
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.selectedWords,
+                                                  expression: "selectedWords"
+                                                }
+                                              ],
+                                              staticClass: "form-check-input",
+                                              attrs: { type: "checkbox" },
+                                              domProps: {
+                                                value: JSON.stringify(
+                                                  _vm.partOfSpeech[wordTemp][
+                                                    "Падежи"
+                                                  ][casePart]["МН"]
+                                                ),
+                                                checked: Array.isArray(
+                                                  _vm.selectedWords
+                                                )
+                                                  ? _vm._i(
+                                                      _vm.selectedWords,
+                                                      JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          wordTemp
+                                                        ]["Падежи"][casePart][
+                                                          "МН"
+                                                        ]
+                                                      )
+                                                    ) > -1
+                                                  : _vm.selectedWords
+                                              },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$a = _vm.selectedWords,
+                                                    $$el = $event.target,
+                                                    $$c = $$el.checked
+                                                      ? true
+                                                      : false
+                                                  if (Array.isArray($$a)) {
+                                                    var $$v = JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          wordTemp
+                                                        ]["Падежи"][casePart][
+                                                          "МН"
+                                                        ]
+                                                      ),
+                                                      $$i = _vm._i($$a, $$v)
+                                                    if ($$el.checked) {
+                                                      $$i < 0 &&
+                                                        (_vm.selectedWords = $$a.concat(
+                                                          [$$v]
+                                                        ))
+                                                    } else {
+                                                      $$i > -1 &&
+                                                        (_vm.selectedWords = $$a
+                                                          .slice(0, $$i)
+                                                          .concat(
+                                                            $$a.slice($$i + 1)
+                                                          ))
+                                                    }
+                                                  } else {
+                                                    _vm.selectedWords = $$c
+                                                  }
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
                             )
                           ]
                         )
@@ -40328,20 +42358,170 @@ var render = function() {
                   "td",
                   {
                     class: {
-                      equals: _vm.equalsWithWord(_vm.imperativeMood["ЕД"])
+                      equals: _vm.equalsWithWord(
+                        _vm.imperativeMood["ЕД"]["Слово"]
+                      )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.imperativeMood["ЕД"].toLowerCase()))]
+                  [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.imperativeMood["ЕД"]["Слово"].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.imperativeMood["ЕД"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.imperativeMood["ЕД"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.imperativeMood["ЕД"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.imperativeMood["ЕД"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
                   "td",
                   {
                     class: {
-                      equals: _vm.equalsWithWord(_vm.imperativeMood["МН"])
+                      equals: _vm.equalsWithWord(
+                        _vm.imperativeMood["МН"]["Слово"]
+                      )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.imperativeMood["МН"].toLowerCase()))]
+                  [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.imperativeMood["МН"]["Слово"].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.imperativeMood["МН"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.imperativeMood["МН"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.imperativeMood["МН"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.imperativeMood["МН"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ]
                 )
               ])
             ])
@@ -40428,21 +42608,144 @@ var render = function() {
                                     equals: _vm.equalsWithWord(
                                       _vm.partOfSpeech[partOfSpeechTime][
                                         partOfSpeechVoice
-                                      ][partOfSpeechCase]["ЕД"]["МР"]["НОРМ"]
+                                      ][partOfSpeechCase]["ЕД"]["МР"]["НОРМ"][
+                                        "Слово"
+                                      ]
                                     )
                                   }
                                 },
                                 [
-                                  _vm._v(
-                                    "\n            " +
-                                      _vm._s(
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "d-flex align-items-center"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n              " +
+                                          _vm._s(
+                                            _vm.partOfSpeech[partOfSpeechTime][
+                                              partOfSpeechVoice
+                                            ][partOfSpeechCase]["ЕД"]["МР"][
+                                              "НОРМ"
+                                            ]["Слово"].toLowerCase()
+                                          ) +
+                                          "\n              "
+                                      ),
+                                      !_vm.isEmptyWord(
                                         _vm.partOfSpeech[partOfSpeechTime][
                                           partOfSpeechVoice
-                                        ][partOfSpeechCase]["ЕД"]["МР"][
-                                          "НОРМ"
+                                        ][partOfSpeechCase]["ЕД"]["МР"]["НОРМ"][
+                                          "Слово"
                                         ].toLowerCase()
-                                      ) +
-                                      "\n          "
+                                      )
+                                        ? _c(
+                                            "div",
+                                            {
+                                              staticClass: "d-inline-flex pl-2"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-check form-check-inline"
+                                                },
+                                                [
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.selectedWords,
+                                                        expression:
+                                                          "selectedWords"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-check-input",
+                                                    attrs: { type: "checkbox" },
+                                                    domProps: {
+                                                      value: JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          partOfSpeechTime
+                                                        ][partOfSpeechVoice][
+                                                          partOfSpeechCase
+                                                        ]["ЕД"]["МР"]["НОРМ"]
+                                                      ),
+                                                      checked: Array.isArray(
+                                                        _vm.selectedWords
+                                                      )
+                                                        ? _vm._i(
+                                                            _vm.selectedWords,
+                                                            JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["ЕД"]["МР"][
+                                                                "НОРМ"
+                                                              ]
+                                                            )
+                                                          ) > -1
+                                                        : _vm.selectedWords
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$a =
+                                                            _vm.selectedWords,
+                                                          $$el = $event.target,
+                                                          $$c = $$el.checked
+                                                            ? true
+                                                            : false
+                                                        if (
+                                                          Array.isArray($$a)
+                                                        ) {
+                                                          var $$v = JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["ЕД"]["МР"][
+                                                                "НОРМ"
+                                                              ]
+                                                            ),
+                                                            $$i = _vm._i(
+                                                              $$a,
+                                                              $$v
+                                                            )
+                                                          if ($$el.checked) {
+                                                            $$i < 0 &&
+                                                              (_vm.selectedWords = $$a.concat(
+                                                                [$$v]
+                                                              ))
+                                                          } else {
+                                                            $$i > -1 &&
+                                                              (_vm.selectedWords = $$a
+                                                                .slice(0, $$i)
+                                                                .concat(
+                                                                  $$a.slice(
+                                                                    $$i + 1
+                                                                  )
+                                                                ))
+                                                          }
+                                                        } else {
+                                                          _vm.selectedWords = $$c
+                                                        }
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
                                   )
                                 ]
                               ),
@@ -40454,21 +42757,144 @@ var render = function() {
                                     equals: _vm.equalsWithWord(
                                       _vm.partOfSpeech[partOfSpeechTime][
                                         partOfSpeechVoice
-                                      ][partOfSpeechCase]["ЕД"]["ЖР"]["НОРМ"]
+                                      ][partOfSpeechCase]["ЕД"]["ЖР"]["НОРМ"][
+                                        "Слово"
+                                      ]
                                     )
                                   }
                                 },
                                 [
-                                  _vm._v(
-                                    "\n            " +
-                                      _vm._s(
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "d-flex align-items-center"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n              " +
+                                          _vm._s(
+                                            _vm.partOfSpeech[partOfSpeechTime][
+                                              partOfSpeechVoice
+                                            ][partOfSpeechCase]["ЕД"]["ЖР"][
+                                              "НОРМ"
+                                            ]["Слово"].toLowerCase()
+                                          ) +
+                                          "\n              "
+                                      ),
+                                      !_vm.isEmptyWord(
                                         _vm.partOfSpeech[partOfSpeechTime][
                                           partOfSpeechVoice
-                                        ][partOfSpeechCase]["ЕД"]["ЖР"][
-                                          "НОРМ"
+                                        ][partOfSpeechCase]["ЕД"]["ЖР"]["НОРМ"][
+                                          "Слово"
                                         ].toLowerCase()
-                                      ) +
-                                      "\n          "
+                                      )
+                                        ? _c(
+                                            "div",
+                                            {
+                                              staticClass: "d-inline-flex pl-2"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-check form-check-inline"
+                                                },
+                                                [
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.selectedWords,
+                                                        expression:
+                                                          "selectedWords"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-check-input",
+                                                    attrs: { type: "checkbox" },
+                                                    domProps: {
+                                                      value: JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          partOfSpeechTime
+                                                        ][partOfSpeechVoice][
+                                                          partOfSpeechCase
+                                                        ]["ЕД"]["ЖР"]["НОРМ"]
+                                                      ),
+                                                      checked: Array.isArray(
+                                                        _vm.selectedWords
+                                                      )
+                                                        ? _vm._i(
+                                                            _vm.selectedWords,
+                                                            JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["ЕД"]["ЖР"][
+                                                                "НОРМ"
+                                                              ]
+                                                            )
+                                                          ) > -1
+                                                        : _vm.selectedWords
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$a =
+                                                            _vm.selectedWords,
+                                                          $$el = $event.target,
+                                                          $$c = $$el.checked
+                                                            ? true
+                                                            : false
+                                                        if (
+                                                          Array.isArray($$a)
+                                                        ) {
+                                                          var $$v = JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["ЕД"]["ЖР"][
+                                                                "НОРМ"
+                                                              ]
+                                                            ),
+                                                            $$i = _vm._i(
+                                                              $$a,
+                                                              $$v
+                                                            )
+                                                          if ($$el.checked) {
+                                                            $$i < 0 &&
+                                                              (_vm.selectedWords = $$a.concat(
+                                                                [$$v]
+                                                              ))
+                                                          } else {
+                                                            $$i > -1 &&
+                                                              (_vm.selectedWords = $$a
+                                                                .slice(0, $$i)
+                                                                .concat(
+                                                                  $$a.slice(
+                                                                    $$i + 1
+                                                                  )
+                                                                ))
+                                                          }
+                                                        } else {
+                                                          _vm.selectedWords = $$c
+                                                        }
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
                                   )
                                 ]
                               ),
@@ -40480,21 +42906,144 @@ var render = function() {
                                     equals: _vm.equalsWithWord(
                                       _vm.partOfSpeech[partOfSpeechTime][
                                         partOfSpeechVoice
-                                      ][partOfSpeechCase]["ЕД"]["СР"]["НОРМ"]
+                                      ][partOfSpeechCase]["ЕД"]["СР"]["НОРМ"][
+                                        "Слово"
+                                      ]
                                     )
                                   }
                                 },
                                 [
-                                  _vm._v(
-                                    "\n            " +
-                                      _vm._s(
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "d-flex align-items-center"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n              " +
+                                          _vm._s(
+                                            _vm.partOfSpeech[partOfSpeechTime][
+                                              partOfSpeechVoice
+                                            ][partOfSpeechCase]["ЕД"]["СР"][
+                                              "НОРМ"
+                                            ]["Слово"].toLowerCase()
+                                          ) +
+                                          "\n              "
+                                      ),
+                                      !_vm.isEmptyWord(
                                         _vm.partOfSpeech[partOfSpeechTime][
                                           partOfSpeechVoice
-                                        ][partOfSpeechCase]["ЕД"]["СР"][
-                                          "НОРМ"
+                                        ][partOfSpeechCase]["ЕД"]["СР"]["НОРМ"][
+                                          "Слово"
                                         ].toLowerCase()
-                                      ) +
-                                      "\n          "
+                                      )
+                                        ? _c(
+                                            "div",
+                                            {
+                                              staticClass: "d-inline-flex pl-2"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-check form-check-inline"
+                                                },
+                                                [
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.selectedWords,
+                                                        expression:
+                                                          "selectedWords"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-check-input",
+                                                    attrs: { type: "checkbox" },
+                                                    domProps: {
+                                                      value: JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          partOfSpeechTime
+                                                        ][partOfSpeechVoice][
+                                                          partOfSpeechCase
+                                                        ]["ЕД"]["СР"]["НОРМ"]
+                                                      ),
+                                                      checked: Array.isArray(
+                                                        _vm.selectedWords
+                                                      )
+                                                        ? _vm._i(
+                                                            _vm.selectedWords,
+                                                            JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["ЕД"]["СР"][
+                                                                "НОРМ"
+                                                              ]
+                                                            )
+                                                          ) > -1
+                                                        : _vm.selectedWords
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$a =
+                                                            _vm.selectedWords,
+                                                          $$el = $event.target,
+                                                          $$c = $$el.checked
+                                                            ? true
+                                                            : false
+                                                        if (
+                                                          Array.isArray($$a)
+                                                        ) {
+                                                          var $$v = JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["ЕД"]["СР"][
+                                                                "НОРМ"
+                                                              ]
+                                                            ),
+                                                            $$i = _vm._i(
+                                                              $$a,
+                                                              $$v
+                                                            )
+                                                          if ($$el.checked) {
+                                                            $$i < 0 &&
+                                                              (_vm.selectedWords = $$a.concat(
+                                                                [$$v]
+                                                              ))
+                                                          } else {
+                                                            $$i > -1 &&
+                                                              (_vm.selectedWords = $$a
+                                                                .slice(0, $$i)
+                                                                .concat(
+                                                                  $$a.slice(
+                                                                    $$i + 1
+                                                                  )
+                                                                ))
+                                                          }
+                                                        } else {
+                                                          _vm.selectedWords = $$c
+                                                        }
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
                                   )
                                 ]
                               ),
@@ -40506,21 +43055,142 @@ var render = function() {
                                     equals: _vm.equalsWithWord(
                                       _vm.partOfSpeech[partOfSpeechTime][
                                         partOfSpeechVoice
-                                      ][partOfSpeechCase]["МН"]["НОРМ"]
+                                      ][partOfSpeechCase]["МН"]["НОРМ"]["Слово"]
                                     )
                                   }
                                 },
                                 [
-                                  _vm._v(
-                                    "\n            " +
-                                      _vm._s(
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "d-flex align-items-center"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n              " +
+                                          _vm._s(
+                                            _vm.partOfSpeech[partOfSpeechTime][
+                                              partOfSpeechVoice
+                                            ][partOfSpeechCase]["МН"]["НОРМ"][
+                                              "Слово"
+                                            ].toLowerCase()
+                                          ) +
+                                          "\n              "
+                                      ),
+                                      !_vm.isEmptyWord(
                                         _vm.partOfSpeech[partOfSpeechTime][
                                           partOfSpeechVoice
-                                        ][partOfSpeechCase]["МН"][
-                                          "НОРМ"
+                                        ][partOfSpeechCase]["МН"]["НОРМ"][
+                                          "Слово"
                                         ].toLowerCase()
-                                      ) +
-                                      "\n          "
+                                      )
+                                        ? _c(
+                                            "div",
+                                            {
+                                              staticClass: "d-inline-flex pl-2"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-check form-check-inline"
+                                                },
+                                                [
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.selectedWords,
+                                                        expression:
+                                                          "selectedWords"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-check-input",
+                                                    attrs: { type: "checkbox" },
+                                                    domProps: {
+                                                      value: JSON.stringify(
+                                                        _vm.partOfSpeech[
+                                                          partOfSpeechTime
+                                                        ][partOfSpeechVoice][
+                                                          partOfSpeechCase
+                                                        ]["МН"]["НОРМ"]["Слово"]
+                                                      ),
+                                                      checked: Array.isArray(
+                                                        _vm.selectedWords
+                                                      )
+                                                        ? _vm._i(
+                                                            _vm.selectedWords,
+                                                            JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["МН"]["НОРМ"][
+                                                                "Слово"
+                                                              ]
+                                                            )
+                                                          ) > -1
+                                                        : _vm.selectedWords
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$a =
+                                                            _vm.selectedWords,
+                                                          $$el = $event.target,
+                                                          $$c = $$el.checked
+                                                            ? true
+                                                            : false
+                                                        if (
+                                                          Array.isArray($$a)
+                                                        ) {
+                                                          var $$v = JSON.stringify(
+                                                              _vm.partOfSpeech[
+                                                                partOfSpeechTime
+                                                              ][
+                                                                partOfSpeechVoice
+                                                              ][
+                                                                partOfSpeechCase
+                                                              ]["МН"]["НОРМ"][
+                                                                "Слово"
+                                                              ]
+                                                            ),
+                                                            $$i = _vm._i(
+                                                              $$a,
+                                                              $$v
+                                                            )
+                                                          if ($$el.checked) {
+                                                            $$i < 0 &&
+                                                              (_vm.selectedWords = $$a.concat(
+                                                                [$$v]
+                                                              ))
+                                                          } else {
+                                                            $$i > -1 &&
+                                                              (_vm.selectedWords = $$a
+                                                                .slice(0, $$i)
+                                                                .concat(
+                                                                  $$a.slice(
+                                                                    $$i + 1
+                                                                  )
+                                                                ))
+                                                          }
+                                                        } else {
+                                                          _vm.selectedWords = $$c
+                                                        }
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
                                   )
                                 ]
                               )
@@ -40605,14 +43275,85 @@ var render = function() {
                   {
                     class: {
                       equals: _vm.equalsWithWord(
-                        _vm.pastTime["ЕД"]["МР"]["НОРМ"]
+                        _vm.pastTime["ЕД"]["МР"]["НОРМ"]["Слово"]
                       )
                     }
                   },
                   [
-                    _vm._v(
-                      _vm._s(_vm.pastTime["ЕД"]["МР"]["НОРМ"].toLowerCase())
-                    )
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.pastTime["ЕД"]["МР"]["НОРМ"][
+                              "Слово"
+                            ].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.pastTime["ЕД"]["МР"]["НОРМ"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.pastTime["ЕД"]["МР"]["НОРМ"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.pastTime["ЕД"]["МР"]["НОРМ"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.pastTime["ЕД"]["МР"]["НОРМ"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -40621,14 +43362,85 @@ var render = function() {
                   {
                     class: {
                       equals: _vm.equalsWithWord(
-                        _vm.pastTime["ЕД"]["ЖР"]["НОРМ"]
+                        _vm.pastTime["ЕД"]["ЖР"]["НОРМ"]["Слово"]
                       )
                     }
                   },
                   [
-                    _vm._v(
-                      _vm._s(_vm.pastTime["ЕД"]["ЖР"]["НОРМ"].toLowerCase())
-                    )
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.pastTime["ЕД"]["ЖР"]["НОРМ"][
+                              "Слово"
+                            ].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.pastTime["ЕД"]["ЖР"]["НОРМ"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.pastTime["ЕД"]["ЖР"]["НОРМ"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.pastTime["ЕД"]["ЖР"]["НОРМ"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.pastTime["ЕД"]["ЖР"]["НОРМ"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -40637,14 +43449,85 @@ var render = function() {
                   {
                     class: {
                       equals: _vm.equalsWithWord(
-                        _vm.pastTime["ЕД"]["СР"]["НОРМ"]
+                        _vm.pastTime["ЕД"]["СР"]["НОРМ"]["Слово"]
                       )
                     }
                   },
                   [
-                    _vm._v(
-                      _vm._s(_vm.pastTime["ЕД"]["СР"]["НОРМ"].toLowerCase())
-                    )
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.pastTime["ЕД"]["СР"]["НОРМ"][
+                              "Слово"
+                            ].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.pastTime["ЕД"]["СР"]["НОРМ"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.pastTime["ЕД"]["СР"]["НОРМ"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.pastTime["ЕД"]["СР"]["НОРМ"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.pastTime["ЕД"]["СР"]["НОРМ"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -40652,10 +43535,85 @@ var render = function() {
                   "td",
                   {
                     class: {
-                      equals: _vm.equalsWithWord(_vm.pastTime["МН"]["НОРМ"])
+                      equals: _vm.equalsWithWord(
+                        _vm.pastTime["МН"]["НОРМ"]["Слово"]
+                      )
                     }
                   },
-                  [_vm._v(_vm._s(_vm.pastTime["МН"]["НОРМ"].toLowerCase()))]
+                  [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(
+                            _vm.pastTime["МН"]["НОРМ"]["Слово"].toLowerCase()
+                          ) +
+                          "\n            "
+                      ),
+                      !_vm.isEmptyWord(
+                        _vm.pastTime["МН"]["НОРМ"]["Слово"].toLowerCase()
+                      )
+                        ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedWords,
+                                      expression: "selectedWords"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: JSON.stringify(
+                                      _vm.pastTime["МН"]["НОРМ"]
+                                    ),
+                                    checked: Array.isArray(_vm.selectedWords)
+                                      ? _vm._i(
+                                          _vm.selectedWords,
+                                          JSON.stringify(
+                                            _vm.pastTime["МН"]["НОРМ"]
+                                          )
+                                        ) > -1
+                                      : _vm.selectedWords
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selectedWords,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = JSON.stringify(
+                                            _vm.pastTime["МН"]["НОРМ"]
+                                          ),
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selectedWords = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selectedWords = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selectedWords = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ]
                 )
               ])
             ])
@@ -40730,14 +43688,84 @@ var render = function() {
                     "td",
                     {
                       class: {
-                        equals: _vm.equalsWithWord(_vm.presentTime[face]["ЕД"])
+                        equals: _vm.equalsWithWord(
+                          _vm.presentTime[face]["ЕД"]["Слово"]
+                        )
                       }
                     },
                     [
-                      _vm._v(
-                        _vm._s(_vm.presentTime[face]["ЕД"].toLowerCase()) +
-                          "\n        "
-                      )
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(
+                              _vm.presentTime[face]["ЕД"]["Слово"].toLowerCase()
+                            ) +
+                            "\n            "
+                        ),
+                        !_vm.isEmptyWord(
+                          _vm.presentTime[face]["ЕД"]["Слово"].toLowerCase()
+                        )
+                          ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-check form-check-inline" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.selectedWords,
+                                        expression: "selectedWords"
+                                      }
+                                    ],
+                                    staticClass: "form-check-input",
+                                    attrs: { type: "checkbox" },
+                                    domProps: {
+                                      value: JSON.stringify(
+                                        _vm.presentTime[face]["ЕД"]
+                                      ),
+                                      checked: Array.isArray(_vm.selectedWords)
+                                        ? _vm._i(
+                                            _vm.selectedWords,
+                                            JSON.stringify(
+                                              _vm.presentTime[face]["ЕД"]
+                                            )
+                                          ) > -1
+                                        : _vm.selectedWords
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = _vm.selectedWords,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = JSON.stringify(
+                                              _vm.presentTime[face]["ЕД"]
+                                            ),
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              (_vm.selectedWords = $$a.concat([
+                                                $$v
+                                              ]))
+                                          } else {
+                                            $$i > -1 &&
+                                              (_vm.selectedWords = $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1)))
+                                          }
+                                        } else {
+                                          _vm.selectedWords = $$c
+                                        }
+                                      }
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          : _vm._e()
+                      ])
                     ]
                   ),
                   _vm._v(" "),
@@ -40745,14 +43773,84 @@ var render = function() {
                     "td",
                     {
                       class: {
-                        equals: _vm.equalsWithWord(_vm.presentTime[face]["МН"])
+                        equals: _vm.equalsWithWord(
+                          _vm.presentTime[face]["МН"]["Слово"]
+                        )
                       }
                     },
                     [
-                      _vm._v(
-                        _vm._s(_vm.presentTime[face]["МН"].toLowerCase()) +
-                          "\n        "
-                      )
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(
+                              _vm.presentTime[face]["МН"]["Слово"].toLowerCase()
+                            ) +
+                            "\n            "
+                        ),
+                        !_vm.isEmptyWord(
+                          _vm.presentTime[face]["МН"]["Слово"].toLowerCase()
+                        )
+                          ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-check form-check-inline" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.selectedWords,
+                                        expression: "selectedWords"
+                                      }
+                                    ],
+                                    staticClass: "form-check-input",
+                                    attrs: { type: "checkbox" },
+                                    domProps: {
+                                      value: JSON.stringify(
+                                        _vm.presentTime[face]["МН"]
+                                      ),
+                                      checked: Array.isArray(_vm.selectedWords)
+                                        ? _vm._i(
+                                            _vm.selectedWords,
+                                            JSON.stringify(
+                                              _vm.presentTime[face]["МН"]
+                                            )
+                                          ) > -1
+                                        : _vm.selectedWords
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = _vm.selectedWords,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = JSON.stringify(
+                                              _vm.presentTime[face]["МН"]
+                                            ),
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              (_vm.selectedWords = $$a.concat([
+                                                $$v
+                                              ]))
+                                          } else {
+                                            $$i > -1 &&
+                                              (_vm.selectedWords = $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1)))
+                                          }
+                                        } else {
+                                          _vm.selectedWords = $$c
+                                        }
+                                      }
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          : _vm._e()
+                      ])
                     ]
                   )
                 ])
@@ -40809,17 +43907,75 @@ var render = function() {
       _vm._v(" "),
       _vm._l(Object.keys(_vm.partOfSpeech), function(baseWord) {
         return _c("div", [
-          _c("div", { staticClass: "py-3" }, [
+          _c("div", { staticClass: "py-3 d-flex align-items-center" }, [
             _c("b", [_vm._v("Базовая форма")]),
             _vm._v(": "),
-            _c("span", { staticClass: "equals" }, [_vm._v(_vm._s(baseWord))]),
+            _c("span", { staticClass: "equals mx-2" }, [
+              _vm._v(_vm._s(_vm.partOfSpeech[baseWord]["Слово"]))
+            ]),
             _vm._v(
-              " - " +
+              " -\n      " +
+                _vm._s(
+                  _vm.descriptorToPartOfSpeech(
+                    _vm.partOfSpeech[baseWord]["Часть речи"]
+                  )
+                ) +
+                " " +
                 _vm._s(
                   _vm.listOfGrammems(_vm.partOfSpeech[baseWord]["Граммемы"])
                 ) +
-                ", неизменяемое слово.\n    "
-            )
+                ", неизменяемое слово.\n      "
+            ),
+            !_vm.isEmptyWord(baseWord.toLowerCase())
+              ? _c("div", { staticClass: "d-inline-flex pl-2" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selectedWords,
+                          expression: "selectedWords"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "checkbox" },
+                      domProps: {
+                        value: JSON.stringify(_vm.partOfSpeech[baseWord]),
+                        checked: Array.isArray(_vm.selectedWords)
+                          ? _vm._i(
+                              _vm.selectedWords,
+                              JSON.stringify(_vm.partOfSpeech[baseWord])
+                            ) > -1
+                          : _vm.selectedWords
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.selectedWords,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = JSON.stringify(
+                                _vm.partOfSpeech[baseWord]
+                              ),
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 && (_vm.selectedWords = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.selectedWords = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.selectedWords = $$c
+                          }
+                        }
+                      }
+                    })
+                  ])
+                ])
+              : _vm._e()
           ])
         ])
       })
@@ -40871,17 +44027,32 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("PresentTimeTableComponent", {
-              attrs: { word: _vm.word, "present-time": _vm.presentTime(verb) }
+              attrs: { word: _vm.word, "present-time": _vm.presentTime(verb) },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.presentTime = $event
+                }
+              }
             }),
             _vm._v(" "),
             _c("PastTimeTableComponent", {
-              attrs: { word: _vm.word, "past-time": _vm.pastTime(verb) }
+              attrs: { word: _vm.word, "past-time": _vm.pastTime(verb) },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.pastTime = $event
+                }
+              }
             }),
             _vm._v(" "),
             _c("ImperativeMoodTableComponent", {
               attrs: {
                 word: _vm.word,
                 "imperative-mood": _vm.imperativeMood(verb)
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.imperativeMood = $event
+                }
               }
             }),
             _vm._v(" "),
@@ -40889,11 +44060,21 @@ var render = function() {
               attrs: {
                 word: _vm.word,
                 "adverb-participle": _vm.adverbParticiple(verb)
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.adverbParticiple = $event
+                }
               }
             }),
             _vm._v(" "),
             _c("ParticipleCasesTableComponent", {
-              attrs: { word: _vm.word, "part-of-speech": _vm.participle(verb) }
+              attrs: { word: _vm.word, "part-of-speech": _vm.participle(verb) },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.participle = $event
+                }
+              }
             })
           ],
           1

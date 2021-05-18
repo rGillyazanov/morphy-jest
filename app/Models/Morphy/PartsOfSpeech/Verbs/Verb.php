@@ -44,29 +44,59 @@ class Verb extends BasePartOfSpeech
     private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, array $case)
     {
         $masculineNormal = "-";
+        $masculineNormalGrammems = [];
+        $masculineNormalPartOfSpeech = "-";
+
         $feminineNormal = "-";
+        $feminineNormalGrammems = [];
+        $feminineNormalPartOfSpeech = "-";
+
         $neuterNormal = "-";
+        $neuterNormalGrammems = [];
+        $neuterNormalPartOfSpeech = "-";
+
         $pluralNormal = "-";
+        $pluralNormalGrammems = [];
+        $pluralNormalPartOfSpeech = "-";
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))) > 0) {
             $masculineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getWord();
+            $masculineNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getPartOfSpeech();
+            $masculineNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getGrammems();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))) > 0) {
             $feminineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getWord();
+            $feminineNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getPartOfSpeech();
+            $feminineNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getGrammems();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))) > 0) {
             $neuterNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getWord();
+            $neuterNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getPartOfSpeech();
+            $neuterNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getGrammems();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))) > 0) {
             $pluralNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getWord();
+            $pluralNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getPartOfSpeech();
+            $pluralNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getGrammems();
         }
 
         $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
 
+        $singular->getMasculine()->setNormalGrammems($masculineNormalGrammems);
+        $singular->getMasculine()->setNormalPartOfSpeech($masculineNormalPartOfSpeech);
+
+        $singular->getFeminine()->setNormalGrammems($feminineNormalGrammems);
+        $singular->getFeminine()->setNormalPartOfSpeech($feminineNormalPartOfSpeech);
+
+        $singular->getNeuter()->setNormalGrammems($neuterNormalGrammems);
+        $singular->getNeuter()->setNormalPartOfSpeech($neuterNormalPartOfSpeech);
+
         $plural = new Plural($pluralNormal);
+        $plural->getKind()->setNormalGrammems($pluralNormalGrammems);
+        $plural->getKind()->setNormalPartOfSpeech($pluralNormalPartOfSpeech);
 
         if ($masculineNormal === '-' && $feminineNormal === '-' && $neuterNormal === '-' && $pluralNormal === '-') {
           return false;
@@ -97,22 +127,91 @@ class Verb extends BasePartOfSpeech
             ]
         ];
 
+        $pluralSingular1 = new PluralSingular(
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'ЕД', 'НСТ']),
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'МН', 'НСТ']),
+        );
+
+        $singularPartOfSpeech1 = '-';
+        $singularGrammems1 = [];
+
+        $pluralPartOfSpeech1 = '-';
+        $pluralGrammems1 = [];
+
+        if (count($paradigm->getWordFormsByGrammems(['1Л', 'ЕД', 'НСТ'])) > 0) {
+            $singularPartOfSpeech1 = $paradigm->getWordFormsByGrammems(['1Л', 'ЕД', 'НСТ'])[0]->getPartOfSpeech();
+            $singularGrammems1 = $paradigm->getWordFormsByGrammems(['1Л', 'ЕД', 'НСТ'])[0]->getGrammems();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(['1Л', 'МН', 'НСТ'])) > 0) {
+            $pluralPartOfSpeech1 = $paradigm->getWordFormsByGrammems(['1Л', 'МН', 'НСТ'])[0]->getPartOfSpeech();
+            $pluralGrammems1 = $paradigm->getWordFormsByGrammems(['1Л', 'МН', 'НСТ'])[0]->getGrammems();
+        }
+
+        $pluralSingular1->setSingularGrammems($singularGrammems1);
+        $pluralSingular1->setPluralGrammems($pluralGrammems1);
+        $pluralSingular1->setSingularPartOfSpeech($singularPartOfSpeech1);
+        $pluralSingular1->setPluralPartOfSpeech($pluralPartOfSpeech1);
+
+        $pluralSingular2 = new PluralSingular(
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'ЕД', 'НСТ']),
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'МН', 'НСТ']),
+        );
+
+        $singularPartOfSpeech2 = '-';
+        $singularGrammems2 = [];
+
+        $pluralPartOfSpeech2 = '-';
+        $pluralGrammems2 = [];
+
+        if (count($paradigm->getWordFormsByGrammems(['2Л', 'ЕД', 'НСТ'])) > 0) {
+            $singularPartOfSpeech2 = $paradigm->getWordFormsByGrammems(['2Л', 'ЕД', 'НСТ'])[0]->getPartOfSpeech();
+            $singularGrammems2 = $paradigm->getWordFormsByGrammems(['2Л', 'ЕД', 'НСТ'])[0]->getGrammems();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(['2Л', 'МН', 'НСТ'])) > 0) {
+            $pluralPartOfSpeech2 = $paradigm->getWordFormsByGrammems(['2Л', 'МН', 'НСТ'])[0]->getPartOfSpeech();
+            $pluralGrammems2 = $paradigm->getWordFormsByGrammems(['2Л', 'МН', 'НСТ'])[0]->getGrammems();
+        }
+
+        $pluralSingular2->setSingularGrammems($singularGrammems2);
+        $pluralSingular2->setPluralGrammems($pluralGrammems2);
+        $pluralSingular2->setSingularPartOfSpeech($singularPartOfSpeech2);
+        $pluralSingular2->setPluralPartOfSpeech($pluralPartOfSpeech2);
+
+        $pluralSingular3 = new PluralSingular(
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'ЕД', 'НСТ']),
+            $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'МН', 'НСТ']),
+        );
+
+        $singularPartOfSpeech3 = '-';
+        $singularGrammems3 = [];
+
+        $pluralPartOfSpeech3 = '-';
+        $pluralGrammems3 = [];
+
+        if (count($paradigm->getWordFormsByGrammems(['3Л', 'ЕД', 'НСТ'])) > 0) {
+            $singularPartOfSpeech3 = $paradigm->getWordFormsByGrammems(['3Л', 'ЕД', 'НСТ'])[0]->getPartOfSpeech();
+            $singularGrammems3 = $paradigm->getWordFormsByGrammems(['3Л', 'ЕД', 'НСТ'])[0]->getGrammems();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(['3Л', 'МН', 'НСТ'])) > 0) {
+            $pluralPartOfSpeech3 = $paradigm->getWordFormsByGrammems(['3Л', 'МН', 'НСТ'])[0]->getPartOfSpeech();
+            $pluralGrammems3 = $paradigm->getWordFormsByGrammems(['3Л', 'МН', 'НСТ'])[0]->getGrammems();
+        }
+
+        $pluralSingular3->setSingularGrammems($singularGrammems3);
+        $pluralSingular3->setPluralGrammems($pluralGrammems3);
+        $pluralSingular3->setSingularPartOfSpeech($singularPartOfSpeech3);
+        $pluralSingular3->setPluralPartOfSpeech($pluralPartOfSpeech3);
+
         foreach ($faces as $face) {
             foreach ($face as $word) {
                 if ($word !== '-') {
                     return [
-                        1 => new PluralSingular(
-                            $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'ЕД', 'НСТ']),
-                            $this->helpMorphyService->getWordByGrammars($paradigm, ['1Л', 'МН', 'НСТ']),
-                        ),
-                        2 => new PluralSingular(
-                            $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'ЕД', 'НСТ']),
-                            $this->helpMorphyService->getWordByGrammars($paradigm, ['2Л', 'МН', 'НСТ'])
-                        ),
-                        3 => new PluralSingular(
-                            $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'ЕД', 'НСТ']),
-                            $this->helpMorphyService->getWordByGrammars($paradigm, ['3Л', 'МН', 'НСТ'])
-                        )
+                        1 => $pluralSingular1,
+                        2 => $pluralSingular2,
+                        3 => $pluralSingular3
                     ];
                 }
             }
@@ -131,11 +230,54 @@ class Verb extends BasePartOfSpeech
         $plural = new Plural(
             $this->helpMorphyService->getWordByGrammars($paradigm, ['ПРШ', 'МН'])
         );
+
+        $pluralNormalPartOfSpeech = '-';
+        $pluralNormalGrammems = [];
+
+        if (count($paradigm->getWordFormsByGrammems(['ПРШ', 'МН'])) > 0) {
+            $pluralNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(['ПРШ', 'МН'])[0]->getPartOfSpeech();
+            $pluralNormalGrammems = $paradigm->getWordFormsByGrammems(['ПРШ', 'МН'])[0]->getGrammems();
+        }
+
+        $plural->getKind()->setNormalGrammems($pluralNormalGrammems);
+        $plural->getKind()->setNormalPartOfSpeech($pluralNormalPartOfSpeech);
+
+        $masculineNormalGrammems = [];
+        $masculineNormalPartOfSpeech = '-';
+        $feminineNormalGrammems = [];
+        $feminineNormalPartOfSpeech = '-';
+        $neuterNormalGrammems = [];
+        $neuterNormalPartOfSpeech = '-';
+
+        if (count($paradigm->getWordFormsByGrammems(['ПРШ', 'МР', 'ЕД'])) > 0) {
+            $masculineNormalGrammems = $paradigm->getWordFormsByGrammems(['ПРШ', 'МР', 'ЕД'])[0]->getGrammems();
+            $masculineNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(['ПРШ', 'МР', 'ЕД'])[0]->getPartOfSpeech();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(['ПРШ', 'ЖР', 'ЕД'])) > 0) {
+            $feminineNormalGrammems = $paradigm->getWordFormsByGrammems(['ПРШ', 'ЖР', 'ЕД'])[0]->getGrammems();
+            $feminineNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(['ПРШ', 'ЖР', 'ЕД'])[0]->getPartOfSpeech();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(['ПРШ', 'СР', 'ЕД'])) > 0) {
+            $neuterNormalGrammems = $paradigm->getWordFormsByGrammems(['ПРШ', 'СР', 'ЕД'])[0]->getGrammems();
+            $neuterNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(['ПРШ', 'СР', 'ЕД'])[0]->getPartOfSpeech();
+        }
+
         $singular = new Singular(
             $this->helpMorphyService->getWordByGrammars($paradigm, ['ПРШ', 'МР', 'ЕД']),
             $this->helpMorphyService->getWordByGrammars($paradigm, ['ПРШ', 'ЖР', 'ЕД']),
             $this->helpMorphyService->getWordByGrammars($paradigm, ['ПРШ', 'СР', 'ЕД']),
         );
+
+        $singular->getMasculine()->setNormalGrammems($masculineNormalGrammems);
+        $singular->getMasculine()->setNormalPartOfSpeech($masculineNormalPartOfSpeech);
+
+        $singular->getFeminine()->setNormalGrammems($feminineNormalGrammems);
+        $singular->getFeminine()->setNormalPartOfSpeech($feminineNormalPartOfSpeech);
+
+        $singular->getNeuter()->setNormalGrammems($neuterNormalGrammems);
+        $singular->getNeuter()->setNormalPartOfSpeech($neuterNormalPartOfSpeech);
 
         return new CaseWord($singular, $plural);
     }
@@ -147,10 +289,34 @@ class Verb extends BasePartOfSpeech
      */
     private function setImperativeMood(phpMorphy_Paradigm_ParadigmInterface $paradigm): PluralSingular
     {
-        return new PluralSingular(
+        $imperativeMood = new PluralSingular(
             $this->helpMorphyService->getWordByGrammars($paradigm, ['ПВЛ', 'ЕД']),
             $this->helpMorphyService->getWordByGrammars($paradigm, ['ПВЛ', 'МН', '2Л'])
         );
+
+        $singularGrammems = [];
+        $singularPartOfSpeech = '-';
+
+        $pluralGrammems = [];
+        $pluralPartOfSpeech = '-';
+
+        if (count($paradigm->getWordFormsByGrammems(['ПВЛ', 'ЕД'])) > 0) {
+            $singularGrammems = $paradigm->getWordFormsByGrammems(['ПВЛ', 'ЕД'])[0]->getGrammems();
+            $singularPartOfSpeech = $paradigm->getWordFormsByGrammems(['ПВЛ', 'ЕД'])[0]->getPartOfSpeech();
+        }
+
+        if (count($paradigm->getWordFormsByGrammems(['ПВЛ', 'МН', '2Л'])) > 0) {
+            $pluralGrammems = $paradigm->getWordFormsByGrammems(['ПВЛ', 'МН', '2Л'])[0]->getGrammems();
+            $pluralPartOfSpeech = $paradigm->getWordFormsByGrammems(['ПВЛ', 'МН', '2Л'])[0]->getPartOfSpeech();
+        }
+
+        $imperativeMood->setSingularGrammems($singularGrammems);
+        $imperativeMood->setSingularPartOfSpeech($singularPartOfSpeech);
+
+        $imperativeMood->setPluralGrammems($pluralGrammems);
+        $imperativeMood->setPluralPartOfSpeech($pluralPartOfSpeech);
+
+        return $imperativeMood;
     }
 
     /**
@@ -176,7 +342,19 @@ class Verb extends BasePartOfSpeech
 
         $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
 
+        $singular->getMasculine()->setNormalGrammems((array)$this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'МР']), 'grammems'));
+        $singular->getMasculine()->setNormalPartOfSpeech($this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'МР']), 'partOfSpeech'));
+
+        $singular->getFeminine()->setNormalGrammems((array)$this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'ЖР']), 'grammems'));
+        $singular->getFeminine()->setNormalPartOfSpeech($this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'ЖР']), 'partOfSpeech'));
+
+        $singular->getNeuter()->setNormalGrammems((array)$this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'СР']), 'grammems'));
+        $singular->getNeuter()->setNormalPartOfSpeech($this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['ЕД', 'СР']), 'partOfSpeech'));
+
         $plural = new Plural($pluralNormal);
+
+        $plural->getKind()->setNormalGrammems((array)$this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['МН']),  'grammems'));
+        $plural->getKind()->setNormalPartOfSpeech($this->helpMorphyService->getWordByGrammarsAndPartOfSpeech($this->_paradigms, 'КР_ПРИЧАСТИЕ', array_merge($grammems, ['МН']), 'partOfSpeech'));
 
         $caseWord = new CaseWord($singular, $plural);
 
@@ -213,16 +391,44 @@ class Verb extends BasePartOfSpeech
                 ],
                 'Повелительное наклонение' => $this->setImperativeMood($paradigm),
                 'Деепричастие' => [
-                    'Настоящее' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                        $this->_paradigms,
-                        'ДЕЕПРИЧАСТИЕ',
-                        ['НСТ']
-                    ),
-                    'Прошедшее' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                        $this->_paradigms,
-                        'ДЕЕПРИЧАСТИЕ',
-                        ['ПРШ']
-                    )
+                    'Настоящее' => [
+                        'Слово' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                            $this->_paradigms,
+                            'ДЕЕПРИЧАСТИЕ',
+                            ['НСТ']
+                        ),
+                        'Граммемы' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                            $this->_paradigms,
+                            'ДЕЕПРИЧАСТИЕ',
+                            ['НСТ'],
+                            'grammems'
+                        ),
+                        'Часть речи' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                            $this->_paradigms,
+                            'ДЕЕПРИЧАСТИЕ',
+                            ['НСТ'],
+                            'partOfSpeech'
+                        )
+                    ],
+                    'Прошедшее' => [
+                        'Слово' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                            $this->_paradigms,
+                            'ДЕЕПРИЧАСТИЕ',
+                            ['ПРШ']
+                        ),
+                        'Граммемы' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                            $this->_paradigms,
+                            'ДЕЕПРИЧАСТИЕ',
+                            ['ПРШ'],
+                            'grammems'
+                        ),
+                        'Часть речи' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+                            $this->_paradigms,
+                            'ДЕЕПРИЧАСТИЕ',
+                            ['ПРШ'],
+                            'partOfSpeech'
+                        ),
+                    ]
                 ],
                 'Причастие' => [
                     'Настоящее время' => [

@@ -38,34 +38,61 @@ class Ordinal extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
      */
     private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, array $case)
     {
-        $masculineNormal = "-";
-        $feminineNormal = "-";
-        $neuterNormal = "-";
         $pluralNormal = "-";
+        $pluralNormalGrammems = [];
+        $pluralNormalPartOfSpeech = "-";
+
+        $masculineNormal = "-";
+        $masculineNormalGrammems = [];
+        $masculineNormalPartOfSpeech = "-";
+
+        $feminineNormal = "-";
+        $feminineNormalGrammems = [];
+        $feminineNormalPartOfSpeech = "-";
+
+        $neuterNormal = "-";
+        $neuterNormalGrammems = [];
+        $neuterNormalPartOfSpeech = "-";
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))) > 0) {
             $masculineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getWord();
+            $masculineNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getPartOfSpeech();
+            $masculineNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'МР']))[0]->getGrammems();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))) > 0) {
             $feminineNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getWord();
+            $feminineNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getPartOfSpeech();
+            $feminineNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'ЖР']))[0]->getGrammems();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))) > 0) {
             $neuterNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getWord();
+            $neuterNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getPartOfSpeech();
+            $neuterNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['ЕД', 'СР']))[0]->getGrammems();
         }
 
         if (count($paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))) > 0) {
             $pluralNormal = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getWord();
+            $pluralNormalPartOfSpeech = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getPartOfSpeech();
+            $pluralNormalGrammems = $paradigm->getWordFormsByGrammems(array_merge($case, ['МН']))[0]->getGrammems();
         }
 
         $singular = new Singular($masculineNormal, $feminineNormal, $neuterNormal);
 
-        $singular->getMasculine();
-        $singular->getFeminine();
-        $singular->getNeuter();
+        $singular->getMasculine()->setNormalGrammems($masculineNormalGrammems);
+        $singular->getMasculine()->setNormalPartOfSpeech($masculineNormalPartOfSpeech);
+
+        $singular->getFeminine()->setNormalGrammems($feminineNormalGrammems);
+        $singular->getFeminine()->setNormalPartOfSpeech($feminineNormalPartOfSpeech);
+
+        $singular->getNeuter()->setNormalGrammems($neuterNormalGrammems);
+        $singular->getNeuter()->setNormalPartOfSpeech($neuterNormalPartOfSpeech);
 
         $plural = new Plural($pluralNormal);
+
+        $plural->getKind()->setNormalGrammems($pluralNormalGrammems);
+        $plural->getKind()->setNormalPartOfSpeech($pluralNormalPartOfSpeech);
 
         return new CaseWord($singular, $plural);
     }

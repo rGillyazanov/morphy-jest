@@ -27,18 +27,23 @@ class Predicative extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 
     private function setPredicative(): void {
         foreach ($this->_paradigms->getByPartOfSpeech("ПРЕДК") as $paradigm) {
-            $this->_predicative[$paradigm->getBaseForm()] = [
-                $paradigm->getBaseForm()
-            ];
-
             $this->_predicative[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            $partOfSpeech = '';
 
             foreach ($paradigm as $form) {
                 if ($paradigm->getBaseForm() === $form->getWord()) {
+                    $partOfSpeech = $form->getPartOfSpeech();
                     array_unshift($this->_predicative[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
                     break;
                 }
             }
+
+            $this->_predicative[$paradigm->getBaseForm()] = [
+                'Слово' => $paradigm->getBaseForm(),
+                'Граммемы' => $paradigm[0]->getGrammems(),
+                'Часть речи' => $partOfSpeech
+            ];
         }
     }
 }

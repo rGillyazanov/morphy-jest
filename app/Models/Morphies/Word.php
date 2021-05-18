@@ -5,11 +5,13 @@ namespace App\Models\Morphies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PartOfSpeech extends Model
+class Word extends Model
 {
     use HasFactory;
 
-    protected $table = 'morphy_parts_of_speech';
+    protected $table = 'words';
 
-    protected $fillable = ['descriptor', 'description'];
+    public $timestamps = false;
+
+    protected $fillable = ['word'];
 }

@@ -21,7 +21,17 @@
           </part-of-speech-table>
         </div>
       </div>
-      <div v-else>Loading...</div>
+      <div v-else>
+        <div class="row">
+          <div class="col-12 mt-4">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

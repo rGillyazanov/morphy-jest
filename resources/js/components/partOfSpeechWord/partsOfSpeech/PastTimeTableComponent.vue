@@ -16,10 +16,64 @@
         </thead>
         <tbody>
         <tr>
-          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['МР']['НОРМ']) }">{{ pastTime['ЕД']['МР']['НОРМ'].toLowerCase() }}</td>
-          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['ЖР']['НОРМ']) }">{{ pastTime['ЕД']['ЖР']['НОРМ'].toLowerCase() }}</td>
-          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['СР']['НОРМ']) }">{{ pastTime['ЕД']['СР']['НОРМ'].toLowerCase() }}</td>
-          <td :class="{ equals: equalsWithWord(pastTime['МН']['НОРМ']) }">{{ pastTime['МН']['НОРМ'].toLowerCase() }}</td>
+          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['МР']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ pastTime['ЕД']['МР']['НОРМ']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(pastTime['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(pastTime['ЕД']['МР']['НОРМ'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
+          </td>
+          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['ЖР']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ pastTime['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(pastTime['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(pastTime['ЕД']['ЖР']['НОРМ'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
+          </td>
+          <td :class="{ equals: equalsWithWord(pastTime['ЕД']['СР']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{ pastTime['ЕД']['СР']['НОРМ']['Слово'].toLowerCase() }}
+              <div v-if="!isEmptyWord(pastTime['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(pastTime['ЕД']['СР']['НОРМ'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
+          </td>
+          <td :class="{ equals: equalsWithWord(pastTime['МН']['НОРМ']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{
+                pastTime['МН']['НОРМ']['Слово'].toLowerCase()
+              }}
+              <div v-if="!isEmptyWord(pastTime['МН']['НОРМ']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(pastTime['МН']['НОРМ'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -28,7 +82,8 @@
 </template>
 
 <script>
-import {GrammemsService} from "../../../mixins/grammems";
+import {GrammemsMixin} from "../../../mixins/grammems";
+import {SelectedWordsMixin} from "../../../mixins/selectedWords";
 
 export default {
   name: "PastTimeTableComponent",
@@ -42,7 +97,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsService]
+  mixins: [GrammemsMixin, SelectedWordsMixin]
 }
 </script>
 

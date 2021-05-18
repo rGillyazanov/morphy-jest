@@ -1,7 +1,6 @@
 <?php
 namespace App\Models\Morphy\PartsOfSpeech\Nouns;
 
-use App\Models\Morphy\MorphyAnalyzer;
 use phpMorphy_Paradigm_ParadigmInterface;
 use App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech;
 use App\Models\Morphy\PartsOfSpeech\GeneralModels\PluralSingular;
@@ -38,20 +37,36 @@ class Noun extends BasePartOfSpeech
     private function setCase(phpMorphy_Paradigm_ParadigmInterface $paradigm, string $case)
     {
         $singular = "-";
+        $singularGrammems = [];
+        $singularPartOfSpeech = "-";
+
         $plural = "-";
+        $pluralGrammems = [];
+        $pluralPartOfSpeech = "-";
 
         if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД'])) > 0) {
             $singular = $paradigm->getWordFormsByGrammems([$case, 'ЕД'])[0]->getWord();
+            $singularPartOfSpeech = $paradigm->getWordFormsByGrammems([$case, 'ЕД'])[0]->getPartOfSpeech();
+            $singularGrammems = $paradigm->getWordFormsByGrammems([$case, 'ЕД'])[0]->getGrammems();
         }
 
         if (count($paradigm->getWordFormsByGrammems([$case, 'МН'])) > 0) {
             $plural = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getWord();
+            $pluralPartOfSpeech = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getPartOfSpeech();
+            $pluralGrammems = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getGrammems();
         }
 
-        return new PluralSingular(
+        $pluralSingular = new PluralSingular(
             $singular,
             $plural
         );
+
+        $pluralSingular->setSingularGrammems($singularGrammems);
+        $pluralSingular->setPluralGrammems($pluralGrammems);
+        $pluralSingular->setSingularPartOfSpeech($singularPartOfSpeech);
+        $pluralSingular->setPluralPartOfSpeech($pluralPartOfSpeech);
+
+        return $pluralSingular;
     }
 
     private function setNouns(): void {

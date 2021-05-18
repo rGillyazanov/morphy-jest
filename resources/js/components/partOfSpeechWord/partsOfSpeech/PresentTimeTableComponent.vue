@@ -13,13 +13,37 @@
         <tbody>
         <tr v-for="face in Object.keys(presentTime)">
           <th scope="row">{{ face }}</th>
-          <td :class="{ equals: equalsWithWord(presentTime[face]['ЕД']) }">{{
-              presentTime[face]['ЕД'].toLowerCase()
-            }}
+          <td :class="{ equals: equalsWithWord(presentTime[face]['ЕД']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{
+                presentTime[face]['ЕД']['Слово'].toLowerCase()
+              }}
+              <div v-if="!isEmptyWord(presentTime[face]['ЕД']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(presentTime[face]['ЕД'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
           </td>
-          <td :class="{ equals: equalsWithWord(presentTime[face]['МН']) }">{{
-              presentTime[face]['МН'].toLowerCase()
-            }}
+          <td :class="{ equals: equalsWithWord(presentTime[face]['МН']['Слово']) }">
+            <div class="d-flex align-items-center">
+              {{
+                presentTime[face]['МН']['Слово'].toLowerCase()
+              }}
+              <div v-if="!isEmptyWord(presentTime[face]['МН']['Слово'].toLowerCase())"
+                   class="d-inline-flex pl-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         :value="JSON.stringify(presentTime[face]['МН'])"
+                         v-model="selectedWords">
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         </tbody>
@@ -29,7 +53,8 @@
 </template>
 
 <script>
-import {GrammemsService} from "../../../mixins/grammems";
+import {GrammemsMixin} from "../../../mixins/grammems";
+import {SelectedWordsMixin} from "../../../mixins/selectedWords";
 
 export default {
   name: "PresentTimeTableComponent",
@@ -43,7 +68,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsService]
+  mixins: [GrammemsMixin, SelectedWordsMixin]
 }
 </script>
 

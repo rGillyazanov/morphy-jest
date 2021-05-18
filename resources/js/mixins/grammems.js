@@ -71,7 +71,7 @@ export const globalGrammems = {
   'проф':	'профессионализм'
 }
 
-export const GrammemsService = {
+export const GrammemsMixin = {
   methods: {
     /**
      * Сравнивает введенное слово со словом в части речи.
@@ -94,6 +94,22 @@ export const GrammemsService = {
       }
 
       return grammemsDescription.join(', ');
+    },
+    /**
+     * Возвращает часть речи по дескриптору
+     * @param descriptor
+     * @returns {*}
+     */
+    descriptorToPartOfSpeech(descriptor) {
+      return globalGrammems[descriptor.toLowerCase()];
+    },
+    /**
+     * Проверяет есть ли слово для граммемы.
+     * @param word
+     * @returns {boolean}
+     */
+    isEmptyWord(word) {
+      return word === '-';
     }
   }
 }

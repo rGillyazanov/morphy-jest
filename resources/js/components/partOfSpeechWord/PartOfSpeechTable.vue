@@ -2,100 +2,117 @@
   <div>
     <!--Существительные-->
     <BaseCasesTableComponent
-      v-if="nouns"
+      v-if="partsOfSpeech.nouns"
       :word="word"
-      :part-of-speech="nouns">
+      @selected-words="selectedWords.nouns = $event"
+      :part-of-speech="partsOfSpeech.nouns">
     </BaseCasesTableComponent>
     <!--Прилагательные-->
     <AdjectiveCasesTableComponent
-      v-if="adjectives"
+      v-if="partsOfSpeech.adjectives"
       :word="word"
-      :adjectives="adjectives">
+      @selected-words="selectedWords.adjectives = $event"
+      :adjectives="partsOfSpeech.adjectives">
     </AdjectiveCasesTableComponent>
     <!--Глаголы-->
     <VerbWordComponent
-      v-if="verbs"
+      v-if="partsOfSpeech.verbs"
       :word="word"
-      :verbs="verbs">
+      @selected-words="selectedWords.verbs = $event"
+      :verbs="partsOfSpeech.verbs">
     </VerbWordComponent>
     <!--Числительные-->
     <BaseCasesTableComponent
-      v-if="numerals"
+      v-if="partsOfSpeech.numerals"
       :word="word"
-      :part-of-speech="numerals">
+      @selected-words="selectedWords.numerals = $event"
+      :part-of-speech="partsOfSpeech.numerals">
     </BaseCasesTableComponent>
     <!--Порядковое числительное-->
     <BaseCasesFacesTableComponent
-      v-if="ordinals"
+      v-if="partsOfSpeech.ordinals"
       :word="word"
-      :part-of-speech="ordinals">
+      @selected-words="selectedWords.ordinals = $event"
+      :part-of-speech="partsOfSpeech.ordinals">
     </BaseCasesFacesTableComponent>
     <!--Местоимение-существительное-->
     <BaseCasesTableComponent
-      v-if="pronouns"
+      v-if="partsOfSpeech.pronouns"
       :word="word"
-      :part-of-speech="pronouns">
+      @selected-words="selectedWords.pronouns = $event"
+      :part-of-speech="partsOfSpeech.pronouns">
     </BaseCasesTableComponent>
     <!--Местоимение-предикатив-->
     <BaseCasesTableComponent
-      v-if="pronounsPredicative"
+      v-if="partsOfSpeech.pronounsPredicative"
       :word="word"
-      :part-of-speech="pronounsPredicative">
+      @selected-words="selectedWords.pronounsPredicative = $event"
+      :part-of-speech="partsOfSpeech.pronounsPredicative">
     </BaseCasesTableComponent>
     <!--Местоименное прилагательное-->
     <BaseCasesFacesTableComponent
-      v-if="pronominalAdjective"
+      v-if="partsOfSpeech.pronominalAdjective"
       :word="word"
-      :part-of-speech="pronominalAdjective">
+      @selected-words="selectedWords.pronominalAdjective = $event"
+      :part-of-speech="partsOfSpeech.pronominalAdjective">
     </BaseCasesFacesTableComponent>
     <!--Наречие-->
     <UnchangeableWordComponent
-      v-if="adverbs"
+      v-if="partsOfSpeech.adverbs"
       :word="word"
-      :part-of-speech="adverbs">
+      @selected-words="selectedWords.adverbs = $event"
+      :part-of-speech="partsOfSpeech.adverbs">
     </UnchangeableWordComponent>
     <!--Предикатив-->
     <UnchangeableWordComponent
-      v-if="predicative"
+      v-if="partsOfSpeech.predicative"
       :word="word"
-      :part-of-speech="predicative">
+      @selected-words="selectedWords.predicative = $event"
+      :part-of-speech="partsOfSpeech.predicative">
     </UnchangeableWordComponent>
     <!--Предлог-->
     <UnchangeableWordComponent
-      v-if="pretext"
+      v-if="partsOfSpeech.pretext"
       :word="word"
-      :part-of-speech="pretext">
+      @selected-words="selectedWords.pretext = $event"
+      :part-of-speech="partsOfSpeech.pretext">
     </UnchangeableWordComponent>
     <!--Союз-->
     <UnchangeableWordComponent
-      v-if="conjunction"
+      v-if="partsOfSpeech.conjunction"
       :word="word"
-      :part-of-speech="conjunction">
+      @selected-words="selectedWords.conjunction = $event"
+      :part-of-speech="partsOfSpeech.conjunction">
     </UnchangeableWordComponent>
     <!--Междометие-->
     <UnchangeableWordComponent
-      v-if="interjection"
+      v-if="partsOfSpeech.interjection"
       :word="word"
-      :part-of-speech="interjection">
+      @selected-words="selectedWords.interjection = $event"
+      :part-of-speech="partsOfSpeech.interjection">
     </UnchangeableWordComponent>
     <!--Частица-->
     <UnchangeableWordComponent
-      v-if="particle"
+      v-if="partsOfSpeech.particle"
       :word="word"
-      :part-of-speech="particle">
+      @selected-words="selectedWords.particle = $event"
+      :part-of-speech="partsOfSpeech.particle">
     </UnchangeableWordComponent>
     <!--Вводное слово-->
     <UnchangeableWordComponent
-      v-if="parenthesis"
+      v-if="partsOfSpeech.parenthesis"
       :word="word"
-      :part-of-speech="parenthesis">
+      @selected-words="selectedWords.parenthesis = $event"
+      :part-of-speech="partsOfSpeech.parenthesis">
     </UnchangeableWordComponent>
     <!--Фразеологизм-->
     <UnchangeableWordComponent
-      v-if="phrase"
+      v-if="partsOfSpeech.phrase"
       :word="word"
-      :part-of-speech="phrase">
+      @selected-words="selectedWords.phrase = $event"
+      :part-of-speech="partsOfSpeech.phrase">
     </UnchangeableWordComponent>
+    <button type="button" @click="show">Words</button>
   </div>
 </template>
 
@@ -106,6 +123,8 @@ import FacesCasesTableComponent from "./partsOfSpeech/ParticipleCasesTableCompon
 import BaseCasesFacesTableComponent from "./partsOfSpeech/BaseCasesFacesTableComponent";
 import UnchangeableWordComponent from "./partsOfSpeech/UnchangeableWordComponent";
 import AdjectiveCasesTableComponent from "./partsOfSpeech/AdjectiveCasesTableComponent";
+
+import {uniqueWords} from "../../mixins/selectedWords";
 
 export default {
   name: "PartOfSpeechTable",
@@ -129,29 +148,65 @@ export default {
   },
   data() {
     return {
-      nouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Существительные'] ? this.partsOfSpeechWord['Существительные'] : null,
-      adjectives: this.partsOfSpeechWord && this.partsOfSpeechWord['Прилагательные'] ? this.partsOfSpeechWord['Прилагательные'] : null,
-      verbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Глаголы'] ? this.partsOfSpeechWord['Глаголы'] : null,
-      numerals: this.partsOfSpeechWord && this.partsOfSpeechWord['Числительные'] ? this.partsOfSpeechWord['Числительные'] : null,
-      ordinals: this.partsOfSpeechWord && this.partsOfSpeechWord['Порядковые числительные'] ? this.partsOfSpeechWord['Порядковые числительные'] : null,
-      pronouns: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоимение-существительное'] ? this.partsOfSpeechWord['Местоимение-существительное'] : null,
-      pronounsPredicative: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоимение-предикатив'] ? this.partsOfSpeechWord['Местоимение-предикатив'] : null,
-      pronominalAdjective: this.partsOfSpeechWord && this.partsOfSpeechWord['Местоименное прилагательное'] ? this.partsOfSpeechWord['Местоименное прилагательное'] : null,
-      adverbs: this.partsOfSpeechWord && this.partsOfSpeechWord['Наречие'] ? this.partsOfSpeechWord['Наречие'] : null,
-      predicative: this.partsOfSpeechWord && this.partsOfSpeechWord['Предикатив'] ? this.partsOfSpeechWord['Предикатив'] : null,
-      pretext: this.partsOfSpeechWord && this.partsOfSpeechWord['Предлог'] ? this.partsOfSpeechWord['Предлог'] : null,
-      conjunction: this.partsOfSpeechWord && this.partsOfSpeechWord['Союз'] ? this.partsOfSpeechWord['Союз'] : null,
-      interjection: this.partsOfSpeechWord && this.partsOfSpeechWord['Междометие'] ? this.partsOfSpeechWord['Междометие'] : null,
-      particle: this.partsOfSpeechWord && this.partsOfSpeechWord['Частица'] ? this.partsOfSpeechWord['Частица'] : null,
-      parenthesis: this.partsOfSpeechWord && this.partsOfSpeechWord['Вводное слово'] ? this.partsOfSpeechWord['Вводное слово'] : null,
-      phrase: this.partsOfSpeechWord && this.partsOfSpeechWord['Фразеологизм'] ? this.partsOfSpeechWord['Фразеологизм'] : null,
+      partsOfSpeech: {
+        nouns: this.getPartOfSpeechData('Существительные'),
+        adjectives: this.getPartOfSpeechData('Прилагательные'),
+        verbs: this.getPartOfSpeechData('Глаголы'),
+        numerals: this.getPartOfSpeechData('Числительные'),
+        ordinals: this.getPartOfSpeechData('Порядковые числительные'),
+        pronouns: this.getPartOfSpeechData('Местоимение-существительное'),
+        pronounsPredicative: this.getPartOfSpeechData('Местоимение-предикатив'),
+        pronominalAdjective: this.getPartOfSpeechData('Местоименное прилагательное'),
+        adverbs: this.getPartOfSpeechData('Наречие'),
+        predicative: this.getPartOfSpeechData('Предикатив'),
+        pretext: this.getPartOfSpeechData('Предлог'),
+        conjunction: this.getPartOfSpeechData('Союз'),
+        interjection: this.getPartOfSpeechData('Междометие'),
+        particle: this.getPartOfSpeechData('Частица'),
+        parenthesis: this.getPartOfSpeechData('Вводное слово'),
+        phrase: this.getPartOfSpeechData('Фразеологизм')
+      },
+      selectedWords: {
+        nouns: [],
+        adjectives: [],
+        verbs: [],
+        numerals: [],
+        ordinals: [],
+        pronouns: [],
+        pronounsPredicative: [],
+        pronominalAdjective: [],
+        adverbs: [],
+        predicative: [],
+        pretext: [],
+        conjunction: [],
+        interjection: [],
+        particle: [],
+        parenthesis: [],
+        phrase: [],
+        all: []
+      }
+    }
+  },
+  methods: {
+    getPartOfSpeechData(key) {
+      return this.partsOfSpeechWord && this.partsOfSpeechWord[key] ? this.partsOfSpeechWord[key] : null
+    },
+    show() {
+      this.selectedWords.all = this.uniqueWords();
+      console.log(this.selectedWords.all);
+      axios.post('/api/words', {
+        words: JSON.stringify(this.selectedWords.all)
+      });
+    },
+    uniqueWords() {
+      return uniqueWords.call(this);
     }
   }
 }
 </script>
 
 <style>
-  .equals {
-    color: red;
-  }
+.equals {
+  color: red;
+}
 </style>

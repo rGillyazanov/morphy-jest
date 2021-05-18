@@ -9,7 +9,7 @@ class PartOfSpeechSeeder extends Seeder
 {
     private array $partsOfSpeech = [
         [
-            'descriptor' => 'C',
+            'descriptor' => 'С',
             'description' => 'существительное'
         ],
         [

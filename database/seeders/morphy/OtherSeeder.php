@@ -18,7 +18,7 @@ class OtherSeeder extends Seeder
         ],
         [
             'grammema' => 'пвл',
-            'description' => '	повелительное наклонение (императив)'
+            'description' => 'повелительное наклонение (императив)'
         ],
         [
             'grammema' => 'притяж',

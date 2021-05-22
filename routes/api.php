@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', [\App\Http\Controllers\TestController::class, 'index']);
-Route::get('/testAnal/{word}', [\App\Http\Controllers\TestController::class, 'test']);
-Route::post('/words', [\App\Http\Controllers\TestController::class, 'saveWords']);
+Route::get('/words/{word}', [\App\Http\Controllers\TestController::class, 'show']);
+Route::get('/allWords', [\App\Http\Controllers\TestController::class, 'allWords']);
+Route::get('/jestsOfWord/{wordId}', [\App\Http\Controllers\TestController::class, 'jestsOfWord']);
+Route::get('/allWordsOfJest/{jestId}', [\App\Http\Controllers\TestController::class, 'allWordsOfJest']);
+Route::post('/storeWordFormsInJest', [\App\Http\Controllers\TestController::class, 'storeWordFormsInJest']);

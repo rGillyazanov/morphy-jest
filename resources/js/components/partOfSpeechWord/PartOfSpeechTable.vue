@@ -112,7 +112,7 @@
       @selected-words="selectedWords.phrase = $event"
       :part-of-speech="partsOfSpeech.phrase">
     </UnchangeableWordComponent>
-    <button type="button" @click="show">Words</button>
+    <button class="btn btn-success mt-2" type="button" @click="show">Сохранить</button>
   </div>
 </template>
 
@@ -143,6 +143,10 @@ export default {
     },
     partsOfSpeechWord: {
       type: Object,
+      required: true
+    },
+    jestId: {
+      type: Number,
       required: true
     }
   },
@@ -194,8 +198,11 @@ export default {
     show() {
       this.selectedWords.all = this.uniqueWords();
       console.log(this.selectedWords.all);
-      axios.post('/api/words', {
-        words: JSON.stringify(this.selectedWords.all)
+      console.log(this.jestId);
+
+      axios.post('/api/storeWordFormsInJest', {
+        jest_id: this.jestId,
+        wordForms: JSON.stringify(this.selectedWords.all)
       });
     },
     uniqueWords() {
@@ -205,8 +212,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .equals {
   color: red;
+  font-weight: 600;
+
+  .d-flex::after {
+    content: url('/images/check_small.png');
+    margin-right: 0;
+    margin-left: 10px;
+    position: relative;
+    top: 2px;
+  }
+}
+
+.form-check-inline {
+  margin-right: 0;
 }
 </style>

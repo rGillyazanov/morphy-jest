@@ -9,7 +9,7 @@ class WordGrammems extends Model
 {
     use HasFactory;
 
-    protected $table = 'word_grammems';
+    protected $table = 'morphy_word_grammems';
 
     public $timestamps = false;
 

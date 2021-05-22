@@ -5,13 +5,15 @@ namespace App\Models\Morphies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Word extends Model
+class JestWordForms extends Model
 {
     use HasFactory;
 
-    protected $table = 'words';
+    protected $table = 'morphy_jest_wordforms';
 
     public $timestamps = false;
 
-    protected $fillable = ['word'];
+    protected $fillable = [
+        'jest_id', 'wordform_id'
+    ];
 }

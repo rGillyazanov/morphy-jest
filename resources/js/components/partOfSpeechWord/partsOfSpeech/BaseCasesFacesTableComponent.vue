@@ -25,59 +25,59 @@
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{
-                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()
-              }}
               <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
-                   class="form-check form-check-inline pl-2">
+                   class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ'])"
                        v-model="selectedWords">
               </div>
+              {{
+                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()
+              }}
             </div>
           </td>
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{
-                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()
-              }}
               <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
-                   class="form-check form-check-inline pl-2">
+                   class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ'])"
                        v-model="selectedWords">
               </div>
+              {{
+                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()
+              }}
             </div>
           </td>
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{
-                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()
-              }}
               <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
-                   class="form-check form-check-inline pl-2">
+                   class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ'])"
                        v-model="selectedWords">
               </div>
+              {{
+                partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()
+              }}
             </div>
           </td>
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase())"
-                   class="form-check form-check-inline pl-2">
+                   class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ'])"
                        v-model="selectedWords">
               </div>
+              {{ partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase() }}
             </div>
           </td>
         </tr>

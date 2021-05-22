@@ -13,9 +13,8 @@
         <tr>
           <td :class="{ equals: equalsWithWord(imperativeMood['ЕД']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ imperativeMood['ЕД']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(imperativeMood['ЕД']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -23,13 +22,13 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ imperativeMood['ЕД']['Слово'].toLowerCase() }}
             </div>
           </td>
           <td :class="{ equals: equalsWithWord(imperativeMood['МН']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ imperativeMood['МН']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(imperativeMood['МН']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -37,6 +36,7 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ imperativeMood['МН']['Слово'].toLowerCase() }}
             </div>
           </td>
         </tr>

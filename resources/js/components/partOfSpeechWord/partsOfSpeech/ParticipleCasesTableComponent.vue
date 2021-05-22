@@ -26,12 +26,9 @@
             <td
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{
-                  partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()
-                }}
                 <div
                   v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
-                  class="d-inline-flex pl-2">
+                  class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
@@ -39,17 +36,17 @@
                            v-model="selectedWords">
                   </div>
                 </div>
+                {{
+                  partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()
+                }}
               </div>
             </td>
             <td
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{
-                  partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()
-                }}
                 <div
                   v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
-                  class="d-inline-flex pl-2">
+                  class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
@@ -57,17 +54,17 @@
                            v-model="selectedWords">
                   </div>
                 </div>
+                {{
+                  partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()
+                }}
               </div>
             </td>
             <td
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{
-                  partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()
-                }}
                 <div
                   v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
-                  class="d-inline-flex pl-2">
+                  class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
@@ -75,15 +72,17 @@
                            v-model="selectedWords">
                   </div>
                 </div>
+                {{
+                  partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()
+                }}
               </div>
             </td>
             <td
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase() }}
                 <div
                   v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase())"
-                  class="d-inline-flex pl-2">
+                  class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
@@ -91,6 +90,7 @@
                            v-model="selectedWords">
                   </div>
                 </div>
+                {{ partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase() }}
               </div>
             </td>
           </tr>

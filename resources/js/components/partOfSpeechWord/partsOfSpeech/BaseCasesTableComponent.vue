@@ -2,7 +2,7 @@
   <div>
     <hr>
     <div v-if="partOfSpeech" v-for="wordTemp in Object.keys(partOfSpeech)">
-      <div class="py-3"><b>Базовая форма</b>: {{ wordTemp }} -
+      <div class="py-3"><b>Базовая форма</b>: <span class="equals">{{ wordTemp }}</span> -
         {{ listOfGrammems(partOfSpeech[wordTemp]['Граммемы']) }}
       </div>
       <table class="table table-bordered">
@@ -18,9 +18,8 @@
           <th scope="row">{{ casePart }}</th>
           <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase())"
-                    class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -28,13 +27,13 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase() }}
             </div>
           </td>
           <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово'].toLowerCase())"
-                    class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -42,6 +41,7 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово'].toLowerCase() }}
             </div>
           </td>
         </tr>

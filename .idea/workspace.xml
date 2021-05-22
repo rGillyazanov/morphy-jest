@@ -26,38 +26,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/Word.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_18_164430_change_word_grammems_nullable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/mixins/selectedWords.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/services/heplService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Jest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/JestWord.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Morphies/JestWordForms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Word.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_21_173109_rename_words_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_21_195721_add_active_field_in_word_forms_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_22_144108_create_jest_wordforms_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/morphy/WordFormsSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/check_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/MorphySelectJestsComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/PartOfSpeech.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/PartOfSpeech.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/Word.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordFormsModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Adjectives/Adjective.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Adjectives/Adjective.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Adverbs/Adverb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Adverbs/Adverb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Conjunction/Conjunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Conjunction/Conjunction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Kinds/KindWord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Kinds/KindWord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/PluralSingular.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/PluralSingular.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Interjection/Interjection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Interjection/Interjection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Nouns/Noun.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Nouns/Noun.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Numerals/Numeral.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Numerals/Numeral.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Ordinals/Ordinal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Ordinals/Ordinal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Parenthesis/Parenthesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Parenthesis/Parenthesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Particle/Particle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Particle/Particle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Phrase/Phrase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Phrase/Phrase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Predicatives/Predicative.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Predicatives/Predicative.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pretext/Pretext.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pretext/Pretext.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/PronominalAdjectives/PronominalAdjective.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/PronominalAdjectives/PronominalAdjective.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pronouns/Pronoun.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pronouns/Pronoun.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/morphy/OtherSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/morphy/OtherSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/morphy/PartOfSpeechSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/morphy/PartOfSpeechSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MorphyWordComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/PartOfSpeechTable.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue" afterDir="false" />
@@ -67,9 +56,8 @@
       <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/mixins/grammems.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/mixins/grammems.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,8 +75,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -102,6 +90,11 @@
   <component name="PhpServers">
     <servers>
       <server host="127.0.0.1" id="344c90b2-0b7c-459e-9e23-e9d383c1bf70" name="phpMorphy" port="8000" />
+      <server host="localhost" id="33df1344-fbef-42a6-aee3-5ed519279f65" name="localhost" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/public" remote-root="C:/xampp/phpMyAdmin" />
+        </path_mappings>
+      </server>
     </servers>
   </component>
   <component name="PhpWebServerValidation" path_to_validation_script="C:\Users\Ruslan\PhpstormProjects\morphy-jest\public" selected_validation_type="LOCAL" web_path_to_validation_script="http://127.0.0.1:8000/" />
@@ -237,19 +230,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders/morphy/WordFormsSeeder.php" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\public\images" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\partOfSpeechWord" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\GeneralModels" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\database\seeders\morphy" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\Nouns" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\Adjectives" />
     </key>
   </component>
   <component name="RunManager">
@@ -302,7 +298,14 @@
       <workItem from="1621243194024" duration="145000" />
       <workItem from="1621246816803" duration="23000" />
       <workItem from="1621259233696" duration="13657000" />
-      <workItem from="1621324985069" duration="26282000" />
+      <workItem from="1621324985069" duration="26348000" />
+      <workItem from="1621414351777" duration="15210000" />
+      <workItem from="1621504101800" duration="2874000" />
+      <workItem from="1621523700582" duration="3116000" />
+      <workItem from="1621536039992" duration="4808000" />
+      <workItem from="1621588707639" duration="6504000" />
+      <workItem from="1621603500146" duration="11474000" />
+      <workItem from="1621628618704" duration="44021000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -381,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621072682570</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Добавлено отображение граммем и взаимодейтсвие с базой данных">
+      <created>1621370006930</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1621370006930</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,33 +436,42 @@
     <MESSAGE value="Добавил отображение граммем для введенного слова." />
     <MESSAGE value="Добавил отображение инфинитивов" />
     <MESSAGE value="Добавлено отображение всех частей речи в таблицы." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлено отображение всех частей речи в таблицы." />
+    <MESSAGE value="Добавлено отображение граммем и взаимодейтсвие с базой данных" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлено отображение граммем и взаимодейтсвие с базой данных" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="679" y="129" key="#PHP" timestamp="1615747941945">
+    <state x="679" y="129" width="566" height="877" key="#PHP" timestamp="1621638737618">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="679" y="129" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1615747941945" />
+    <state x="679" y="129" width="566" height="877" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1621638737618" />
     <state x="540" y="194" key="#Servers" timestamp="1615748004136">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="194" key="#Servers/0.0.1920.1040@0.0.1920.1040" timestamp="1615748004136" />
-    <state x="719" y="129" width="1092" height="866" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620746918911">
+    <state x="719" y="129" width="1092" height="904" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621638741555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="719" y="129" width="1092" height="866" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620746918911" />
+    <state x="719" y="129" width="1092" height="904" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621638741555" />
     <state x="764" y="188" key="#com.intellij.ide.util.MemberChooser" timestamp="1620842150807">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="764" y="188" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1620842150807" />
-    <state x="672" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1620735161300">
+    <state x="672" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1621618477109">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="672" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620735161300" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1621281298885">
+    <state x="672" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621618477109" />
+    <state width="943" height="531" key="#com.intellij.structuralsearch.plugin.ui.StructuralReplaceDialog" timestamp="1621588906704">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621281298885" />
+    <state width="943" height="531" key="#com.intellij.structuralsearch.plugin.ui.StructuralReplaceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621588906704" />
+    <state x="488" y="254" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog" timestamp="1621588906704">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="488" y="254" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621588906704" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1621630564673">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621630564673" />
     <state x="675" y="355" width="573" height="533" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1620911560050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -461,70 +480,70 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="852" y="191" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616269892886" />
-    <state x="583" y="124" key="CommitChangelistDialog2" timestamp="1621072681016">
+    <state x="583" y="124" key="CommitChangelistDialog2" timestamp="1621370005730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="583" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1621072681016" />
-    <state width="558" height="618" key="DebuggerActiveHint" timestamp="1621356757000">
+    <state x="583" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1621370005730" />
+    <state width="558" height="618" key="DebuggerActiveHint" timestamp="1621717161349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="558" height="618" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1621356757000" />
-    <state x="740" y="332" key="FileChooserDialogImpl" timestamp="1620677768169">
+    <state width="558" height="618" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1621717161349" />
+    <state x="740" y="332" key="FileChooserDialogImpl" timestamp="1621638633720">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="332" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620677768169" />
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom" timestamp="1621357506100">
+    <state x="740" y="332" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621638633720" />
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.0.center" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.0.left" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.0.right" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.1.bottom" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.1.bottom" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.1.center" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.1.center" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.1.left" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.1.left" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.1.right" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.1.right" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.2.bottom" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.2.bottom" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.2.center" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.2.center" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.2.left" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.2.left" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state width="1877" height="235" key="GridCell.Tab.2.right" timestamp="1621357506100">
+    <state width="1877" height="332" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state width="1877" height="332" key="GridCell.Tab.2.right" timestamp="1621718036897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621357506100" />
-    <state x="900" y="398" key="NewPhpClassDialog" timestamp="1620744142367">
+    <state width="1877" height="332" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621718036897" />
+    <state x="900" y="398" key="NewPhpClassDialog" timestamp="1621616250501">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="900" y="398" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620744142367" />
+    <state x="900" y="398" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621616250501" />
     <state x="794" y="444" key="NewPhpFileDialog" timestamp="1618341542386">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -533,10 +552,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1620912139957" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1621072687616">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1621370015100">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621072687616" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621370015100" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618311452128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -553,9 +572,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620992622266" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1621328939285">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1621707846044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621328939285" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621707846044" />
   </component>
 </project>

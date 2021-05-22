@@ -34,50 +34,50 @@
             </th>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase() }}
               </div>
             </td>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase() }}
               </div>
             </td>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase() }}
               </div>
             </td>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['МН']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['МН']['НОРМ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['МН']['НОРМ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['МН']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['МН']['НОРМ']['Слово'].toLowerCase() }}
               </div>
             </td>
           </tr>
@@ -85,50 +85,50 @@
             <th class="small">прев.</th>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['ПРЕВ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['ПРЕВ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['ПРЕВ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['ПРЕВ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['МР']['ПРЕВ']['Слово'].toLowerCase() }}
               </div>
             </td>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['ПРЕВ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['ПРЕВ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['ПРЕВ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['ПРЕВ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['ЖР']['ПРЕВ']['Слово'].toLowerCase() }}
               </div>
             </td>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['ПРЕВ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['ПРЕВ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['ПРЕВ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['ПРЕВ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['ЕД']['СР']['ПРЕВ']['Слово'].toLowerCase() }}
               </div>
             </td>
             <td :class="{ equals: equalsWithWord(adjectives[adjective]['Падежи'][adjectiveCase]['МН']['ПРЕВ']['Слово']) }">
               <div class="d-flex align-items-center">
-                {{ adjectives[adjective]['Падежи'][adjectiveCase]['МН']['ПРЕВ']['Слово'].toLowerCase() }}
                 <div v-if="!isEmptyWord(adjectives[adjective]['Падежи'][adjectiveCase]['МН']['ПРЕВ']['Слово'].toLowerCase())"
-                     class="form-check form-check-inline pl-2">
+                     class="form-check form-check-inline pr-2">
                   <input class="form-check-input"
                          type="checkbox"
                          :value="JSON.stringify(adjectives[adjective]['Падежи'][adjectiveCase]['МН']['ПРЕВ'])"
                          v-model="selectedWords">
                 </div>
+                {{ adjectives[adjective]['Падежи'][adjectiveCase]['МН']['ПРЕВ']['Слово'].toLowerCase() }}
               </div>
             </td>
           </tr>

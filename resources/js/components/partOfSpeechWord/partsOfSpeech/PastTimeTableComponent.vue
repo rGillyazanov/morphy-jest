@@ -18,9 +18,8 @@
         <tr>
           <td :class="{ equals: equalsWithWord(pastTime['ЕД']['МР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ pastTime['ЕД']['МР']['НОРМ']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(pastTime['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -28,13 +27,13 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ pastTime['ЕД']['МР']['НОРМ']['Слово'].toLowerCase() }}
             </div>
           </td>
           <td :class="{ equals: equalsWithWord(pastTime['ЕД']['ЖР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ pastTime['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(pastTime['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -42,13 +41,13 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ pastTime['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase() }}
             </div>
           </td>
           <td :class="{ equals: equalsWithWord(pastTime['ЕД']['СР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ pastTime['ЕД']['СР']['НОРМ']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(pastTime['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -56,15 +55,13 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ pastTime['ЕД']['СР']['НОРМ']['Слово'].toLowerCase() }}
             </div>
           </td>
           <td :class="{ equals: equalsWithWord(pastTime['МН']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{
-                pastTime['МН']['НОРМ']['Слово'].toLowerCase()
-              }}
               <div v-if="!isEmptyWord(pastTime['МН']['НОРМ']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -72,6 +69,9 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{
+                pastTime['МН']['НОРМ']['Слово'].toLowerCase()
+              }}
             </div>
           </td>
         </tr>

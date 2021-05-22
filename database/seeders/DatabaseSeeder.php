@@ -14,6 +14,7 @@ use Database\Seeders\Morphy\SemanticFeaturesSeeder;
 use Database\Seeders\Morphy\TimeSeeder;
 use Database\Seeders\Morphy\TransitivitySeeder;
 use Database\Seeders\Morphy\ViewSeeder;
+use Database\Seeders\Morphy\WordFormsSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,7 +26,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        (new CaseSeeder())->run();
+        /*(new CaseSeeder())->run();
         (new EnthusiasmSeeder())->run();
         (new FaceSeeder())->run();
         (new GenderSeeder())->run();
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
         (new SemanticFeaturesSeeder())->run();
         (new TimeSeeder())->run();
         (new TransitivitySeeder())->run();
-        (new ViewSeeder())->run();
+        (new ViewSeeder())->run();*/
+        (new WordFormsSeeder())->run();
     }
 }

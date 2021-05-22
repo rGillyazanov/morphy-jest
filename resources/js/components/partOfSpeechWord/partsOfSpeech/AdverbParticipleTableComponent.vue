@@ -14,9 +14,8 @@
         <tr>
           <td :class="{ equals: equalsWithWord(adverbParticiple['Настоящее']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ adverbParticiple['Настоящее']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(adverbParticiple['Настоящее']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -24,13 +23,13 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ adverbParticiple['Настоящее']['Слово'].toLowerCase() }}
             </div>
           </td>
           <td :class="{ equals: equalsWithWord(adverbParticiple['Прошедшее']['Слово']) }">
             <div class="d-flex align-items-center">
-              {{ adverbParticiple['Прошедшее']['Слово'].toLowerCase() }}
               <div v-if="!isEmptyWord(adverbParticiple['Прошедшее']['Слово'].toLowerCase())"
-                   class="d-inline-flex pl-2">
+                   class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
@@ -38,6 +37,7 @@
                          v-model="selectedWords">
                 </div>
               </div>
+              {{ adverbParticiple['Прошедшее']['Слово'].toLowerCase() }}
             </div>
           </td>
         </tr>

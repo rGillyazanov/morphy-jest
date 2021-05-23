@@ -54,6 +54,7 @@
 <script>
 import {GrammemsMixin} from "../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../mixins/selectedWords";
+import {arraysEqual, objectEquals} from "../../../services/heplService";
 
 export default {
   name: "BaseCasesTableComponent",
@@ -67,7 +68,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin],
+  mixins: [GrammemsMixin, SelectedWordsMixin]
 }
 </script>
 

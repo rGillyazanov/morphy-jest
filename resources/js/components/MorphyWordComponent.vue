@@ -61,6 +61,7 @@
             </div>
             <div v-else-if="response.data">
               <part-of-speech-table
+                :active-word-forms="activeWordFormsInJest"
                 :jest-id="currentJestId"
                 :word="word"
                 :parts-of-speech-word="response.data">
@@ -104,6 +105,7 @@ export default {
       wordsInJest: {
         words: []
       },
+      activeWordFormsInJest: [],
       currentJestId: null,
       response: {
         data: null,
@@ -141,6 +143,7 @@ export default {
     wordSelected(selectedWord, wordId) {
       this.wordForms.selected.jests = [];
       this.word = null;
+      this.activeWordFormsInJest = null;
       this.wordsInJest.words = [];
       this.wordForms.selected.id = wordId;
 
@@ -150,6 +153,15 @@ export default {
     },
     selectJest(jestId) {
       this.currentJestId = jestId;
+      axios.get('/api/allWordsOfJest/' + jestId).then(response => {
+        const regEx = /^[а-яА-ЯёЁ]+$/u;
+        this.wordsInJest.words = response.data[0].words?.filter(word => regEx.test(word.word) === true);
+      });
+
+      axios.get('/api/getWordFormsInJest/' + jestId).then(response => {
+        this.activeWordFormsInJest = response.data;
+      })
+
       axios.get('/api/allWordsOfJest/' + jestId).then(response => {
         const regEx = /^[а-яА-ЯёЁ]+$/u;
         this.wordsInJest.words = response.data[0].words?.filter(word => regEx.test(word.word) === true);

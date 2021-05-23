@@ -3,6 +3,7 @@
     <!--Существительные-->
     <BaseCasesTableComponent
       v-if="partsOfSpeech.nouns"
+      :active-word-forms="activeWordForms"
       :word="word"
       @selected-words="selectedWords.nouns = $event"
       :part-of-speech="partsOfSpeech.nouns">
@@ -147,6 +148,10 @@ export default {
     },
     jestId: {
       type: Number,
+      required: true
+    },
+    activeWordForms: {
+      type: Array,
       required: true
     }
   },

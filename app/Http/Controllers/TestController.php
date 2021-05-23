@@ -9,9 +9,8 @@ use App\Models\Morphies\WordFormsModel;
 use App\Models\Morphies\WordGrammems;
 use App\Models\Morphy\HelpMorphyService;
 use App\Models\Morphy\MorphyAnalyzer;
-
 use App\Models\Word;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -58,11 +57,23 @@ class TestController extends Controller
 
     public function storeWordFormsInJest(Request $request)
     {
+        // Получаем Id жеста.
         $jestId = $request->get('jest_id');
+
+        // Массив выбранных словоформ.
         $wordForms = $request->get('wordForms');
 
+        /**
+         * Так как словоформы представлены в формате JSON,
+         * необходимо декодировать их для дальнейшей обработки.
+         */
         $words = json_decode($wordForms);
 
+        /**
+         * Массив для записи идендификаторов словоформ
+         * необходим для сравнивая слов при повторном редактировании
+         * словоформ.
+         */
         $wordsGrammem = [];
 
         // Проходимся по JSON массиву и получаем Слово, граммемы и часть речи.
@@ -103,6 +114,7 @@ class TestController extends Controller
             }
         }
 
+        // Словоформы на предыдущем заполнении.
         $previousRecords = JestWordForms::query()->where('jest_id', $jestId)->get(['wordform_id'])->toArray();
 
         $previousIds = [];
@@ -110,22 +122,43 @@ class TestController extends Controller
             $previousIds[] = $previousRecord['wordform_id'];
         }
 
+        // Словоформы, которые нужно удалить, если с них убрали Checkbox.
         $removedIds = array_diff(array_unique(array_merge($previousIds, $wordsGrammem)), $wordsGrammem);
+
+        // Словоформы, которые остались в активным Checkbox-ом.
         $currentIds = array_merge(array_intersect($previousIds, $wordsGrammem), array_diff($wordsGrammem, $previousIds));
 
+        // Если были убраны все словоформы, удаляем привязку жеста к словоформам.
         if (count($wordsGrammem) === 0) {
             JestWordForms::query()->where('jest_id', $jestId)->delete();
         } else {
+            // Если есть словоформы, которые нужно удалить, удаляем их из привязанного жеста.
             if (count($removedIds) > 0) {
                 foreach ($removedIds as $removedId) {
                     JestWordForms::query()->where('wordform_id', $removedId)->delete();
                 }
             }
+
+            // Записываем или обновляем словоформы, которые остались активными в жесте.
             foreach ($currentIds as $currentId) {
                 JestWordForms::query()->updateOrCreate(
                     ['jest_id' => $jestId, 'wordform_id' => $currentId]
                 );
             }
         }
+    }
+
+    public function getWordFormsInJest($jestId)
+    {
+        $words = Jest::query()->where('id_jest', $jestId)->first()->wordGrammems;
+
+        $wordss = [];
+
+
+        foreach ($words as $word) {
+            $wordss[] = $word->json();
+        }
+
+        return response()->json($wordss, 200, [], 256);
     }
 }

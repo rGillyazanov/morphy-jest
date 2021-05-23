@@ -1,4 +1,4 @@
-import {onlyUnique} from "../services/heplService";
+import {objectEquals, onlyUnique} from "../services/heplService";
 
 export const SelectedWordsMixin = {
   data() {

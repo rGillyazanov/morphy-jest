@@ -1932,6 +1932,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'MorphyWordComponent',
@@ -1952,6 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
       wordsInJest: {
         words: []
       },
+      activeWordFormsInJest: [],
       currentJestId: null,
       response: {
         data: null,
@@ -1993,6 +1995,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.wordForms.selected.jests = [];
       this.word = null;
+      this.activeWordFormsInJest = null;
       this.wordsInJest.words = [];
       this.wordForms.selected.id = wordId;
       axios.get('/api/jestsOfWord/' + wordId).then(function (response) {
@@ -2008,6 +2011,17 @@ __webpack_require__.r(__webpack_exports__);
 
         var regEx = /^[\u0401\u0410-\u044F\u0451]+$/;
         _this3.wordsInJest.words = (_response$data$0$word = response.data[0].words) === null || _response$data$0$word === void 0 ? void 0 : _response$data$0$word.filter(function (word) {
+          return regEx.test(word.word) === true;
+        });
+      });
+      axios.get('/api/getWordFormsInJest/' + jestId).then(function (response) {
+        _this3.activeWordFormsInJest = response.data;
+      });
+      axios.get('/api/allWordsOfJest/' + jestId).then(function (response) {
+        var _response$data$0$word2;
+
+        var regEx = /^[\u0401\u0410-\u044F\u0451]+$/;
+        _this3.wordsInJest.words = (_response$data$0$word2 = response.data[0].words) === null || _response$data$0$word2 === void 0 ? void 0 : _response$data$0$word2.filter(function (word) {
           return regEx.test(word.word) === true;
         });
       });
@@ -2181,6 +2195,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2209,6 +2224,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     jestId: {
       type: Number,
+      required: true
+    },
+    activeWordForms: {
+      type: Array,
       required: true
     }
   },
@@ -2677,6 +2696,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
 /* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+/* harmony import */ var _services_heplService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/heplService */ "./resources/js/services/heplService.js");
 //
 //
 //
@@ -2730,6 +2750,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3634,7 +3655,9 @@ function uniqueWords() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "onlyUnique": () => (/* binding */ onlyUnique)
+/* harmony export */   "onlyUnique": () => (/* binding */ onlyUnique),
+/* harmony export */   "arraysEqual": () => (/* binding */ arraysEqual),
+/* harmony export */   "objectEquals": () => (/* binding */ objectEquals)
 /* harmony export */ });
 /**
  * Сравнивает присутствует ли элемент в массиве.
@@ -3645,6 +3668,79 @@ __webpack_require__.r(__webpack_exports__);
  */
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
+}
+/**
+ * Проверяет равны ли два массива между собой.
+ * @param a
+ * @param b
+ * @returns {boolean}
+ */
+
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false; // If you don't care about the order of the elements inside
+  // the array, you should sort both arrays here.
+  // Please note that calling sort on an array will modify that array.
+  // you might want to clone your array first.
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+
+  return true;
+}
+function objectEquals(x, y) {
+  'use strict';
+
+  if (x === null || x === undefined || y === null || y === undefined) {
+    return x === y;
+  } // after this just checking type of one would be enough
+
+
+  if (x.constructor !== y.constructor) {
+    return false;
+  } // if they are functions, they should exactly refer to same one (because of closures)
+
+
+  if (x instanceof Function) {
+    return x === y;
+  } // if they are regexps, they should exactly refer to same one (it is hard to better equality check on current ES)
+
+
+  if (x instanceof RegExp) {
+    return x === y;
+  }
+
+  if (x === y || x.valueOf() === y.valueOf()) {
+    return true;
+  }
+
+  if (Array.isArray(x) && x.length !== y.length) {
+    return false;
+  } // if they are dates, they must had equal valueOf
+
+
+  if (x instanceof Date) {
+    return false;
+  } // if they are strictly equal, they both need to be object at least
+
+
+  if (!(x instanceof Object)) {
+    return false;
+  }
+
+  if (!(y instanceof Object)) {
+    return false;
+  } // recursive object equality check
+
+
+  var p = Object.keys(x);
+  return Object.keys(y).every(function (i) {
+    return p.indexOf(i) !== -1;
+  }) && p.every(function (i) {
+    return objectEquals(x[i], y[i]);
+  });
 }
 
 /***/ }),
@@ -40251,6 +40347,7 @@ var render = function() {
                           [
                             _c("part-of-speech-table", {
                               attrs: {
+                                "active-word-forms": _vm.activeWordFormsInJest,
                                 "jest-id": _vm.currentJestId,
                                 word: _vm.word,
                                 "parts-of-speech-word": _vm.response.data
@@ -40314,6 +40411,7 @@ var render = function() {
       _vm.partsOfSpeech.nouns
         ? _c("BaseCasesTableComponent", {
             attrs: {
+              "active-word-forms": _vm.activeWordForms,
               word: _vm.word,
               "part-of-speech": _vm.partsOfSpeech.nouns
             },

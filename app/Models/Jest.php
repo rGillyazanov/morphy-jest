@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Morphies\WordGrammems;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -379,6 +380,11 @@ class Jest extends Model
     public function jestAnalogs()
     {
         return $this->belongsToMany('App\Models\Surdo\Jest', 'srd_surd_cross_analogs', 'id_jest', 'id_jest_analog');
+    }
+
+    public function wordGrammems()
+    {
+        return $this->belongsToMany(WordGrammems::class, 'morphy_jest_wordforms', 'jest_id', 'wordform_id');
     }
 
     /**

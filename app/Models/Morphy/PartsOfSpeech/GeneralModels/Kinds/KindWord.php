@@ -63,6 +63,9 @@ class KindWord implements JsonSerializable
      */
     public function setNormalGrammems(array $normal_grammems): void
     {
+        if (in_array('ОД', $normal_grammems) && in_array('НО', $normal_grammems)) {
+            unset($normal_grammems[array_search('НО', $normal_grammems)]);
+        }
         $this->_normal_grammems = $normal_grammems;
     }
 
@@ -96,6 +99,9 @@ class KindWord implements JsonSerializable
      */
     public function setDegreeGrammems(array $degree_grammems): void
     {
+        if (in_array('ОД', $degree_grammems) && in_array('НО', $degree_grammems)) {
+            unset($degree_grammems[array_search('НО', $degree_grammems)]);
+        }
         $this->_degree_grammems = $degree_grammems;
     }
 

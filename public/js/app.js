@@ -1933,6 +1933,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'MorphyWordComponent',
@@ -1949,12 +1966,15 @@ __webpack_require__.r(__webpack_exports__);
           id: null,
           word: null,
           jests: []
-        }
+        },
+        loading: false
       },
       wordsInJest: {
+        loading: false,
         words: []
       },
       activeWordFormsInJest: [],
+      loadingActiveWordFormsInJest: false,
       currentJestId: null,
       response: {
         data: null,
@@ -1964,6 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
         },
         loading: false
       },
+      savingWordForms: false,
       pageNumber: 0,
       size: 4
     };
@@ -1994,14 +2015,18 @@ __webpack_require__.r(__webpack_exports__);
     wordSelected: function wordSelected(selectedWord, wordId) {
       var _this2 = this;
 
-      this.wordForms.selected.jests = [];
-      this.word = null;
-      this.activeWordFormsInJest = null;
-      this.wordsInJest.words = [];
-      this.wordForms.selected.id = wordId;
-      axios.get('/api/jestsOfWord/' + wordId).then(function (response) {
-        _this2.wordForms.selected.jests = response.data;
-      });
+      if (this.wordForms.selected.id !== wordId) {
+        this.wordForms.selected.jests = [];
+        this.word = null;
+        this.activeWordFormsInJest = null;
+        this.wordsInJest.words = [];
+        this.wordForms.selected.id = wordId;
+        this.wordForms.loading = true;
+        axios.get('/api/jestsOfWord/' + wordId).then(function (response) {
+          _this2.wordForms.selected.jests = response.data;
+          _this2.wordForms.loading = false;
+        });
+      }
     },
     selectJest: function selectJest(jestId) {
       var _this3 = this;
@@ -2011,6 +2036,7 @@ __webpack_require__.r(__webpack_exports__);
         this.activeWordFormsInJest = null;
         this.wordsInJest.words = [];
         this.currentJestId = jestId;
+        this.wordsInJest.loading = true;
         axios.get('/api/allWordsOfJest/' + jestId).then(function (response) {
           var _response$data$0$word;
 
@@ -2018,6 +2044,10 @@ __webpack_require__.r(__webpack_exports__);
           _this3.wordsInJest.words = (_response$data$0$word = response.data[0].words) === null || _response$data$0$word === void 0 ? void 0 : _response$data$0$word.filter(function (word) {
             return regEx.test(word.word) === true;
           });
+          _this3.wordsInJest.loading = false;
+        })["catch"](function (error) {
+          console.error(error);
+          _this3.wordsInJest.loading = false;
         });
         axios.get('/api/getWordFormsInJest/' + jestId).then(function (response) {
           _this3.activeWordFormsInJest = response.data;
@@ -2027,15 +2057,16 @@ __webpack_require__.r(__webpack_exports__);
     selectWordForm: function selectWordForm(selectedWordForm) {
       var _this4 = this;
 
-      if (this.word !== selectedWordForm) {
+      if (this.word !== selectedWordForm && !this.loadingActiveWordFormsInJest) {
         this.word = selectedWordForm;
-        this.activeWordFormsInJest = null;
+        this.loadingActiveWordFormsInJest = true;
         axios.get('/api/getWordFormsInJest/' + this.currentJestId).then(function (response) {
           var _response$data;
 
           _this4.activeWordFormsInJest = (_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.map(function (word) {
             return JSON.stringify(word);
           });
+          _this4.loadingActiveWordFormsInJest = false;
         });
       }
     },
@@ -2073,6 +2104,9 @@ __webpack_require__.r(__webpack_exports__);
       var start = this.pageNumber * this.size,
           end = start + this.size;
       return this.wordForms.selected.jests.slice(start, end);
+    },
+    shareLoading: function shareLoading() {
+      return this.wordForms.loading || this.response.loading || this.wordsInJest.loading || this.savingWordForms;
     }
   }
 });
@@ -2097,6 +2131,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partsOfSpeech_UnchangeableWordComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partsOfSpeech/UnchangeableWordComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue");
 /* harmony import */ var _partsOfSpeech_AdjectiveCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partsOfSpeech/AdjectiveCasesTableComponent */ "./resources/js/components/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue");
 /* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2326,8 +2368,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.selectedWords.all = this.uniqueWords();
-      console.log(this.selectedWords.all);
       this.saveResponse.loading = true;
+      this.$emit('saving-wordForms', this.saveResponse.loading);
       axios.post('/api/storeWordFormsInJest', {
         jest_id: this.jestId,
         wordForms: JSON.stringify(this.selectedWords.all)
@@ -2340,6 +2382,8 @@ __webpack_require__.r(__webpack_exports__);
             _this.saveResponse.message = '';
           }, 5000);
         }
+
+        _this.$emit('saving-wordForms', _this.saveResponse.loading);
       })["catch"](function (error) {
         _this.saveResponse.loading = false;
         _this.saveResponse.message = error;
@@ -8275,7 +8319,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".cursor-pointer {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".cursor-pointer {\n  cursor: pointer;\n}\n.disabled-block {\n  pointer-events: none;\n  opacity: 0.4;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8299,7 +8343,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".equals {\n  color: red;\n  font-weight: 600;\n}\n.equals .d-flex::after {\n  content: url(\"/images/check_small.png\");\n  margin-right: 0;\n  margin-left: 10px;\n  position: relative;\n  top: 2px;\n}\n.form-check-inline {\n  margin-right: 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".equals {\n  color: red;\n  font-weight: 600;\n}\n.equals .d-flex::after {\n  content: url(\"/images/check_small.png\");\n  margin-right: 0;\n  margin-left: 10px;\n  position: relative;\n  top: 2px;\n}\n.form-check-inline {\n  margin-right: 0;\n}\n.scroll-y {\n  height: 600px;\n  overflow-y: scroll;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40258,7 +40302,12 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { id: "words", type: "text", placeholder: "Поиск слова" },
+            attrs: {
+              id: "words",
+              type: "text",
+              disabled: _vm.shareLoading,
+              placeholder: "Поиск слова"
+            },
             domProps: { value: _vm.searchWord },
             on: {
               change: _vm.getAllWords,
@@ -40273,7 +40322,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "select",
-            { staticClass: "mt-3 custom-select", attrs: { size: "10" } },
+            {
+              staticClass: "mt-3 custom-select",
+              attrs: { size: "10", disabled: _vm.shareLoading }
+            },
             _vm._l(_vm.wordForms.words, function(wordForm) {
               return _c(
                 "option",
@@ -40294,20 +40346,34 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-2" },
+          {
+            staticClass: "col-2",
+            class: { "disabled-block": _vm.shareLoading }
+          },
           [
             _vm.wordForms.selected.jests.length > 0
               ? [
+                  _c("span", [_vm._v("Жесты в слове:")]),
+                  _vm._v(" "),
                   _vm._l(_vm.paginatedData, function(jest) {
                     return [
                       _c("div", { staticClass: "d-flex flex-column" }, [
-                        _c("span", { staticClass: "font-weight-bold" }, [
-                          _vm._v(
-                            _vm._s(jest.jest) +
-                              " " +
-                              _vm._s(jest.nedooformleno ? "*" : "")
-                          )
-                        ]),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "font-weight-bold",
+                            class: {
+                              equals: _vm.currentJestId === jest.id_jest
+                            }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(jest.jest) +
+                                " " +
+                                _vm._s(jest.nedooformleno ? "*" : "")
+                            )
+                          ]
+                        ),
                         _vm._v(" "),
                         _c("img", {
                           staticClass: "img-fluid my-1 cursor-pointer",
@@ -40386,38 +40452,58 @@ var render = function() {
           2
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("label", { attrs: { for: "wordsOnJest" } }, [
-            _vm._v("Слова в жесте")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              staticClass: "custom-select",
-              attrs: { id: "wordsOnJest", size: "14" }
-            },
-            _vm._l(_vm.wordsInJest.words, function(wordInJest) {
-              return _c(
-                "option",
-                {
-                  domProps: { value: wordInJest },
-                  on: {
-                    click: function($event) {
-                      return _vm.selectWordForm(wordInJest.word)
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n            " + _vm._s(wordInJest.word) + "\n          "
+        _c(
+          "div",
+          { staticClass: "col-2" },
+          [
+            _vm.wordsInJest.words.length
+              ? [
+                  _c("label", { attrs: { for: "wordsOnJest" } }, [
+                    _vm._v("Слова в жесте")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      staticClass: "custom-select",
+                      attrs: {
+                        id: "wordsOnJest",
+                        size: "14",
+                        disabled: _vm.shareLoading
+                      }
+                    },
+                    _vm._l(_vm.wordsInJest.words, function(wordInJest) {
+                      return _c(
+                        "option",
+                        {
+                          staticClass: "cursor-pointer",
+                          domProps: { value: wordInJest },
+                          on: {
+                            click: function($event) {
+                              return _vm.selectWordForm(wordInJest.word)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(wordInJest.word) +
+                              "\n            "
+                          )
+                        ]
+                      )
+                    }),
+                    0
                   )
                 ]
-              )
-            }),
-            0
-          )
-        ]),
+              : _vm.wordsInJest.loading
+              ? _c("div", { staticClass: "d-flex justify-content-center" }, [
+                  _vm._m(0)
+                ])
+              : _vm._e()
+          ],
+          2
+        ),
         _vm._v(" "),
         _vm.word
           ? _c("div", { staticClass: "col-6" }, [
@@ -40441,6 +40527,11 @@ var render = function() {
                                 "jest-id": _vm.currentJestId,
                                 word: _vm.word,
                                 "parts-of-speech-word": _vm.response.data
+                              },
+                              on: {
+                                "saving-wordForms": function($event) {
+                                  _vm.savingWordForms = $event
+                                }
                               }
                             })
                           ],
@@ -40448,7 +40539,7 @@ var render = function() {
                         )
                       : _vm._e()
                   ])
-                : _c("div", [_vm._m(0)])
+                : _c("div", [_vm._m(1)])
             ])
           : _vm._e()
       ])
@@ -40456,6 +40547,16 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -40495,269 +40596,285 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm.partsOfSpeech.nouns
-        ? _c("BaseCasesTableComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.nouns
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.nouns = $event
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "scroll-y" },
+      [
+        _vm.partsOfSpeech.nouns
+          ? _c("BaseCasesTableComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.nouns
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.nouns = $event
+                }
               }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.adjectives
-        ? _c("AdjectiveCasesTableComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              adjectives: _vm.partsOfSpeech.adjectives
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.adjectives = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.verbs
-        ? _c("VerbWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              verbs: _vm.partsOfSpeech.verbs
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.verbs = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.numerals
-        ? _c("BaseCasesTableComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.numerals
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.numerals = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.ordinals
-        ? _c("BaseCasesFacesTableComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.ordinals
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.ordinals = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.pronouns
-        ? _c("BaseCasesTableComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.pronouns
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.pronouns = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.pronounsPredicative
-        ? _c("BaseCasesTableComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.pronounsPredicative
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.pronounsPredicative = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.pronominalAdjective
-        ? _c("BaseCasesFacesTableComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.pronominalAdjective
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.pronominalAdjective = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.adverbs
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.adverbs
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.adverbs = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.predicative
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.predicative
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.predicative = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.pretext
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.pretext
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.pretext = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.conjunction
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.conjunction
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.conjunction = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.interjection
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.interjection
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.interjection = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.particle
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.particle
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.particle = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.parenthesis
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.parenthesis
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.parenthesis = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.partsOfSpeech.phrase
-        ? _c("UnchangeableWordComponent", {
-            attrs: {
-              "active-word-forms": _vm.activeWordForms,
-              word: _vm.word,
-              "part-of-speech": _vm.partsOfSpeech.phrase
-            },
-            on: {
-              "selected-words": function($event) {
-                _vm.selectedWords.phrase = $event
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-flex align-items-center mt-2" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { type: "button" },
-            on: { click: _vm.save }
-          },
-          [_vm._v("Сохранить")]
-        ),
+            })
+          : _vm._e(),
         _vm._v(" "),
-        _vm.saveResponse.message
-          ? _c("div", { staticClass: "ml-3" }, [
-              _vm._v("\n      " + _vm._s(_vm.saveResponse.message) + "\n    ")
-            ])
-          : _vm._e()
-      ])
-    ],
-    1
-  )
+        _vm.partsOfSpeech.adjectives
+          ? _c("AdjectiveCasesTableComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                adjectives: _vm.partsOfSpeech.adjectives
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.adjectives = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.verbs
+          ? _c("VerbWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                verbs: _vm.partsOfSpeech.verbs
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.verbs = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.numerals
+          ? _c("BaseCasesTableComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.numerals
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.numerals = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.ordinals
+          ? _c("BaseCasesFacesTableComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.ordinals
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.ordinals = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.pronouns
+          ? _c("BaseCasesTableComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.pronouns
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.pronouns = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.pronounsPredicative
+          ? _c("BaseCasesTableComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.pronounsPredicative
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.pronounsPredicative = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.pronominalAdjective
+          ? _c("BaseCasesFacesTableComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.pronominalAdjective
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.pronominalAdjective = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.adverbs
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.adverbs
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.adverbs = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.predicative
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.predicative
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.predicative = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.pretext
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.pretext
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.pretext = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.conjunction
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.conjunction
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.conjunction = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.interjection
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.interjection
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.interjection = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.particle
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.particle
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.particle = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.parenthesis
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.parenthesis
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.parenthesis = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.partsOfSpeech.phrase
+          ? _c("UnchangeableWordComponent", {
+              attrs: {
+                "active-word-forms": _vm.activeWordForms,
+                word: _vm.word,
+                "part-of-speech": _vm.partsOfSpeech.phrase
+              },
+              on: {
+                "selected-words": function($event) {
+                  _vm.selectedWords.phrase = $event
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex align-items-center mt-2" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { type: "button", disabled: _vm.saveResponse.loading },
+              on: { click: _vm.save }
+            },
+            [
+              _vm.saveResponse.loading
+                ? [
+                    _c("span", {
+                      staticClass: "spinner-border spinner-border-sm mr-2",
+                      attrs: { role: "status", "aria-hidden": "true" }
+                    }),
+                    _vm._v("\n          Сохранение...\n        ")
+                  ]
+                : [_vm._v("Сохранить")]
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _vm.saveResponse.message
+            ? _c("div", { staticClass: "ml-3" }, [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.saveResponse.message) + "\n      "
+                )
+              ])
+            : _vm._e()
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1,139 +1,147 @@
 <template>
   <div>
-    <!--Существительные-->
-    <BaseCasesTableComponent
-      v-if="partsOfSpeech.nouns"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.nouns = $event"
-      :part-of-speech="partsOfSpeech.nouns">
-    </BaseCasesTableComponent>
-    <!--Прилагательные-->
-    <AdjectiveCasesTableComponent
-      v-if="partsOfSpeech.adjectives"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.adjectives = $event"
-      :adjectives="partsOfSpeech.adjectives">
-    </AdjectiveCasesTableComponent>
-    <!--Глаголы-->
-    <VerbWordComponent
-      v-if="partsOfSpeech.verbs"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.verbs = $event"
-      :verbs="partsOfSpeech.verbs">
-    </VerbWordComponent>
-    <!--Числительные-->
-    <BaseCasesTableComponent
-      v-if="partsOfSpeech.numerals"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.numerals = $event"
-      :part-of-speech="partsOfSpeech.numerals">
-    </BaseCasesTableComponent>
-    <!--Порядковое числительное-->
-    <BaseCasesFacesTableComponent
-      v-if="partsOfSpeech.ordinals"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.ordinals = $event"
-      :part-of-speech="partsOfSpeech.ordinals">
-    </BaseCasesFacesTableComponent>
-    <!--Местоимение-существительное-->
-    <BaseCasesTableComponent
-      v-if="partsOfSpeech.pronouns"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.pronouns = $event"
-      :part-of-speech="partsOfSpeech.pronouns">
-    </BaseCasesTableComponent>
-    <!--Местоимение-предикатив-->
-    <BaseCasesTableComponent
-      v-if="partsOfSpeech.pronounsPredicative"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.pronounsPredicative = $event"
-      :part-of-speech="partsOfSpeech.pronounsPredicative">
-    </BaseCasesTableComponent>
-    <!--Местоименное прилагательное-->
-    <BaseCasesFacesTableComponent
-      v-if="partsOfSpeech.pronominalAdjective"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.pronominalAdjective = $event"
-      :part-of-speech="partsOfSpeech.pronominalAdjective">
-    </BaseCasesFacesTableComponent>
-    <!--Наречие-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.adverbs"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.adverbs = $event"
-      :part-of-speech="partsOfSpeech.adverbs">
-    </UnchangeableWordComponent>
-    <!--Предикатив-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.predicative"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.predicative = $event"
-      :part-of-speech="partsOfSpeech.predicative">
-    </UnchangeableWordComponent>
-    <!--Предлог-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.pretext"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.pretext = $event"
-      :part-of-speech="partsOfSpeech.pretext">
-    </UnchangeableWordComponent>
-    <!--Союз-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.conjunction"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.conjunction = $event"
-      :part-of-speech="partsOfSpeech.conjunction">
-    </UnchangeableWordComponent>
-    <!--Междометие-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.interjection"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.interjection = $event"
-      :part-of-speech="partsOfSpeech.interjection">
-    </UnchangeableWordComponent>
-    <!--Частица-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.particle"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.particle = $event"
-      :part-of-speech="partsOfSpeech.particle">
-    </UnchangeableWordComponent>
-    <!--Вводное слово-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.parenthesis"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.parenthesis = $event"
-      :part-of-speech="partsOfSpeech.parenthesis">
-    </UnchangeableWordComponent>
-    <!--Фразеологизм-->
-    <UnchangeableWordComponent
-      v-if="partsOfSpeech.phrase"
-      :active-word-forms="activeWordForms"
-      :word="word"
-      @selected-words="selectedWords.phrase = $event"
-      :part-of-speech="partsOfSpeech.phrase">
-    </UnchangeableWordComponent>
+    <div class="scroll-y">
+      <!--Существительные-->
+      <BaseCasesTableComponent
+        v-if="partsOfSpeech.nouns"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.nouns = $event"
+        :part-of-speech="partsOfSpeech.nouns">
+      </BaseCasesTableComponent>
+      <!--Прилагательные-->
+      <AdjectiveCasesTableComponent
+        v-if="partsOfSpeech.adjectives"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.adjectives = $event"
+        :adjectives="partsOfSpeech.adjectives">
+      </AdjectiveCasesTableComponent>
+      <!--Глаголы-->
+      <VerbWordComponent
+        v-if="partsOfSpeech.verbs"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.verbs = $event"
+        :verbs="partsOfSpeech.verbs">
+      </VerbWordComponent>
+      <!--Числительные-->
+      <BaseCasesTableComponent
+        v-if="partsOfSpeech.numerals"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.numerals = $event"
+        :part-of-speech="partsOfSpeech.numerals">
+      </BaseCasesTableComponent>
+      <!--Порядковое числительное-->
+      <BaseCasesFacesTableComponent
+        v-if="partsOfSpeech.ordinals"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.ordinals = $event"
+        :part-of-speech="partsOfSpeech.ordinals">
+      </BaseCasesFacesTableComponent>
+      <!--Местоимение-существительное-->
+      <BaseCasesTableComponent
+        v-if="partsOfSpeech.pronouns"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.pronouns = $event"
+        :part-of-speech="partsOfSpeech.pronouns">
+      </BaseCasesTableComponent>
+      <!--Местоимение-предикатив-->
+      <BaseCasesTableComponent
+        v-if="partsOfSpeech.pronounsPredicative"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.pronounsPredicative = $event"
+        :part-of-speech="partsOfSpeech.pronounsPredicative">
+      </BaseCasesTableComponent>
+      <!--Местоименное прилагательное-->
+      <BaseCasesFacesTableComponent
+        v-if="partsOfSpeech.pronominalAdjective"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.pronominalAdjective = $event"
+        :part-of-speech="partsOfSpeech.pronominalAdjective">
+      </BaseCasesFacesTableComponent>
+      <!--Наречие-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.adverbs"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.adverbs = $event"
+        :part-of-speech="partsOfSpeech.adverbs">
+      </UnchangeableWordComponent>
+      <!--Предикатив-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.predicative"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.predicative = $event"
+        :part-of-speech="partsOfSpeech.predicative">
+      </UnchangeableWordComponent>
+      <!--Предлог-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.pretext"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.pretext = $event"
+        :part-of-speech="partsOfSpeech.pretext">
+      </UnchangeableWordComponent>
+      <!--Союз-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.conjunction"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.conjunction = $event"
+        :part-of-speech="partsOfSpeech.conjunction">
+      </UnchangeableWordComponent>
+      <!--Междометие-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.interjection"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.interjection = $event"
+        :part-of-speech="partsOfSpeech.interjection">
+      </UnchangeableWordComponent>
+      <!--Частица-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.particle"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.particle = $event"
+        :part-of-speech="partsOfSpeech.particle">
+      </UnchangeableWordComponent>
+      <!--Вводное слово-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.parenthesis"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.parenthesis = $event"
+        :part-of-speech="partsOfSpeech.parenthesis">
+      </UnchangeableWordComponent>
+      <!--Фразеологизм-->
+      <UnchangeableWordComponent
+        v-if="partsOfSpeech.phrase"
+        :active-word-forms="activeWordForms"
+        :word="word"
+        @selected-words="selectedWords.phrase = $event"
+        :part-of-speech="partsOfSpeech.phrase">
+      </UnchangeableWordComponent>
 
-    <div class="d-flex align-items-center mt-2">
-      <button class="btn btn-success" type="button" @click="save">Сохранить</button>
-      <div class="ml-3"
-           v-if="saveResponse.message">
-        {{ saveResponse.message }}
+      <div class="d-flex align-items-center mt-2">
+        <button class="btn btn-primary" type="button" @click="save" :disabled="saveResponse.loading">
+          <template v-if="saveResponse.loading">
+            <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+            Сохранение...
+          </template>
+          <template v-else>Сохранить</template>
+        </button>
+        <div class="ml-3"
+             v-if="saveResponse.message">
+          {{ saveResponse.message }}
+        </div>
       </div>
     </div>
   </div>
@@ -228,9 +236,10 @@ export default {
     },
     save() {
       this.selectedWords.all = this.uniqueWords();
-      console.log(this.selectedWords.all);
 
       this.saveResponse.loading = true;
+      this.$emit('saving-wordForms', this.saveResponse.loading);
+
       axios.post('/api/storeWordFormsInJest', {
         jest_id: this.jestId,
         wordForms: JSON.stringify(this.selectedWords.all)
@@ -243,6 +252,8 @@ export default {
             this.saveResponse.message = '';
           }, 5000);
         }
+
+        this.$emit('saving-wordForms', this.saveResponse.loading);
       }).catch(error => {
         this.saveResponse.loading = false;
         this.saveResponse.message = error;
@@ -271,5 +282,10 @@ export default {
 
 .form-check-inline {
   margin-right: 0;
+}
+
+.scroll-y {
+  height: 600px;
+  overflow-y: scroll;
 }
 </style>

@@ -33,13 +33,15 @@ class TestController extends Controller
         }
     }
 
-    public function allWords()
+    public function allWords(Request $request)
     {
         $filter = [
             'admin_checked' => 1
         ];
+        $search = $request->input('search');
 
-        return Word::query()->ofFilter($filter)->limit(1000)->get(['id_word', 'word'])->toJSON(JSON_UNESCAPED_UNICODE);
+        return Word::search($search)->ofFilter($filter)
+            ->limit(1000)->get(['id_word', 'word'])->toJSON(JSON_UNESCAPED_UNICODE);
     }
 
     public function jestsOfWord($wordId)
@@ -88,6 +90,7 @@ class TestController extends Controller
             $wordId = WordFormsModel::query()->firstWhere('word', mb_strtolower($word['Слово'], 'UTF-8'))->id;
             $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', $word['Часть речи'])->id;
 
+            $attributes = [];
             $attributes['word_id'] = $wordId;
             $attributes['part_of_speech_id'] = $partOfSpeechId;
 

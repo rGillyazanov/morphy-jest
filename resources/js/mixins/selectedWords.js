@@ -1,9 +1,15 @@
-import {objectEquals, onlyUnique} from "../services/heplService";
+import {onlyUnique} from "../services/heplService";
 
 export const SelectedWordsMixin = {
+  props: {
+    activeWordForms: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
-      selectedWords: []
+      selectedWords: this.activeWordForms
     }
   },
   watch: {

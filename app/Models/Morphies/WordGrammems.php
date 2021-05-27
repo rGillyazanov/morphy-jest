@@ -136,6 +136,14 @@ class WordGrammems extends Model
             }
         }
 
-        return $result;
+        if (isset($result['Граммемы'])) {
+            sort($result['Граммемы']);
+        }
+
+        return [
+            'Слово' => $result['Слово'],
+            'Граммемы' => isset($result['Граммемы']) ? $result['Граммемы'] : [],
+            'Часть речи' => $result['Часть речи'],
+        ];
     }
 }

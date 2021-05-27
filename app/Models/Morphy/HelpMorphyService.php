@@ -300,6 +300,11 @@ class HelpMorphyService
             'model' => Other::class,
             'word_grammems_id' => 'other_id'
         ],
+        'дфст' => [
+            'description' => '??? прилагательное (не используется)',
+            'model' => Other::class,
+            'word_grammems_id' => 'other_id'
+        ],
         'имя' => [
             'description' => 'имя',
             'model' => SemanticFeature::class,
@@ -369,6 +374,11 @@ class HelpMorphyService
             'description' => 'профессионализм',
             'model' => SemanticFeature::class,
             'word_grammems_id' => 'semantic_feature_id'
+        ],
+        'полож' => [
+            'description' => '??? (не используется)',
+            'model' => SemanticFeature::class,
+            'word_grammems_id' => 'semantic_feature_id'
         ]
     ];
 
@@ -394,7 +404,10 @@ class HelpMorphyService
                 if ($form->hasGrammems($grammems) && $type === 'word') {
                     return $form->getWord();
                 } else if ($form->hasGrammems($grammems) && $type === 'grammems') {
-                    return $form->getGrammems();
+                    $grammemsSorted = $form->getGrammems();
+                    sort($grammemsSorted);
+
+                    return $grammemsSorted;
                 } else if ($form->hasGrammems($grammems) && $type === 'partOfSpeech') {
                     return $form->getPartOfSpeech();
                 }

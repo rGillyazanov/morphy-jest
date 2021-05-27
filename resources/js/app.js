@@ -20,8 +20,6 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('morphy-word-component', require('./components/MorphyWordComponent.vue').default);
-
-Vue.component('v-select', vSelect)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

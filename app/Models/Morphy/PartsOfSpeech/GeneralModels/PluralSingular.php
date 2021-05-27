@@ -43,6 +43,7 @@ class PluralSingular implements JsonSerializable
      */
     public function getPluralGrammems(): array
     {
+        sort($this->_plural_grammems);
         return $this->_plural_grammems;
     }
 
@@ -51,6 +52,7 @@ class PluralSingular implements JsonSerializable
      */
     public function getSingularGrammems(): array
     {
+        sort($this->_singular_grammems);
         return $this->_singular_grammems;
     }
 

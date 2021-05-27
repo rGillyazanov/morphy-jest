@@ -45,20 +45,10 @@ class Numeral extends BasePartOfSpeech
         $pluralGrammems = [];
         $pluralPartOfSpeech = "-";
 
-        if (count($paradigm->getWordFormsByGrammems([$case, 'ЕД'])) > 0) {
-            $singular = $paradigm->getWordFormsByGrammems([$case, 'ЕД'])[0]->getWord();
-            $singularPartOfSpeech = $paradigm->getWordFormsByGrammems([$case, 'ЕД'])[0]->getPartOfSpeech();
-            $singularGrammems = $paradigm->getWordFormsByGrammems([$case, 'ЕД'])[0]->getGrammems();
-        }
-
-        if (count($paradigm->getWordFormsByGrammems([$case, 'МН'])) > 0) {
-            $plural = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getWord();
-            $pluralPartOfSpeech = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getPartOfSpeech();
-            $pluralGrammems = $paradigm->getWordFormsByGrammems([$case, 'МН'])[0]->getGrammems();
-        }
-
         if (count($paradigm->getWordFormsByGrammems([$case])) > 0) {
-            $singular = $paradigm->getWordFormsByGrammems([$case])[0]->getWord();
+            $singular = $paradigm->getWordFormsByGrammems($case)[0]->getWord();
+            $singularPartOfSpeech = $paradigm->getWordFormsByGrammems($case)[0]->getPartOfSpeech();
+            $singularGrammems = $paradigm->getWordFormsByGrammems($case)[0]->getGrammems();
         }
 
         $pluralSingular = new PluralSingular(

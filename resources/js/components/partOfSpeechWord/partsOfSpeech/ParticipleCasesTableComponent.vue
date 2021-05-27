@@ -86,7 +86,7 @@
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
-                           :value="JSON.stringify(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово'])"
+                           :value="JSON.stringify(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ'])"
                            v-model="selectedWords">
                   </div>
                 </div>

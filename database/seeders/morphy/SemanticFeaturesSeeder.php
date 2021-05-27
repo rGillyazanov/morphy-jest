@@ -63,6 +63,10 @@ class SemanticFeaturesSeeder extends Seeder
         [
             'grammema' => 'проф',
             'description' => 'профессионализм'
+        ],
+        [
+            'grammema' => 'полож',
+            'description' => '??? (не используется)'
         ]
     ];
 

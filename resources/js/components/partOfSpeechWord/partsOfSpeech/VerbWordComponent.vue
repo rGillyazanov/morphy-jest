@@ -8,26 +8,31 @@
       </div>
       <PresentTimeTableComponent
         :word="word"
+        :active-word-forms="activeWordForms"
         @selected-words="selectedWords.presentTime = $event"
         :present-time="presentTime(verb)">
       </PresentTimeTableComponent>
       <PastTimeTableComponent
         :word="word"
+        :active-word-forms="activeWordForms"
         @selected-words="selectedWords.pastTime = $event"
         :past-time="pastTime(verb)">
       </PastTimeTableComponent>
       <ImperativeMoodTableComponent
         :word="word"
+        :active-word-forms="activeWordForms"
         @selected-words="selectedWords.imperativeMood = $event"
         :imperative-mood="imperativeMood(verb)">
       </ImperativeMoodTableComponent>
       <AdverbParticipleTableComponent
         :word="word"
+        :active-word-forms="activeWordForms"
         @selected-words="selectedWords.adverbParticiple = $event"
         :adverb-participle="adverbParticiple(verb)">
       </AdverbParticipleTableComponent>
       <ParticipleCasesTableComponent
         :word="word"
+        :active-word-forms="activeWordForms"
         @selected-words="selectedWords.participle = $event"
         :part-of-speech="participle(verb)">
       </ParticipleCasesTableComponent>
@@ -58,6 +63,10 @@ export default {
     },
     word: {
       type: String,
+      required: true
+    },
+    activeWordForms: {
+      type: Array,
       required: true
     }
   },

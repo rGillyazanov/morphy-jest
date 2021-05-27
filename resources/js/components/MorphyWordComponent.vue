@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-2">
           <label for="words">Слова</label>
-          <input id="words" class="form-control" type="text" placeholder="Поиск слова">
+          <input id="words" class="form-control" type="text" @change="getAllWords" v-model="searchWord" placeholder="Поиск слова">
           <select class="mt-3 custom-select" size="10">
             <option @click="wordSelected(wordForm, wordForm.id_word)" :value="wordForm"
                     v-for="wordForm in wordForms.words">{{ wordForm.word }}
@@ -49,7 +49,7 @@
         <div class="col-2">
           <label for="wordsOnJest">Слова в жесте</label>
           <select id="wordsOnJest" class="custom-select" size="14">
-            <option @click="word = wordInJest.word" :value="wordInJest" v-for="wordInJest in wordsInJest.words">
+            <option @click="selectWordForm(wordInJest.word)" :value="wordInJest" v-for="wordInJest in wordsInJest.words">
               {{ wordInJest.word }}
             </option>
           </select>
@@ -94,6 +94,7 @@ export default {
   data() {
     return {
       word: '',
+      searchWord: '',
       wordForms: {
         words: [],
         selected: {
@@ -122,7 +123,7 @@ export default {
   watch: {
     word() {
       this.loadWord();
-    }
+    },
   },
   methods: {
     loadWord() {
@@ -152,33 +153,53 @@ export default {
       });
     },
     selectJest(jestId) {
-      this.currentJestId = jestId;
-      axios.get('/api/allWordsOfJest/' + jestId).then(response => {
-        const regEx = /^[а-яА-ЯёЁ]+$/u;
-        this.wordsInJest.words = response.data[0].words?.filter(word => regEx.test(word.word) === true);
-      });
+      if (this.currentJestId !== jestId) {
+        this.word = null;
+        this.activeWordFormsInJest = null;
+        this.wordsInJest.words = [];
+        this.currentJestId = jestId;
 
-      axios.get('/api/getWordFormsInJest/' + jestId).then(response => {
-        this.activeWordFormsInJest = response.data;
-      })
+        axios.get('/api/allWordsOfJest/' + jestId).then(response => {
+          const regEx = /^[а-яА-ЯёЁ]+$/u;
+          this.wordsInJest.words = response.data[0].words?.filter(word => regEx.test(word.word) === true);
+        });
 
-      axios.get('/api/allWordsOfJest/' + jestId).then(response => {
-        const regEx = /^[а-яА-ЯёЁ]+$/u;
-        this.wordsInJest.words = response.data[0].words?.filter(word => regEx.test(word.word) === true);
-      });
+        axios.get('/api/getWordFormsInJest/' + jestId).then(response => {
+          this.activeWordFormsInJest = response.data;
+        })
+      }
+    },
+    selectWordForm(selectedWordForm) {
+      if (this.word !== selectedWordForm) {
+        this.word = selectedWordForm;
+        this.activeWordFormsInJest = null;
+
+        axios.get('/api/getWordFormsInJest/' + this.currentJestId).then(response => {
+          this.activeWordFormsInJest = response.data?.map(word => {
+            return JSON.stringify(word);
+          });
+        })
+      }
     },
     nextPage() {
       this.pageNumber++;
     },
     prevPage() {
       this.pageNumber--;
+    },
+    getAllWords() {
+      axios.get('/api/allWords', {
+        params: {
+          search: this.searchWord
+        }
+      }).then(response => {
+        const regEx = /^[а-яА-ЯёЁ]+$/u;
+        this.wordForms.words = response.data.filter(word => regEx.test(word.word) === true);
+      })
     }
   },
   mounted() {
-    axios.get('/api/allWords').then(response => {
-      const regEx = /^[а-яА-ЯёЁ]+$/u;
-      this.wordForms.words = response.data.filter(word => regEx.test(word.word) === true);
-    })
+    this.getAllWords();
   },
   computed: {
     pageCount() {

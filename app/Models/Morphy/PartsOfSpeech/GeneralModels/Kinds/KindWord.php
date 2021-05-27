@@ -46,6 +46,7 @@ class KindWord implements JsonSerializable
      */
     public function getNormalGrammems(): array
     {
+        sort($this->_normal_grammems);
         return $this->_normal_grammems;
     }
 
@@ -78,6 +79,7 @@ class KindWord implements JsonSerializable
      */
     public function getDegreeGrammems(): array
     {
+        sort($this->_degree_grammems);
         return $this->_degree_grammems;
     }
 

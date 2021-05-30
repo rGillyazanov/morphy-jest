@@ -71,18 +71,32 @@
           </div>
         </div>
         <div class="col-6" v-if="word">
-          <div v-if="!response.loading">
-            <div v-if="response.error.value">
+          <div v-if="!wordFormsOfWord.loading">
+            <div v-if="wordFormsOfWord.error.value">
               {{ response.error.message }}
             </div>
-            <div v-else-if="response.data">
+            <div v-else-if="wordFormsOfWord.data">
               <part-of-speech-table
                 :active-word-forms="activeWordFormsInJest"
-                :jest-id="currentJestId"
                 :word="word"
-                @saving-wordForms="savingWordForms = $event"
-                :parts-of-speech-word="response.data">
+                @selected-words="selectedWords = $event"
+                :scrollable="true"
+                :parts-of-speech-word="wordFormsOfWord.data">
               </part-of-speech-table>
+
+              <div class="d-flex align-items-center mt-2">
+                <button class="btn btn-primary" type="button" @click="save" :disabled="saveResponse.loading">
+                  <template v-if="saveResponse.loading">
+                    <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+                    Сохранение...
+                  </template>
+                  <template v-else>Сохранить</template>
+                </button>
+                <div class="ml-3"
+                     v-if="saveResponse.message">
+                  {{ saveResponse.message }}
+                </div>
+              </div>
             </div>
           </div>
           <div v-else>
@@ -104,14 +118,16 @@
 
 <script>
 import PartOfSpeechTable from "./partOfSpeechWord/PartOfSpeechTable";
+import {getAllWords, loadingWordFormsOfWord} from "../../../services/apiService";
 
 export default {
-  name: 'MorphyWordComponent',
+  name: 'MorphyJestsComponent',
   components: {PartOfSpeechTable},
   data() {
     return {
       word: '',
       searchWord: '',
+      currentJestId: null,
       wordForms: {
         words: [],
         selected: {
@@ -127,8 +143,7 @@ export default {
       },
       activeWordFormsInJest: [],
       loadingActiveWordFormsInJest: false,
-      currentJestId: null,
-      response: {
+      wordFormsOfWord: {
         data: null,
         error: {
           value: false,
@@ -138,7 +153,12 @@ export default {
       },
       savingWordForms: false,
       pageNumber: 0,
-      size: 4
+      size: 4,
+      saveResponse: {
+        loading: false,
+        message: ''
+      },
+      selectedWords: []
     }
   },
   watch: {
@@ -147,19 +167,22 @@ export default {
     },
   },
   methods: {
-    loadWord() {
+    async loadWord() {
       if (this.word) {
-        this.response.loading = true;
-        axios.get('/api/words/' + this.word).then(response => {
-          this.response.data = response.data[0];
-          this.response.error.value = false;
-          this.response.loading = false;
-        }).catch(error => {
-          this.response.data = null;
-          this.response.error.value = true;
-          this.response.error.message = 'Слово не найдено';
-          this.response.loading = false;
-        })
+        this.wordFormsOfWord.loading = true;
+
+        const words = await loadingWordFormsOfWord(this.word);
+
+        if (words) {
+          this.wordFormsOfWord.data = words;
+          this.wordFormsOfWord.error.value = false;
+        } else {
+          this.wordFormsOfWord.data = null;
+          this.wordFormsOfWord.error.value = true;
+          this.wordFormsOfWord.error.message = 'Слово не найдено';
+        }
+
+        this.wordFormsOfWord.loading = false;
       }
     },
     wordSelected(selectedWord, wordId) {
@@ -195,10 +218,6 @@ export default {
           console.error(error);
           this.wordsInJest.loading = false;
         });
-
-        axios.get('/api/getWordFormsInJest/' + jestId).then(response => {
-          this.activeWordFormsInJest = response.data;
-        })
       }
     },
     selectWordForm(selectedWordForm) {
@@ -221,15 +240,28 @@ export default {
     prevPage() {
       this.pageNumber--;
     },
-    getAllWords() {
-      axios.get('/api/allWords', {
-        params: {
-          search: this.searchWord
-        }
+    async getAllWords() {
+      this.wordForms.words = await getAllWords(this.searchWord);
+    },
+    save() {
+      this.saveResponse.loading = true;
+
+      axios.post('/api/storeWordFormsInJest', {
+        jest_id: this.currentJestId,
+        wordForms: JSON.stringify(this.selectedWords)
       }).then(response => {
-        const regEx = /^[а-яА-ЯёЁ]+$/u;
-        this.wordForms.words = response.data.filter(word => regEx.test(word.word) === true);
-      })
+        this.saveResponse.loading = false;
+        if (response.status === 200) {
+          this.saveResponse.message = 'Словоформы успешно сохранены';
+
+          setTimeout(() => {
+            this.saveResponse.message = '';
+          }, 5000);
+        }
+      }).catch(error => {
+        this.saveResponse.loading = false;
+        this.saveResponse.message = error;
+      });
     }
   },
   mounted() {
@@ -247,7 +279,7 @@ export default {
       return this.wordForms.selected.jests.slice(start, end);
     },
     shareLoading() {
-      return this.wordForms.loading || this.response.loading || this.wordsInJest.loading || this.savingWordForms;
+      return this.wordForms.loading || this.wordFormsOfWord.loading || this.wordsInJest.loading || this.savingWordForms;
     }
   }
 }

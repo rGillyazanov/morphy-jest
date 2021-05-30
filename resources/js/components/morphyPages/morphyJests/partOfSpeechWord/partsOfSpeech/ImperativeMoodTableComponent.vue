@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import {GrammemsMixin} from "../../../mixins/grammems";
-import {SelectedWordsMixin} from "../../../mixins/selectedWords";
+import {GrammemsMixin} from "../../../../../mixins/grammems";
+import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
 
 export default {
   name: "ImperativeMoodTableComponent",

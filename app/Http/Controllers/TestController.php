@@ -164,4 +164,11 @@ class TestController extends Controller
 
         return response()->json($wordss, 200, [], 256);
     }
+
+    public function searchJest(Request $request)
+    {
+        $searchText = $request->input('search');
+
+        return Jest::where('jest', 'like', "%$searchText%")->limit(100)->orderBy('jest')->get(['id_jest', 'jest', 'nedooformleno']);
+    }
 }

@@ -41,14 +41,14 @@
 </template>
 
 <script>
-import {GrammemsMixin} from "../../../mixins/grammems";
+import {GrammemsMixin} from "../../../../../mixins/grammems";
 
 import PresentTimeTableComponent from "./PresentTimeTableComponent";
 import PastTimeTableComponent from "./PastTimeTableComponent";
 import ImperativeMoodTableComponent from "./ImperativeMoodTableComponent";
 import AdverbParticipleTableComponent from "./AdverbParticipleTableComponent";
 import ParticipleCasesTableComponent from "./ParticipleCasesTableComponent";
-import {uniqueWords} from "../../../mixins/selectedWords";
+import {uniqueWords} from "../../../../../mixins/selectedWords";
 
 export default {
   name: "VerbWordComponent",

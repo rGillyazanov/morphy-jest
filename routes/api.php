@@ -19,4 +19,5 @@ Route::get('/allWords', [\App\Http\Controllers\TestController::class, 'allWords'
 Route::get('/jestsOfWord/{wordId}', [\App\Http\Controllers\TestController::class, 'jestsOfWord']);
 Route::get('/allWordsOfJest/{jestId}', [\App\Http\Controllers\TestController::class, 'allWordsOfJest']);
 Route::get('/getWordFormsInJest/{jestId}', [\App\Http\Controllers\TestController::class, 'getWordFormsInJest']);
+Route::get('/jest/search', [\App\Http\Controllers\TestController::class, 'searchJest']);
 Route::post('/storeWordFormsInJest', [\App\Http\Controllers\TestController::class, 'storeWordFormsInJest']);

@@ -2562,7 +2562,13 @@ __webpack_require__.r(__webpack_exports__);
         var that = this;
         var modal = $('#selectedJests');
         modal.on('hidden.bs.modal', function () {
+          if (!_this.selectedJests[_this.activeCheckboxInJestsModal]) {
+            $(":checkbox[value='".concat(_this.activeCheckboxInJestsModal, "']")).prop("checked", false);
+          }
+
           _this.activeCheckboxInJestsModal = null;
+
+          _this.$emit('selected-jests', _this.selectedJests);
         });
         $('#partOfSpeechComponent td input[type="checkbox"]').click(function (event) {
           that.inputJest = null;
@@ -2570,8 +2576,6 @@ __webpack_require__.r(__webpack_exports__);
           if (this.checked) {
             modal.modal('show');
             that.activeCheckboxInJestsModal = this.value;
-          } else {
-            modal.modal('hide');
           }
         });
       }
@@ -2588,7 +2592,6 @@ __webpack_require__.r(__webpack_exports__);
         return jest.jest.id_jest === _this2.inputJest.id_jest;
       }))) {
         this.selectedJests[this.activeCheckboxInJestsModal].push({
-          wordform_id: null,
           jest: this.inputJest,
           order: null
         });
@@ -3798,6 +3801,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3827,6 +3832,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         loading: false
       },
+      selectedJests: null,
       savingWordForms: false
     };
   },
@@ -42503,8 +42509,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-footer" }, [
       _c(
         "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Сохранить")]
+        {
+          staticClass: "btn btn-primary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Закрыть")]
       )
     ])
   }
@@ -46483,11 +46492,20 @@ var render = function() {
                                 "parts-of-speech-word": _vm.wordFormsOfWord.data
                               },
                               on: {
-                                "selected-words": function($event) {
-                                  _vm.selectedWords = $event
+                                "selected-jests": function($event) {
+                                  _vm.selectedJests = $event
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { type: "button" }
+                              },
+                              [_vm._v("Сохранить")]
+                            )
                           ],
                           1
                         )

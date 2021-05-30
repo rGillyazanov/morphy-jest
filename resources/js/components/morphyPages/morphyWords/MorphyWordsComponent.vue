@@ -25,9 +25,11 @@
                 :active-word-forms="activeWordFormsInJest"
                 :word="word"
                 :select-jests="true"
-                @selected-words="selectedWords = $event"
+                @selected-jests="selectedJests = $event"
                 :parts-of-speech-word="wordFormsOfWord.data">
               </part-of-speech-table>
+
+              <button type="button" class="btn btn-primary">Сохранить</button>
             </div>
           </div>
           <div v-else>
@@ -76,6 +78,7 @@ export default {
         },
         loading: false
       },
+      selectedJests: null,
       savingWordForms: false,
     }
   },

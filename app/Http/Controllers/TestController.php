@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jest;
 use App\Models\Morphies\JestWordForms;
 use App\Models\Morphies\PartOfSpeech;
+use App\Models\Morphies\WordFormJestsSostav;
 use App\Models\Morphies\WordFormsModel;
 use App\Models\Morphies\WordGrammems;
 use App\Models\Morphy\HelpMorphyService;
@@ -170,5 +171,48 @@ class TestController extends Controller
         $searchText = $request->input('search');
 
         return Jest::where('jest', 'like', "%$searchText%")->limit(100)->orderBy('jest')->get(['id_jest', 'jest', 'nedooformleno']);
+    }
+
+    public function storeJestsWordForm(Request $request)
+    {
+        // Словоформы с составом жестов.
+        $wordFormsWithJestsJSON = $request->get('wordFormsWithJests');
+
+        $wordFormsWithJests = json_decode($wordFormsWithJestsJSON);
+
+        foreach ($wordFormsWithJests as $wordFormInfo => $jests) {
+            $wordInfo = json_decode($wordFormInfo);
+
+            $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', $wordInfo['Часть речи'])->id;
+
+            $attributes = [];
+            $attributes['part_of_speech_id'] = $partOfSpeechId;
+
+            foreach ($wordInfo['Граммемы'] as $grammem) {
+                foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
+                    $grammem = mb_strtolower($grammem, 'UTF-8');
+                    if ($grammem === $descriptor) {
+
+                        $model = new $item['model']();
+
+                        $idGrammema = $model::query()->where('grammema', $grammem)->first()->id;
+
+                        $attributes[$item['word_grammems_id']] = $idGrammema;
+                    }
+                }
+            }
+
+            $wordGrammem = WordGrammems::query()->firstOrCreate(
+                $attributes
+            );
+
+            $wordFormId = $wordGrammem->id;
+
+            foreach ($jests as $jest) {
+                WordFormJestsSostav::query()->firstOrCreate(
+                    ['wordform_id' => $wordFormId, 'jest_id' => $jest->id_jest, 'order' => $jest->order]
+                );
+            }
+        }
     }
 }

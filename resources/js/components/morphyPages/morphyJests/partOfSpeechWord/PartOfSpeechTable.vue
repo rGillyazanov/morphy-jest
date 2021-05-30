@@ -207,7 +207,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Сохранить</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Закрыть</button>
             </div>
           </div>
         </div>
@@ -339,7 +339,12 @@ export default {
         const modal = $('#selectedJests');
 
         modal.on('hidden.bs.modal', () => {
+          if (!this.selectedJests[this.activeCheckboxInJestsModal]) {
+            $(`:checkbox[value='${this.activeCheckboxInJestsModal}']`).prop("checked", false);
+          }
+
           this.activeCheckboxInJestsModal = null;
+          this.$emit('selected-jests', this.selectedJests);
         })
 
         $('#partOfSpeechComponent td input[type="checkbox"]').click(function (event) {
@@ -347,8 +352,6 @@ export default {
           if (this.checked) {
             modal.modal('show');
             that.activeCheckboxInJestsModal = this.value;
-          } else {
-            modal.modal('hide');
           }
         });
       }
@@ -360,7 +363,6 @@ export default {
 
       if (this.inputJest && !this.selectedJests[this.activeCheckboxInJestsModal]?.find(jest => jest.jest.id_jest === this.inputJest.id_jest)) {
         this.selectedJests[this.activeCheckboxInJestsModal].push({
-          wordform_id: null,
           jest: this.inputJest,
           order: null
         });

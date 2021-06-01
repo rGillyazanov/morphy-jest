@@ -156,14 +156,13 @@ class TestController extends Controller
     {
         $words = Jest::query()->where('id_jest', $jestId)->first()->wordGrammems;
 
-        $wordss = [];
-
+        $wordsGrammems = [];
 
         foreach ($words as $word) {
-            $wordss[] = $word->json();
+            $wordsGrammems[] = $word->json();
         }
 
-        return response()->json($wordss, 200, [], 256);
+        return response()->json($wordsGrammems, 200, [], 256);
     }
 
     public function searchJest(Request $request)
@@ -177,15 +176,21 @@ class TestController extends Controller
     {
         // Словоформы с составом жестов.
         $wordFormsWithJestsJSON = $request->get('wordFormsWithJests');
+        $wordIdSelected = $request->get('word_id');
 
         $wordFormsWithJests = json_decode($wordFormsWithJestsJSON);
 
         foreach ($wordFormsWithJests as $wordFormInfo => $jests) {
-            $wordInfo = json_decode($wordFormInfo);
+            $wordInfo = json_decode($wordFormInfo, true);
 
-            $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', $wordInfo['Часть речи'])->id;
+            $word = WordFormsModel::query()->firstOrCreate(
+                ['word' => mb_strtolower($wordInfo['Слово'], 'UTF-8')]
+            );
+
+            $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', mb_strtoupper($wordInfo['Часть речи'], 'UTF-8'))->id;
 
             $attributes = [];
+            $attributes['word_id'] = $word->id;
             $attributes['part_of_speech_id'] = $partOfSpeechId;
 
             foreach ($wordInfo['Граммемы'] as $grammem) {
@@ -209,10 +214,49 @@ class TestController extends Controller
             $wordFormId = $wordGrammem->id;
 
             foreach ($jests as $jest) {
-                WordFormJestsSostav::query()->firstOrCreate(
-                    ['wordform_id' => $wordFormId, 'jest_id' => $jest->id_jest, 'order' => $jest->order]
+                WordFormJestsSostav::query()->updateOrCreate(
+                    [
+                        'word_id' => $wordIdSelected,
+                        'wordform_id' => $wordFormId,
+                        'jest_id' => $jest->jest->id_jest
+                    ],
+                    [
+                        'order' => $jest->order
+                    ]
                 );
             }
         }
+    }
+
+    public function wordFormJestsInWord($wordId)
+    {
+        // Слово с составом жестов
+        $wordFormsWithJestsSostav = Word::query()->findOrFail($wordId)->wordFormJestsSostav->groupBy('wordform_id');
+
+        $res = [];
+        foreach ($wordFormsWithJestsSostav as $groupWordFormId => $jests) {
+            $wordJsonInfo = WordGrammems::query()->findOrFail($groupWordFormId)->json();
+
+            $wordJsonInfo = json_encode($wordJsonInfo, 256);
+
+            $res[$wordJsonInfo] = [];
+
+            foreach ($jests as $jest) {
+                $jestModel = Jest::query()->where('id_jest', $jest->jest_id)->first(['id_jest', 'jest', 'nedooformleno']);
+
+                $obj = [
+                    'id_jest' => $jestModel->id_jest,
+                    'jest' => $jestModel->jest,
+                    'nedooformleno' => $jestModel->nedooformleno
+                ];
+
+                $res[$wordJsonInfo][] = [
+                    'jest' => $obj,
+                    'order' => $jest->order
+                ];
+            }
+        }
+
+        return response()->json($res, 200, [], 256);
     }
 }

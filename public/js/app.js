@@ -2220,6 +2220,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partsOfSpeech_UnchangeableWordComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partsOfSpeech/UnchangeableWordComponent */ "./resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue");
 /* harmony import */ var _partsOfSpeech_AdjectiveCasesTableComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partsOfSpeech/AdjectiveCasesTableComponent */ "./resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue");
 /* harmony import */ var _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../mixins/selectedWords */ "./resources/js/mixins/selectedWords.js");
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
 //
 //
 //
@@ -2438,6 +2439,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -2471,6 +2478,9 @@ __webpack_require__.r(__webpack_exports__);
     activeWordForms: {
       type: Array,
       required: true
+    },
+    selectedJests: {
+      type: Object
     },
     scrollable: {
       type: Boolean
@@ -2519,18 +2529,34 @@ __webpack_require__.r(__webpack_exports__);
       // Жест который выбрали в состав.
       jestBySearch: [],
       // Список жестов при поиске
-      selectedJests: {},
-      // Выбранные жесты у словоформы
       activeCheckboxInJestsModal: null,
       // Информация о словоформе, для которой открыто модальное окно с составом
       selectedJest: null
     };
   },
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_7__.GrammemsMixin],
   watch: {
     selectedWords: {
       deep: true,
       handler: function handler() {
         this.$emit('selected-words', _mixins_selectedWords__WEBPACK_IMPORTED_MODULE_6__.uniqueWords.call(this));
+      }
+    }
+  },
+  computed: {
+    activeWordFormInModal: function activeWordFormInModal() {
+      if (this.activeCheckboxInJestsModal) {
+        return JSON.parse(this.activeCheckboxInJestsModal)['Слово'].toLowerCase();
+      }
+    },
+    activeWordFormGrammemsInModal: function activeWordFormGrammemsInModal() {
+      if (this.activeCheckboxInJestsModal) {
+        return JSON.parse(this.activeCheckboxInJestsModal)['Граммемы'];
+      }
+    },
+    activeWordFormPartOfSpeechInModal: function activeWordFormPartOfSpeechInModal() {
+      if (this.activeCheckboxInJestsModal) {
+        return JSON.parse(this.activeCheckboxInJestsModal)['Часть речи'];
       }
     }
   },
@@ -2570,12 +2596,26 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.$emit('selected-jests', _this.selectedJests);
         });
-        $('#partOfSpeechComponent td input[type="checkbox"]').click(function (event) {
+        var allCheckBox = $('#partOfSpeechComponent input[type="checkbox"]');
+        allCheckBox.parent().parent().parent().css('cursor', 'pointer');
+        allCheckBox.click(function (event) {
           that.inputJest = null;
 
           if (this.checked) {
             modal.modal('show');
             that.activeCheckboxInJestsModal = this.value;
+          } else {
+            if (that.selectedJests[this.value]) {
+              console.log('rew');
+              delete that.selectedJests[this.value];
+            }
+          }
+        }).parent().parent().parent().click(function () {
+          var _$$, _$$$children$, _$$$children$$childre, _$$$children$$childre2;
+
+          if ((_$$ = $(this)[0]) !== null && _$$ !== void 0 && (_$$$children$ = _$$.children[0]) !== null && _$$$children$ !== void 0 && (_$$$children$$childre = _$$$children$.children[0]) !== null && _$$$children$$childre !== void 0 && (_$$$children$$childre2 = _$$$children$$childre.children[0]) !== null && _$$$children$$childre2 !== void 0 && _$$$children$$childre2.checked) {
+            that.activeCheckboxInJestsModal = $(this)[0].children[0].children[0].children[0].value;
+            modal.modal('show');
           }
         });
       }
@@ -3803,6 +3843,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3816,13 +3869,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       searchWord: '',
       wordForms: {
         words: [],
-        selected: {
-          id: null,
-          word: null
-        },
+        selected: null,
         loading: false
       },
-      activeWordFormsInJest: [],
+      activeWordForms: [],
+      activeWordFormsInJest: {},
       loadingActiveWordFormsInJest: false,
       wordFormsOfWord: {
         data: null,
@@ -3831,6 +3882,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           message: ''
         },
         loading: false
+      },
+      saveResponse: {
+        loading: false,
+        message: ''
       },
       selectedJests: null,
       savingWordForms: false
@@ -3885,15 +3940,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     selectWord: function selectWord(selectedWord) {
       var _this2 = this;
 
-      if (this.word !== selectedWord && !this.loadingActiveWordFormsInJest) {
-        this.word = selectedWord;
+      if (this.word !== selectedWord.word && !this.loadingActiveWordFormsInJest) {
+        this.word = selectedWord.word;
+        this.wordForms.selected = selectedWord;
         this.loadingActiveWordFormsInJest = true;
-        axios.get('/api/getWordFormsInJest/' + this.currentJestId).then(function (response) {
-          var _response$data;
-
-          _this2.activeWordFormsInJest = (_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.map(function (word) {
-            return JSON.stringify(word);
+        axios.get('/api/wordFormJestsInWord/' + this.wordForms.selected.id_word).then(function (response) {
+          Object.keys(response.data).forEach(function (key) {
+            response.data[key].forEach(function (item, index) {
+              response.data[key][index]['jest'] = Object.assign({}, response.data[key][index]['jest']);
+            });
           });
+          _this2.activeWordFormsInJest = !_.isEmpty(response.data) ? response.data : {};
+          _this2.activeWordForms = Object.keys(response.data);
           _this2.loadingActiveWordFormsInJest = false;
         });
       }
@@ -3919,6 +3977,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }))();
+    },
+    save: function save() {
+      var _this4 = this;
+
+      this.saveResponse.loading = true;
+      axios.post('/api/storeJestsWordForm', {
+        word_id: this.wordForms.selected.id_word,
+        wordFormsWithJests: JSON.stringify(this.selectedJests)
+      }).then(function (response) {
+        _this4.saveResponse.loading = false;
+
+        if (response.status === 200) {
+          _this4.saveResponse.message = 'Сохранение завершено';
+          setTimeout(function () {
+            _this4.saveResponse.message = '';
+          }, 5000);
+        }
+      })["catch"](function (error) {
+        _this4.saveResponse.loading = false;
+        _this4.saveResponse.message = error;
+      });
     }
   },
   mounted: function mounted() {
@@ -4124,23 +4203,27 @@ var GrammemsMixin = {
      * @returns {string}
      */
     listOfGrammems: function listOfGrammems(grammems) {
-      var grammemsDescription = [];
+      if (grammems) {
+        var grammemsDescription = [];
 
-      var _iterator = _createForOfIteratorHelper(grammems),
-          _step;
+        var _iterator = _createForOfIteratorHelper(grammems),
+            _step;
 
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var grammem = _step.value;
-          grammemsDescription.push(globalGrammems[grammem.toLowerCase()]);
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var grammem = _step.value;
+            grammemsDescription.push(globalGrammems[grammem.toLowerCase()]);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
         }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
+
+        return grammemsDescription.join(', ');
       }
 
-      return grammemsDescription.join(', ');
+      return '-';
     },
 
     /**
@@ -4149,7 +4232,11 @@ var GrammemsMixin = {
      * @returns {*}
      */
     descriptorToPartOfSpeech: function descriptorToPartOfSpeech(descriptor) {
-      return globalGrammems[descriptor.toLowerCase()];
+      if (descriptor) {
+        return globalGrammems[descriptor.toLowerCase()];
+      }
+
+      return '-';
     },
 
     /**
@@ -42232,7 +42319,39 @@ var render = function() {
               [
                 _c("div", { staticClass: "modal-dialog" }, [
                   _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(0),
+                    _c("div", { staticClass: "modal-header" }, [
+                      _c("h5", { staticClass: "modal-title" }, [
+                        _vm._v("\n              Выбор жестов для словоформы "),
+                        _c("u", [
+                          _c("b", [_vm._v(_vm._s(_vm.activeWordFormInModal))])
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("b", [_vm._v("Граммемы")]),
+                        _vm._v(
+                          ": " +
+                            _vm._s(
+                              _vm.listOfGrammems(
+                                _vm.activeWordFormGrammemsInModal
+                              )
+                            )
+                        ),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("b", [_vm._v("Часть речи")]),
+                        _vm._v(
+                          ": " +
+                            _vm._s(
+                              _vm.descriptorToPartOfSpeech(
+                                _vm.activeWordFormPartOfSpeechInModal
+                              )
+                            ) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-body" }, [
                       _vm._m(1),
@@ -42469,24 +42588,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title" }, [
-        _vm._v("Выбор жестов для словоформы")
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this
@@ -46445,7 +46558,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "select",
-            { staticClass: "mt-3 custom-select", attrs: { size: "10" } },
+            {
+              staticClass: "mt-3 custom-select",
+              attrs: { size: "10", disabled: _vm.wordFormsOfWord.loading }
+            },
             _vm._l(_vm.wordForms.words, function(wordForm) {
               return _c(
                 "option",
@@ -46453,7 +46569,7 @@ var render = function() {
                   domProps: { value: wordForm },
                   on: {
                     click: function($event) {
-                      _vm.word = wordForm.word
+                      return _vm.selectWord(wordForm)
                     }
                   }
                 },
@@ -46486,7 +46602,8 @@ var render = function() {
                           [
                             _c("part-of-speech-table", {
                               attrs: {
-                                "active-word-forms": _vm.activeWordFormsInJest,
+                                "active-word-forms": _vm.activeWordForms,
+                                "selected-jests": _vm.activeWordFormsInJest,
                                 word: _vm.word,
                                 "select-jests": true,
                                 "parts-of-speech-word": _vm.wordFormsOfWord.data
@@ -46499,12 +46616,49 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary",
-                                attrs: { type: "button" }
-                              },
-                              [_vm._v("Сохранить")]
+                              "div",
+                              { staticClass: "d-flex align-items-center mt-2" },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary",
+                                    attrs: {
+                                      type: "button",
+                                      disabled: _vm.saveResponse.loading
+                                    },
+                                    on: { click: _vm.save }
+                                  },
+                                  [
+                                    _vm.saveResponse.loading
+                                      ? [
+                                          _c("span", {
+                                            staticClass:
+                                              "spinner-border spinner-border-sm mr-2",
+                                            attrs: {
+                                              role: "status",
+                                              "aria-hidden": "true"
+                                            }
+                                          }),
+                                          _vm._v(
+                                            "\n                  Сохранение...\n                "
+                                          )
+                                        ]
+                                      : [_vm._v("Сохранить")]
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _vm.saveResponse.message
+                                  ? _c("div", { staticClass: "ml-3" }, [
+                                      _vm._v(
+                                        "\n                " +
+                                          _vm._s(_vm.saveResponse.message) +
+                                          "\n              "
+                                      )
+                                    ])
+                                  : _vm._e()
+                              ]
                             )
                           ],
                           1

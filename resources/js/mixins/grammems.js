@@ -87,13 +87,17 @@ export const GrammemsMixin = {
      * @returns {string}
      */
     listOfGrammems(grammems) {
-      const grammemsDescription = [];
+      if (grammems) {
+        const grammemsDescription = [];
 
-      for (let grammem of grammems) {
-        grammemsDescription.push(globalGrammems[grammem.toLowerCase()])
+        for (let grammem of grammems) {
+          grammemsDescription.push(globalGrammems[grammem.toLowerCase()])
+        }
+
+        return grammemsDescription.join(', ');
       }
 
-      return grammemsDescription.join(', ');
+      return '-';
     },
     /**
      * Возвращает часть речи по дескриптору
@@ -101,7 +105,11 @@ export const GrammemsMixin = {
      * @returns {*}
      */
     descriptorToPartOfSpeech(descriptor) {
-      return globalGrammems[descriptor.toLowerCase()];
+      if (descriptor) {
+        return globalGrammems[descriptor.toLowerCase()];
+      }
+
+      return '-';
     },
     /**
      * Проверяет есть ли слово для граммемы.

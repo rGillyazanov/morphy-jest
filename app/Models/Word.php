@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Morphies\WordFormJestsSostav;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
@@ -66,6 +67,11 @@ class Word extends Model
     public function jests()
     {
         return $this->belongsToMany('App\Models\Jest', 'srd_surd_cross_words', 'id_word', 'id_jest');
+    }
+
+    public function wordFormJestsSostav()
+    {
+        return $this->hasMany(WordFormJestsSostav::class, 'word_id', 'id_word');
     }
 
     /**

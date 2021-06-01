@@ -8,8 +8,8 @@
                  @change="getAllWords"
                  v-model="searchWord"
                  placeholder="Поиск слова">
-          <select class="mt-3 custom-select" size="10">
-            <option @click="word = wordForm.word" :value="wordForm"
+          <select class="mt-3 custom-select" size="10" :disabled="wordFormsOfWord.loading">
+            <option @click="selectWord(wordForm)" :value="wordForm"
                     v-for="wordForm in wordForms.words">
               {{ wordForm.word }}
             </option>
@@ -22,14 +22,27 @@
             </div>
             <div v-else-if="wordFormsOfWord.data">
               <part-of-speech-table
-                :active-word-forms="activeWordFormsInJest"
+                :active-word-forms="activeWordForms"
+                :selected-jests="activeWordFormsInJest"
                 :word="word"
                 :select-jests="true"
                 @selected-jests="selectedJests = $event"
                 :parts-of-speech-word="wordFormsOfWord.data">
               </part-of-speech-table>
 
-              <button type="button" class="btn btn-primary">Сохранить</button>
+              <div class="d-flex align-items-center mt-2">
+                <button class="btn btn-primary" type="button" @click="save" :disabled="saveResponse.loading">
+                  <template v-if="saveResponse.loading">
+                    <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+                    Сохранение...
+                  </template>
+                  <template v-else>Сохранить</template>
+                </button>
+                <div class="ml-3"
+                     v-if="saveResponse.message">
+                  {{ saveResponse.message }}
+                </div>
+              </div>
             </div>
           </div>
           <div v-else>
@@ -62,13 +75,11 @@ export default {
       searchWord: '',
       wordForms: {
         words: [],
-        selected: {
-          id: null,
-          word: null
-        },
+        selected: null,
         loading: false
       },
-      activeWordFormsInJest: [],
+      activeWordForms: [],
+      activeWordFormsInJest: {},
       loadingActiveWordFormsInJest: false,
       wordFormsOfWord: {
         data: null,
@@ -77,6 +88,10 @@ export default {
           message: ''
         },
         loading: false
+      },
+      saveResponse: {
+        loading: false,
+        message: ''
       },
       selectedJests: null,
       savingWordForms: false,
@@ -107,14 +122,20 @@ export default {
       }
     },
     selectWord(selectedWord) {
-      if (this.word !== selectedWord && !this.loadingActiveWordFormsInJest) {
-        this.word = selectedWord;
+      if (this.word !== selectedWord.word && !this.loadingActiveWordFormsInJest) {
+        this.word = selectedWord.word;
+        this.wordForms.selected = selectedWord;
 
         this.loadingActiveWordFormsInJest = true;
-        axios.get('/api/getWordFormsInJest/' + this.currentJestId).then(response => {
-          this.activeWordFormsInJest = response.data?.map(word => {
-            return JSON.stringify(word);
+        axios.get('/api/wordFormJestsInWord/' + this.wordForms.selected.id_word).then(response => {
+          Object.keys(response.data).forEach(key => {
+            response.data[key].forEach((item, index) => {
+              response.data[key][index]['jest'] = Object.assign({}, response.data[key][index]['jest']);
+            });
           });
+
+          this.activeWordFormsInJest = !_.isEmpty(response.data) ? response.data : {};
+          this.activeWordForms = Object.keys(response.data);
 
           this.loadingActiveWordFormsInJest = false;
         });
@@ -122,6 +143,26 @@ export default {
     },
     async getAllWords() {
       this.wordForms.words = await getAllWords(this.searchWord);
+    },
+    save() {
+      this.saveResponse.loading = true;
+
+      axios.post('/api/storeJestsWordForm', {
+        word_id: this.wordForms.selected.id_word,
+        wordFormsWithJests: JSON.stringify(this.selectedJests)
+      }).then(response => {
+        this.saveResponse.loading = false;
+        if (response.status === 200) {
+          this.saveResponse.message = 'Сохранение завершено';
+
+          setTimeout(() => {
+            this.saveResponse.message = '';
+          }, 5000);
+        }
+      }).catch(error => {
+        this.saveResponse.loading = false;
+        this.saveResponse.message = error;
+      });
     }
   },
   mounted() {

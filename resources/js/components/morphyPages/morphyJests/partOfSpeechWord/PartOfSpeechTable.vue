@@ -134,7 +134,11 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Выбор жестов для словоформы</h5>
+              <h5 class="modal-title">
+                Выбор жестов для словоформы <u><b>{{ activeWordFormInModal }}</b></u><br>
+                <b>Граммемы</b>: {{ listOfGrammems(activeWordFormGrammemsInModal) }}<br>
+                <b>Часть речи</b>: {{ descriptorToPartOfSpeech(activeWordFormPartOfSpeechInModal) }}
+              </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -157,7 +161,8 @@
                     </button>
                   </div>
                   <div class="nav-item">
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2" @click="deleteSelectedJest">
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2"
+                            @click="deleteSelectedJest">
                       <span>x</span>
                     </button>
                   </div>
@@ -224,6 +229,7 @@ import BaseCasesFacesTableComponent from "./partsOfSpeech/BaseCasesFacesTableCom
 import UnchangeableWordComponent from "./partsOfSpeech/UnchangeableWordComponent";
 import AdjectiveCasesTableComponent from "./partsOfSpeech/AdjectiveCasesTableComponent";
 import {uniqueWords} from "../../../../mixins/selectedWords";
+import {GrammemsMixin} from "../../../../mixins/grammems";
 
 export default {
   name: "PartOfSpeechTable",
@@ -251,6 +257,9 @@ export default {
     activeWordForms: {
       type: Array,
       required: true
+    },
+    selectedJests: {
+      type: Object
     },
     scrollable: {
       type: Boolean
@@ -297,16 +306,33 @@ export default {
       },
       inputJest: null, // Жест который выбрали в состав.
       jestBySearch: [], // Список жестов при поиске
-      selectedJests: {}, // Выбранные жесты у словоформы
       activeCheckboxInJestsModal: null, // Информация о словоформе, для которой открыто модальное окно с составом
       selectedJest: null
     }
   },
+  mixins: [GrammemsMixin],
   watch: {
     selectedWords: {
       deep: true,
       handler() {
         this.$emit('selected-words', uniqueWords.call(this));
+      }
+    }
+  },
+  computed: {
+    activeWordFormInModal() {
+      if (this.activeCheckboxInJestsModal) {
+        return JSON.parse(this.activeCheckboxInJestsModal)['Слово'].toLowerCase();
+      }
+    },
+    activeWordFormGrammemsInModal() {
+      if (this.activeCheckboxInJestsModal) {
+        return JSON.parse(this.activeCheckboxInJestsModal)['Граммемы'];
+      }
+    },
+    activeWordFormPartOfSpeechInModal() {
+      if (this.activeCheckboxInJestsModal) {
+        return JSON.parse(this.activeCheckboxInJestsModal)['Часть речи'];
       }
     }
   },
@@ -345,13 +371,27 @@ export default {
 
           this.activeCheckboxInJestsModal = null;
           this.$emit('selected-jests', this.selectedJests);
-        })
+        });
 
-        $('#partOfSpeechComponent td input[type="checkbox"]').click(function (event) {
+        const allCheckBox = $('#partOfSpeechComponent input[type="checkbox"]');
+
+        allCheckBox.parent().parent().parent().css('cursor', 'pointer');
+
+        allCheckBox.click(function (event) {
           that.inputJest = null;
           if (this.checked) {
             modal.modal('show');
             that.activeCheckboxInJestsModal = this.value;
+          } else {
+            if (that.selectedJests[this.value]) {
+              console.log('rew');
+              delete that.selectedJests[this.value];
+            }
+          }
+        }).parent().parent().parent().click(function () {
+          if ($(this)[0]?.children[0]?.children[0]?.children[0]?.checked) {
+            that.activeCheckboxInJestsModal = $(this)[0].children[0].children[0].children[0].value;
+            modal.modal('show');
           }
         });
       }

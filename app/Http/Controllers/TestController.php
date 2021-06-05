@@ -145,7 +145,8 @@ class TestController extends Controller
     public function storeWordFormsInJest(Request $request)
     {
         // Получаем Id жеста.
-        $jestId = $request->get('jest_id');
+        $inputJestId = $request->get('jest_id');
+        $inputWordId = $request->get('word_id');
 
         // Массив выбранных словоформ.
         $wordForms = $request->get('wordForms');
@@ -207,7 +208,9 @@ class TestController extends Controller
         }
 
         // Словоформы на предыдущем заполнении.
-        $previousRecords = JestWordForms::query()->where('jest_id', $jestId)->get(['wordform_id'])->toArray();
+        $previousRecords = JestWordForms::query()->where('jest_id', $inputJestId)
+            ->where('word_id', '=', $inputWordId, 'and')
+            ->get(['wordform_id'])->toArray();
 
         $previousIds = [];
         foreach ($previousRecords as $previousRecord) {
@@ -222,32 +225,38 @@ class TestController extends Controller
 
         // Если были убраны все словоформы, удаляем привязку жеста к словоформам.
         if (count($wordsGrammem) === 0) {
-            JestWordForms::query()->where('jest_id', $jestId)->delete();
+            JestWordForms::query()->where('jest_id', $inputJestId)
+                ->where('word_id', '=', $inputWordId, 'and')
+                ->delete();
         } else {
             // Если есть словоформы, которые нужно удалить, удаляем их из привязанного жеста.
             if (count($removedIds) > 0) {
                 foreach ($removedIds as $removedId) {
-                    JestWordForms::query()->where('wordform_id', $removedId)->delete();
+                    JestWordForms::query()->where('jest_id', $inputJestId)
+                        ->where('word_id', '=', $inputWordId, 'and')
+                        ->where('wordform_id', $removedId)->delete();
                 }
             }
 
             // Записываем или обновляем словоформы, которые остались активными в жесте.
             foreach ($currentIds as $currentId) {
                 JestWordForms::query()->updateOrCreate(
-                    ['jest_id' => $jestId, 'wordform_id' => $currentId]
+                    ['jest_id' => $inputJestId, 'word_id' => $inputWordId, 'wordform_id' => $currentId]
                 );
             }
         }
     }
 
-    public function getWordFormsInJest($jestId)
+    public function getWordFormsInJest($jestId, $wordId)
     {
-        $words = Jest::query()->where('id_jest', $jestId)->first()->wordGrammems;
+        $words = JestWordForms::query()
+            ->where('jest_id', $jestId)
+            ->where('word_id', $wordId)->get();
 
         $wordsGrammems = [];
 
         foreach ($words as $word) {
-            $wordsGrammems[] = $word->json();
+            $wordsGrammems[] = $word->wordForm->json();
         }
 
         return response()->json($wordsGrammems, 200, [], 256);

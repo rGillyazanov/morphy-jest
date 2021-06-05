@@ -57,7 +57,7 @@
             <select id="wordsOnJest" class="custom-select" size="14" :disabled="shareLoading">
               <option
                 class="cursor-pointer"
-                @click="selectWordForm(wordInJest.word)"
+                @click="selectWordForm(wordInJest)"
                 :value="wordInJest"
                 v-for="wordInJest in wordsInJest.words">
                 {{ wordInJest.word }}
@@ -139,7 +139,8 @@ export default {
       },
       wordsInJest: {
         loading: false,
-        words: []
+        words: [],
+        selectedWord: {}
       },
       activeWordFormsInJest: [],
       loadingActiveWordFormsInJest: false,
@@ -193,6 +194,7 @@ export default {
         this.wordsInJest.words = [];
         this.wordForms.selected.id = wordId;
         this.currentJestId = null;
+        this.wordsInJest.selectedWord = null;
 
         this.wordForms.loading = true;
         axios.get('/api/jestsOfWord/' + wordId).then(response => {
@@ -209,6 +211,8 @@ export default {
         this.wordsInJest.words = [];
         this.currentJestId = jestId;
 
+        this.wordsInJest.selectedWord = null;
+
         this.wordsInJest.loading = true;
 
         axios.get('/api/allWordsOfJest/' + jestId).then(response => {
@@ -222,11 +226,12 @@ export default {
       }
     },
     selectWordForm(selectedWordForm) {
-      if (this.word !== selectedWordForm && !this.loadingActiveWordFormsInJest) {
-        this.word = selectedWordForm;
+      if (this.word !== selectedWordForm.word && !this.loadingActiveWordFormsInJest) {
+        this.word = selectedWordForm.word;
+        this.wordsInJest.selectedWord = selectedWordForm;
 
         this.loadingActiveWordFormsInJest = true;
-        axios.get('/api/getWordFormsInJest/' + this.currentJestId).then(response => {
+        axios.get('/api/getWordFormsInJest/' + this.currentJestId + '/word/' + this.wordsInJest.selectedWord.id_word).then(response => {
           this.activeWordFormsInJest = response.data?.map(word => {
             return JSON.stringify(word);
           });
@@ -249,6 +254,7 @@ export default {
 
       axios.post('/api/storeWordFormsInJest', {
         jest_id: this.currentJestId,
+        word_id: this.wordsInJest.selectedWord.id_word,
         wordForms: JSON.stringify(this.selectedWords)
       }).then(response => {
         this.saveResponse.loading = false;

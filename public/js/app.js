@@ -2007,7 +2007,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       wordsInJest: {
         loading: false,
-        words: []
+        words: [],
+        selectedWord: {}
       },
       activeWordFormsInJest: [],
       loadingActiveWordFormsInJest: false,
@@ -2085,6 +2086,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.wordsInJest.words = [];
         this.wordForms.selected.id = wordId;
         this.currentJestId = null;
+        this.wordsInJest.selectedWord = null;
         this.wordForms.loading = true;
         axios.get('/api/jestsOfWord/' + wordId).then(function (response) {
           _this2.wordForms.selected.jests = response.data;
@@ -2100,6 +2102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.activeWordFormsInJest = null;
         this.wordsInJest.words = [];
         this.currentJestId = jestId;
+        this.wordsInJest.selectedWord = null;
         this.wordsInJest.loading = true;
         axios.get('/api/allWordsOfJest/' + jestId).then(function (response) {
           var _response$data$0$word;
@@ -2118,10 +2121,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     selectWordForm: function selectWordForm(selectedWordForm) {
       var _this4 = this;
 
-      if (this.word !== selectedWordForm && !this.loadingActiveWordFormsInJest) {
-        this.word = selectedWordForm;
+      if (this.word !== selectedWordForm.word && !this.loadingActiveWordFormsInJest) {
+        this.word = selectedWordForm.word;
+        this.wordsInJest.selectedWord = selectedWordForm;
         this.loadingActiveWordFormsInJest = true;
-        axios.get('/api/getWordFormsInJest/' + this.currentJestId).then(function (response) {
+        axios.get('/api/getWordFormsInJest/' + this.currentJestId + '/word/' + this.wordsInJest.selectedWord.id_word).then(function (response) {
           var _response$data;
 
           _this4.activeWordFormsInJest = (_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.map(function (word) {
@@ -2165,6 +2169,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.saveResponse.loading = true;
       axios.post('/api/storeWordFormsInJest', {
         jest_id: this.currentJestId,
+        word_id: this.wordsInJest.selectedWord.id_word,
         wordForms: JSON.stringify(this.selectedWords)
       }).then(function (response) {
         _this6.saveResponse.loading = false;
@@ -42075,7 +42080,7 @@ var render = function() {
                           domProps: { value: wordInJest },
                           on: {
                             click: function($event) {
-                              return _vm.selectWordForm(wordInJest.word)
+                              return _vm.selectWordForm(wordInJest)
                             }
                           }
                         },

@@ -12,36 +12,36 @@
         </thead>
         <tbody>
         <tr>
-          <td :class="{ equals: equalsWithWord(adverbParticiple['Настоящее']['Слово']) }">
+          <td :class="{ equals: equalsWithWord(adverbParticiple['Настоящее']['Информация']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(adverbParticiple['Настоящее']['Слово'].toLowerCase()) &&
+              <div v-if="!isEmptyWord(adverbParticiple['Настоящее']['Информация']['Слово'].toLowerCase()) &&
                          (!adverbParticiple['Настоящее']['Жесты'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
                          :data-base-word-form="baseWordForm"
-                         :value="JSON.stringify(adverbParticiple['Настоящее'])"
+                         :value="JSON.stringify(adverbParticiple['Настоящее']['Информация'])"
                          v-model="selectedWords">
                 </div>
               </div>
-              {{ adverbParticiple['Настоящее']['Слово'].toLowerCase() }}
+              {{ adverbParticiple['Настоящее']['Информация']['Слово'].toLowerCase() }}
             </div>
           </td>
-          <td :class="{ equals: equalsWithWord(adverbParticiple['Прошедшее']['Слово']) }">
+          <td :class="{ equals: equalsWithWord(adverbParticiple['Прошедшее']['Информация']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(adverbParticiple['Прошедшее']['Слово'].toLowerCase()) &&
+              <div v-if="!isEmptyWord(adverbParticiple['Прошедшее']['Информация']['Слово'].toLowerCase()) &&
                          (!adverbParticiple['Прошедшее']['Жесты'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
                          :data-base-word-form="baseWordForm"
-                         :value="JSON.stringify(adverbParticiple['Прошедшее'])"
+                         :value="JSON.stringify(adverbParticiple['Прошедшее']['Информация'])"
                          v-model="selectedWords">
                 </div>
               </div>
-              {{ adverbParticiple['Прошедшее']['Слово'].toLowerCase() }}
+              {{ adverbParticiple['Прошедшее']['Информация']['Слово'].toLowerCase() }}
             </div>
           </td>
         </tr>

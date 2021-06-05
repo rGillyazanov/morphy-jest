@@ -10,6 +10,7 @@
         :word="word"
         :active-word-forms="activeWordForms"
         :base-word-form="verb"
+        :select-jests="selectJests"
         @selected-words="selectedWords.presentTime = $event"
         :present-time="presentTime(verb)">
       </PresentTimeTableComponent>
@@ -17,6 +18,7 @@
         :word="word"
         :active-word-forms="activeWordForms"
         :base-word-form="verb"
+        :select-jests="selectJests"
         @selected-words="selectedWords.pastTime = $event"
         :past-time="pastTime(verb)">
       </PastTimeTableComponent>
@@ -24,6 +26,7 @@
         :word="word"
         :active-word-forms="activeWordForms"
         :base-word-form="verb"
+        :select-jests="selectJests"
         @selected-words="selectedWords.imperativeMood = $event"
         :imperative-mood="imperativeMood(verb)">
       </ImperativeMoodTableComponent>
@@ -32,6 +35,7 @@
         :active-word-forms="activeWordForms"
         @selected-words="selectedWords.adverbParticiple = $event"
         :base-word-form="verb"
+        :select-jests="selectJests"
         :adverb-participle="adverbParticiple(verb)">
       </AdverbParticipleTableComponent>
       <ParticipleCasesTableComponent
@@ -39,6 +43,7 @@
         :active-word-forms="activeWordForms"
         @selected-words="selectedWords.participle = $event"
         :base-word-form="verb"
+        :select-jests="selectJests"
         :part-of-speech="participle(verb)">
       </ParticipleCasesTableComponent>
     </div>

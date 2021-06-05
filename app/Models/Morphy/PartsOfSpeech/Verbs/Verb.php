@@ -443,9 +443,11 @@ class Verb extends BasePartOfSpeech
         );
 
         return [
-            'Слово' => $word,
-            'Граммемы' => $grammems,
-            'Часть речи' => $partOfSpeech,
+            'Информация' => [
+                'Слово' => $word,
+                'Граммемы' => $grammems,
+                'Часть речи' => $partOfSpeech
+            ],
             'Жесты' => HelpMorphyService::hasInJests($word, $grammems, $partOfSpeech)
         ];
     }

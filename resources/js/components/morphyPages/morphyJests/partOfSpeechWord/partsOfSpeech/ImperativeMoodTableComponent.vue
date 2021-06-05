@@ -14,7 +14,7 @@
           <td :class="{ equals: equalsWithWord(imperativeMood['ЕД']['Слово']) }">
             <div class="d-flex align-items-center">
               <div v-if="!isEmptyWord(imperativeMood['ЕД']['Слово'].toLowerCase()) &&
-                         (!imperativeMood['ЖЕСТЫ']['ЕД'] || !selectJests)"
+                         (!imperativeMood['Жесты']['ЕД'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
@@ -30,7 +30,7 @@
           <td :class="{ equals: equalsWithWord(imperativeMood['МН']['Слово']) }">
             <div class="d-flex align-items-center">
               <div v-if="!isEmptyWord(imperativeMood['МН']['Слово'].toLowerCase()) &&
-                         (!imperativeMood['ЖЕСТЫ']['МН'] || !selectJests)"
+                         (!imperativeMood['Жесты']['МН'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"

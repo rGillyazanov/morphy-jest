@@ -16,7 +16,7 @@
           <td :class="{ equals: equalsWithWord(presentTime[face]['ЕД']['Слово']) }">
             <div class="d-flex align-items-center">
               <div v-if="!isEmptyWord(presentTime[face]['ЕД']['Слово'].toLowerCase()) &&
-                         (!presentTime[face]['ЖЕСТЫ']['ЕД'] || !selectJests)"
+                         (!presentTime[face]['Жесты']['ЕД'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
@@ -34,7 +34,7 @@
           <td :class="{ equals: equalsWithWord(presentTime[face]['МН']['Слово']) }">
             <div class="d-flex align-items-center">
               <div v-if="!isEmptyWord(presentTime[face]['МН']['Слово'].toLowerCase()) &&
-                         (!presentTime[face]['ЖЕСТЫ']['МН'] || !selectJests)"
+                         (!presentTime[face]['Жесты']['МН'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"

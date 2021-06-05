@@ -3827,6 +3827,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -43950,14 +43955,16 @@ var render = function() {
                   {
                     class: {
                       equals: _vm.equalsWithWord(
-                        _vm.adverbParticiple["Настоящее"]["Слово"]
+                        _vm.adverbParticiple["Настоящее"]["Информация"]["Слово"]
                       )
                     }
                   },
                   [
                     _c("div", { staticClass: "d-flex align-items-center" }, [
                       !_vm.isEmptyWord(
-                        _vm.adverbParticiple["Настоящее"]["Слово"].toLowerCase()
+                        _vm.adverbParticiple["Настоящее"]["Информация"][
+                          "Слово"
+                        ].toLowerCase()
                       ) &&
                       (!_vm.adverbParticiple["Настоящее"]["Жесты"] ||
                         !_vm.selectJests)
@@ -43982,13 +43989,17 @@ var render = function() {
                                   },
                                   domProps: {
                                     value: JSON.stringify(
-                                      _vm.adverbParticiple["Настоящее"]
+                                      _vm.adverbParticiple["Настоящее"][
+                                        "Информация"
+                                      ]
                                     ),
                                     checked: Array.isArray(_vm.selectedWords)
                                       ? _vm._i(
                                           _vm.selectedWords,
                                           JSON.stringify(
-                                            _vm.adverbParticiple["Настоящее"]
+                                            _vm.adverbParticiple["Настоящее"][
+                                              "Информация"
+                                            ]
                                           )
                                         ) > -1
                                       : _vm.selectedWords
@@ -44000,7 +44011,9 @@ var render = function() {
                                         $$c = $$el.checked ? true : false
                                       if (Array.isArray($$a)) {
                                         var $$v = JSON.stringify(
-                                            _vm.adverbParticiple["Настоящее"]
+                                            _vm.adverbParticiple["Настоящее"][
+                                              "Информация"
+                                            ]
                                           ),
                                           $$i = _vm._i($$a, $$v)
                                         if ($$el.checked) {
@@ -44027,7 +44040,7 @@ var render = function() {
                       _vm._v(
                         "\n            " +
                           _vm._s(
-                            _vm.adverbParticiple["Настоящее"][
+                            _vm.adverbParticiple["Настоящее"]["Информация"][
                               "Слово"
                             ].toLowerCase()
                           ) +
@@ -44042,14 +44055,16 @@ var render = function() {
                   {
                     class: {
                       equals: _vm.equalsWithWord(
-                        _vm.adverbParticiple["Прошедшее"]["Слово"]
+                        _vm.adverbParticiple["Прошедшее"]["Информация"]["Слово"]
                       )
                     }
                   },
                   [
                     _c("div", { staticClass: "d-flex align-items-center" }, [
                       !_vm.isEmptyWord(
-                        _vm.adverbParticiple["Прошедшее"]["Слово"].toLowerCase()
+                        _vm.adverbParticiple["Прошедшее"]["Информация"][
+                          "Слово"
+                        ].toLowerCase()
                       ) &&
                       (!_vm.adverbParticiple["Прошедшее"]["Жесты"] ||
                         !_vm.selectJests)
@@ -44074,13 +44089,17 @@ var render = function() {
                                   },
                                   domProps: {
                                     value: JSON.stringify(
-                                      _vm.adverbParticiple["Прошедшее"]
+                                      _vm.adverbParticiple["Прошедшее"][
+                                        "Информация"
+                                      ]
                                     ),
                                     checked: Array.isArray(_vm.selectedWords)
                                       ? _vm._i(
                                           _vm.selectedWords,
                                           JSON.stringify(
-                                            _vm.adverbParticiple["Прошедшее"]
+                                            _vm.adverbParticiple["Прошедшее"][
+                                              "Информация"
+                                            ]
                                           )
                                         ) > -1
                                       : _vm.selectedWords
@@ -44092,7 +44111,9 @@ var render = function() {
                                         $$c = $$el.checked ? true : false
                                       if (Array.isArray($$a)) {
                                         var $$v = JSON.stringify(
-                                            _vm.adverbParticiple["Прошедшее"]
+                                            _vm.adverbParticiple["Прошедшее"][
+                                              "Информация"
+                                            ]
                                           ),
                                           $$i = _vm._i($$a, $$v)
                                         if ($$el.checked) {
@@ -44119,7 +44140,7 @@ var render = function() {
                       _vm._v(
                         "\n            " +
                           _vm._s(
-                            _vm.adverbParticiple["Прошедшее"][
+                            _vm.adverbParticiple["Прошедшее"]["Информация"][
                               "Слово"
                             ].toLowerCase()
                           ) +
@@ -45085,7 +45106,7 @@ var render = function() {
                       !_vm.isEmptyWord(
                         _vm.imperativeMood["ЕД"]["Слово"].toLowerCase()
                       ) &&
-                      (!_vm.imperativeMood["ЖЕСТЫ"]["ЕД"] || !_vm.selectJests)
+                      (!_vm.imperativeMood["Жесты"]["ЕД"] || !_vm.selectJests)
                         ? _c("div", { staticClass: "d-inline-flex pr-2" }, [
                             _c(
                               "div",
@@ -45174,7 +45195,7 @@ var render = function() {
                       !_vm.isEmptyWord(
                         _vm.imperativeMood["МН"]["Слово"].toLowerCase()
                       ) &&
-                      (!_vm.imperativeMood["ЖЕСТЫ"]["МН"] || !_vm.selectJests)
+                      (!_vm.imperativeMood["Жесты"]["МН"] || !_vm.selectJests)
                         ? _c("div", { staticClass: "d-inline-flex pr-2" }, [
                             _c(
                               "div",
@@ -46478,7 +46499,7 @@ var render = function() {
                         !_vm.isEmptyWord(
                           _vm.presentTime[face]["ЕД"]["Слово"].toLowerCase()
                         ) &&
-                        (!_vm.presentTime[face]["ЖЕСТЫ"]["ЕД"] ||
+                        (!_vm.presentTime[face]["Жесты"]["ЕД"] ||
                           !_vm.selectJests)
                           ? _c("div", { staticClass: "d-inline-flex pr-2" }, [
                               _c(
@@ -46568,7 +46589,7 @@ var render = function() {
                         !_vm.isEmptyWord(
                           _vm.presentTime[face]["МН"]["Слово"].toLowerCase()
                         ) &&
-                        (!_vm.presentTime[face]["ЖЕСТЫ"]["МН"] ||
+                        (!_vm.presentTime[face]["Жесты"]["МН"] ||
                           !_vm.selectJests)
                           ? _c("div", { staticClass: "d-inline-flex pr-2" }, [
                               _c(
@@ -46701,18 +46722,20 @@ var render = function() {
             _c("b", [_vm._v("Базовая форма")]),
             _vm._v(": "),
             _c("span", { staticClass: "equals mx-2" }, [
-              _vm._v(_vm._s(_vm.partOfSpeech[baseWord]["Слово"]))
+              _vm._v(_vm._s(_vm.partOfSpeech[baseWord]["Информация"]["Слово"]))
             ]),
             _vm._v(
               " -\n      " +
                 _vm._s(
                   _vm.descriptorToPartOfSpeech(
-                    _vm.partOfSpeech[baseWord]["Часть речи"]
+                    _vm.partOfSpeech[baseWord]["Информация"]["Часть речи"]
                   )
                 ) +
                 " " +
                 _vm._s(
-                  _vm.listOfGrammems(_vm.partOfSpeech[baseWord]["Граммемы"])
+                  _vm.listOfGrammems(
+                    _vm.partOfSpeech[baseWord]["Информация"]["Граммемы"]
+                  )
                 ) +
                 ", неизменяемое слово.\n      "
             ),
@@ -46735,11 +46758,15 @@ var render = function() {
                         "data-base-word-form": baseWord
                       },
                       domProps: {
-                        value: JSON.stringify(_vm.partOfSpeech[baseWord]),
+                        value: JSON.stringify(
+                          _vm.partOfSpeech[baseWord]["Информация"]
+                        ),
                         checked: Array.isArray(_vm.selectedWords)
                           ? _vm._i(
                               _vm.selectedWords,
-                              JSON.stringify(_vm.partOfSpeech[baseWord])
+                              JSON.stringify(
+                                _vm.partOfSpeech[baseWord]["Информация"]
+                              )
                             ) > -1
                           : _vm.selectedWords
                       },
@@ -46750,7 +46777,7 @@ var render = function() {
                             $$c = $$el.checked ? true : false
                           if (Array.isArray($$a)) {
                             var $$v = JSON.stringify(
-                                _vm.partOfSpeech[baseWord]
+                                _vm.partOfSpeech[baseWord]["Информация"]
                               ),
                               $$i = _vm._i($$a, $$v)
                             if ($$el.checked) {
@@ -46825,6 +46852,7 @@ var render = function() {
                 word: _vm.word,
                 "active-word-forms": _vm.activeWordForms,
                 "base-word-form": verb,
+                "select-jests": _vm.selectJests,
                 "present-time": _vm.presentTime(verb)
               },
               on: {
@@ -46839,6 +46867,7 @@ var render = function() {
                 word: _vm.word,
                 "active-word-forms": _vm.activeWordForms,
                 "base-word-form": verb,
+                "select-jests": _vm.selectJests,
                 "past-time": _vm.pastTime(verb)
               },
               on: {
@@ -46853,6 +46882,7 @@ var render = function() {
                 word: _vm.word,
                 "active-word-forms": _vm.activeWordForms,
                 "base-word-form": verb,
+                "select-jests": _vm.selectJests,
                 "imperative-mood": _vm.imperativeMood(verb)
               },
               on: {
@@ -46867,6 +46897,7 @@ var render = function() {
                 word: _vm.word,
                 "active-word-forms": _vm.activeWordForms,
                 "base-word-form": verb,
+                "select-jests": _vm.selectJests,
                 "adverb-participle": _vm.adverbParticiple(verb)
               },
               on: {
@@ -46881,6 +46912,7 @@ var render = function() {
                 word: _vm.word,
                 "active-word-forms": _vm.activeWordForms,
                 "base-word-form": verb,
+                "select-jests": _vm.selectJests,
                 "part-of-speech": _vm.participle(verb)
               },
               on: {

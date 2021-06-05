@@ -3,9 +3,9 @@
     <hr>
     <div v-for="baseWord in Object.keys(partOfSpeech)">
       <div class="py-3 d-flex align-items-center"><b>Базовая форма</b>: <span
-        class="equals mx-2">{{ partOfSpeech[baseWord]['Слово'] }}</span> -
-        {{ descriptorToPartOfSpeech(partOfSpeech[baseWord]['Часть речи']) }} {{
-          listOfGrammems(partOfSpeech[baseWord]['Граммемы'])
+        class="equals mx-2">{{ partOfSpeech[baseWord]['Информация']['Слово'] }}</span> -
+        {{ descriptorToPartOfSpeech(partOfSpeech[baseWord]['Информация']['Часть речи']) }} {{
+          listOfGrammems(partOfSpeech[baseWord]['Информация']['Граммемы'])
         }}, неизменяемое слово.
         <div v-if="!isEmptyWord(baseWord.toLowerCase()) && (!partOfSpeech[baseWord]['Жесты'] || !selectJests)"
              class="d-inline-flex pl-2">
@@ -13,7 +13,7 @@
             <input class="form-check-input"
                    type="checkbox"
                    :data-base-word-form="baseWord"
-                   :value="JSON.stringify(partOfSpeech[baseWord])"
+                   :value="JSON.stringify(partOfSpeech[baseWord]['Информация'])"
                    v-model="selectedWords">
           </div>
         </div>

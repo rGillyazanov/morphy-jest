@@ -90,6 +90,16 @@ class TestController extends Controller
                                             }
                                         }
                                     }
+
+                                    $attributes['base_word_form_id'] =
+                                        WordFormsModel::query()->firstOrCreate([
+                                            'word' => HelpMorphyService::baseWordForm($wordForm->word, $grammems, $partOfSpeechModel->descriptor)
+                                        ])->id;
+                                } else {
+                                    $attributes['base_word_form_id'] =
+                                        WordFormsModel::query()->firstOrCreate([
+                                            'word' => HelpMorphyService::baseWordForm($wordForm->word, [], $partOfSpeechModel->descriptor)
+                                        ])->id;
                                 }
 
                                 WordGrammems::query()->firstOrCreate(
@@ -168,6 +178,10 @@ class TestController extends Controller
             $attributes = [];
             $attributes['word_id'] = $wordId;
             $attributes['part_of_speech_id'] = $partOfSpeechId;
+            $attributes['base_word_form_id'] =
+                WordFormsModel::query()->firstOrCreate([
+                    'word' => HelpMorphyService::baseWordForm($word['Слово'], $word['Граммемы'], $word['Часть речи'])
+                ])->id;
 
             foreach ($word['Граммемы'] as $grammem) {
                 foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
@@ -267,6 +281,10 @@ class TestController extends Controller
                 $attributes = [];
                 $attributes['word_id'] = $word->id;
                 $attributes['part_of_speech_id'] = $partOfSpeechId;
+                $attributes['base_word_form_id'] =
+                    WordFormsModel::query()->firstOrCreate([
+                        'word' => HelpMorphyService::baseWordForm($wordInfo['Слово'], $wordInfo['Граммемы'], $wordInfo['Часть речи'])
+                    ])->id;
 
                 foreach ($wordInfo['Граммемы'] as $grammem) {
                     foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
@@ -355,68 +373,11 @@ class TestController extends Controller
 
                 $wordFormsJests[$wordJsonInfo][] = [
                     'jest' => $obj,
-                    'order' => $jest->order,
-                    'have_in_jest_wordform' => $wordJsonInfo['Присутствует в жесте']
+                    'order' => $jest->order
                 ];
             }
         }
 
         return response()->json($wordFormsJests, 200, [], 256);
-    }
-
-    public function hasInJests(Request $request)
-    {
-        $wordsInfo = json_decode($request->get('wordInJson'), true);
-
-        $res = [];
-
-        foreach ($wordsInfo as $wordInfo) {
-
-            $wordInfoJson = $wordInfo;
-            $wordInfo = json_decode($wordInfo, true);
-            $word = WordFormsModel::query()->where('word', mb_strtolower($wordInfo['Слово'], 'UTF-8'))->first();
-
-            if ($word) {
-                $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', mb_strtoupper($wordInfo['Часть речи'], 'UTF-8'))->id;
-
-                $attributes = [];
-                $attributes['word_id'] = $word->id;
-                $attributes['part_of_speech_id'] = $partOfSpeechId;
-
-                foreach ($wordInfo['Граммемы'] as $grammem) {
-                    foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
-                        $grammem = mb_strtolower($grammem, 'UTF-8');
-                        if ($grammem === $descriptor) {
-
-                            $model = new $item['model']();
-
-                            $idGrammema = $model::query()->where('grammema', $grammem)->first()->id;
-
-                            $attributes[$item['word_grammems_id']] = $idGrammema;
-                        }
-                    }
-                }
-
-                $wordGrammem = WordGrammems::query()->firstWhere(
-                    $attributes
-                );
-
-                if ($wordGrammem) {
-                    $hasJest = $wordGrammem->jests()->exists() ? true : false;
-
-                    if ($hasJest) {
-                        $res[$wordInfoJson] = 1;
-                    } else {
-                        $res[$wordInfoJson] = 0;
-                    }
-                } else {
-                    $res[$wordInfoJson] = 0;
-                }
-            } else {
-                $res[$wordInfoJson] = 0;
-            }
-        }
-
-        return response()->json($res, 200, [], 256);
     }
 }

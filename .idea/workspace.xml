@@ -25,44 +25,19 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Доработал функционал запроса жестов в словоформах.">
-      <change afterPath="$PROJECT_DIR$/resources/js/mixins/baseWordFormProp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/statistics.blade.php" afterDir="false" />
+    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_05_114503_add_base_word_form_id_to_morphy_word_grammems_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Adverbs/Adverb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Adverbs/Adverb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Conjunction/Conjunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Conjunction/Conjunction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Kinds/KindWord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/Kinds/KindWord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/PluralSingular.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/GeneralModels/PluralSingular.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Interjection/Interjection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Interjection/Interjection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Parenthesis/Parenthesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Parenthesis/Parenthesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Particle/Particle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Particle/Particle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Phrase/Phrase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Phrase/Phrase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Predicatives/Predicative.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Predicatives/Predicative.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pretext/Pretext.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Pretext/Pretext.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/PartsOfSpeech/Verbs/Verb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/morphy/WordFormsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/morphy/WordFormsSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/MorphyJestsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/MorphyJestsComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/MorphySelectJestsComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/PartOfSpeechTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/PartOfSpeechTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/AdjectiveCasesTableComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/AdverbParticipleTableComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/BaseCasesFacesTableComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/BaseCasesTableComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/ImperativeMoodTableComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/ParticipleCasesTableComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/PastTimeTableComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/PresentTimeTableComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/UnchangeableWordComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/mixins/selectedJests.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/mixins/selectedJests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,16 +216,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\views" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages\morphyJests" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\public\images" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\partOfSpeechWord" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\GeneralModels" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\views" />
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models" />
     </key>
   </component>
   <component name="RunManager">
@@ -330,7 +305,8 @@
       <workItem from="1622663158701" duration="8074000" />
       <workItem from="1622745097751" duration="2836000" />
       <workItem from="1622799322281" duration="18878000" />
-      <workItem from="1622885266959" duration="5428000" />
+      <workItem from="1622885266959" duration="5578000" />
+      <workItem from="1622893255423" duration="7533000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -465,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622557568364</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="&#10;Добавить базовую форму словоформы (выделить красным)&#10;Исправить поведение открытие модального окна с выбором жестов у словоформы (при клике по активному чекбоксу открывать модальное окно).&#10;Сохранять все словоформы при открытии слова.">
+      <created>1622890862705</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1622890862721</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +501,8 @@
     <MESSAGE value="Добавил функционал словоформа-жесты." />
     <MESSAGE value="Доработал функционал выбора состава жестов." />
     <MESSAGE value="Доработал функционал запроса жестов в словоформах." />
-    <option name="LAST_COMMIT_MESSAGE" value="Доработал функционал запроса жестов в словоформах." />
+    <MESSAGE value="&#10;Добавить базовую форму словоформы (выделить красным)&#10;Исправить поведение открытие модального окна с выбором жестов у словоформы (при клике по активному чекбоксу открывать модальное окно).&#10;Сохранять все словоформы при открытии слова." />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;Добавить базовую форму словоформы (выделить красным)&#10;Исправить поведение открытие модального окна с выбором жестов у словоформы (при клике по активному чекбоксу открывать модальное окно).&#10;Сохранять все словоформы при открытии слова." />
   </component>
   <component name="WindowStateProjectService">
     <state x="679" y="129" width="566" height="877" key="#PHP" timestamp="1621638737618">
@@ -549,10 +533,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="488" y="254" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621588906704" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622888705973">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622905405543">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622888705973" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622905405543" />
     <state x="675" y="355" width="573" height="533" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1620911560050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -561,10 +545,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="852" y="191" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616269892886" />
-    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1622559923360">
+    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1622890861222">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1622559923360" />
+    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1622890861222" />
     <state width="558" height="618" key="DebuggerActiveHint" timestamp="1622832963466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -637,10 +621,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1620912139957" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1622557573573">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1622890868334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622557573573" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622890868334" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618311452128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

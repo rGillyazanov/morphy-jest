@@ -18,6 +18,7 @@ use App\Models\Morphies\WordFormsModel;
 use App\Models\Morphies\WordGrammems;
 use phpMorphy_Paradigm_Collection;
 use phpMorphy_Paradigm_ParadigmInterface;
+use SEOService2020\Morphy\Morphy;
 
 class HelpMorphyService
 {
@@ -495,13 +496,41 @@ class HelpMorphyService
             }
 
             $resultArray[$paradigm->getBaseForm()] = [
-                'Слово' => $paradigm->getBaseForm(),
-                'Граммемы' => $paradigm[0]->getGrammems(),
-                'Часть речи' => $partOfSpeech,
+                'Информация' => [
+                    'Слово' => $paradigm->getBaseForm(),
+                    'Граммемы' => $paradigm[0]->getGrammems(),
+                    'Часть речи' => $partOfSpeech,
+                ],
                 'Жесты' => HelpMorphyService::hasInJests($paradigm->getBaseForm(), $paradigm[0]->getGrammems(), $partOfSpeech)
             ];
         }
 
         return $resultArray;
+    }
+
+    /**
+     * Возвращает базовую форму слова.
+     * @param $word
+     * @param $grammems
+     * @param $partOfSpeech
+     * @return false|string|string[]
+     */
+    public static function baseWordForm($word, $grammems, $partOfSpeech)
+    {
+        $morphy = new Morphy(Morphy::russianLang);
+
+        $paradigms = $morphy->findWord($word);
+
+        if (empty($grammems)) {
+            return mb_strtolower($word, 'UTF-8');
+        }
+
+        foreach ($paradigms->getByPartOfSpeech($partOfSpeech) as $paradigm) {
+            foreach ($paradigm->getWordFormsByPartOfSpeech($partOfSpeech) as $form) {
+                if ($form->hasGrammems($grammems)) {
+                    return mb_strtolower($paradigm->getBaseForm(), 'UTF-8');
+                }
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\Phrase;
 
+use App\Models\Morphy\HelpMorphyService;
+
 class Phrase extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 {
     /**
@@ -26,24 +28,6 @@ class Phrase extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
     }
 
     private function setPhrase(): void {
-        foreach ($this->_paradigms->getByPartOfSpeech("ФРАЗ") as $paradigm) {
-            $this->_phrase[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
-
-            $partOfSpeech = '';
-
-            foreach ($paradigm as $form) {
-                if ($paradigm->getBaseForm() === $form->getWord()) {
-                    $partOfSpeech = $form->getPartOfSpeech();
-                    array_unshift($this->_phrase[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
-                    break;
-                }
-            }
-
-            $this->_phrase[$paradigm->getBaseForm()] = [
-                'Слово' => $paradigm->getBaseForm(),
-                'Граммемы' => $paradigm[0]->getGrammems(),
-                'Часть речи' => $partOfSpeech
-            ];
-        }
+        $this->_phrase = HelpMorphyService::setUnchangeableWord($this->_paradigms, 'ФРАЗ');
     }
 }

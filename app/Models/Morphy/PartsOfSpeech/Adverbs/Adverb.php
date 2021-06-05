@@ -2,6 +2,8 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\Adverbs;
 
+use App\Models\Morphy\HelpMorphyService;
+
 class Adverb extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 {
     /**
@@ -14,7 +16,7 @@ class Adverb extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
     {
         parent::__construct($word, $paradigms);
 
-        $this->setPronouns();
+        $this->setAdverb();
     }
 
     /**
@@ -25,25 +27,7 @@ class Adverb extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
         return $this->_adverb;
     }
 
-    private function setPronouns(): void {
-        foreach ($this->_paradigms->getByPartOfSpeech("Н") as $paradigm) {
-            $this->_adverb[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
-
-            $partOfSpeech = '';
-
-            foreach ($paradigm as $form) {
-                if ($paradigm->getBaseForm() === $form->getWord()) {
-                    $partOfSpeech = $form->getPartOfSpeech();
-                    array_unshift($this->_adverb[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
-                    break;
-                }
-            }
-
-            $this->_adverb[$paradigm->getBaseForm()] = [
-                'Слово' => $paradigm->getBaseForm(),
-                'Граммемы' => $paradigm[0]->getGrammems(),
-                'Часть речи' => $partOfSpeech
-            ];
-        }
+    private function setAdverb(): void {
+        $this->_adverb = HelpMorphyService::setUnchangeableWord($this->_paradigms, 'Н');
     }
 }

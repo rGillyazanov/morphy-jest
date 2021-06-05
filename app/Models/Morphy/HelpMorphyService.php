@@ -14,6 +14,8 @@ use App\Models\Morphies\SemanticFeature;
 use App\Models\Morphies\Time;
 use App\Models\Morphies\Transitivity;
 use App\Models\Morphies\View;
+use App\Models\Morphies\WordFormsModel;
+use App\Models\Morphies\WordGrammems;
 use phpMorphy_Paradigm_Collection;
 use phpMorphy_Paradigm_ParadigmInterface;
 
@@ -415,5 +417,91 @@ class HelpMorphyService
         }
 
         return '-';
+    }
+
+    /**
+     * Проверяет привязана ли словоформа к жесту
+     * @param $word
+     * @param $grammems
+     * @param $partOfSpeech
+     * @return bool
+     */
+    public static function hasInJests($word, $grammems, $partOfSpeech)
+    {
+        $word = WordFormsModel::query()->where('word', mb_strtolower($word, 'UTF-8'))->first();
+
+        if ($word) {
+            $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', mb_strtoupper($partOfSpeech, 'UTF-8'));
+
+            if ($partOfSpeechId) {
+                $partOfSpeechId = $partOfSpeechId->id;
+            }
+
+            $attributes = [];
+            $attributes['word_id'] = $word->id;
+            $attributes['part_of_speech_id'] = $partOfSpeechId;
+
+            foreach ($grammems as $grammem) {
+                foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
+                    $grammem = mb_strtolower($grammem, 'UTF-8');
+                    if ($grammem === $descriptor) {
+
+                        $model = new $item['model']();
+
+                        $idGrammema = $model::query()->where('grammema', $grammem)->first()->id;
+
+                        $attributes[$item['word_grammems_id']] = $idGrammema;
+                    }
+                }
+            }
+
+            $wordGrammem = WordGrammems::query()->firstWhere(
+                $attributes
+            );
+
+            if ($wordGrammem) {
+                $hasJest = $wordGrammem->jests()->exists() ? true : false;
+
+                if ($hasJest) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Возврашает информацию о неизменяемом слове.
+     * @param $paradigms
+     * @param $partOfSpeech
+     * @return array
+     */
+    public static function setUnchangeableWord($paradigms, $partOfSpeech)
+    {
+        $resultArray = [];
+
+        foreach ($paradigms->getByPartOfSpeech($partOfSpeech) as $paradigm) {
+            $resultArray[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
+
+            $partOfSpeech = '';
+
+            foreach ($paradigm as $form) {
+                if ($paradigm->getBaseForm() === $form->getWord()) {
+                    $partOfSpeech = $form->getPartOfSpeech();
+                    array_unshift($resultArray[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
+                    break;
+                }
+            }
+
+            $resultArray[$paradigm->getBaseForm()] = [
+                'Слово' => $paradigm->getBaseForm(),
+                'Граммемы' => $paradigm[0]->getGrammems(),
+                'Часть речи' => $partOfSpeech,
+                'Жесты' => HelpMorphyService::hasInJests($paradigm->getBaseForm(), $paradigm[0]->getGrammems(), $partOfSpeech)
+            ];
+        }
+
+        return $resultArray;
     }
 }

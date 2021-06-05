@@ -25,10 +25,12 @@
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
+                       :data-base-word-form="baseWord"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['МР']['НОРМ'])"
                        v-model="selectedWords">
               </div>
@@ -40,10 +42,12 @@
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
+                       :data-base-word-form="baseWord"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['ЖР']['НОРМ'])"
                        v-model="selectedWords">
               </div>
@@ -55,10 +59,12 @@
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
+                       :data-base-word-form="baseWord"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['ЕД']['СР']['НОРМ'])"
                        v-model="selectedWords">
               </div>
@@ -70,10 +76,12 @@
           <td
             :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="form-check form-check-inline pr-2">
                 <input class="form-check-input"
                        type="checkbox"
+                       :data-base-word-form="baseWord"
                        :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][partOfSpeechCase]['МН']['НОРМ'])"
                        v-model="selectedWords">
               </div>
@@ -90,6 +98,7 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "BaseCasesFacesTableComponent",
@@ -103,7 +112,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin],
+  mixins: [GrammemsMixin, SelectedWordsMixin, SelectJestsMixin],
 }
 </script>
 

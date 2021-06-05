@@ -2,6 +2,8 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\Pretext;
 
+use App\Models\Morphy\HelpMorphyService;
+
 class Pretext extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 {
     /**
@@ -26,24 +28,6 @@ class Pretext extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
     }
 
     private function setPretext(): void {
-        foreach ($this->_paradigms->getByPartOfSpeech("ПРЕДЛ") as $paradigm) {
-            $this->_pretext[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
-
-            $partOfSpeech = '';
-
-            foreach ($paradigm as $form) {
-                if ($paradigm->getBaseForm() === $form->getWord()) {
-                    $partOfSpeech = $form->getPartOfSpeech();
-                    array_unshift($this->_pretext[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
-                    break;
-                }
-            }
-
-            $this->_pretext[$paradigm->getBaseForm()] = [
-                'Слово' => $paradigm->getBaseForm(),
-                'Граммемы' => $paradigm[0]->getGrammems(),
-                'Часть речи' => $partOfSpeech
-            ];
-        }
+        $this->_pretext = HelpMorphyService::setUnchangeableWord($this->_paradigms, 'ПРЕДЛ');
     }
 }

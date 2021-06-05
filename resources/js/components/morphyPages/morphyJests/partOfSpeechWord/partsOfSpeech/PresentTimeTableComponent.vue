@@ -15,11 +15,13 @@
           <th scope="row">{{ face }}</th>
           <td :class="{ equals: equalsWithWord(presentTime[face]['ЕД']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(presentTime[face]['ЕД']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(presentTime[face]['ЕД']['Слово'].toLowerCase()) &&
+                         (!presentTime[face]['ЖЕСТЫ']['ЕД'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(presentTime[face]['ЕД'])"
                          v-model="selectedWords">
                 </div>
@@ -31,11 +33,13 @@
           </td>
           <td :class="{ equals: equalsWithWord(presentTime[face]['МН']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(presentTime[face]['МН']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(presentTime[face]['МН']['Слово'].toLowerCase()) &&
+                         (!presentTime[face]['ЖЕСТЫ']['МН'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(presentTime[face]['МН'])"
                          v-model="selectedWords">
                 </div>
@@ -55,6 +59,8 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {BaseWordFormPropMixin} from "../../../../../mixins/baseWordFormProp";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "PresentTimeTableComponent",
@@ -68,7 +74,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin]
+  mixins: [GrammemsMixin, SelectedWordsMixin, BaseWordFormPropMixin, SelectJestsMixin]
 }
 </script>
 

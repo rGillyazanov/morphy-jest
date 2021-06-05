@@ -192,6 +192,7 @@ export default {
         this.activeWordFormsInJest = null;
         this.wordsInJest.words = [];
         this.wordForms.selected.id = wordId;
+        this.currentJestId = null;
 
         this.wordForms.loading = true;
         axios.get('/api/jestsOfWord/' + wordId).then(response => {

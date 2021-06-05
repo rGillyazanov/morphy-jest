@@ -39,6 +39,9 @@
                         <li class="nav-link">
                             <a href="{{ route('morphy.words') }}">Слова-жесты</a>
                         </li>
+                        <li class="nav-link">
+                            <a href="{{ route('morphy.statistics') }}">Статистика</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

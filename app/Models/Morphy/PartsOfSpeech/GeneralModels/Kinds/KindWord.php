@@ -2,6 +2,10 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\GeneralModels\Kinds;
 
+use App\Models\Morphies\PartOfSpeech;
+use App\Models\Morphies\WordFormsModel;
+use App\Models\Morphies\WordGrammems;
+use App\Models\Morphy\HelpMorphyService;
 use JsonSerializable;
 
 class KindWord implements JsonSerializable
@@ -118,27 +122,33 @@ class KindWord implements JsonSerializable
      */
     public function jsonSerialize(): array
     {
+        $normal = [
+            'Слово' => $this->getNormal(),
+            'Граммемы' => $this->getNormalGrammems(),
+            'Часть речи' => $this->getNormalPartOfSpeech()
+        ];
+
+        $hasJests = [
+            'НОРМ' => HelpMorphyService::hasInJests($this->getNormal(), $this->getNormalGrammems(), $this->getNormalPartOfSpeech()),
+        ];
+
         if (!empty($this->getDegree())) {
+            $hasJests['ПРЕВ'] = HelpMorphyService::hasInJests($this->getDegree(), $this->getDegreeGrammems(), $this->getDegreePartOfSpeech());
+
             return [
-                'НОРМ' => [
-                    'Слово' => $this->getNormal(),
-                    'Граммемы' => $this->getNormalGrammems(),
-                    'Часть речи' => $this->getNormalPartOfSpeech()
-                ],
+                'НОРМ' => $normal,
                 'ПРЕВ' => [
                     'Слово' => $this->getDegree(),
                     'Граммемы' => $this->getDegreeGrammems(),
                     'Часть речи' => $this->getDegreePartOfSpeech()
                 ],
+                'ЖЕСТЫ' => $hasJests
             ];
         }
 
         return [
-            'НОРМ' => [
-                'Слово' => $this->getNormal(),
-                'Граммемы' => $this->getNormalGrammems(),
-                'Часть речи' => $this->getNormalPartOfSpeech()
-            ]
+            'НОРМ' => $normal,
+            'ЖЕСТЫ' => $hasJests
         ];
     }
 }

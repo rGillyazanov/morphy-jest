@@ -13,11 +13,13 @@
         <tr>
           <td :class="{ equals: equalsWithWord(imperativeMood['ЕД']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(imperativeMood['ЕД']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(imperativeMood['ЕД']['Слово'].toLowerCase()) &&
+                         (!imperativeMood['ЖЕСТЫ']['ЕД'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(imperativeMood['ЕД'])"
                          v-model="selectedWords">
                 </div>
@@ -27,11 +29,13 @@
           </td>
           <td :class="{ equals: equalsWithWord(imperativeMood['МН']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(imperativeMood['МН']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(imperativeMood['МН']['Слово'].toLowerCase()) &&
+                         (!imperativeMood['ЖЕСТЫ']['МН'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(imperativeMood['МН'])"
                          v-model="selectedWords">
                 </div>
@@ -49,6 +53,8 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {BaseWordFormPropMixin} from "../../../../../mixins/baseWordFormProp";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "ImperativeMoodTableComponent",
@@ -62,7 +68,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin]
+  mixins: [GrammemsMixin, SelectedWordsMixin, BaseWordFormPropMixin, SelectJestsMixin]
 }
 </script>
 

@@ -14,11 +14,13 @@
         <tr>
           <td :class="{ equals: equalsWithWord(adverbParticiple['Настоящее']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(adverbParticiple['Настоящее']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(adverbParticiple['Настоящее']['Слово'].toLowerCase()) &&
+                         (!adverbParticiple['Настоящее']['Жесты'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(adverbParticiple['Настоящее'])"
                          v-model="selectedWords">
                 </div>
@@ -28,11 +30,13 @@
           </td>
           <td :class="{ equals: equalsWithWord(adverbParticiple['Прошедшее']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(adverbParticiple['Прошедшее']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(adverbParticiple['Прошедшее']['Слово'].toLowerCase()) &&
+                         (!adverbParticiple['Прошедшее']['Жесты'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(adverbParticiple['Прошедшее'])"
                          v-model="selectedWords">
                 </div>
@@ -50,6 +54,8 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {BaseWordFormPropMixin} from "../../../../../mixins/baseWordFormProp";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "AdverbParticipleTableComponent",
@@ -63,7 +69,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin]
+  mixins: [GrammemsMixin, SelectedWordsMixin, BaseWordFormPropMixin, SelectJestsMixin]
 }
 </script>
 

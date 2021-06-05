@@ -6,6 +6,7 @@
         v-if="partsOfSpeech.nouns"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.nouns = $event"
         :part-of-speech="partsOfSpeech.nouns">
       </BaseCasesTableComponent>
@@ -14,6 +15,7 @@
         v-if="partsOfSpeech.adjectives"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.adjectives = $event"
         :adjectives="partsOfSpeech.adjectives">
       </AdjectiveCasesTableComponent>
@@ -22,6 +24,7 @@
         v-if="partsOfSpeech.verbs"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.verbs = $event"
         :verbs="partsOfSpeech.verbs">
       </VerbWordComponent>
@@ -30,6 +33,7 @@
         v-if="partsOfSpeech.numerals"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.numerals = $event"
         :part-of-speech="partsOfSpeech.numerals">
       </BaseCasesTableComponent>
@@ -38,6 +42,7 @@
         v-if="partsOfSpeech.ordinals"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.ordinals = $event"
         :part-of-speech="partsOfSpeech.ordinals">
       </BaseCasesFacesTableComponent>
@@ -46,6 +51,7 @@
         v-if="partsOfSpeech.pronouns"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.pronouns = $event"
         :part-of-speech="partsOfSpeech.pronouns">
       </BaseCasesTableComponent>
@@ -54,6 +60,7 @@
         v-if="partsOfSpeech.pronounsPredicative"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.pronounsPredicative = $event"
         :part-of-speech="partsOfSpeech.pronounsPredicative">
       </BaseCasesTableComponent>
@@ -62,6 +69,7 @@
         v-if="partsOfSpeech.pronominalAdjective"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.pronominalAdjective = $event"
         :part-of-speech="partsOfSpeech.pronominalAdjective">
       </BaseCasesFacesTableComponent>
@@ -70,6 +78,7 @@
         v-if="partsOfSpeech.adverbs"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.adverbs = $event"
         :part-of-speech="partsOfSpeech.adverbs">
       </UnchangeableWordComponent>
@@ -78,6 +87,7 @@
         v-if="partsOfSpeech.predicative"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.predicative = $event"
         :part-of-speech="partsOfSpeech.predicative">
       </UnchangeableWordComponent>
@@ -86,6 +96,7 @@
         v-if="partsOfSpeech.pretext"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.pretext = $event"
         :part-of-speech="partsOfSpeech.pretext">
       </UnchangeableWordComponent>
@@ -94,6 +105,7 @@
         v-if="partsOfSpeech.conjunction"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.conjunction = $event"
         :part-of-speech="partsOfSpeech.conjunction">
       </UnchangeableWordComponent>
@@ -102,6 +114,7 @@
         v-if="partsOfSpeech.interjection"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.interjection = $event"
         :part-of-speech="partsOfSpeech.interjection">
       </UnchangeableWordComponent>
@@ -110,6 +123,7 @@
         v-if="partsOfSpeech.particle"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.particle = $event"
         :part-of-speech="partsOfSpeech.particle">
       </UnchangeableWordComponent>
@@ -118,6 +132,7 @@
         v-if="partsOfSpeech.parenthesis"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.parenthesis = $event"
         :part-of-speech="partsOfSpeech.parenthesis">
       </UnchangeableWordComponent>
@@ -126,6 +141,7 @@
         v-if="partsOfSpeech.phrase"
         :active-word-forms="activeWordForms"
         :word="word"
+        :select-jests="selectJests"
         @selected-words="selectedWords.phrase = $event"
         :part-of-speech="partsOfSpeech.phrase">
       </UnchangeableWordComponent>
@@ -137,7 +153,8 @@
               <h5 class="modal-title">
                 Выбор жестов для словоформы <u><b>{{ activeWordFormInModal }}</b></u><br>
                 <b>Граммемы</b>: {{ listOfGrammems(activeWordFormGrammemsInModal) }}<br>
-                <b>Часть речи</b>: {{ descriptorToPartOfSpeech(activeWordFormPartOfSpeechInModal) }}
+                <b>Часть речи</b>: {{ descriptorToPartOfSpeech(activeWordFormPartOfSpeechInModal) }}<br>
+                <b>Базовая форма</b>: <span class="equals">{{ activeBaseWordFormInModel.toLowerCase() }}</span>
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -307,7 +324,8 @@ export default {
       inputJest: null, // Жест который выбрали в состав.
       jestBySearch: [], // Список жестов при поиске
       activeCheckboxInJestsModal: null, // Информация о словоформе, для которой открыто модальное окно с составом
-      selectedJest: null
+      selectedJest: null,
+      activeBaseWordFormInModel: '', // Показывает базовую форму слова в открытом модальном окне
     }
   },
   mixins: [GrammemsMixin],
@@ -364,12 +382,17 @@ export default {
 
         const modal = $('#selectedJests');
 
+        if (!_.isEmpty(this.selectedJests)) {
+          this.$emit('selected-jests', this.selectedJests);
+        }
+
         modal.on('hidden.bs.modal', () => {
-          if (!this.selectedJests[this.activeCheckboxInJestsModal]) {
+          if (!this.selectedJests[this.activeCheckboxInJestsModal] || _.isEmpty(this.selectedJests[this.activeCheckboxInJestsModal])) {
             $(`:checkbox[value='${this.activeCheckboxInJestsModal}']`).prop("checked", false);
           }
 
           this.activeCheckboxInJestsModal = null;
+          this.activeBaseWordFormInModel = '';
           this.$emit('selected-jests', this.selectedJests);
         });
 
@@ -379,18 +402,30 @@ export default {
 
         allCheckBox.click(function (event) {
           that.inputJest = null;
-          if (this.checked) {
+
+          const showModal = () => {
             modal.modal('show');
             that.activeCheckboxInJestsModal = this.value;
+            that.activeBaseWordFormInModel = this.dataset.baseWordForm;
+          };
+
+          if (!_.isEmpty(that.selectedJests[this.value])) {
+            showModal();
+            this.checked = true;
+            return;
+          }
+
+          if (this.checked) {
+            showModal();
           } else {
             if (that.selectedJests[this.value]) {
-              console.log('rew');
               delete that.selectedJests[this.value];
             }
           }
         }).parent().parent().parent().click(function () {
           if ($(this)[0]?.children[0]?.children[0]?.children[0]?.checked) {
             that.activeCheckboxInJestsModal = $(this)[0].children[0].children[0].children[0].value;
+            that.activeBaseWordFormInModel = $(this)[0].children[0].children[0].children[0].dataset.baseWordForm;
             modal.modal('show');
           }
         });

@@ -13,12 +13,15 @@ use App\Models\Morphy\MorphyAnalyzer;
 use App\Models\Word;
 
 use Illuminate\Http\Request;
+use SEOService2020\Morphy\Morphy;
 
 class TestController extends Controller
 {
     public function show($word) {
         try {
             $morphyAnalyzer = new MorphyAnalyzer($word);
+
+            $this->saveWord($word);
 
             return response()->json([
                 $morphyAnalyzer->getTypesOfWord(),
@@ -31,6 +34,77 @@ class TestController extends Controller
                 'code' => $e->getCode(),
                 'trace' => $e->getTrace()
             ], 404);
+        }
+    }
+
+    /**
+     * Сохраняет все словоформы у выбранного слова.
+     * @param $word
+     */
+    private function saveWord($word)
+    {
+        $morphy = new Morphy(Morphy::russianLang);
+
+        if (preg_match( '/^([а-я]+)$/u', mb_strtolower($word, 'UTF-8'))) {
+            $allFormsWithGram = $morphy->getAllFormsWithGramInfo($word);
+
+            if ($allFormsWithGram) {
+
+                WordFormsModel::query()->firstOrCreate(
+                    ['word' => mb_strtolower($word, 'UTF-8')]
+                );
+
+                foreach ($allFormsWithGram as $forms) {
+                    for ($indexForm = 0; $indexForm < count($forms['forms']); $indexForm++) {
+
+                        WordFormsModel::query()->firstOrCreate(
+                            ['word' => mb_strtolower($forms['forms'][$indexForm], 'UTF-8')]
+                        );
+
+                        $allGrams = explode(" ", trim($forms['all'][$indexForm]));
+
+                        $partOfSpeech = $allGrams[0];
+
+                        $wordForm = WordFormsModel::query()->firstWhere('word', mb_strtolower($forms['forms'][$indexForm], 'UTF-8'));
+
+                        if ($wordForm) {
+                            $partOfSpeechModel = PartOfSpeech::query()->firstWhere('descriptor', $partOfSpeech);
+
+                            $attributes = [];
+                            if ($partOfSpeechModel) {
+                                $attributes['word_id'] = $wordForm->id;
+                                $attributes['part_of_speech_id'] = $partOfSpeechModel->id;
+
+                                if (isset($allGrams[1])) {
+                                    $grammems = explode(",", $allGrams[1]);
+                                    foreach ($grammems as $grammem) {
+                                        foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
+                                            $grammem = mb_strtolower($grammem, 'UTF-8');
+                                            if ($grammem === $descriptor) {
+
+                                                $model = new $item['model']();
+
+                                                $idGrammema = $model::query()->where('grammema', $grammem)->first()->id;
+
+                                                $attributes[$item['word_grammems_id']] = $idGrammema;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                WordGrammems::query()->firstOrCreate(
+                                    $attributes
+                                );
+                            }
+                        }
+                    }
+                }
+
+                WordFormsModel::query()->firstOrCreate([
+                    'word' => mb_strtolower($word, 'UTF-8'),
+                    'active' => false
+                ]);
+            }
         }
     }
 
@@ -178,54 +252,78 @@ class TestController extends Controller
         $wordFormsWithJestsJSON = $request->get('wordFormsWithJests');
         $wordIdSelected = $request->get('word_id');
 
-        $wordFormsWithJests = json_decode($wordFormsWithJestsJSON);
+        $wordFormsWithJests = json_decode($wordFormsWithJestsJSON, true);
 
-        foreach ($wordFormsWithJests as $wordFormInfo => $jests) {
-            $wordInfo = json_decode($wordFormInfo, true);
+        if (count($wordFormsWithJests) > 0) {
+            foreach ($wordFormsWithJests as $wordFormInfo => $jests) {
+                $wordInfo = json_decode($wordFormInfo, true);
 
-            $word = WordFormsModel::query()->firstOrCreate(
-                ['word' => mb_strtolower($wordInfo['Слово'], 'UTF-8')]
-            );
+                $word = WordFormsModel::query()->firstOrCreate(
+                    ['word' => mb_strtolower($wordInfo['Слово'], 'UTF-8')]
+                );
 
-            $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', mb_strtoupper($wordInfo['Часть речи'], 'UTF-8'))->id;
+                $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', mb_strtoupper($wordInfo['Часть речи'], 'UTF-8'))->id;
 
-            $attributes = [];
-            $attributes['word_id'] = $word->id;
-            $attributes['part_of_speech_id'] = $partOfSpeechId;
+                $attributes = [];
+                $attributes['word_id'] = $word->id;
+                $attributes['part_of_speech_id'] = $partOfSpeechId;
 
-            foreach ($wordInfo['Граммемы'] as $grammem) {
-                foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
-                    $grammem = mb_strtolower($grammem, 'UTF-8');
-                    if ($grammem === $descriptor) {
+                foreach ($wordInfo['Граммемы'] as $grammem) {
+                    foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
+                        $grammem = mb_strtolower($grammem, 'UTF-8');
+                        if ($grammem === $descriptor) {
 
-                        $model = new $item['model']();
+                            $model = new $item['model']();
 
-                        $idGrammema = $model::query()->where('grammema', $grammem)->first()->id;
+                            $idGrammema = $model::query()->where('grammema', $grammem)->first()->id;
 
-                        $attributes[$item['word_grammems_id']] = $idGrammema;
+                            $attributes[$item['word_grammems_id']] = $idGrammema;
+                        }
                     }
                 }
-            }
 
-            $wordGrammem = WordGrammems::query()->firstOrCreate(
-                $attributes
-            );
-
-            $wordFormId = $wordGrammem->id;
-
-            foreach ($jests as $jest) {
-                WordFormJestsSostav::query()->updateOrCreate(
-                    [
-                        'word_id' => $wordIdSelected,
-                        'wordform_id' => $wordFormId,
-                        'jest_id' => $jest->jest->id_jest
-                    ],
-                    [
-                        'order' => $jest->order
-                    ]
+                $wordGrammem = WordGrammems::query()->firstOrCreate(
+                    $attributes
                 );
+
+                $wordFormId = $wordGrammem->id;
+
+                // Словоформы на предыдущем заполнении.
+                $previousRecords = WordFormJestsSostav::query()->where('word_id', $word->id)->get(['wordform_id'])->toArray();
+
+                $previousIds = [];
+                foreach ($previousRecords as $previousRecord) {
+                    $previousIds[] = $previousRecord['wordform_id'];
+                }
+
+                // Словоформы, которые нужно удалить, если с них убрали Checkbox.
+                $removedIds = array_diff(array_unique(array_merge($previousIds, [$wordFormId])), [$wordFormId]);
+
+                // Если есть словоформы, которые нужно удалить, удаляем их из привязанного жеста.
+                if (count($removedIds) > 0) {
+                    foreach ($removedIds as $removedId) {
+                        WordFormJestsSostav::query()->where('wordform_id', $removedId)->where('word_id', '=', $wordIdSelected, 'and')->delete();
+                    }
+                }
+
+                // Записываем или обновляем словоформы, которые остались активными в жесте.
+                foreach ($jests as $jest) {
+                    WordFormJestsSostav::query()->updateOrCreate(
+                        [
+                            'word_id' => $wordIdSelected,
+                            'wordform_id' => $wordFormId,
+                            'jest_id' => $jest['jest']['id_jest']
+                        ],
+                        [
+                            'order' => $jest['order']
+                        ]
+                    );
+                }
             }
+        } else {
+            WordFormJestsSostav::query()->where('word_id', $wordIdSelected)->delete();
         }
+
     }
 
     public function wordFormJestsInWord($wordId)
@@ -233,13 +331,18 @@ class TestController extends Controller
         // Слово с составом жестов
         $wordFormsWithJestsSostav = Word::query()->findOrFail($wordId)->wordFormJestsSostav->groupBy('wordform_id');
 
-        $res = [];
+        /**
+         * Массив вида:
+         * [ "Json словоформы" => массив жестов словоформы ]
+         */
+        $wordFormsJests = [];
+
         foreach ($wordFormsWithJestsSostav as $groupWordFormId => $jests) {
             $wordJsonInfo = WordGrammems::query()->findOrFail($groupWordFormId)->json();
 
             $wordJsonInfo = json_encode($wordJsonInfo, 256);
 
-            $res[$wordJsonInfo] = [];
+            $wordFormsJests[$wordJsonInfo] = [];
 
             foreach ($jests as $jest) {
                 $jestModel = Jest::query()->where('id_jest', $jest->jest_id)->first(['id_jest', 'jest', 'nedooformleno']);
@@ -250,10 +353,67 @@ class TestController extends Controller
                     'nedooformleno' => $jestModel->nedooformleno
                 ];
 
-                $res[$wordJsonInfo][] = [
+                $wordFormsJests[$wordJsonInfo][] = [
                     'jest' => $obj,
-                    'order' => $jest->order
+                    'order' => $jest->order,
+                    'have_in_jest_wordform' => $wordJsonInfo['Присутствует в жесте']
                 ];
+            }
+        }
+
+        return response()->json($wordFormsJests, 200, [], 256);
+    }
+
+    public function hasInJests(Request $request)
+    {
+        $wordsInfo = json_decode($request->get('wordInJson'), true);
+
+        $res = [];
+
+        foreach ($wordsInfo as $wordInfo) {
+
+            $wordInfoJson = $wordInfo;
+            $wordInfo = json_decode($wordInfo, true);
+            $word = WordFormsModel::query()->where('word', mb_strtolower($wordInfo['Слово'], 'UTF-8'))->first();
+
+            if ($word) {
+                $partOfSpeechId = PartOfSpeech::query()->firstWhere('descriptor', mb_strtoupper($wordInfo['Часть речи'], 'UTF-8'))->id;
+
+                $attributes = [];
+                $attributes['word_id'] = $word->id;
+                $attributes['part_of_speech_id'] = $partOfSpeechId;
+
+                foreach ($wordInfo['Граммемы'] as $grammem) {
+                    foreach (HelpMorphyService::getDescriptors() as $descriptor => $item) {
+                        $grammem = mb_strtolower($grammem, 'UTF-8');
+                        if ($grammem === $descriptor) {
+
+                            $model = new $item['model']();
+
+                            $idGrammema = $model::query()->where('grammema', $grammem)->first()->id;
+
+                            $attributes[$item['word_grammems_id']] = $idGrammema;
+                        }
+                    }
+                }
+
+                $wordGrammem = WordGrammems::query()->firstWhere(
+                    $attributes
+                );
+
+                if ($wordGrammem) {
+                    $hasJest = $wordGrammem->jests()->exists() ? true : false;
+
+                    if ($hasJest) {
+                        $res[$wordInfoJson] = 1;
+                    } else {
+                        $res[$wordInfoJson] = 0;
+                    }
+                } else {
+                    $res[$wordInfoJson] = 0;
+                }
+            } else {
+                $res[$wordInfoJson] = 0;
             }
         }
 

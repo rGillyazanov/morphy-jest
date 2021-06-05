@@ -21,7 +21,7 @@
               {{ response.error.message }}
             </div>
             <div v-else-if="wordFormsOfWord.data">
-              <part-of-speech-table
+              <part-of-speech-table v-if="!loadingActiveWordFormsInJest"
                 :active-word-forms="activeWordForms"
                 :selected-jests="activeWordFormsInJest"
                 :word="word"

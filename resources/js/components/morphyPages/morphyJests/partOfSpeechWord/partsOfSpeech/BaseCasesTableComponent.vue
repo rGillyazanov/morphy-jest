@@ -1,9 +1,9 @@
 <template>
   <div>
     <hr>
-    <div v-if="partOfSpeech" v-for="wordTemp in Object.keys(partOfSpeech)">
-      <div class="py-3"><b>Базовая форма</b>: <span class="equals">{{ wordTemp }}</span> -
-        {{ listOfGrammems(partOfSpeech[wordTemp]['Граммемы']) }}
+    <div v-if="partOfSpeech" v-for="baseWord in Object.keys(partOfSpeech)">
+      <div class="py-3"><b>Базовая форма</b>: <span class="equals">{{ baseWord }}</span> -
+        {{ listOfGrammems(partOfSpeech[baseWord]['Граммемы']) }}
       </div>
       <table class="table table-bordered">
         <thead class="thead-light">
@@ -14,34 +14,38 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="casePart in Object.keys(partOfSpeech[wordTemp]['Падежи'])">
+        <tr v-for="casePart in Object.keys(partOfSpeech[baseWord]['Падежи'])">
           <th scope="row">{{ casePart }}</th>
-          <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово']) }">
+          <td :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][casePart]['ЕД']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[baseWord]['Падежи'][casePart]['Жесты']['ЕД'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
-                         :value="JSON.stringify(partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД'])"
+                         :data-base-word-form="baseWord"
+                         :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][casePart]['ЕД'])"
                          v-model="selectedWords">
                 </div>
               </div>
-              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase() }}
+              {{ partOfSpeech[baseWord]['Падежи'][casePart]['ЕД']['Слово'].toLowerCase() }}
             </div>
           </td>
-          <td :class="{ equals: equalsWithWord(partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово']) }">
+          <td :class="{ equals: equalsWithWord(partOfSpeech[baseWord]['Падежи'][casePart]['МН']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(partOfSpeech[baseWord]['Падежи'][casePart]['МН']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[baseWord]['Падежи'][casePart]['Жесты']['МН'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
-                         :value="JSON.stringify(partOfSpeech[wordTemp]['Падежи'][casePart]['МН'])"
+                         :data-base-word-form="baseWord"
+                         :value="JSON.stringify(partOfSpeech[baseWord]['Падежи'][casePart]['МН'])"
                          v-model="selectedWords">
                 </div>
               </div>
-              {{ partOfSpeech[wordTemp]['Падежи'][casePart]['МН']['Слово'].toLowerCase() }}
+              {{ partOfSpeech[baseWord]['Падежи'][casePart]['МН']['Слово'].toLowerCase() }}
             </div>
           </td>
         </tr>
@@ -54,6 +58,7 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "BaseCasesTableComponent",
@@ -67,7 +72,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin]
+  mixins: [GrammemsMixin, SelectedWordsMixin, SelectJestsMixin]
 }
 </script>
 

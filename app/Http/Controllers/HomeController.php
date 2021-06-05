@@ -30,4 +30,9 @@ class HomeController extends Controller
     {
         return view('words');
     }
+
+    public function statistics()
+    {
+        return view('statistics');
+    }
 }

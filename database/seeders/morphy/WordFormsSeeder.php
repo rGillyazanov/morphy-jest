@@ -50,7 +50,7 @@ class WordFormsSeeder extends Seeder
 
                             $partOfSpeech = $allGrams[0];
 
-                            $wordForm = WordFormsModel::query()->firstWhere('word', mb_strtolower($word->word, 'UTF-8'));
+                            $wordForm = WordFormsModel::query()->firstWhere('word', mb_strtolower($forms['forms'][$indexForm], 'UTF-8'));
 
                             if ($wordForm) {
                                 $partOfSpeechModel = PartOfSpeech::query()->firstWhere('descriptor', $partOfSpeech);

@@ -9,18 +9,21 @@
       <PresentTimeTableComponent
         :word="word"
         :active-word-forms="activeWordForms"
+        :base-word-form="verb"
         @selected-words="selectedWords.presentTime = $event"
         :present-time="presentTime(verb)">
       </PresentTimeTableComponent>
       <PastTimeTableComponent
         :word="word"
         :active-word-forms="activeWordForms"
+        :base-word-form="verb"
         @selected-words="selectedWords.pastTime = $event"
         :past-time="pastTime(verb)">
       </PastTimeTableComponent>
       <ImperativeMoodTableComponent
         :word="word"
         :active-word-forms="activeWordForms"
+        :base-word-form="verb"
         @selected-words="selectedWords.imperativeMood = $event"
         :imperative-mood="imperativeMood(verb)">
       </ImperativeMoodTableComponent>
@@ -28,12 +31,14 @@
         :word="word"
         :active-word-forms="activeWordForms"
         @selected-words="selectedWords.adverbParticiple = $event"
+        :base-word-form="verb"
         :adverb-participle="adverbParticiple(verb)">
       </AdverbParticipleTableComponent>
       <ParticipleCasesTableComponent
         :word="word"
         :active-word-forms="activeWordForms"
         @selected-words="selectedWords.participle = $event"
+        :base-word-form="verb"
         :part-of-speech="participle(verb)">
       </ParticipleCasesTableComponent>
     </div>
@@ -49,6 +54,7 @@ import ImperativeMoodTableComponent from "./ImperativeMoodTableComponent";
 import AdverbParticipleTableComponent from "./AdverbParticipleTableComponent";
 import ParticipleCasesTableComponent from "./ParticipleCasesTableComponent";
 import {uniqueWords} from "../../../../../mixins/selectedWords";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "VerbWordComponent",
@@ -70,7 +76,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin],
+  mixins: [GrammemsMixin, SelectJestsMixin],
   data() {
     return {
       selectedWords: {

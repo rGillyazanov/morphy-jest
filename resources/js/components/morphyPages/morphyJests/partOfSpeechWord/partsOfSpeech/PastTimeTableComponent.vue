@@ -18,11 +18,13 @@
         <tr>
           <td :class="{ equals: equalsWithWord(pastTime['ЕД']['МР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(pastTime['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(pastTime['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!pastTime['ЕД']['МР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(pastTime['ЕД']['МР']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
@@ -32,11 +34,13 @@
           </td>
           <td :class="{ equals: equalsWithWord(pastTime['ЕД']['ЖР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(pastTime['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(pastTime['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!pastTime['ЕД']['ЖР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(pastTime['ЕД']['ЖР']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
@@ -46,11 +50,13 @@
           </td>
           <td :class="{ equals: equalsWithWord(pastTime['ЕД']['СР']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(pastTime['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(pastTime['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!pastTime['ЕД']['СР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(pastTime['ЕД']['СР']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
@@ -60,11 +66,13 @@
           </td>
           <td :class="{ equals: equalsWithWord(pastTime['МН']['НОРМ']['Слово']) }">
             <div class="d-flex align-items-center">
-              <div v-if="!isEmptyWord(pastTime['МН']['НОРМ']['Слово'].toLowerCase())"
+              <div v-if="!isEmptyWord(pastTime['МН']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!pastTime['МН']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                    class="d-inline-flex pr-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input"
                          type="checkbox"
+                         :data-base-word-form="baseWordForm"
                          :value="JSON.stringify(pastTime['МН']['НОРМ'])"
                          v-model="selectedWords">
                 </div>
@@ -84,6 +92,8 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {BaseWordFormPropMixin} from "../../../../../mixins/baseWordFormProp";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "PastTimeTableComponent",
@@ -97,7 +107,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin]
+  mixins: [GrammemsMixin, SelectedWordsMixin, BaseWordFormPropMixin, SelectJestsMixin]
 }
 </script>
 

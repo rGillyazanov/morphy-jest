@@ -2,6 +2,10 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\GeneralModels;
 
+use App\Models\Morphies\PartOfSpeech;
+use App\Models\Morphies\WordFormsModel;
+use App\Models\Morphies\WordGrammems;
+use App\Models\Morphy\HelpMorphyService;
 use JsonSerializable;
 
 class PluralSingular implements JsonSerializable
@@ -119,6 +123,10 @@ class PluralSingular implements JsonSerializable
                 'Слово' => $this->_plural,
                 'Граммемы' => $this->getPluralGrammems(),
                 'Часть речи' => $this->getPluralPartOfSpeech()
+            ],
+            'Жесты' => [
+                'ЕД' => HelpMorphyService::hasInJests($this->_singular, $this->getSingularGrammems(), $this->getSingularPartOfSpeech()),
+                'МН' => HelpMorphyService::hasInJests($this->_plural, $this->getPluralGrammems(), $this->getPluralPartOfSpeech())
             ]
         ];
     }

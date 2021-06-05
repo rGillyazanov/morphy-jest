@@ -414,6 +414,42 @@ class Verb extends BasePartOfSpeech
         return $cases;
     }
 
+    /**
+     * Возвращает массив содержащий слово, его граммемы и часть речи.
+     * @param $searchPartOfSpeech
+     * @param $searchGrammems
+     * @return array
+     */
+    private function setAdverbParticiple($searchPartOfSpeech, $searchGrammems)
+    {
+        $word = $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+            $this->_paradigms,
+            $searchPartOfSpeech,
+            $searchGrammems
+        );
+
+        $grammems = $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+            $this->_paradigms,
+            $searchPartOfSpeech,
+            $searchGrammems,
+            'grammems'
+        );
+
+        $partOfSpeech = $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
+            $this->_paradigms,
+            $searchPartOfSpeech,
+            $searchGrammems,
+            'partOfSpeech'
+        );
+
+        return [
+            'Слово' => $word,
+            'Граммемы' => $grammems,
+            'Часть речи' => $partOfSpeech,
+            'Жесты' => HelpMorphyService::hasInJests($word, $grammems, $partOfSpeech)
+        ];
+    }
+
     private function setVerb(): void
     {
         foreach ($this->_paradigms->getByPartOfSpeech('ИНФИНИТИВ') as $paradigm) {
@@ -424,44 +460,8 @@ class Verb extends BasePartOfSpeech
                 ],
                 'Повелительное наклонение' => $this->setImperativeMood($paradigm),
                 'Деепричастие' => [
-                    'Настоящее' => [
-                        'Слово' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                            $this->_paradigms,
-                            'ДЕЕПРИЧАСТИЕ',
-                            ['НСТ']
-                        ),
-                        'Граммемы' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                            $this->_paradigms,
-                            'ДЕЕПРИЧАСТИЕ',
-                            ['НСТ'],
-                            'grammems'
-                        ),
-                        'Часть речи' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                            $this->_paradigms,
-                            'ДЕЕПРИЧАСТИЕ',
-                            ['НСТ'],
-                            'partOfSpeech'
-                        )
-                    ],
-                    'Прошедшее' => [
-                        'Слово' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                            $this->_paradigms,
-                            'ДЕЕПРИЧАСТИЕ',
-                            ['ПРШ']
-                        ),
-                        'Граммемы' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                            $this->_paradigms,
-                            'ДЕЕПРИЧАСТИЕ',
-                            ['ПРШ'],
-                            'grammems'
-                        ),
-                        'Часть речи' => $this->helpMorphyService->getWordByGrammarsAndPartOfSpeech(
-                            $this->_paradigms,
-                            'ДЕЕПРИЧАСТИЕ',
-                            ['ПРШ'],
-                            'partOfSpeech'
-                        ),
-                    ]
+                    'Настоящее' => $this->setAdverbParticiple('ДЕЕПРИЧАСТИЕ', ['НСТ']),
+                    'Прошедшее' => $this->setAdverbParticiple('ДЕЕПРИЧАСТИЕ', ['ПРШ'])
                 ],
                 'Причастие' => [
                     'Настоящее время' => [

@@ -2,6 +2,8 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\Particle;
 
+use App\Models\Morphy\HelpMorphyService;
+
 class Particle extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 {
     /**
@@ -26,24 +28,6 @@ class Particle extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
     }
 
     private function setParticle(): void {
-        foreach ($this->_paradigms->getByPartOfSpeech("ЧАСТ") as $paradigm) {
-            $this->_particle[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
-
-            $partOfSpeech = '';
-
-            foreach ($paradigm as $form) {
-                if ($paradigm->getBaseForm() === $form->getWord()) {
-                    $partOfSpeech = $form->getPartOfSpeech();
-                    array_unshift($this->_particle[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
-                    break;
-                }
-            }
-
-            $this->_particle[$paradigm->getBaseForm()] = [
-                'Слово' => $paradigm->getBaseForm(),
-                'Граммемы' => $paradigm[0]->getGrammems(),
-                'Часть речи' => $partOfSpeech
-            ];
-        }
+        $this->_particle = HelpMorphyService::setUnchangeableWord($this->_paradigms, 'ЧАСТ');
     }
 }

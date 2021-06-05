@@ -1,15 +1,8 @@
-export const SelectedWordsMixin = {
-  data() {
-    return {
-      selectedWords: this.activeWordForms
-    }
-  },
-  watch: {
-    selectedWords: {
-      deep: true,
-      handler() {
-        this.$emit('selected-words', this.selectedWords);
-      }
+export const SelectJestsMixin = {
+  props: {
+    selectJests: {
+      type: Boolean,
+      required: true
     }
   }
 }

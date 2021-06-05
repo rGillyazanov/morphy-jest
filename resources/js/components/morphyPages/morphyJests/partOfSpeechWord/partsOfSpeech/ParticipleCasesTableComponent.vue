@@ -27,11 +27,13 @@
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
                 <div
-                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase())"
+                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                   class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
+                           :data-base-word-form="baseWordForm"
                            :value="JSON.stringify(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['МР']['НОРМ'])"
                            v-model="selectedWords">
                   </div>
@@ -45,11 +47,13 @@
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
                 <div
-                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase())"
+                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                   class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
+                           :data-base-word-form="baseWordForm"
                            :value="JSON.stringify(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['ЖР']['НОРМ'])"
                            v-model="selectedWords">
                   </div>
@@ -63,11 +67,13 @@
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
                 <div
-                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase())"
+                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                   class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
+                           :data-base-word-form="baseWordForm"
                            :value="JSON.stringify(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['ЕД']['СР']['НОРМ'])"
                            v-model="selectedWords">
                   </div>
@@ -81,11 +87,13 @@
               :class="{ equals: equalsWithWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово']) }">
               <div class="d-flex align-items-center">
                 <div
-                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase())"
+                  v-if="!isEmptyWord(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ']['Слово'].toLowerCase()) &&
+                         (!partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['ЖЕСТЫ']['НОРМ'] || !selectJests)"
                   class="d-inline-flex pr-2">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
                            type="checkbox"
+                           :data-base-word-form="baseWordForm"
                            :value="JSON.stringify(partOfSpeech[partOfSpeechTime][partOfSpeechVoice][partOfSpeechCase]['МН']['НОРМ'])"
                            v-model="selectedWords">
                   </div>
@@ -105,6 +113,8 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {BaseWordFormPropMixin} from "../../../../../mixins/baseWordFormProp";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "ParticipleCasesTableComponent",
@@ -118,7 +128,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin]
+  mixins: [GrammemsMixin, SelectedWordsMixin, BaseWordFormPropMixin, SelectJestsMixin]
 }
 </script>
 

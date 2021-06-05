@@ -2,6 +2,8 @@
 
 namespace App\Models\Morphy\PartsOfSpeech\Parenthesis;
 
+use App\Models\Morphy\HelpMorphyService;
+
 class Parenthesis extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
 {
     /**
@@ -26,24 +28,6 @@ class Parenthesis extends \App\Models\Morphy\PartsOfSpeech\BasePartOfSpeech
     }
 
     private function setParenthesis(): void {
-        foreach ($this->_paradigms->getByPartOfSpeech("ВВОДН") as $paradigm) {
-            $this->_parenthesis[$paradigm->getBaseForm()]['Граммемы'] = $paradigm[0]->getGrammems();
-
-            $partOfSpeech = '';
-
-            foreach ($paradigm as $form) {
-                if ($paradigm->getBaseForm() === $form->getWord()) {
-                    $partOfSpeech = $form->getPartOfSpeech();
-                    array_unshift($this->_parenthesis[$paradigm->getBaseForm()]['Граммемы'], $form->getPartOfSpeech());
-                    break;
-                }
-            }
-
-            $this->_parenthesis[$paradigm->getBaseForm()] = [
-                'Слово' => $paradigm->getBaseForm(),
-                'Граммемы' => $paradigm[0]->getGrammems(),
-                'Часть речи' => $partOfSpeech
-            ];
-        }
+        $this->_parenthesis = HelpMorphyService::setUnchangeableWord($this->_paradigms, 'ВВОДН');
     }
 }

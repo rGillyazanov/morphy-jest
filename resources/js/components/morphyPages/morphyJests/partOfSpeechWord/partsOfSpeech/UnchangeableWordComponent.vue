@@ -7,11 +7,12 @@
         {{ descriptorToPartOfSpeech(partOfSpeech[baseWord]['Часть речи']) }} {{
           listOfGrammems(partOfSpeech[baseWord]['Граммемы'])
         }}, неизменяемое слово.
-        <div v-if="!isEmptyWord(baseWord.toLowerCase())"
+        <div v-if="!isEmptyWord(baseWord.toLowerCase()) && (!partOfSpeech[baseWord]['Жесты'] || !selectJests)"
              class="d-inline-flex pl-2">
           <div class="form-check form-check-inline">
             <input class="form-check-input"
                    type="checkbox"
+                   :data-base-word-form="baseWord"
                    :value="JSON.stringify(partOfSpeech[baseWord])"
                    v-model="selectedWords">
           </div>
@@ -24,6 +25,7 @@
 <script>
 import {GrammemsMixin} from "../../../../../mixins/grammems";
 import {SelectedWordsMixin} from "../../../../../mixins/selectedWords";
+import {SelectJestsMixin} from "../../../../../mixins/selectedJests";
 
 export default {
   name: "UnchangeableWordComponent",
@@ -37,7 +39,7 @@ export default {
       required: true
     }
   },
-  mixins: [GrammemsMixin, SelectedWordsMixin]
+  mixins: [GrammemsMixin, SelectedWordsMixin, SelectJestsMixin]
 }
 </script>
 

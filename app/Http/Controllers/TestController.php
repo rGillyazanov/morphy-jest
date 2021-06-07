@@ -111,8 +111,7 @@ class TestController extends Controller
                 }
 
                 WordFormsModel::query()->firstOrCreate([
-                    'word' => mb_strtolower($word, 'UTF-8'),
-                    'active' => false
+                    'word' => mb_strtolower($word, 'UTF-8')
                 ]);
             }
         }
@@ -374,17 +373,21 @@ class TestController extends Controller
             foreach ($jests as $jest) {
                 $jestModel = Jest::query()->where('id_jest', $jest->jest_id)->first(['id_jest', 'jest', 'nedooformleno']);
 
-                $obj = [
+                $jestTemp = [
                     'id_jest' => $jestModel->id_jest,
                     'jest' => $jestModel->jest,
                     'nedooformleno' => $jestModel->nedooformleno
                 ];
 
                 $wordFormsJests[$wordJsonInfo][] = [
-                    'jest' => $obj,
+                    'jest' => $jestTemp,
                     'order' => $jest->order
                 ];
             }
+
+            usort($wordFormsJests[$wordJsonInfo], function ($item1, $item2) {
+                return $item1['order'] <=> $item2['order'];
+            });
         }
 
         return response()->json($wordFormsJests, 200, [], 256);

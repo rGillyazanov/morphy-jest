@@ -2,7 +2,7 @@
   <div>
     <hr>
     <div v-for="verb in Object.keys(verbs)">
-      <div class="py-3"><b>Базовая форма</b>: {{ verb }} - {{
+      <div class="py-3"><b>Базовая форма</b>: <span class="equals">{{ verb }}</span> - {{
           listOfGrammems(verbs[verb]['Граммемы'])
         }}
       </div>

@@ -26,9 +26,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_06_204805_drop_column_active_to_morphy_word_forms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphy/HelpMorphyService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/partsOfSpeech/VerbWordComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/statistics.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/statistics.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +52,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -300,7 +307,8 @@
       <workItem from="1622893255423" duration="7649000" />
       <workItem from="1622915803813" duration="2688000" />
       <workItem from="1623011833775" duration="1769000" />
-      <workItem from="1623062554689" duration="1071000" />
+      <workItem from="1623062554689" duration="3635000" />
+      <workItem from="1623147246527" duration="26243000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -456,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622918502297</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Убрал столбец active в morphy_word_forms и сделал сортировку жестов в словоформе по order.">
+      <created>1623063752492</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1623063752492</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,13 +527,18 @@
     <MESSAGE value="&#10;Добавить базовую форму словоформы (выделить красным)&#10;Исправить поведение открытие модального окна с выбором жестов у словоформы (при клике по активному чекбоксу открывать модальное окно).&#10;Сохранять все словоформы при открытии слова." />
     <MESSAGE value="Добавить таблицу с базовыми формами слов. (Добавить связь в таблицу wordforms)." />
     <MESSAGE value="Добавил в таблицу jest_wordforms столбец word_id" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил в таблицу jest_wordforms столбец word_id" />
+    <MESSAGE value="Убрал столбец active в morphy_word_forms и сделал сортировку жестов в словоформе по order." />
+    <option name="LAST_COMMIT_MESSAGE" value="Убрал столбец active в morphy_word_forms и сделал сортировку жестов в словоформе по order." />
   </component>
   <component name="WindowStateProjectService">
     <state x="679" y="129" width="566" height="877" key="#PHP" timestamp="1621638737618">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="679" y="129" width="566" height="877" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1621638737618" />
+    <state x="336" y="363" key="#SQL_Dialects" timestamp="1623164265564">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="336" y="363" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1623164265564" />
     <state x="540" y="194" key="#Servers" timestamp="1615748004136">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -555,14 +575,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="852" y="191" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616269892886" />
-    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1622918501395">
+    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1623063751569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1622918501395" />
-    <state width="558" height="618" key="DebuggerActiveHint" timestamp="1622917832602">
+    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1623063751569" />
+    <state width="616" height="618" key="DebuggerActiveHint" timestamp="1623159735296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="558" height="618" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1622917832602" />
+    <state width="616" height="618" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1623159735296" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1622806124305">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -571,54 +591,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="332" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1623013605369" />
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1622918516317">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516317" />
-    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1622918516317">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516317" />
-    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1622918516317">
+    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516317" />
-    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1622918516317">
+    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516317" />
-    <state width="1877" height="332" key="GridCell.Tab.1.bottom" timestamp="1622918516318">
+    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.1.bottom" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516318" />
-    <state width="1877" height="332" key="GridCell.Tab.1.center" timestamp="1622918516317">
+    <state width="1877" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.1.center" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516317" />
-    <state width="1877" height="332" key="GridCell.Tab.1.left" timestamp="1622918516317">
+    <state width="1877" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.1.left" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516317" />
-    <state width="1877" height="332" key="GridCell.Tab.1.right" timestamp="1622918516318">
+    <state width="1877" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.1.right" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516318" />
-    <state width="1877" height="332" key="GridCell.Tab.2.bottom" timestamp="1622918516318">
+    <state width="1877" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.2.bottom" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516318" />
-    <state width="1877" height="332" key="GridCell.Tab.2.center" timestamp="1622918516318">
+    <state width="1877" height="332" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.2.center" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516318" />
-    <state width="1877" height="332" key="GridCell.Tab.2.left" timestamp="1622918516318">
+    <state width="1877" height="332" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.2.left" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516318" />
-    <state width="1877" height="332" key="GridCell.Tab.2.right" timestamp="1622918516318">
+    <state width="1877" height="332" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
+    <state width="1877" height="332" key="GridCell.Tab.2.right" timestamp="1623168897855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1622918516318" />
+    <state width="1877" height="332" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1623168897855" />
     <state x="900" y="398" key="NewPhpClassDialog" timestamp="1621616250501">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -635,10 +655,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="540" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1623012631334" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1622918507092">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1623063757821">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622918507092" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1623063757821" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618311452128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -655,9 +675,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620992622266" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1622814942631">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1623183385382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622814942631" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1623183385382" />
   </component>
 </project>

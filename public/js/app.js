@@ -3912,6 +3912,145 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_grammems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/grammems */ "./resources/js/mixins/grammems.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "MorphyStatistics",
+  mixins: [_mixins_grammems__WEBPACK_IMPORTED_MODULE_0__.GrammemsMixin],
+  data: function data() {
+    return {
+      statistics: {
+        countJests: 0,
+        countWords: 0,
+        countWordForms: 0,
+        countSvyaz: 0,
+        countNotSvyaz: 0
+      },
+      loadingStatistics: true,
+      selectedWordForm: null,
+      searchingWordForm: '',
+      report: {},
+      countOfWordFormsInReport: 0
+    };
+  },
+  methods: {
+    selectWord: function selectWord(word) {
+      this.selectedWordForm = word;
+    },
+    searchWordForm: function searchWordForm() {
+      console.log(this.searchingWordForm);
+    }
+  },
+  computed: {
+    searchFilter: function searchFilter() {
+      var _this = this;
+
+      var keys = Object.keys(this.report).sort();
+      return this.searchingWordForm ? keys.filter(function (key) {
+        return key.includes(_this.searchingWordForm.toUpperCase());
+      }) : keys;
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.loadingStatistics = true;
+    axios.get('/api/statistics').then(function (response) {
+      _this2.statistics.countJests = response.data['жестов обработано'];
+      _this2.statistics.countWords = response.data['слов обработано'];
+      _this2.statistics.countWordForms = response.data['словоформ сгенерировано'];
+      _this2.statistics.countSvyaz = response.data['словоформ связано'];
+      _this2.statistics.countNotSvyaz = response.data['словоформ несвязано'];
+      _this2.report = _.groupBy(response.data['пересечение словоформ'], 'Слово');
+      Object.keys(_this2.report).forEach(function (key) {
+        _this2.report[key] = _.groupBy(_this2.report[key], 'Базовая форма');
+      });
+      _this2.countOfWordFormsInReport = Object.keys(_this2.report).length;
+      _this2.loadingStatistics = false;
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue?vue&type=script&lang=js& ***!
@@ -4180,6 +4319,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 Vue.component('morphy-jests-component', __webpack_require__(/*! ./components/morphyPages/morphyJests/MorphyJestsComponent.vue */ "./resources/js/components/morphyPages/morphyJests/MorphyJestsComponent.vue").default);
 Vue.component('morphy-words-component', __webpack_require__(/*! ./components/morphyPages/morphyWords/MorphyWordsComponent.vue */ "./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue").default);
+Vue.component('morphy-statistics', __webpack_require__(/*! ./components/morphyPages/morphyStatistics/MorphyStatistics.vue */ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue").default);
 Vue.component('v-select', (vue_select__WEBPACK_IMPORTED_MODULE_0___default()));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -9114,6 +9254,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".equals {\n  color: red;\n  font-weight: 600;\n}\n.equals .d-flex::after {\n  content: url(\"/images/check_small.png\");\n  margin-right: 0;\n  margin-left: 10px;\n  position: relative;\n  top: 2px;\n}\n.form-check-inline {\n  margin-right: 0;\n}\n.scroll-y {\n  height: 500px;\n  overflow-y: scroll;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".text-word-forms-navigation[data-v-54b95dd8] {\n  font-weight: 600;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41368,6 +41532,47 @@ component.options.__file = "resources/js/components/morphyPages/morphyJests/part
 
 /***/ }),
 
+/***/ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MorphyStatistics_vue_vue_type_template_id_54b95dd8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true& */ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true&");
+/* harmony import */ var _MorphyStatistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MorphyStatistics.vue?vue&type=script&lang=js& */ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MorphyStatistics_vue_vue_type_style_index_0_id_54b95dd8_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss& */ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _MorphyStatistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _MorphyStatistics_vue_vue_type_template_id_54b95dd8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _MorphyStatistics_vue_vue_type_template_id_54b95dd8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "54b95dd8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue":
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue ***!
@@ -41599,6 +41804,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MorphyStatistics.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************!*\
   !*** ./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue?vue&type=script&lang=js& ***!
@@ -41819,6 +42040,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true&":
+/*!******************************************************************************************************************************!*\
+  !*** ./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true& ***!
+  \******************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_template_id_54b95dd8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_template_id_54b95dd8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_template_id_54b95dd8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue?vue&type=template&id=77166e7a&scoped=true&":
 /*!*****************************************************************************************************************************!*\
   !*** ./resources/js/components/morphyPages/morphyWords/MorphyWordsComponent.vue?vue&type=template&id=77166e7a&scoped=true& ***!
@@ -41865,6 +42103,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
 /* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PartOfSpeechTable_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss&":
+/*!*********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss& ***!
+  \*********************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_style_index_0_id_54b95dd8_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-style-loader/index.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_style_index_0_id_54b95dd8_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_style_index_0_id_54b95dd8_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_style_index_0_id_54b95dd8_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MorphyStatistics_vue_vue_type_style_index_0_id_54b95dd8_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 
 
@@ -46843,10 +47098,10 @@ var render = function() {
           [
             _c("div", { staticClass: "py-3" }, [
               _c("b", [_vm._v("Базовая форма")]),
+              _vm._v(": "),
+              _c("span", { staticClass: "equals" }, [_vm._v(_vm._s(verb))]),
               _vm._v(
-                ": " +
-                  _vm._s(verb) +
-                  " - " +
+                " - " +
                   _vm._s(_vm.listOfGrammems(_vm.verbs[verb]["Граммемы"])) +
                   "\n    "
               )
@@ -46935,6 +47190,286 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=template&id=54b95dd8&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      !_vm.loadingStatistics
+        ? [
+            _c("h1", [_vm._v("Статистика")]),
+            _vm._v(" "),
+            _c("ol", [
+              _c("li", [
+                _vm._v(
+                  "Сколько жестов обработано: " +
+                    _vm._s(_vm.statistics.countJests)
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "Сколько слов обработано: " +
+                    _vm._s(_vm.statistics.countWords)
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "Сколько словоформ сгенерировано: " +
+                    _vm._s(_vm.statistics.countWordForms)
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "Сколько словоформ связано: " +
+                    _vm._s(_vm.statistics.countSvyaz)
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "Сколько словоформ несвязано: " +
+                    _vm._s(_vm.statistics.countNotSvyaz)
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v("Сколько словоформ имеют единичную связь с жестом.")
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "Сколько словоформ имеют единичную связь с несколькими жестами."
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "Сколько словоформ имеют единичную связь с несколькими жестами."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v(
+                "Количество пересечённых словоформ: " +
+                  _vm._s(_vm.countOfWordFormsInReport)
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.searchingWordForm,
+                      expression: "searchingWordForm"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Введите словоформу для поиска"
+                  },
+                  domProps: { value: _vm.searchingWordForm },
+                  on: {
+                    change: function($event) {
+                      return _vm.searchWordForm()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.searchingWordForm = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  { staticClass: "mt-3 custom-select", attrs: { size: "10" } },
+                  _vm._l(_vm.searchFilter, function(wordForm) {
+                    return _c(
+                      "option",
+                      {
+                        domProps: { value: wordForm },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectWord(wordForm)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " + _vm._s(wordForm) + "\n          "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-9" },
+                [
+                  _vm.selectedWordForm
+                    ? [
+                        _c("div", { staticClass: "h2 mb-3" }, [
+                          _vm._v("Информация о пересечении словоформы "),
+                          _c("b", [
+                            _vm._v(_vm._s(_vm.selectedWordForm.toLowerCase()))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(
+                          Object.keys(_vm.report[_vm.selectedWordForm]),
+                          function(baseWordForm, index) {
+                            return [
+                              _c("span", { staticClass: "h3" }, [
+                                _vm._v(_vm._s(index + 1) + ". "),
+                                _c("b", [_vm._v("Базовая форма:")]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "equals" }, [
+                                  _vm._v(_vm._s(baseWordForm))
+                                ]),
+                                _c("br")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "row my-3" }, [
+                                _c("div", { staticClass: "col-12" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "row" },
+                                    _vm._l(
+                                      _vm.report[_vm.selectedWordForm][
+                                        baseWordForm
+                                      ],
+                                      function(word) {
+                                        return _c(
+                                          "div",
+                                          { staticClass: "col-6 mb-2" },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "border p-3" },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "text-word-forms-navigation"
+                                                  },
+                                                  [_vm._v("Слово")]
+                                                ),
+                                                _vm._v(
+                                                  ": " + _vm._s(word["Слово"])
+                                                ),
+                                                _c("br"),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "text-word-forms-navigation"
+                                                  },
+                                                  [_vm._v("Граммемы")]
+                                                ),
+                                                _vm._v(
+                                                  ": " +
+                                                    _vm._s(
+                                                      _vm.listOfGrammems(
+                                                        word["Граммемы"]
+                                                      )
+                                                    )
+                                                ),
+                                                _c("br"),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "text-word-forms-navigation"
+                                                  },
+                                                  [_vm._v("Часть речи")]
+                                                ),
+                                                _vm._v(
+                                                  ": " +
+                                                    _vm._s(
+                                                      _vm.descriptorToPartOfSpeech(
+                                                        word["Часть речи"]
+                                                      )
+                                                    )
+                                                ),
+                                                _c("br")
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      }
+                                    ),
+                                    0
+                                  )
+                                ])
+                              ])
+                            ]
+                          }
+                        )
+                      ]
+                    : _vm._e()
+                ],
+                2
+              )
+            ])
+          ]
+        : _c("div", [_vm._m(0)])
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 mt-4" }, [
+        _c("div", { staticClass: "d-flex justify-content-center" }, [
+          _c(
+            "div",
+            { staticClass: "spinner-border", attrs: { role: "status" } },
+            [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -47290,6 +47825,27 @@ if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(/*! !../../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
 var update = add("eb547836", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue?vue&type=style&index=0&id=54b95dd8&scoped=true&lang=scss&");
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(/*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("f9e7baa2", content, false, {});
 // Hot Module Replacement
 if(false) {}
 

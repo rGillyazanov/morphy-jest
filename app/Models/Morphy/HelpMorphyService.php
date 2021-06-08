@@ -532,5 +532,7 @@ class HelpMorphyService
                 }
             }
         }
+
+        return null;
     }
 }

@@ -24,3 +24,4 @@ Route::post('/storeWordFormsInJest', [\App\Http\Controllers\TestController::clas
 Route::post('/storeJestsWordForm', [\App\Http\Controllers\TestController::class, 'storeJestsWordForm']);
 Route::get('/wordFormJestsInWord/{wordId}', [\App\Http\Controllers\TestController::class, 'wordFormJestsInWord']);
 Route::post('/hasInJests', [\App\Http\Controllers\TestController::class, 'hasInJests']);
+Route::get('/statistics', [\App\Http\Controllers\TestController::class, 'statistics']);

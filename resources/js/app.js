@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 
 Vue.component('morphy-jests-component', require('./components/morphyPages/morphyJests/MorphyJestsComponent.vue').default);
 Vue.component('morphy-words-component', require('./components/morphyPages/morphyWords/MorphyWordsComponent.vue').default);
+Vue.component('morphy-statistics', require('./components/morphyPages/morphyStatistics/MorphyStatistics.vue').default);
 
 Vue.component('v-select', vSelect)
 /**

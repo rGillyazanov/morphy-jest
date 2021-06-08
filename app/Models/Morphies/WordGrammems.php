@@ -24,6 +24,11 @@ class WordGrammems extends Model
         return $this->belongsToMany(Jest::class, 'morphy_jest_wordforms', 'wordform_id', 'jest_id');
     }
 
+    public function baseForm()
+    {
+        return $this->belongsTo(WordFormsModel::class, 'base_word_form_id', 'id');
+    }
+
     public function word()
     {
         return $this->belongsTo(WordFormsModel::class, 'word_id', 'id');
@@ -89,7 +94,7 @@ class WordGrammems extends Model
         return $this->belongsTo(SemanticFeature::class, 'semantic_feature_id', 'id');
     }
 
-    public function json()
+    public function json($otherParams = [])
     {
         $result = [];
         foreach ($this->getAttributes() as $key => $attribute) {
@@ -140,10 +145,16 @@ class WordGrammems extends Model
             sort($result['Граммемы']);
         }
 
-        return [
+        $result = [
             'Слово' => $result['Слово'],
             'Граммемы' => isset($result['Граммемы']) ? $result['Граммемы'] : [],
             'Часть речи' => $result['Часть речи'],
         ];
+
+        if ($otherParams) {
+            $result += $otherParams;
+        }
+
+        return $result;
     }
 }

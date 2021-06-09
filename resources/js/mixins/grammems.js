@@ -55,6 +55,7 @@ export const globalGrammems = {
   'прев':	'превосходная степень (для прилагательных)',
   'сравн':	'сравнительная степень (для прилагательных)',
   'кач':	'качественное прилагательное',
+  'дфст':	'прилагательное (не используется)',
   'имя':	'имя',
   'фам':	'фамилия',
   'отч':	'отчество',
@@ -68,7 +69,8 @@ export const globalGrammems = {
   'арх': 'архаизм',
   'опч':	'опечатка',
   'поэт':	'поэтическое',
-  'проф':	'профессионализм'
+  'проф':	'профессионализм',
+  'полож': '??? (не используется)'
 }
 
 export const GrammemsMixin = {
@@ -84,15 +86,18 @@ export const GrammemsMixin = {
     /**
      * Принимает массив из кода граммем и возвращает их полное название.
      * @param {array} grammems
+     * @param assoc - вернуть в виде массива
      * @returns {string}
      */
-    listOfGrammems(grammems) {
+    listOfGrammems(grammems, assoc = false) {
       if (grammems) {
         const grammemsDescription = [];
 
         for (let grammem of grammems) {
           grammemsDescription.push(globalGrammems[grammem.toLowerCase()])
         }
+
+        if (assoc) return grammemsDescription;
 
         return grammemsDescription.join(', ');
       }

@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import vSelect from 'vue-select';
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -22,6 +23,7 @@ window.Vue = require('vue').default;
 Vue.component('morphy-jests-component', require('./components/morphyPages/morphyJests/MorphyJestsComponent.vue').default);
 Vue.component('morphy-words-component', require('./components/morphyPages/morphyWords/MorphyWordsComponent.vue').default);
 Vue.component('morphy-statistics', require('./components/morphyPages/morphyStatistics/MorphyStatistics.vue').default);
+Vue.component('morphy-intersections', require('./components/morphyPages/morphyIntersectionsWordForms/MorphyIntersectionsWordFormsComponent.vue').default);
 
 Vue.component('v-select', vSelect)
 /**
@@ -31,5 +33,5 @@ Vue.component('v-select', vSelect)
  */
 
 const app = new Vue({
-    el: '#app',
+  el: '#app',
 });

@@ -35,4 +35,9 @@ class HomeController extends Controller
     {
         return view('statistics');
     }
+
+    public function intersections()
+    {
+        return view('intersections');
+    }
 }

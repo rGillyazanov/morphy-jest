@@ -40,6 +40,9 @@
                             <a href="{{ route('morphy.words') }}">Слова-жесты</a>
                         </li>
                         <li class="nav-link">
+                            <a href="{{ route('morphy.intersections.wordforms') }}">Словарь пересечения словоформ</a>
+                        </li>
+                        <li class="nav-link">
                             <a href="{{ route('morphy.statistics') }}">Статистика</a>
                         </li>
                     </ul>

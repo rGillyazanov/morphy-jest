@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/words', [App\Http\Controllers\HomeController::class, 'words'])->name('morphy.words');
 Route::get('/statistics', [App\Http\Controllers\HomeController::class, 'statistics'])->name('morphy.statistics');
+Route::get('/intersections', [App\Http\Controllers\HomeController::class, 'intersections'])->name('morphy.intersections.wordforms');

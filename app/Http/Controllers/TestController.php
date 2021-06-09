@@ -419,24 +419,6 @@ class TestController extends Controller
      */
     public function statistics()
     {
-        $sub = WordGrammems::query()->select(['word_id'])->selectSub('COUNT(*)', 'count')->with([
-            'word', 'partOfSpeech', 'gender'
-        ])->groupBy(['word_id'])->havingRaw('count(*) > 1');
-
-        $sql = $sub->toSql();
-
-        $result = WordGrammems::query()->select()->fromRaw("morphy_word_grammems, ($sql) as t1")
-            ->whereRaw('morphy_word_grammems.word_id = t1.word_id')
-            ->get();
-
-        $res = [];
-
-        foreach ($result as $wordGrammem) {
-            $res[] = $wordGrammem->json([
-                'Базовая форма' => $wordGrammem->baseForm->word
-            ]);
-        }
-
         $countJests = JestWordForms::query()->distinct()->count('jest_id');
         $countWords = JestWordForms::query()->distinct()->count('word_id');
         $countWordForms = WordGrammems::query()->distinct()->count();
@@ -448,9 +430,35 @@ class TestController extends Controller
             'слов обработано' => $countWords,
             'словоформ сгенерировано' => $countWordForms,
             'словоформ связано' => $countSvyaz,
-            'словоформ несвязано' => $countNotSvyaz,
-            'пересечение словоформ' => $res
+            'словоформ несвязано' => $countNotSvyaz
         ], 200, [], 256);
+    }
 
+    /**
+     * Возвращает все пересеченные словоформы.
+     * @return array
+     */
+    public function intersections()
+    {
+        // Запрос для получения пересеченных словоформ.
+        $sub = WordGrammems::query()->select(['word_id'])->selectSub('COUNT(*)', 'count')->with([
+            'word', 'partOfSpeech', 'gender'
+        ])->groupBy(['word_id'])->havingRaw('count(*) > 1');
+
+        $sql = $sub->toSql();
+
+        $result = WordGrammems::query()->select()->fromRaw("morphy_word_grammems, ($sql) as t1")
+            ->whereRaw('morphy_word_grammems.word_id = t1.word_id')
+            ->get();
+
+        $intersectionsWordForms = [];
+
+        foreach ($result as $wordGrammem) {
+            $intersectionsWordForms[] = $wordGrammem->json([
+                'Базовая форма' => $wordGrammem->baseForm->word
+            ]);
+        }
+
+        return $intersectionsWordForms;
     }
 }

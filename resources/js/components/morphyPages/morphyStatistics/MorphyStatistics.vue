@@ -8,9 +8,8 @@
         <li>Сколько словоформ сгенерировано: {{ statistics.countWordForms }}</li>
         <li>Сколько словоформ связано: {{ statistics.countSvyaz }}</li>
         <li>Сколько словоформ несвязано: {{ statistics.countNotSvyaz }}</li>
-        <li>Сколько словоформ имеют единичную связь с жестом.</li>
-        <li>Сколько словоформ имеют единичную связь с несколькими жестами.</li>
-        <li>Сколько словоформ имеют единичную связь с несколькими жестами.</li>
+        <li>Сколько словоформ имеют единичную связь с жестом: {{ statistics.countSvyazOne }}</li>
+        <li>Сколько словоформ имеют единичную связь с несколькими жестами: {{ statistics.countSvyazMany }}</li>
       </ol>
     </template>
     <div v-else>
@@ -38,6 +37,8 @@ export default {
         countWordForms: 0,
         countSvyaz: 0,
         countNotSvyaz: 0,
+        countSvyazOne: 0,
+        countSvyazMany: 0,
       },
       loadingStatistics: true
     }
@@ -50,6 +51,8 @@ export default {
       this.statistics.countWordForms = response.data['словоформ сгенерировано'];
       this.statistics.countSvyaz = response.data['словоформ связано'];
       this.statistics.countNotSvyaz = response.data['словоформ несвязано'];
+      this.statistics.countSvyazOne = response.data['единичная связь с жестом'];
+      this.statistics.countSvyazMany = response.data['единичная связь с несколькими жестами'];
 
       this.loadingStatistics = false;
     });

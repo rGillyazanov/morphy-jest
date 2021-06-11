@@ -165,7 +165,7 @@
               <div class="row mb-1 justify-content-center">
                 <div class="navbar navbar-collapse">
                   <div class="nav-item">
-                    <button class="btn btn-success">Открыть</button>
+                    <button class="btn btn-success" @click="openJest">Открыть</button>
                   </div>
                   <div class="nav-item">
                     <button class="btn btn-primary" @click="move('up')">
@@ -213,16 +213,18 @@
                       Начните вводить название жеста
                     </template>
                     <template slot="option" slot-scope="option">
-                      {{ option.jest }} <strong><sup>{{
-                        (option.nedooformleno) ? '*' :
-                          ''
-                      }}</sup></strong>
+                      {{ option.jest }}
+                      <strong>
+                        <sup>{{ (option.nedooformleno) ? '*' : ''}}</sup>
+                      </strong> [ {{option.dialect.dialect}} | {{option.style.style}} |
+                      {{option.actual.actual}} ]
                     </template>
                     <template slot="selected-option" slot-scope="option">
-                      {{ option.jest }} <strong><sup>{{
-                        (option.nedooformleno) ? '*' :
-                          ''
-                      }}</sup></strong>
+                      {{ option.jest }}
+                      <strong>
+                        <sup>{{ (option.nedooformleno) ? '*' : ''}}</sup>
+                      </strong> [ {{option.dialect.dialect}} | {{option.style.style}} |
+                      {{option.actual.actual}} ]
                     </template>
                   </v-select>
                 </div>
@@ -355,6 +357,11 @@ export default {
     }
   },
   methods: {
+    openJest() {
+      if (this.selectedJest) {
+        window.open(`https://slovar.jest.su/${this.selectedJest}`, '_blank')
+      }
+    },
     getPartOfSpeechData(key) {
       return this.partsOfSpeechWord && this.partsOfSpeechWord[key] ? this.partsOfSpeechWord[key] : null
     },

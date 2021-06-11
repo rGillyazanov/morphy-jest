@@ -25,19 +25,24 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyIntersectionsWordForms/MorphyIntersectionsWordFormsComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/intersections.blade.php" afterDir="false" />
+    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Исправил не">
+      <change afterPath="$PROJECT_DIR$/app/Models/Surdo/Actual.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Surdo/Dialect.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Surdo/Style.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Jest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Surdo/Jest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/JestWord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Surdo/JestWord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/JestWordForms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/JestWordForms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/WordFormJestsSostav.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordFormJestsSostav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Word.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Surdo/Word.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/PartOfSpeechTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/PartOfSpeechTable.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/mixins/grammems.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/mixins/grammems.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,42 +98,28 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
-      <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
-      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
-      <path value="$PROJECT_DIR$/vendor/symfony/process" />
-      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
-      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/sebastian/type" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/seoservice2020/phpmorphy" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/seoservice2020/laravel-phpmorphy" />
-      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
-      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
@@ -138,7 +129,6 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
-      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/vendor/laravel/sail" />
@@ -154,8 +144,6 @@
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
-      <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
@@ -192,6 +180,22 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
     </include_path>
   </component>
   <component name="ProjectId" id="1phKRbw5z1eBgLCXt8VH395wjKA" />
@@ -209,23 +213,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../surdojest-slovar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\views" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Surdo" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages\morphyJests" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\public\images" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\partOfSpeechWord" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Morphy\PartsOfSpeech\GeneralModels" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Surdo" />
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\views" />
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models" />
     </key>
   </component>
   <component name="RunManager">
@@ -311,7 +316,11 @@
       <workItem from="1623011833775" duration="1769000" />
       <workItem from="1623062554689" duration="3635000" />
       <workItem from="1623147246527" duration="26278000" />
-      <workItem from="1623236731313" duration="8392000" />
+      <workItem from="1623236731313" duration="9031000" />
+      <workItem from="1623271823753" duration="19000" />
+      <workItem from="1623333005065" duration="682000" />
+      <workItem from="1623342335909" duration="3010000" />
+      <workItem from="1623423256013" duration="12910000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -481,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623185796893</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Создал страницу пересечённых словоформ.">
+      <created>1623245723775</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1623245723775</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +555,8 @@
     <MESSAGE value="Добавил в таблицу jest_wordforms столбец word_id" />
     <MESSAGE value="Убрал столбец active в morphy_word_forms и сделал сортировку жестов в словоформе по order." />
     <MESSAGE value="Добавил вывод статистики" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил вывод статистики" />
+    <MESSAGE value="Создал страницу пересечённых словоформ." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создал страницу пересечённых словоформ." />
   </component>
   <component name="WindowStateProjectService">
     <state x="679" y="129" width="566" height="877" key="#PHP" timestamp="1621638737618">
@@ -586,10 +603,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="852" y="191" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616269892886" />
-    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1623185795812">
+    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1623438963433">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1623185795812" />
+    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1623438963433" />
     <state width="616" height="618" key="DebuggerActiveHint" timestamp="1623159735296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -598,10 +615,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622806124305" />
-    <state x="740" y="332" key="FileChooserDialogImpl" timestamp="1623013605369">
+    <state x="740" y="332" key="FileChooserDialogImpl" timestamp="1623423446390">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="332" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1623013605369" />
+    <state x="740" y="332" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1623423446390" />
     <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1623185820173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -666,10 +683,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="540" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1623012631334" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1623185802789">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1623245728473">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1623185802789" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1623245728473" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618311452128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

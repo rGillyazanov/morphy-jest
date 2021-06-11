@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Surdo;
 
 use App\Models\Morphies\WordGrammems;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 /**
  * App\Models\Jest
@@ -209,7 +207,7 @@ class Jest extends Model
      */
     public function actual()
     {
-        return $this->belongsTo('App\Models\Surdo\Actual', 'id_actual', 'id_actual');
+        return $this->belongsTo(Actual::class, 'id_actual', 'id_actual');
     }
 
     /**
@@ -259,7 +257,7 @@ class Jest extends Model
      */
     public function dialect()
     {
-        return $this->belongsTo('App\Models\Surdo\Dialect', 'id_dialect', 'id_dialect');
+        return $this->belongsTo(Dialect::class, 'id_dialect', 'id_dialect');
     }
 
     /**
@@ -339,7 +337,7 @@ class Jest extends Model
      */
     public function style()
     {
-        return $this->belongsTo('App\Models\Surdo\Style', 'id_style', 'id_style');
+        return $this->belongsTo(Style::class, 'id_style', 'id_style');
     }
 
     /**
@@ -454,7 +452,7 @@ class Jest extends Model
      */
     public function words()
     {
-        return $this->belongsToMany('App\Models\Word', 'srd_surd_cross_words', 'id_jest', 'id_word')->orderBy('word');
+        return $this->belongsToMany(Word::class, 'srd_surd_cross_words', 'id_jest', 'id_word')->orderBy('word');
     }
 
     public function scopeOfFilter($query, $filter)

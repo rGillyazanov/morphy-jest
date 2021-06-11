@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /*(new CaseSeeder())->run();
+        (new CaseSeeder())->run();
         (new EnthusiasmSeeder())->run();
         (new FaceSeeder())->run();
         (new GenderSeeder())->run();
@@ -37,7 +37,6 @@ class DatabaseSeeder extends Seeder
         (new SemanticFeaturesSeeder())->run();
         (new TimeSeeder())->run();
         (new TransitivitySeeder())->run();
-        (new ViewSeeder())->run();*/
-        (new WordFormsSeeder())->run();
+        (new ViewSeeder())->run();
     }
 }

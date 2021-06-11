@@ -33,17 +33,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-link">
-                            <a href="{{ route('home') }}">Слова</a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="{{ route('morphy.words') }}">Слова-жесты</a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="{{ route('morphy.intersections.wordforms') }}">Словарь пересечения словоформ</a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="{{ route('morphy.statistics') }}">Статистика</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Меню
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('home') }}">Связь словоформ с жестом</a>
+                                <a class="dropdown-item" href="{{ route('morphy.words') }}">Привязка жестов к словоформе</a>
+                                <a class="dropdown-item" href="{{ route('morphy.intersections.wordforms') }}">Словарь пересечения словоформ</a>
+                                <a class="dropdown-item" href="{{ route('morphy.statistics') }}">Статистика</a>
+                            </div>
                         </li>
                     </ul>
 

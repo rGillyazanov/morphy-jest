@@ -2616,6 +2616,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2735,6 +2737,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    openJest: function openJest() {
+      if (this.selectedJest) {
+        window.open("https://slovar.jest.su/".concat(this.selectedJest), '_blank');
+      }
+    },
     getPartOfSpeechData: function getPartOfSpeechData(key) {
       return this.partsOfSpeechWord && this.partsOfSpeechWord[key] ? this.partsOfSpeechWord[key] : null;
     },
@@ -4100,7 +4107,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "MorphyStatistics",
   data: function data() {
@@ -4110,7 +4116,9 @@ __webpack_require__.r(__webpack_exports__);
         countWords: 0,
         countWordForms: 0,
         countSvyaz: 0,
-        countNotSvyaz: 0
+        countNotSvyaz: 0,
+        countSvyazOne: 0,
+        countSvyazMany: 0
       },
       loadingStatistics: true
     };
@@ -4125,6 +4133,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.statistics.countWordForms = response.data['словоформ сгенерировано'];
       _this.statistics.countSvyaz = response.data['словоформ связано'];
       _this.statistics.countNotSvyaz = response.data['словоформ несвязано'];
+      _this.statistics.countSvyazOne = response.data['единичная связь с жестом'];
+      _this.statistics.countSvyazMany = response.data['единичная связь с несколькими жестами'];
       _this.loadingStatistics = false;
     });
   }
@@ -43297,7 +43307,16 @@ var render = function() {
                         { staticClass: "row mb-1 justify-content-center" },
                         [
                           _c("div", { staticClass: "navbar navbar-collapse" }, [
-                            _vm._m(2),
+                            _c("div", { staticClass: "nav-item" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success",
+                                  on: { click: _vm.openJest }
+                                },
+                                [_vm._v("Открыть")]
+                              )
+                            ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "nav-item" }, [
                               _c(
@@ -43441,7 +43460,7 @@ var render = function() {
                                           _vm._v(
                                             "\n                    " +
                                               _vm._s(option.jest) +
-                                              " "
+                                              "\n                    "
                                           ),
                                           _c("strong", [
                                             _c("sup", [
@@ -43453,7 +43472,16 @@ var render = function() {
                                                 )
                                               )
                                             ])
-                                          ])
+                                          ]),
+                                          _vm._v(
+                                            " [ " +
+                                              _vm._s(option.dialect.dialect) +
+                                              " | " +
+                                              _vm._s(option.style.style) +
+                                              " |\n                    " +
+                                              _vm._s(option.actual.actual) +
+                                              " ]\n                  "
+                                          )
                                         ]
                                       }
                                     },
@@ -43464,7 +43492,7 @@ var render = function() {
                                           _vm._v(
                                             "\n                    " +
                                               _vm._s(option.jest) +
-                                              " "
+                                              "\n                    "
                                           ),
                                           _c("strong", [
                                             _c("sup", [
@@ -43476,14 +43504,23 @@ var render = function() {
                                                 )
                                               )
                                             ])
-                                          ])
+                                          ]),
+                                          _vm._v(
+                                            " [ " +
+                                              _vm._s(option.dialect.dialect) +
+                                              " | " +
+                                              _vm._s(option.style.style) +
+                                              " |\n                    " +
+                                              _vm._s(option.actual.actual) +
+                                              " ]\n                  "
+                                          )
                                         ]
                                       }
                                     }
                                   ],
                                   null,
                                   false,
-                                  1717523853
+                                  1674588749
                                 ),
                                 model: {
                                   value: _vm.inputJest,
@@ -43508,7 +43545,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(2)
                   ])
                 ])
               ]
@@ -43542,14 +43579,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", [_c("strong", [_vm._v("Состав")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "nav-item" }, [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Открыть")])
-    ])
   },
   function() {
     var _vm = this
@@ -47728,18 +47757,16 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("li", [
-                _vm._v("Сколько словоформ имеют единичную связь с жестом.")
-              ]),
-              _vm._v(" "),
-              _c("li", [
                 _vm._v(
-                  "Сколько словоформ имеют единичную связь с несколькими жестами."
+                  "Сколько словоформ имеют единичную связь с жестом: " +
+                    _vm._s(_vm.statistics.countSvyazOne)
                 )
               ]),
               _vm._v(" "),
               _c("li", [
                 _vm._v(
-                  "Сколько словоформ имеют единичную связь с несколькими жестами."
+                  "Сколько словоформ имеют единичную связь с несколькими жестами: " +
+                    _vm._s(_vm.statistics.countSvyazMany)
                 )
               ])
             ])

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jest;
+use App\Models\Surdo\Jest;
 use App\Models\Morphies\JestWordForms;
 use App\Models\Morphies\PartOfSpeech;
 use App\Models\Morphies\WordFormJestsSostav;
@@ -10,9 +10,10 @@ use App\Models\Morphies\WordFormsModel;
 use App\Models\Morphies\WordGrammems;
 use App\Models\Morphy\HelpMorphyService;
 use App\Models\Morphy\MorphyAnalyzer;
-use App\Models\Word;
+use App\Models\Surdo\Word;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use SEOService2020\Morphy\Morphy;
 
 class TestController extends Controller
@@ -280,7 +281,8 @@ class TestController extends Controller
     {
         $searchText = $request->input('search');
 
-        return Jest::where('jest', 'like', "%$searchText%")->limit(100)->orderBy('jest')->get(['id_jest', 'jest', 'nedooformleno']);
+        return Jest::where('jest', 'like', "%$searchText%")->limit(100)
+            ->with(['dialect', 'actual', 'style'])->orderBy('jest')->get(['id_jest', 'jest', 'nedooformleno', 'id_dialect', 'id_actual', 'id_style']);
     }
 
     public function storeJestsWordForm(Request $request)
@@ -386,12 +388,16 @@ class TestController extends Controller
             $wordFormsJests[$wordJsonInfo] = [];
 
             foreach ($jests as $jest) {
-                $jestModel = Jest::query()->where('id_jest', $jest->jest_id)->first(['id_jest', 'jest', 'nedooformleno']);
+                $jestModel = Jest::query()->where('id_jest', $jest->jest_id)
+                    ->with(['dialect', 'actual', 'style'])->first(['id_jest', 'jest', 'nedooformleno']);
 
                 $jestTemp = [
                     'id_jest' => $jestModel->id_jest,
                     'jest' => $jestModel->jest,
-                    'nedooformleno' => $jestModel->nedooformleno
+                    'nedooformleno' => $jestModel->nedooformleno,
+                    'dialect' => $jestModel->dialect,
+                    'actual' => $jestModel->actual,
+                    'style' => $jestModel->style
                 ];
 
                 $wordFormsJests[$wordJsonInfo][] = [
@@ -425,12 +431,24 @@ class TestController extends Controller
         $countSvyaz = JestWordForms::query()->distinct()->count('wordform_id');
         $countNotSvyaz = $countWordForms - JestWordForms::query()->distinct()->count('wordform_id');
 
+        $countSvyazJests = function ($operator, $count) {
+            $first = WordFormJestsSostav::query()
+                ->select(DB::raw('count(*) as count, jest_id'))->groupBy('jest_id')->having('count', $operator, $count)->get()->count();
+            $second = JestWordForms::query()
+                ->select(DB::raw('count(*) as count, jest_id'))->groupBy('jest_id')->having('count', $operator, $count)->get()->count();
+
+            return $first + $second;
+        };
+
+
         return response()->json([
             'жестов обработано' => $countJests,
             'слов обработано' => $countWords,
             'словоформ сгенерировано' => $countWordForms,
             'словоформ связано' => $countSvyaz,
-            'словоформ несвязано' => $countNotSvyaz
+            'словоформ несвязано' => $countNotSvyaz,
+            'единичная связь с жестом' => $countSvyazJests('=', 1),
+            'единичная связь с несколькими жестами' => $countSvyazJests('>', 1),
         ], 200, [], 256);
     }
 

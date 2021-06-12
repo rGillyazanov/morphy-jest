@@ -44,6 +44,9 @@
                                 <a class="dropdown-item" href="{{ route('morphy.statistics') }}">Статистика</a>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://slovar.jest.su/" target="_blank">Толковый лексикографический словарь РЖЯ</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Morphy;
 
 use App\Models\Morphies\CaseModel;
 use Illuminate\Database\Seeder;

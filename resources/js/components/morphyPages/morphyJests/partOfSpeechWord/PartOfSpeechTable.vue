@@ -216,15 +216,15 @@
                       {{ option.jest }}
                       <strong>
                         <sup>{{ (option.nedooformleno) ? '*' : ''}}</sup>
-                      </strong> [ {{option.dialect.dialect}} | {{option.style.style}} |
-                      {{option.actual.actual}} ]
+                      </strong> [ {{option.dialect ? option.dialect.dialect : ''}} | {{option.style ? option.style.style : ''}} |
+                      {{option.actual ? option.actual.actual : ''}} ]
                     </template>
                     <template slot="selected-option" slot-scope="option">
                       {{ option.jest }}
                       <strong>
                         <sup>{{ (option.nedooformleno) ? '*' : ''}}</sup>
-                      </strong> [ {{option.dialect.dialect}} | {{option.style.style}} |
-                      {{option.actual.actual}} ]
+                      </strong> [ {{option.dialect ? option.dialect.dialect : ''}} | {{option.style ? option.style.style : ''}} |
+                      {{option.actual ? option.actual.actual : ''}} ]
                     </template>
                   </v-select>
                 </div>

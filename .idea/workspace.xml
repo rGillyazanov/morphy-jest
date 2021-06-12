@@ -25,24 +25,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Исправил не">
-      <change afterPath="$PROJECT_DIR$/app/Models/Surdo/Actual.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Surdo/Dialect.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Surdo/Style.php" afterDir="false" />
+    <list default="true" id="76fc4b1b-6ac7-432a-a74f-34043bcb911e" name="Default Changelist" comment="Исправил недочеты">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Jest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Surdo/Jest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/JestWord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Surdo/JestWord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/JestWordForms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/JestWordForms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/WordFormJestsSostav.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordFormJestsSostav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Morphies/WordGrammems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Word.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Surdo/Word.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/PartOfSpeechTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyJests/partOfSpeechWord/PartOfSpeechTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/morphyPages/morphyStatistics/MorphyStatistics.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jests.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,17 +210,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Surdo" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages\morphyJests" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\public\images" />
-      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\partOfSpeechWord" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Surdo" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\views" />
       <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\database\seeders\Morphy" />
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\database\seeders" />
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\app\Models\Surdo" />
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages\morphyJests" />
+      <recent name="C:\Users\Ruslan\PhpstormProjects\morphy-jest\resources\js\components\morphyPages" />
     </key>
   </component>
   <component name="RunManager">
@@ -320,7 +310,8 @@
       <workItem from="1623271823753" duration="19000" />
       <workItem from="1623333005065" duration="682000" />
       <workItem from="1623342335909" duration="3010000" />
-      <workItem from="1623423256013" duration="12910000" />
+      <workItem from="1623423256013" duration="13518000" />
+      <workItem from="1623489978625" duration="2081000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных.">
       <created>1616271117479</created>
@@ -497,7 +488,42 @@
       <option name="project" value="LOCAL" />
       <updated>1623245723775</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Исправил недочеты">
+      <created>1623439282378</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1623439282378</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Build">
+      <created>1623490265624</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1623490265624</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Переименовал папку с сидами">
+      <created>1623491377718</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1623491377718</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Переименовал папку с сидами">
+      <created>1623491448124</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1623491448124</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Изменил пространство имен">
+      <created>1623491538354</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1623491538354</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,10 +557,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Добавил вывод кратких прилагательных и сравнительную степень в прилагательных." />
-    <MESSAGE value="Исправил винительный одушевленный и винительный неодушевленный падеж у прилагательных" />
-    <MESSAGE value="Добавил поддержку инфинитивов." />
-    <MESSAGE value="Добавил причастия дст и стр в инфинитивы." />
     <MESSAGE value="Добавил таблицы в базу данных и модели к ним." />
     <MESSAGE value="Добавил внешнии ключи к таблице word_grammems" />
     <MESSAGE value="Добавил части речи." />
@@ -556,7 +578,11 @@
     <MESSAGE value="Убрал столбец active в morphy_word_forms и сделал сортировку жестов в словоформе по order." />
     <MESSAGE value="Добавил вывод статистики" />
     <MESSAGE value="Создал страницу пересечённых словоформ." />
-    <option name="LAST_COMMIT_MESSAGE" value="Создал страницу пересечённых словоформ." />
+    <MESSAGE value="Build" />
+    <MESSAGE value="Исправил недочеты" />
+    <MESSAGE value="Переименовал папку с сидами" />
+    <MESSAGE value="Изменил пространство имен" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменил пространство имен" />
   </component>
   <component name="WindowStateProjectService">
     <state x="679" y="129" width="566" height="877" key="#PHP" timestamp="1621638737618">
@@ -603,18 +629,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="852" y="191" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616269892886" />
-    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1623438963433">
+    <state x="446" y="124" key="CommitChangelistDialog2" timestamp="1623491537795">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1623438963433" />
+    <state x="446" y="124" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1623491537795" />
     <state width="616" height="618" key="DebuggerActiveHint" timestamp="1623159735296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="616" height="618" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1623159735296" />
-    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1622806124305">
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1623490253320">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622806124305" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1623490253320" />
     <state x="740" y="332" key="FileChooserDialogImpl" timestamp="1623423446390">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -683,10 +709,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="540" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1623012631334" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1623245728473">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1623491541755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1623245728473" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1623491541755" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618311452128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

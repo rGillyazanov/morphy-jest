@@ -12,14 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'jests'])->name('morphy.jests');
 Route::get('/words', [App\Http\Controllers\HomeController::class, 'words'])->name('morphy.words');
 Route::get('/statistics', [App\Http\Controllers\HomeController::class, 'statistics'])->name('morphy.statistics');
 Route::get('/intersections', [App\Http\Controllers\HomeController::class, 'intersections'])->name('morphy.intersections.wordforms');

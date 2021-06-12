@@ -38,7 +38,7 @@
                                 Меню
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('home') }}">Связь словоформ с жестом</a>
+                                <a class="dropdown-item" href="{{ route('morphy.jests') }}">Связь словоформ с жестом</a>
                                 <a class="dropdown-item" href="{{ route('morphy.words') }}">Привязка жестов к словоформе</a>
                                 <a class="dropdown-item" href="{{ route('morphy.intersections.wordforms') }}">Словарь пересечения словоформ</a>
                                 <a class="dropdown-item" href="{{ route('morphy.statistics') }}">Статистика</a>

@@ -21,9 +21,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function jests()
     {
-        return view('home');
+        return view('jests');
     }
 
     public function words()

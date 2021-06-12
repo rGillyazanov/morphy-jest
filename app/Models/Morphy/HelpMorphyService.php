@@ -525,10 +525,12 @@ class HelpMorphyService
             return mb_strtolower($word, 'UTF-8');
         }
 
-        foreach ($paradigms->getByPartOfSpeech($partOfSpeech) as $paradigm) {
-            foreach ($paradigm->getWordFormsByPartOfSpeech($partOfSpeech) as $form) {
-                if ($form->hasGrammems($grammems)) {
-                    return mb_strtolower($paradigm->getBaseForm(), 'UTF-8');
+        if ($paradigms) {
+            foreach ($paradigms->getByPartOfSpeech($partOfSpeech) as $paradigm) {
+                foreach ($paradigm->getWordFormsByPartOfSpeech($partOfSpeech) as $form) {
+                    if ($form->hasGrammems($grammems)) {
+                        return mb_strtolower($paradigm->getBaseForm(), 'UTF-8');
+                    }
                 }
             }
         }

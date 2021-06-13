@@ -157,7 +157,8 @@ export default {
       size: 4,
       saveResponse: {
         loading: false,
-        message: ''
+        message: '',
+        timeout: null
       },
       selectedWords: []
     }
@@ -188,6 +189,7 @@ export default {
     },
     wordSelected(selectedWord, wordId) {
       if (this.wordForms.selected.id !== wordId) {
+        this.clearTimer();
         this.wordForms.selected.jests = [];
         this.word = null;
         this.activeWordFormsInJest = null;
@@ -206,6 +208,7 @@ export default {
     },
     selectJest(jestId) {
       if (this.currentJestId !== jestId) {
+        this.clearTimer();
         this.word = null;
         this.activeWordFormsInJest = null;
         this.wordsInJest.words = [];
@@ -227,6 +230,7 @@ export default {
     },
     selectWordForm(selectedWordForm) {
       if (this.word !== selectedWordForm.word && !this.loadingActiveWordFormsInJest) {
+        this.clearTimer();
         this.word = selectedWordForm.word;
         this.wordsInJest.selectedWord = selectedWordForm;
 
@@ -261,7 +265,7 @@ export default {
         if (response.status === 200) {
           this.saveResponse.message = 'Словоформы успешно сохранены';
 
-          setTimeout(() => {
+          this.saveResponse.timeout = setTimeout(() => {
             this.saveResponse.message = '';
           }, 5000);
         }
@@ -269,10 +273,13 @@ export default {
         this.saveResponse.loading = false;
         this.saveResponse.message = error;
       });
+    },
+    clearTimer() {
+      if (this.saveResponse.timeout) {
+        clearTimeout(this.saveResponse.timeout);
+        this.saveResponse.message = '';
+      }
     }
-  },
-  mounted() {
-    this.getAllWords();
   },
   computed: {
     pageCount() {
@@ -288,6 +295,9 @@ export default {
     shareLoading() {
       return this.wordForms.loading || this.wordFormsOfWord.loading || this.wordsInJest.loading || this.savingWordForms;
     }
+  },
+  mounted() {
+    this.getAllWords();
   }
 }
 </script>

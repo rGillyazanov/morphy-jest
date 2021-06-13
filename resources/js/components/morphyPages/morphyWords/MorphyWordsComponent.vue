@@ -91,7 +91,8 @@ export default {
       },
       saveResponse: {
         loading: false,
-        message: ''
+        message: '',
+        timeout: null
       },
       selectedJests: null,
       savingWordForms: false,
@@ -123,6 +124,7 @@ export default {
     },
     selectWord(selectedWord) {
       if (this.word !== selectedWord.word && !this.loadingActiveWordFormsInJest) {
+        this.clearTimer();
         this.word = selectedWord.word;
         this.wordForms.selected = selectedWord;
 
@@ -155,7 +157,7 @@ export default {
         if (response.status === 200) {
           this.saveResponse.message = 'Сохранение завершено';
 
-          setTimeout(() => {
+          this.saveResponse.timeout = setTimeout(() => {
             this.saveResponse.message = '';
           }, 5000);
         }
@@ -163,6 +165,12 @@ export default {
         this.saveResponse.loading = false;
         this.saveResponse.message = error;
       });
+    },
+    clearTimer() {
+      if (this.saveResponse.timeout) {
+        clearTimeout(this.saveResponse.timeout);
+        this.saveResponse.message = '';
+      }
     }
   },
   mounted() {
